@@ -4,12 +4,7 @@ import matplotlib.pyplot as plt
 
 AAPL = fc.return_ticker('AAPL').asfreq('D', method='ffill')
 
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(AAPL['adj_close'])
-ax.set(title='AAPL', xlabel='time', ylabel='$')
-ax.legend(['Adjusted Close $'])
-fig.tight_layout()
+fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # log returns
 lrets = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1)).dropna()

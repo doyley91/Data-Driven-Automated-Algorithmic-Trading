@@ -1,16 +1,10 @@
 import functions as fc
 from sklearn import metrics
 from sklearn.cluster import KMeans
-import matplotlib.pyplot as plt
 
-AAPL = fc.return_ticker('AAPL').asfreq('D', method='ffill')
+AAPL = fc.return_ticker('AAPL')
 
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(AAPL['adj_close'])
-ax.set(title='AAPL', xlabel='time', ylabel='$')
-ax.legend(['Adjusted Close $'])
-fig.tight_layout()
+fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
 AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)

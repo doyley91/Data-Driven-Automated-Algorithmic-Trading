@@ -1,8 +1,7 @@
 import functions as fc
 import pandas as pd
 import numpy as np
-from sklearn.tree import DecisionTreeRegressor, export_graphviz
-import pydotplus as pydot
+from sklearn.neighbors import KNeighborsRegressor
 import matplotlib.pyplot as plt
 
 AAPL = fc.return_ticker('AAPL')
@@ -30,25 +29,16 @@ test_set = AAPL[-500:]
 X = np.array(training_set[['sma_15', 'sma_50']].values)
 
 # target values
-Y = np.array(training_set['adj_close'])
+Y = list(training_set['adj_close'])
 
-mdl = DecisionTreeRegressor().fit(X, Y)
+# fit a k-nearest neighbor model to the data
+mdl = KNeighborsRegressor().fit(X, Y)
 print(mdl)
 
-dot_data = export_graphviz(mdl,
-                           out_file=None,
-                           feature_names=list(training_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']]),
-                           class_names='outcome',
-                           filled=True,
-                           rounded=True,
-                           special_characters=True)
-
-graph = pydot.graph_from_dot_data(dot_data)
-graph.write_png("charts/decision-tree-regression.png")
-
+# make predictions
 pred = mdl.predict(test_set[['sma_15', 'sma_50']].values)
 
-results = pd.DataFrame(data=dict(original=test_set['adj_close'], prediction=pred), index=test_set.index)
+results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -56,15 +46,4 @@ ax.plot(results['original'])
 ax.plot(results['prediction'])
 ax.set(title='Time Series Plot', xlabel='time', ylabel='$')
 ax.legend(['Original $', 'Forecast $'])
-fig.tight_layout()
-
-# Plot the results
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.scatter(X[:,1], Y, c="darkorange", label="data")
-ax.plot(test_set['adj_close'].values, pred, color="cornflowerblue", label="max_depth=2", linewidth=2)
-plt.xlabel("data")
-plt.ylabel("target")
-plt.title("Decision Tree Regression")
-plt.legend()
 fig.tight_layout()

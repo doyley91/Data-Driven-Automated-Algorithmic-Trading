@@ -1,16 +1,11 @@
 import functions as fc
+import pandas as pd
 from sklearn import metrics
 from sklearn.ensemble import AdaBoostClassifier
-import matplotlib.pyplot as plt
 
-AAPL = fc.return_ticker('AAPL').asfreq('D', method='ffill')
+AAPL = fc.return_ticker('AAPL')
 
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(AAPL['adj_close'])
-ax.set(title='AAPL', xlabel='time', ylabel='$')
-ax.legend(['Adjusted Close $'])
-fig.tight_layout()
+fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
 AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
@@ -56,3 +51,5 @@ pred = mdl.predict(test_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']].value
 # summarize the fit of the model
 print(metrics.classification_report(test_set['outcome'], pred))
 print(metrics.confusion_matrix(test_set['outcome'], pred))
+
+results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
