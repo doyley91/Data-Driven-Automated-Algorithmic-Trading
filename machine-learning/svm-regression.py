@@ -1,7 +1,8 @@
 import functions as fc
 import pandas as pd
+import numpy as np
+from sklearn.svm import SVR
 from sklearn import metrics
-from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 
 AAPL = fc.return_ticker('AAPL')
@@ -20,42 +21,30 @@ AAPL['lo'] = AAPL['adj_low'] - AAPL['adj_open']
 # difference between Closing price - Opening price
 AAPL['gain'] = AAPL['adj_close'] - AAPL['adj_open']
 
-# generate lagged time series
-AAPL_1 = AAPL.shift(1)
-AAPL_2 = AAPL.shift(2)
-AAPL_3 = AAPL.shift(3)
-AAPL_4 = AAPL.shift(4)
-AAPL_5 = AAPL.shift(5)
-
-AAPL['feat1'] = AAPL['adj_close'] > AAPL_1['adj_close']
-AAPL['feat2'] = AAPL['adj_close'] > AAPL_2['adj_close']
-AAPL['feat3'] = AAPL['adj_close'] > AAPL_3['adj_close']
-AAPL['feat4'] = AAPL['adj_close'] > AAPL_4['adj_close']
-AAPL['feat5'] = AAPL['adj_close'] > AAPL_5['adj_close']
+AAPL = fc.get_sma_features(AAPL).dropna()
 
 training_set = AAPL[:-500]
 test_set = AAPL[-500:]
 
 # values of features
-X = list(training_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']].values)
+X = np.array(training_set[['sma_15', 'sma_50']].values)
 
 # target values
-Y = list(training_set['outcome'])
+Y = list(training_set['adj_close'])
 
 # fit a Naive Bayes model to the data
-mdl = LogisticRegression().fit(X, Y)
+mdl = SVR(kernel='linear').fit(X, Y)
 print(mdl)
 
 # make predictions
-pred = mdl.predict(test_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']].values)
+pred = mdl.predict(test_set[['sma_15', 'sma_50']].values)
 
-# summarize the fit of the model
-metrics.mean_absolute_error(test_set['outcome'], pred)
-metrics.mean_squared_error(test_set['outcome'], pred)
-metrics.median_absolute_error(test_set['outcome'], pred)
-metrics.r2_score(test_set['outcome'], pred)
+metrics.mean_absolute_error(test_set['adj_close'], pred)
+metrics.mean_squared_error(test_set['adj_close'], pred)
+metrics.median_absolute_error(test_set['adj_close'], pred)
+metrics.r2_score(test_set['adj_close'], pred)
 
-results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
+results = pd.DataFrame(data=dict(original=test_set['adj_close'], prediction=pred), index=test_set.index)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)

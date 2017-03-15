@@ -2,6 +2,7 @@ import functions as fc
 import pandas as pd
 import numpy as np
 from sklearn.tree import DecisionTreeRegressor, export_graphviz
+from sklearn import metrics
 import pydotplus as pydot
 import matplotlib.pyplot as plt
 
@@ -47,6 +48,11 @@ graph = pydot.graph_from_dot_data(dot_data)
 graph.write_png("charts/decision-tree-regression.png")
 
 pred = mdl.predict(test_set[['sma_15', 'sma_50']].values)
+
+metrics.mean_absolute_error(test_set['adj_close'], pred)
+metrics.mean_squared_error(test_set['adj_close'], pred)
+metrics.median_absolute_error(test_set['adj_close'], pred)
+metrics.r2_score(test_set['adj_close'], pred)
 
 results = pd.DataFrame(data=dict(original=test_set['adj_close'], prediction=pred), index=test_set.index)
 

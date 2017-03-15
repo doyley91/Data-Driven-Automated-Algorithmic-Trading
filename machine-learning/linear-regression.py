@@ -2,6 +2,7 @@ import functions as fc
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
+from sklearn import metrics
 import matplotlib.pyplot as plt
 
 AAPL = fc.return_ticker('AAPL')
@@ -38,7 +39,13 @@ print(mdl)
 # make predictions
 pred = mdl.predict(test_set[['sma_15', 'sma_50']].values)
 
-results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
+# summarize the fit of the model
+metrics.mean_absolute_error(test_set['adj_close'], pred)
+metrics.mean_squared_error(test_set['adj_close'], pred)
+metrics.median_absolute_error(test_set['adj_close'], pred)
+metrics.r2_score(test_set['adj_close'], pred)
+
+results = pd.DataFrame(data=dict(original=test_set['adj_close'], prediction=pred), index=test_set.index)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)

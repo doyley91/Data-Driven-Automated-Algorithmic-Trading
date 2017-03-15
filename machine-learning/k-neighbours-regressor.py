@@ -2,6 +2,7 @@ import functions as fc
 import pandas as pd
 import numpy as np
 from sklearn.neighbors import KNeighborsRegressor
+from sklearn import metrics
 import matplotlib.pyplot as plt
 
 AAPL = fc.return_ticker('AAPL')
@@ -32,13 +33,18 @@ X = np.array(training_set[['sma_15', 'sma_50']].values)
 Y = list(training_set['adj_close'])
 
 # fit a k-nearest neighbor model to the data
-mdl = KNeighborsRegressor().fit(X, Y)
+mdl = KNeighborsRegressor(n_neighbors=2).fit(X, Y)
 print(mdl)
 
 # make predictions
 pred = mdl.predict(test_set[['sma_15', 'sma_50']].values)
 
-results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
+metrics.mean_absolute_error(test_set['adj_close'], pred)
+metrics.mean_squared_error(test_set['adj_close'], pred)
+metrics.median_absolute_error(test_set['adj_close'], pred)
+metrics.r2_score(test_set['adj_close'], pred)
+
+results = pd.DataFrame(data=dict(original=test_set['adj_close'], prediction=pred), index=test_set.index)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)

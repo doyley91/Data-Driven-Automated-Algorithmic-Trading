@@ -2,6 +2,7 @@ import functions as fc
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import AdaBoostRegressor
+from sklearn import metrics
 import matplotlib.pyplot as plt
 
 AAPL = fc.return_ticker('AAPL')
@@ -32,11 +33,16 @@ X = np.array(training_set[['sma_15', 'sma_50']].values)
 Y = list(training_set['adj_close'])
 
 # fit a Naive Bayes model to the data
-mdl = AdaBoostRegressor().fit(X, Y)
+mdl = AdaBoostRegressor(loss='square').fit(X, Y)
 print(mdl)
 
 # make predictions
 pred = mdl.predict(test_set[['sma_15', 'sma_50']].values)
+
+metrics.mean_absolute_error(test_set['adj_close'], pred)
+metrics.mean_squared_error(test_set['adj_close'], pred)
+metrics.median_absolute_error(test_set['adj_close'], pred)
+metrics.r2_score(test_set['adj_close'], pred)
 
 results = pd.DataFrame(data=dict(original=test_set['adj_close'], prediction=pred), index=test_set.index)
 

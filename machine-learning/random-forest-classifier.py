@@ -32,6 +32,11 @@ AAPL['feat3'] = AAPL['adj_close'] > AAPL_3['adj_close']
 AAPL['feat4'] = AAPL['adj_close'] > AAPL_4['adj_close']
 AAPL['feat5'] = AAPL['adj_close'] > AAPL_5['adj_close']
 
+AAPL['feat1'] = AAPL['sma_15'] > AAPL_1['adj_close']
+AAPL['feat2'] = AAPL['adj_close'] > AAPL_2['adj_close']
+AAPL['feat1'] = AAPL['adj_close'] > AAPL_1['adj_close']
+AAPL['feat2'] = AAPL['adj_close'] > AAPL_2['adj_close']
+
 training_set = AAPL[:-500]
 test_set = AAPL[-500:]
 

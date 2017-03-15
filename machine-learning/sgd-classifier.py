@@ -1,8 +1,7 @@
 import functions as fc
 import pandas as pd
 from sklearn import metrics
-from sklearn.linear_model import LogisticRegression
-import matplotlib.pyplot as plt
+from sklearn.linear_model import SGDClassifier
 
 AAPL = fc.return_ticker('AAPL')
 
@@ -43,24 +42,14 @@ X = list(training_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']].values)
 Y = list(training_set['outcome'])
 
 # fit a Naive Bayes model to the data
-mdl = LogisticRegression().fit(X, Y)
+mdl = SGDClassifier().fit(X, Y)
 print(mdl)
 
 # make predictions
 pred = mdl.predict(test_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']].values)
 
 # summarize the fit of the model
-metrics.mean_absolute_error(test_set['outcome'], pred)
-metrics.mean_squared_error(test_set['outcome'], pred)
-metrics.median_absolute_error(test_set['outcome'], pred)
-metrics.r2_score(test_set['outcome'], pred)
+print(metrics.classification_report(test_set['outcome'], pred))
+print(metrics.confusion_matrix(test_set['outcome'], pred))
 
 results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
-
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(results['original'])
-ax.plot(results['prediction'])
-ax.set(title='Time Series Plot', xlabel='time', ylabel='$')
-ax.legend(['Original $', 'Forecast $'])
-fig.tight_layout()

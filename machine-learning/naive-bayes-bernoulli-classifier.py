@@ -1,6 +1,7 @@
 import functions as fc
+import pandas as pd
 from sklearn import metrics
-from sklearn.cluster import KMeans
+from sklearn.naive_bayes import BernoulliNB
 
 AAPL = fc.return_ticker('AAPL')
 
@@ -40,12 +41,15 @@ X = list(training_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']].values)
 # target values
 Y = list(training_set['outcome'])
 
-# fit a SVM model to the data
-mdl = KMeans(n_clusters=3, random_state=1).fit(X)
+# fit a Naive Bayes model to the data
+mdl = BernoulliNB().fit(X, Y)
 print(mdl)
 
 # make predictions
 pred = mdl.predict(test_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']].values)
 
 # summarize the fit of the model
-metrics.calinski_harabaz_score(X, mdl.labels_)
+print(metrics.classification_report(test_set['outcome'], pred))
+print(metrics.confusion_matrix(test_set['outcome'], pred))
+
+results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
