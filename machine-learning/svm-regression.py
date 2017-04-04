@@ -49,11 +49,12 @@ ax.legend(['Original $', 'Prediction $'])
 fig.tight_layout()
 
 # out-of-sample test
-forecast = fc.forecast_regression(model=mdl, sample=test_set, features=features, steps=21)
+n_steps = 21
+forecast = fc.forecast_regression(model=mdl, sample=test_set, features=features, steps=n_steps)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(forecast['adj_close'][-21:])
-ax.set(title='Time Series Plot', xlabel='time', ylabel='$')
+ax.plot(forecast['adj_close'][-n_steps:])
+ax.set(title='{} Day Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
 ax.legend(['Forecast $'])
 fig.tight_layout()
