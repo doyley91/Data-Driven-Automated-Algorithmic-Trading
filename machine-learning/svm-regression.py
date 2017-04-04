@@ -5,29 +5,19 @@ from sklearn.svm import SVR
 from sklearn import metrics
 import matplotlib.pyplot as plt
 
-AAPL = fc.return_ticker('AAPL')
+AAPL = fc.return_ticker('AAPL').round(2)
 
 fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
-# add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
-AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
-
-# distance between Highest and Opening price
-AAPL['ho'] = AAPL['adj_high'] - AAPL['adj_open']
-
-# distance between Lowest and Opening price
-AAPL['lo'] = AAPL['adj_low'] - AAPL['adj_open']
-
-# difference between Closing price - Opening price
-AAPL['gain'] = AAPL['adj_close'] - AAPL['adj_open']
-
-AAPL = fc.get_sma_features(AAPL).dropna()
+AAPL = fc.get_sma_regression_features(AAPL).dropna()
 
 training_set = AAPL[:-500]
 test_set = AAPL[-500:]
 
+features = ['sma_15', 'sma_50']
+
 # values of features
-X = np.array(training_set[['sma_15', 'sma_50']].values)
+X = np.array(training_set[features].values)
 
 # target values
 Y = list(training_set['adj_close'])
@@ -36,20 +26,34 @@ Y = list(training_set['adj_close'])
 mdl = SVR(kernel='linear').fit(X, Y)
 print(mdl)
 
+print(mdl.coef_)
+print(mdl.intercept_)
+
 # make predictions
-pred = mdl.predict(test_set[['sma_15', 'sma_50']].values)
+pred = mdl.predict(test_set[features].values)
 
 metrics.mean_absolute_error(test_set['adj_close'], pred)
 metrics.mean_squared_error(test_set['adj_close'], pred)
 metrics.median_absolute_error(test_set['adj_close'], pred)
 metrics.r2_score(test_set['adj_close'], pred)
 
-results = pd.DataFrame(data=dict(original=test_set['adj_close'], prediction=pred), index=test_set.index)
+# in-sample test
+pred_results = pd.DataFrame(data=dict(original=test_set['adj_close'], prediction=pred), index=test_set.index)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(results['original'])
-ax.plot(results['prediction'])
+ax.plot(pred_results['original'])
+ax.plot(pred_results['prediction'])
 ax.set(title='Time Series Plot', xlabel='time', ylabel='$')
-ax.legend(['Original $', 'Forecast $'])
+ax.legend(['Original $', 'Prediction $'])
+fig.tight_layout()
+
+# out-of-sample test
+forecast = fc.forecast_regression(model=mdl, sample=test_set, features=features, steps=21)
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(forecast['adj_close'][-21:])
+ax.set(title='Time Series Plot', xlabel='time', ylabel='$')
+ax.legend(['Forecast $'])
 fig.tight_layout()

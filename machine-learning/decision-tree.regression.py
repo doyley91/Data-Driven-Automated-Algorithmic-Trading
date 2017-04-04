@@ -22,7 +22,7 @@ AAPL['lo'] = AAPL['adj_low'] - AAPL['adj_open']
 # difference between Closing price - Opening price
 AAPL['gain'] = AAPL['adj_close'] - AAPL['adj_open']
 
-AAPL = fc.get_sma_features(AAPL).dropna()
+AAPL = fc.get_sma_regression_features(AAPL).dropna()
 
 training_set = AAPL[:-500]
 test_set = AAPL[-500:]
