@@ -27,8 +27,9 @@ def get_time_series(ticker=None):
     """
     returns end-of-day data of the selected ticker in the format of a dataframe 
     if condition checks if one ticker or a list of tickers are being passed
+    :param ticker: 
+    :return: 
     """
-
     df = pd.read_csv(file_location, index_col='date', parse_dates=True)
     if ticker is None:
         return df
@@ -67,8 +68,9 @@ def plot_ticker(df):
 def test_stationarity(df):
     """
     returns a list of stationary statistics for the dataframe being passed
+    :param df: 
+    :return: 
     """
-
     # verify stationarity
     adfstat, pvalue, critvalues, resstore = adfuller(df, regression="nc", store=True, regresults=True)
 
@@ -228,8 +230,9 @@ def plot_svm_2(X, Y):
 def get_best_ma_model(df):
     """
     loops through all ma models and returns the best one based on the dataframe passed
+    :param df: 
+    :return: 
     """
-
     best_aic = np.inf
     best_order = None
     best_mdl = None
@@ -253,8 +256,9 @@ def get_best_ma_model(df):
 def get_best_arma_model(df):
     """
     loops through all arma models and returns the best one based on the dataframe passed
+    :param df: 
+    :return: 
     """
-
     best_aic = np.inf
     best_order = None
     best_mdl = None
@@ -279,8 +283,9 @@ def get_best_arma_model(df):
 def get_best_arima_model(df):
     """
     loops through all arima models and returns the best one based on the dataframe passed
+    :param df: 
+    :return: 
     """
-
     # Fit ARIMA(p, d, q) model to SPY Returns
     # pick best order and final model based on aic
 
@@ -310,8 +315,9 @@ def get_best_arima_model(df):
 def get_best_garch_model(df):
     """
     loops through all garch models and returns the best one based on the dataframe passed
+    :param df: 
+    :return: 
     """
-
     best_aic = np.inf
     best_order = None
     best_mdl = None
@@ -337,8 +343,9 @@ def get_best_garch_model(df):
 def get_best_sarimax_model(df):
     """
     loops through all sarimax models and returns the best one based on the dataframe passed
+    :param df: 
+    :return: 
     """
-
     best_aic = np.inf
     best_order = None
     best_mdl = None
@@ -362,6 +369,11 @@ def get_best_sarimax_model(df):
 
 
 def get_technical_analysis_features(df):
+    """
+    calculates a number of technical analyses to use as features 
+    :param df: 
+    :return: 
+    """
     # calculate a simple moving average of the close prices
     df['sma_5'] = ta.SMA(np.array(df['adj_close']), 5)
 
@@ -399,8 +411,9 @@ def get_technical_analysis_features(df):
 def get_lagged_features(df):
     """
     generates a lagged time series and returns the features for the classifier
+    :param df: 
+    :return: 
     """
-
     # generate lagged time series
     TS_1 = df.shift(1)
     TS_2 = df.shift(2)
@@ -420,8 +433,9 @@ def get_lagged_features(df):
 def get_sma_regression_features(df):
     """
     calculates the 15 and 50 day simple moving average and returns the features for the regression
+    :param df: 
+    :return: 
     """
-
     # calculate a simple moving average of the close prices
     df['sma_15'] = ta.SMA(np.array(df['adj_close']), 15)
 
@@ -434,8 +448,9 @@ def get_sma_regression_features(df):
 def get_sma_classifier_features(df):
     """
     calculates the 2-6 day simple moving average and returns the features for the classifier
+    :param df: 
+    :return: 
     """
-
     df['sma_2'] = ta.SMA(np.array(df['adj_close']), 2)
     df['sma_3'] = ta.SMA(np.array(df['adj_close']), 3)
     df['sma_4'] = ta.SMA(np.array(df['adj_close']), 4)
@@ -481,6 +496,10 @@ def _generate_proj_returns(mu, volatility, nu, sig):
 def convert_prices_to_log(prices, df, test_set):
     """
     converts the end of day close prices to log and returns them
+    :param prices: 
+    :param df: 
+    :param test_set: 
+    :return: 
     """
     for k in range(0, len(prices)):
         cur = np.log(df.values[test_set[0]])
@@ -493,6 +512,8 @@ def convert_prices_to_log(prices, df, test_set):
 def get_correlated_dataframe(df):
     """
     pivots the dataframe to return the correlations of the stocks in the dataframe
+    :param df: 
+    :return: 
     """
     # pivoting the DataFrame to create a column for every ticker
     df = df.pivot(index=None, columns='ticker', values='adj_close')
@@ -504,6 +525,11 @@ def get_correlated_dataframe(df):
 
 
 def get_correlated_stocks(df):
+    """
+    Returns a list of correlated stocks from a correlated dataframe
+    :param df: 
+    :return: 
+    """
     indices = np.where(df > 0.5)
     indices = [(df.index[x], df.columns[y]) for x, y in zip(*indices) if x != y and x < y]
     return indices
@@ -512,6 +538,11 @@ def get_correlated_stocks(df):
 def plot_correlation(df_corr):
     """
     plots a heatmap of the correlations between stocks
+    red (negative correlations)
+    yellow (no correlations)
+    green (positive correlations)
+    :param df_corr: 
+    :return: 
     """
     # creating an array of the values of correlations in the DataFrame
     data1 = df_corr.values
@@ -522,7 +553,6 @@ def plot_correlation(df_corr):
     # changes the fontsize of the tick label
     ax1.tick_params(axis='both', labelsize=12)
 
-    # creating a heatmap with colours going from red (negative correlations) to yellow (no correlations) to green (positive correlations)
     heatmap1 = ax1.pcolor(data1, cmap=plt.cm.RdYlGn)
 
     # creating a colour side bar as a scale for the heatmap
@@ -563,6 +593,11 @@ def plot_correlation(df_corr):
 
 
 def plot_candlestick(df):
+    """
+    Plots a candlestick chart of the time series
+    :param df: 
+    :return: 
+    """
     # creating a new DataFrame based on the adjusted_close price resampled with a 10 day window
     tickers_ohlc = df['adj_close'].resample('10D').ohlc()
 
@@ -597,6 +632,14 @@ def plot_candlestick(df):
 
 
 def forecast_classifier(model, sample, features, steps=1):
+    """
+    forecasts n steps ahead using a classifier
+    :param model: 
+    :param sample: 
+    :param features: 
+    :param steps: 
+    :return: 
+    """
     for k in range(1, steps):
         sample.index = sample.index + pd.DateOffset(1)
         sample['outcome'][-1:] = model.predict(sample[features][-2:][:1])
@@ -605,6 +648,14 @@ def forecast_classifier(model, sample, features, steps=1):
 
 
 def forecast_regression(model, sample, features, steps=1):
+    """
+    forecasts n steps ahead using a regression
+    :param model: 
+    :param sample: 
+    :param features: 
+    :param steps: 
+    :return: 
+    """
     for k in range(1, steps):
         sample.index = sample.index + pd.DateOffset(1)
         sample['adj_close'][-1:] = model.predict(sample[features][-2:][:1])
