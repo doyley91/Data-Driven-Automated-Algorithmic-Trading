@@ -4,21 +4,12 @@ import numpy as np
 from sklearn import metrics
 from sklearn.svm import SVC
 
-AAPL = fc.return_ticker('AAPL')
+AAPL = fc.get_time_series('AAPL')
 
 fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
 AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else 0, axis=1)
-
-# distance between Highest and Opening price
-AAPL['ho'] = AAPL['adj_high'] - AAPL['adj_open']
-
-# distance between Lowest and Opening price
-AAPL['lo'] = AAPL['adj_low'] - AAPL['adj_open']
-
-# difference between Closing price - Opening price
-AAPL['gain'] = AAPL['adj_close'] - AAPL['adj_open']
 
 AAPL = fc.get_sma_classifier_features(AAPL)
 
@@ -47,6 +38,10 @@ print(metrics.confusion_matrix(test_set['outcome'], pred))
 results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
 
 # using just 2 features
-X = np.array(training_set[['feat1', 'feat2']].values)
+X = np.array(training_set[features].values)
 
-fc.plotsvm(X, Y)
+fc.plot_svm_2(X, Y)
+
+# out-of-sample test
+n_steps = 21
+forecast = fc.forecast_classifier(model=mdl, sample=test_set, features=features, steps=n_steps)

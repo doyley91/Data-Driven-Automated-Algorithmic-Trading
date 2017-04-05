@@ -10,7 +10,7 @@ stocks = ['AAPL', 'MSFT']
 data = OrderedDict()
 
 for stock in stocks:
-    data[stock] = fc.return_ticker(stock)
+    data[stock] = fc.get_time_series(stock)
 
 #converting dataframe data into panel
 panel = pd.Panel(data)

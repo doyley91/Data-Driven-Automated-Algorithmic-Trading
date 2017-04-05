@@ -14,7 +14,7 @@ from pymc3.distributions.timeseries import GaussianRandomWalk
 # setting the style of the charts
 plt.style.use('ggplot')
 
-AAPL = fc.return_ticker('AAPL').asfreq('D', method='ffill')
+AAPL = fc.get_time_series('AAPL').asfreq('D', method='ffill')
 
 fc.eodplot(AAPL)
 

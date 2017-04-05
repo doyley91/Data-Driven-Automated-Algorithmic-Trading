@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-AAPL = fc.return_ticker('AAPL').asfreq('D', method='ffill').round(2)
+AAPL = fc.get_time_series('AAPL').asfreq('D', method='ffill').round(2)
 
 fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 

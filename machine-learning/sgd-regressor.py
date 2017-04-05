@@ -5,7 +5,7 @@ from sklearn.linear_model import SGDRegressor
 from sklearn import metrics
 import matplotlib.pyplot as plt
 
-AAPL = fc.return_ticker('AAPL').round(2)
+AAPL = fc.get_time_series('AAPL').round(2)
 
 fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 

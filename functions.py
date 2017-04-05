@@ -23,14 +23,16 @@ plt.style.use('ggplot')
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 
-def return_ticker(ticker):
+def get_time_series(ticker=None):
     """
     returns end-of-day data of the selected ticker in the format of a dataframe 
     if condition checks if one ticker or a list of tickers are being passed
     """
 
     df = pd.read_csv(file_location, index_col='date', parse_dates=True)
-    if isinstance(ticker, list):
+    if ticker is None:
+        return df
+    elif isinstance(ticker, list):
         df = df.loc[df['ticker'].isin(ticker)]
         df = df[np.isfinite(df['adj_close'])]
     else:
@@ -39,48 +41,48 @@ def return_ticker(ticker):
     return df
 
 
-def end_of_day_plot(TS, title=None, xlabel=None, ylabel=None, legend=None):
+def end_of_day_plot(df, title=None, xlabel=None, ylabel=None, legend=None):
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.plot(TS)
+    ax.plot(df)
     ax.set(title=title, xlabel=xlabel, ylabel=ylabel)
     ax.legend([legend])
     fig.tight_layout()
 
 
-def plot_ticker(TS):
+def plot_ticker(df):
     fig = plt.figure()
     ax1 = plt.subplot2grid((6, 1), (0, 0), rowspan=5, colspan=1)
-    ax1.plot(TS['adj_close'])
-    ax1.plot(TS['adj_close'].rolling(window=100, min_periods=0).mean())
+    ax1.plot(df['adj_close'])
+    ax1.plot(df['adj_close'].rolling(window=100, min_periods=0).mean())
     ax1.set(title='Time Series Plot', xlabel='time', ylabel='$')
     ax1.legend(['Adjusted Close $', '100 day moving average'])
     ax2 = plt.subplot2grid((6, 1), (5, 0), rowspan=1, colspan=1, sharex=ax1)
-    ax2.bar(TS.index, TS['adj_volume'])
+    ax2.bar(df.index, df['adj_volume'])
     ax2.set(title='Time Series Plot', xlabel='time', ylabel='$')
     ax2.legend(['Volume'])
     fig.tight_layout()
 
 
-def test_stationarity(TS):
+def test_stationarity(df):
     """
     returns a list of stationary statistics for the dataframe being passed
     """
 
     # verify stationarity
-    adfstat, pvalue, critvalues, resstore = adfuller(TS, regression="nc", store=True, regresults=True)
+    adfstat, pvalue, critvalues, resstore = adfuller(df, regression="nc", store=True, regresults=True)
 
     # D’Agostino and Pearson normality test of returns
-    dagostino_results = normaltest(TS)
+    dagostino_results = normaltest(df)
 
     # Shapiro-Wilk normality test
-    shapiro_results = shapiro(TS)
+    shapiro_results = shapiro(df)
 
     # Kolmogorov-Smirnov normality test
-    ks_results = kstest(TS, cdf='norm')
+    ks_results = kstest(df, cdf='norm')
 
     # Anderson-Darling normality test
-    anderson_results = anderson(TS)
+    anderson_results = anderson(df)
 
     return adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results
 
@@ -223,7 +225,7 @@ def plot_svm_2(X, Y):
         fignum = fignum + 1
 
 
-def get_best_ma_model(TS):
+def get_best_ma_model(df):
     """
     loops through all ma models and returns the best one based on the dataframe passed
     """
@@ -235,7 +237,7 @@ def get_best_ma_model(TS):
     rng = range(5)  # [0,1,2,3,4,5]
     for j in rng:
         try:
-            tmp_mdl = smt.ARMA(TS, order=(0, j)).fit(maxlag=30, method='mle', trend='nc')
+            tmp_mdl = smt.ARMA(df, order=(0, j)).fit(maxlag=30, method='mle', trend='nc')
             tmp_aic = tmp_mdl.aic
             if tmp_aic < best_aic:
                 best_aic = tmp_aic
@@ -248,7 +250,7 @@ def get_best_ma_model(TS):
     return best_aic, best_order, best_mdl
 
 
-def get_best_arma_model(TS):
+def get_best_arma_model(df):
     """
     loops through all arma models and returns the best one based on the dataframe passed
     """
@@ -261,7 +263,7 @@ def get_best_arma_model(TS):
     for i in rng:
         for j in rng:
             try:
-                tmp_mdl = smt.ARMA(TS, order=(i, j)).fit(method='mle', trend='nc')
+                tmp_mdl = smt.ARMA(df, order=(i, j)).fit(method='mle', trend='nc')
                 tmp_aic = tmp_mdl.aic
                 if tmp_aic < best_aic:
                     best_aic = tmp_aic
@@ -274,7 +276,7 @@ def get_best_arma_model(TS):
     return best_aic, best_order, best_mdl
 
 
-def get_best_arima_model(TS):
+def get_best_arima_model(df):
     """
     loops through all arima models and returns the best one based on the dataframe passed
     """
@@ -292,7 +294,7 @@ def get_best_arima_model(TS):
         for d in d_rng:
             for j in pq_rng:
                 try:
-                    tmp_mdl = smt.ARIMA(TS, order=(i, d, j)).fit(method='mle', trend='nc')
+                    tmp_mdl = smt.ARIMA(df, order=(i, d, j)).fit(method='mle', trend='nc')
                     tmp_aic = tmp_mdl.aic
                     if tmp_aic < best_aic:
                         best_aic = tmp_aic
@@ -305,7 +307,7 @@ def get_best_arima_model(TS):
     return best_aic, best_order, best_mdl
 
 
-def get_best_garch_model(TS):
+def get_best_garch_model(df):
     """
     loops through all garch models and returns the best one based on the dataframe passed
     """
@@ -320,7 +322,7 @@ def get_best_garch_model(TS):
         for d in d_rng:
             for j in pq_rng:
                 try:
-                    tmp_mdl = smt.ARIMA(TS, order=(i, d, j)).fit(method='mle', trend='nc')
+                    tmp_mdl = smt.ARIMA(df, order=(i, d, j)).fit(method='mle', trend='nc')
                     tmp_aic = tmp_mdl.aic
                     if tmp_aic < best_aic:
                         best_aic = tmp_aic
@@ -332,7 +334,7 @@ def get_best_garch_model(TS):
     return best_aic, best_order, best_mdl
 
 
-def get_best_sarimax_model(TS):
+def get_best_sarimax_model(df):
     """
     loops through all sarimax models and returns the best one based on the dataframe passed
     """
@@ -347,7 +349,7 @@ def get_best_sarimax_model(TS):
         for d in d_rng:
             for j in pq_rng:
                 try:
-                    tmp_mdl = sm.tsa.SARIMAX(TS, order=(i, d, j)).fit(mle_regression=True, trend='nc')
+                    tmp_mdl = sm.tsa.SARIMAX(df, order=(i, d, j)).fit(mle_regression=True, trend='nc')
                     tmp_aic = tmp_mdl.aic
                     if tmp_aic < best_aic:
                         best_aic = tmp_aic
@@ -359,94 +361,94 @@ def get_best_sarimax_model(TS):
     return best_aic, best_order, best_mdl
 
 
-def get_technical_analysis_features(TS):
+def get_technical_analysis_features(df):
     # calculate a simple moving average of the close prices
-    TS['sma_5'] = ta.SMA(np.array(TS['adj_close']), 5)
+    df['sma_5'] = ta.SMA(np.array(df['adj_close']), 5)
 
     # 50 day simple moving average
-    TS['sma_50'] = ta.SMA(np.array(TS['adj_close']), 20)
+    df['sma_50'] = ta.SMA(np.array(df['adj_close']), 20)
 
     # calculating bollinger bands, with triple exponential moving average
-    TS['upper'], TS['middle'], TS['lower'] = ta.BBANDS(np.array(TS['adj_close']), matype=MA_Type.T3)
+    df['upper'], df['middle'], df['lower'] = ta.BBANDS(np.array(df['adj_close']), matype=MA_Type.T3)
 
     # calculating momentum of the close prices, with a time period of 5
-    TS['mom_adj_close'] = ta.MOM(np.array(TS['adj_close']), timeperiod=5)
+    df['mom_adj_close'] = ta.MOM(np.array(df['adj_close']), timeperiod=5)
 
     # AD - Chaikin A/D Line
-    TS['AD'] = ta.AD(np.array(TS['adj_high']),
-                     np.array(TS['adj_low']),
-                     np.array(TS['adj_close']),
-                     np.array(TS['adj_volume']))
+    df['AD'] = ta.AD(np.array(df['adj_high']),
+                     np.array(df['adj_low']),
+                     np.array(df['adj_close']),
+                     np.array(df['adj_volume']))
 
     # ADOSC - Chaikin A/D Oscillator
-    TS['ADOSC'] = ta.ADOSC(np.array(TS['adj_high']),
-                           np.array(TS['adj_low']),
-                           np.array(TS['adj_close']),
-                           np.array(TS['adj_volume']), fastperiod=3, slowperiod=10)
+    df['ADOSC'] = ta.ADOSC(np.array(df['adj_high']),
+                           np.array(df['adj_low']),
+                           np.array(df['adj_close']),
+                           np.array(df['adj_volume']), fastperiod=3, slowperiod=10)
 
     # OBV - On Balance Volume
-    TS['OBV'] = ta.OBV(np.array(TS['adj_close']), np.array(TS['adj_volume']))
+    df['OBV'] = ta.OBV(np.array(df['adj_close']), np.array(df['adj_volume']))
 
-    TS['TRANGE'] = ta.TRANGE(np.array(TS['adj_high']),
-                             np.array(TS['adj_low']),
-                             np.array(TS['adj_close']))
+    df['TRANGE'] = ta.TRANGE(np.array(df['adj_high']),
+                             np.array(df['adj_low']),
+                             np.array(df['adj_close']))
 
-    return TS
+    return df
 
 
-def get_lagged_features(TS):
+def get_lagged_features(df):
     """
     generates a lagged time series and returns the features for the classifier
     """
 
     # generate lagged time series
-    TS_1 = TS.shift(1)
-    TS_2 = TS.shift(2)
-    TS_3 = TS.shift(3)
-    TS_4 = TS.shift(4)
-    TS_5 = TS.shift(5)
+    TS_1 = df.shift(1)
+    TS_2 = df.shift(2)
+    TS_3 = df.shift(3)
+    TS_4 = df.shift(4)
+    TS_5 = df.shift(5)
 
-    TS['feat1'] = TS['adj_close'] > TS_1['adj_close']
-    TS['feat2'] = TS['adj_close'] > TS_2['adj_close']
-    TS['feat3'] = TS['adj_close'] > TS_3['adj_close']
-    TS['feat4'] = TS['adj_close'] > TS_4['adj_close']
-    TS['feat5'] = TS['adj_close'] > TS_5['adj_close']
+    df['feat1'] = df['adj_close'] > TS_1['adj_close']
+    df['feat2'] = df['adj_close'] > TS_2['adj_close']
+    df['feat3'] = df['adj_close'] > TS_3['adj_close']
+    df['feat4'] = df['adj_close'] > TS_4['adj_close']
+    df['feat5'] = df['adj_close'] > TS_5['adj_close']
 
-    return TS
+    return df
 
 
-def get_sma_regression_features(TS):
+def get_sma_regression_features(df):
     """
     calculates the 15 and 50 day simple moving average and returns the features for the regression
     """
 
     # calculate a simple moving average of the close prices
-    TS['sma_15'] = ta.SMA(np.array(TS['adj_close']), 15)
+    df['sma_15'] = ta.SMA(np.array(df['adj_close']), 15)
 
     # 50 day simple moving average
-    TS['sma_50'] = ta.SMA(np.array(TS['adj_close']), 50)
+    df['sma_50'] = ta.SMA(np.array(df['adj_close']), 50)
 
-    return TS
+    return df
 
 
-def get_sma_classifier_features(TS):
+def get_sma_classifier_features(df):
     """
     calculates the 2-6 day simple moving average and returns the features for the classifier
     """
 
-    TS['sma_2'] = ta.SMA(np.array(TS['adj_close']), 2)
-    TS['sma_3'] = ta.SMA(np.array(TS['adj_close']), 3)
-    TS['sma_4'] = ta.SMA(np.array(TS['adj_close']), 4)
-    TS['sma_5'] = ta.SMA(np.array(TS['adj_close']), 5)
-    TS['sma_6'] = ta.SMA(np.array(TS['adj_close']), 5)
+    df['sma_2'] = ta.SMA(np.array(df['adj_close']), 2)
+    df['sma_3'] = ta.SMA(np.array(df['adj_close']), 3)
+    df['sma_4'] = ta.SMA(np.array(df['adj_close']), 4)
+    df['sma_5'] = ta.SMA(np.array(df['adj_close']), 5)
+    df['sma_6'] = ta.SMA(np.array(df['adj_close']), 5)
 
-    TS['sma_2'] = TS.apply(lambda x: 1 if x['adj_close'] > x['sma_2'] else 0, axis=1)
-    TS['sma_3'] = TS.apply(lambda x: 1 if x['adj_close'] > x['sma_3'] else 0, axis=1)
-    TS['sma_4'] = TS.apply(lambda x: 1 if x['adj_close'] > x['sma_4'] else 0, axis=1)
-    TS['sma_5'] = TS.apply(lambda x: 1 if x['adj_close'] > x['sma_5'] else 0, axis=1)
-    TS['sma_6'] = TS.apply(lambda x: 1 if x['adj_close'] > x['sma_6'] else 0, axis=1)
+    df['sma_2'] = df.apply(lambda x: 1 if x['adj_close'] > x['sma_2'] else 0, axis=1)
+    df['sma_3'] = df.apply(lambda x: 1 if x['adj_close'] > x['sma_3'] else 0, axis=1)
+    df['sma_4'] = df.apply(lambda x: 1 if x['adj_close'] > x['sma_4'] else 0, axis=1)
+    df['sma_5'] = df.apply(lambda x: 1 if x['adj_close'] > x['sma_5'] else 0, axis=1)
+    df['sma_6'] = df.apply(lambda x: 1 if x['adj_close'] > x['sma_6'] else 0, axis=1)
 
-    return TS
+    return df
 
 
 def generate_proj_returns(burn_in, trace, len_to_train):
@@ -476,38 +478,41 @@ def _generate_proj_returns(mu, volatility, nu, sig):
     return log_return, next_vol
 
 
-def convert_prices_to_log(prices, TS, test_set):
+def convert_prices_to_log(prices, df, test_set):
     """
     converts the end of day close prices to log and returns them
     """
-
     for k in range(0, len(prices)):
-        cur = np.log(TS.values[test_set[0]])
+        cur = np.log(df.values[test_set[0]])
         for j in range(0, len(prices[k])):
             cur = cur + prices[k, j]
             prices[k, j] = cur
     return prices
 
 
-def get_correlated_dataframe(TS):
+def get_correlated_dataframe(df):
     """
     pivots the dataframe to return the correlations of the stocks in the dataframe
     """
-
     # pivoting the DataFrame to create a column for every ticker
-    TS = TS.pivot(index=None, columns='ticker', values='adj_close')
+    df = df.pivot(index=None, columns='ticker', values='adj_close')
 
     # creating a DataFrame with the correlation values of every column to every column
-    TS = TS.corr()
+    df = df.corr()
 
-    return TS
+    return df
+
+
+def get_correlated_stocks(df):
+    indices = np.where(df > 0.5)
+    indices = [(df.index[x], df.columns[y]) for x, y in zip(*indices) if x != y and x < y]
+    return indices
 
 
 def plot_correlation(df_corr):
     """
     plots a heatmap of the correlations between stocks
     """
-
     # creating an array of the values of correlations in the DataFrame
     data1 = df_corr.values
 
@@ -557,12 +562,12 @@ def plot_correlation(df_corr):
     plt.tight_layout()
 
 
-def plot_candlestick(TS):
+def plot_candlestick(df):
     # creating a new DataFrame based on the adjusted_close price resampled with a 10 day window
-    tickers_ohlc = TS['adj_close'].resample('10D').ohlc()
+    tickers_ohlc = df['adj_close'].resample('10D').ohlc()
 
     # creating a new DataFrame based on the adjusted volume resampled with a 10 day window
-    tickers_volume = TS['adj_volume'].resample('10D').sum()
+    tickers_volume = df['adj_volume'].resample('10D').sum()
 
     # resetting the index of the DataFrame
     tickers_ohlc = tickers_ohlc.reset_index()
@@ -593,8 +598,8 @@ def plot_candlestick(TS):
 
 def forecast_classifier(model, sample, features, steps=1):
     for k in range(1, steps):
-        sample.index = sample.index = pd.DateOffset(1)
-        sample['outcome'][-1:] = model.predict(sample[features[-2:][:1]])
+        sample.index = sample.index + pd.DateOffset(1)
+        sample['outcome'][-1:] = model.predict(sample[features][-2:][:1])
         sample = get_sma_classifier_features(sample)
     return sample
 

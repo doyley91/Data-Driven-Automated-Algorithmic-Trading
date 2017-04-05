@@ -6,7 +6,7 @@ from sklearn import metrics
 import pydotplus as pydot
 import matplotlib.pyplot as plt
 
-AAPL = fc.return_ticker('AAPL')
+AAPL = fc.get_time_series('AAPL')
 
 fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 

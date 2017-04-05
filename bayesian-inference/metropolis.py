@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 plt.style.use('ggplot')
 
-AAPL = fc.return_ticker('AAPL')[-500:]
+AAPL = fc.get_time_series('AAPL')[-500:]
 
 fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
