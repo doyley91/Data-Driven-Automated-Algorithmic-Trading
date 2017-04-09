@@ -32,7 +32,7 @@ ax.set(title='AAPL', xlabel='time', ylabel='$')
 ax.legend(['Adjusted Close $'])
 fig.tight_layout()
 
-def test_stationarity(timeseries):
+def get_stationarity_statistics(timeseries):
     # Determing rolling statistics
     rolmean = pd.Series.rolling(timeseries, window=12).mean()
     rolstd = pd.Series.rolling(timeseries, window=12).std()
@@ -57,7 +57,7 @@ def test_stationarity(timeseries):
         dfoutput['Critical Value (%s)' % key] = value
     print(dfoutput)
 
-test_stationarity(AAPL['adj_close'])
+get_stationarity_statistics(AAPL['adj_close'])
 
 AAPL_log = np.log(AAPL['adj_close'])
 
@@ -83,7 +83,7 @@ fig.tight_layout()
 ts_log_moving_avg_diff = AAPL_log - moving_avg
 ts_log_moving_avg_diff.dropna(inplace=True)
 
-test_stationarity(ts_log_moving_avg_diff)
+get_stationarity_statistics(ts_log_moving_avg_diff)
 
 expwighted_avg = AAPL_log.ewm(min_periods=0, ignore_na=False, adjust=True, halflife=12).mean()
 
@@ -97,7 +97,7 @@ fig.tight_layout()
 
 ts_log_ewma_diff = AAPL_log - expwighted_avg
 
-test_stationarity(ts_log_ewma_diff)
+get_stationarity_statistics(ts_log_ewma_diff)
 
 ts_log_diff = AAPL_log - AAPL_log.shift()
 
@@ -111,7 +111,7 @@ fig.tight_layout()
 
 ts_log_diff.dropna(inplace=True)
 
-test_stationarity(ts_log_diff)
+get_stationarity_statistics(ts_log_diff)
 
 decomposition = seasonal_decompose(AAPL_log, freq=36)
 
@@ -120,7 +120,7 @@ decomposition.plot()
 ts_log_decompose = decomposition.resid
 ts_log_decompose.dropna(inplace=True)
 
-test_stationarity(ts_log_decompose)
+get_stationarity_statistics(ts_log_decompose)
 
 lag_acf = acf(ts_log_diff, nlags=20)
 lag_pacf = pacf(ts_log_diff, nlags=20, method='ols')

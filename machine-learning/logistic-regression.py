@@ -4,58 +4,43 @@ from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL')
+AAPL = fc.get_time_series('AAPL').round(2)
 
-fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
 AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
 
-# distance between Highest and Opening price
-AAPL['ho'] = AAPL['adj_high'] - AAPL['adj_open']
+AAPL = fc.get_sma_classifier_features(AAPL)
+AAPL = fc.get_sma_regression_features(AAPL).dropna()
 
-# distance between Lowest and Opening price
-AAPL['lo'] = AAPL['adj_low'] - AAPL['adj_open']
+train_size = int(len(AAPL) * 0.80)
 
-# difference between Closing price - Opening price
-AAPL['gain'] = AAPL['adj_close'] - AAPL['adj_open']
+train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
 
-# generate lagged time series
-AAPL_1 = AAPL.shift(1)
-AAPL_2 = AAPL.shift(2)
-AAPL_3 = AAPL.shift(3)
-AAPL_4 = AAPL.shift(4)
-AAPL_5 = AAPL.shift(5)
-
-AAPL['feat1'] = AAPL['adj_close'] > AAPL_1['adj_close']
-AAPL['feat2'] = AAPL['adj_close'] > AAPL_2['adj_close']
-AAPL['feat3'] = AAPL['adj_close'] > AAPL_3['adj_close']
-AAPL['feat4'] = AAPL['adj_close'] > AAPL_4['adj_close']
-AAPL['feat5'] = AAPL['adj_close'] > AAPL_5['adj_close']
-
-training_set = AAPL[:-500]
-test_set = AAPL[-500:]
+features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
+features = ['sma_15', 'sma_50']
 
 # values of features
-X = list(training_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']].values)
+X = list(train[features].values)
 
 # target values
-Y = list(training_set['outcome'])
+Y = list(train['outcome'])
 
 # fit a Naive Bayes model to the data
 mdl = LogisticRegression().fit(X, Y)
 print(mdl)
 
 # make predictions
-pred = mdl.predict(test_set[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']].values)
+pred = mdl.predict(test[features].values)
 
 # summarize the fit of the model
-metrics.mean_absolute_error(test_set['outcome'], pred)
-metrics.mean_squared_error(test_set['outcome'], pred)
-metrics.median_absolute_error(test_set['outcome'], pred)
-metrics.r2_score(test_set['outcome'], pred)
+metrics.mean_absolute_error(test['outcome'], pred)
+metrics.mean_squared_error(test['outcome'], pred)
+metrics.median_absolute_error(test['outcome'], pred)
+metrics.r2_score(test['outcome'], pred)
 
-results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
+results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)

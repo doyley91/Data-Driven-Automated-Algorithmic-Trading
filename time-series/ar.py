@@ -1,56 +1,96 @@
 import functions as fc
+import pandas as pd
 import numpy as np
 import statsmodels.tsa.api as smt
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL').asfreq('D', method='ffill')
+AAPL = fc.get_time_series('AAPL').asfreq('D', method='ffill').round(2)
 
-fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # log returns
-lrets = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1)).dropna()
-
-fc.tsplot(lrets, lags=30)
-
-print("AAPL Series\n-------------\nmean: {:.3f}\nvariance: {:.3f}\nstandard deviation: {:.3f}".format(AAPL['adj_close'].mean(),
-                                                                                                      AAPL['adj_close'].var(),
-                                                                                                      AAPL['adj_close'].std()))
-
-adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results = fc.test_stationarity(lrets)
+log_returns = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1)).dropna()
 
 # plotting the histogram of returns
-fc.histplot(lrets)
+fc.plot_histogram(log_returns)
 
-training_set = AAPL[:-500]
-test_set = AAPL[-500:]
+fc.plot_time_series(log_returns, lags=30)
 
-lrets_training_set = np.log(training_set['adj_close'] / training_set['adj_close'].shift(1)).dropna()
-lrets_test_set = np.log(test_set['adj_close'] / test_set['adj_close'].shift(1)).dropna()
+print("AAPL Series\n"
+      "-------------\n"
+      "mean: {:.3f}\n"
+      "variance: {:.3f}\n"
+      "standard deviation: {:.3f}".format(AAPL['adj_close'].mean(), AAPL['adj_close'].var(), AAPL['adj_close'].std()))
+
+adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(log_returns)
+
+print("Stationarity Statistics\n"
+      "-------------\n"
+      "Augmented Dickey-Fuller unit root test: {}\n"
+      "MacKinnon’s approximate p-value: {}\n"
+      "Critical values for the test statistic at the 1 %, 5 %, and 10 % levels: {}\n"
+      "D’Agostino and Pearson’s normality test: {}\n"
+      "Shapiro-Wilk normality test: {}\n"
+      "Kolmogorov-Smirnov goodness of fit test: {}\n"
+      "Anderson-Darling test: {}\n"
+      "Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) stationarity test: {}".format(adfstat,
+                                                                                     pvalue,
+                                                                                     critvalues,
+                                                                                     dagostino_results,
+                                                                                     shapiro_results,
+                                                                                     ks_results,
+                                                                                     anderson_results,
+                                                                                     kpss_results))
+
+train_size = int(len(log_returns) * 0.80)
+
+train, test = log_returns[0:train_size], log_returns[train_size:len(log_returns)]
 
 # Select best lag order for AAPL returns
-mdl = smt.AR(lrets_training_set).fit(maxlag=30, ic='aic', trend='nc')
-best_order = smt.AR(lrets_training_set).select_order(maxlag=30, ic='aic', trend='nc')
+mdl = smt.AR(train).fit(maxlag=30, ic='aic', trend='nc')
+best_order = smt.AR(train).select_order(maxlag=30, ic='aic', trend='nc')
 
-print('\nalpha estimate: {:3.5f} | best lag order = {}'.format(mdl.params[0], best_order))
-# print('best estimated lag order = {}'.format(est_order))
-# best estimated lag order = 14
+print('alpha estimate: {:3.5f} | best lag order = {}'.format(mdl.params[0], best_order))
 
-adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results = fc.test_stationarity(mdl.resid)
+adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(mdl.resid)
 
-fc.histplot(mdl.resid)
+print("Stationarity Statistics\n"
+      "-------------\n"
+      "Augmented Dickey-Fuller unit root test: {}\n"
+      "MacKinnon’s approximate p-value: {}\n"
+      "Critical values for the test statistic at the 1 %, 5 %, and 10 % levels: {}\n"
+      "D’Agostino and Pearson’s normality test: {}\n"
+      "Shapiro-Wilk normality test: {}\n"
+      "Kolmogorov-Smirnov goodness of fit test: {}\n"
+      "Anderson-Darling test: {}\n"
+      "Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) stationarity test: {}".format(adfstat,
+                                                                                     pvalue,
+                                                                                     critvalues,
+                                                                                     dagostino_results,
+                                                                                     shapiro_results,
+                                                                                     ks_results,
+                                                                                     anderson_results,
+                                                                                     kpss_results))
 
-fc.tsplot(mdl.resid, lags=30)
+fc.plot_histogram(mdl.resid)
 
-# in sample prediction
-pred = mdl.predict(start=lrets_test_set.index[0]-1, end=lrets_test_set.index[-1]).dropna()
+fc.plot_time_series(mdl.resid, lags=30)
 
-#results = pd.DataFrame(data=dict(original=lrets_test_set, prediction=pred.values), index=lrets_test_set.index)
+# in-sample prediction
+pred = mdl.predict(start=test.index[0], end=test.index[-1]).dropna()
+
+results = pd.DataFrame(data=dict(original=test, prediction=pred), index=test.index)
 
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(lrets_test_set)
-ax.plot(pred)
+ax.plot(results['original'])
+ax.plot(results['prediction'])
 ax.set(title='{} Day AAPL Return Forecast\nAR{}'.format(len(pred), best_order), xlabel='time', ylabel='$')
 ax.legend(['Original', 'Prediction'])
 fig.tight_layout()
+
+#out-of-sample forecast
+n_days = 21
+
+forecast = mdl.predict(start=test.index[-1], end=test.index[-1] + n_days)

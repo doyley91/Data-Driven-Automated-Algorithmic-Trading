@@ -7,44 +7,35 @@ import matplotlib.pyplot as plt
 
 AAPL = fc.get_time_series('AAPL')
 
-fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
-
-# add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
-AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
-
-# distance between Highest and Opening price
-AAPL['ho'] = AAPL['adj_high'] - AAPL['adj_open']
-
-# distance between Lowest and Opening price
-AAPL['lo'] = AAPL['adj_low'] - AAPL['adj_open']
-
-# difference between Closing price - Opening price
-AAPL['gain'] = AAPL['adj_close'] - AAPL['adj_open']
+fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 AAPL = fc.get_sma_regression_features(AAPL).dropna()
 
-training_set = AAPL[:-500]
-test_set = AAPL[-500:]
+train_size = int(len(AAPL) * 0.80)
+
+train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+
+features = ['sma_15', 'sma_50']
 
 # values of features
-X = np.array(training_set[['sma_15', 'sma_50']].values)
+X = np.array(train[features].values)
 
 # target values
-Y = list(training_set['adj_close'])
+Y = list(train['adj_close'])
 
 # fit a Naive Bayes model to the data
 mdl = AdaBoostRegressor(loss='square').fit(X, Y)
 print(mdl)
 
 # make predictions
-pred = mdl.predict(test_set[['sma_15', 'sma_50']].values)
+pred = mdl.predict(test[features].values)
 
-metrics.mean_absolute_error(test_set['adj_close'], pred)
-metrics.mean_squared_error(test_set['adj_close'], pred)
-metrics.median_absolute_error(test_set['adj_close'], pred)
-metrics.r2_score(test_set['adj_close'], pred)
+metrics.mean_absolute_error(test['adj_close'], pred)
+metrics.mean_squared_error(test['adj_close'], pred)
+metrics.median_absolute_error(test['adj_close'], pred)
+metrics.r2_score(test['adj_close'], pred)
 
-results = pd.DataFrame(data=dict(original=test_set['adj_close'], prediction=pred), index=test_set.index)
+results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)

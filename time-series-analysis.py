@@ -34,12 +34,12 @@ ax.legend(['Adjusted Close $'])
 fig.tight_layout()
 
 # log returns
-lrets = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1)).dropna()
+log_returns = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1)).dropna()
 
 # plotting the adj_close of AAPL
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(lrets)
+ax.plot(log_returns)
 ax.set(title='AAPL Log Returns', xlabel='time', ylabel='%')
 ax.legend(['Log Returns'])
 fig.tight_layout()
@@ -74,9 +74,9 @@ print("AAPL Series\n-------------\nmean: {:.3f}\nvariance: {:.3f}\nstandard devi
                                                                                                       AAPL['adj_close'].std()))
 
 # Select best lag order for AAPL returns
-mdl = smt.AR(lrets).fit(maxlag=30, ic='aic', trend='nc')
+mdl = smt.AR(log_returns).fit(maxlag=30, ic='aic', trend='nc')
 mdl.summary()
-est_order = smt.AR(lrets).select_order(maxlag=30, ic='aic', trend='nc')
+est_order = smt.AR(log_returns).select_order(maxlag=30, ic='aic', trend='nc')
 
 print('\nalpha estimate: {:3.5f} | best lag order = {}'.format(mdl.params[0], est_order))
 # print('best estimated lag order = {}'.format(est_order))
@@ -90,7 +90,7 @@ n_steps = 21
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()
 ax = plt.gca()
-ts = lrets[-500:]
+ts = log_returns[-500:]
 ts.plot(ax=ax, label='AAPL Returns')
 # in sample prediction
 pred = mdl.predict(start=ts.index[0], end=ts.index[-1]).dropna()
@@ -100,7 +100,7 @@ plt.legend(loc='best', fontsize=10)
 plt.tight_layout()
 
 # Fit MA(3) to AAPL returns
-mdl = smt.ARMA(lrets, order=(0, 3)).fit(maxlag=30, method='mle', trend='nc')
+mdl = smt.ARMA(log_returns, order=(0, 3)).fit(maxlag=30, method='mle', trend='nc')
 mdl.summary()
 tsplot(mdl.resid, lags=30)
 
@@ -113,7 +113,7 @@ rng = range(5) # [0,1,2,3,4,5]
 for i in rng:
     for j in rng:
         try:
-            tmp_mdl = smt.ARMA(lrets, order=(i, j)).fit(method='mle', trend='nc')
+            tmp_mdl = smt.ARMA(log_returns, order=(i, j)).fit(method='mle', trend='nc')
             tmp_aic = tmp_mdl.aic
             if tmp_aic < best_aic:
                 best_aic = tmp_aic
@@ -141,7 +141,7 @@ fc_all = fc_95.combine_first(fc_99)
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()
 ax = plt.gca()
-ts = lrets[-500:]
+ts = log_returns[-500:]
 ts.plot(ax=ax, label='AAPL Returns')
 # in sample prediction
 pred = best_mdl.predict(start=ts.index[0], end=ts.index[-1]).dropna()
@@ -163,7 +163,7 @@ for i in pq_rng:
     for d in d_rng:
         for j in pq_rng:
             try:
-                tmp_mdl = smt.ARIMA(lrets, order=(i, d, j)).fit(method='mle', trend='nc')
+                tmp_mdl = smt.ARIMA(log_returns, order=(i, d, j)).fit(method='mle', trend='nc')
                 tmp_aic = tmp_mdl.aic
                 if tmp_aic < best_aic:
                     best_aic = tmp_aic
@@ -191,10 +191,10 @@ fc_all = fc_95.combine_first(fc_99)
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()
 ax = plt.gca()
-ts = lrets[-500:]
+ts = log_returns[-500:]
 ts.plot(ax=ax, label='AAPL Returns')
 # in sample prediction
-#pred = best_mdl.predict(start=len(lrets)-500, end=len(lrets)).dropna()
+#pred = best_mdl.predict(start=len(log_returns)-500, end=len(log_returns)).dropna()
 pred = best_mdl.predict(start=ts.index[0], end=ts.index[-1]).dropna()
 pred.plot(ax=ax, style='r-', label='In-sample prediction')
 fc_all.plot(ax=ax, style=['b-', '0.2', '0.75', '0.2', '0.75'])
@@ -250,17 +250,17 @@ def _get_best_model(TS):
     return best_aic, best_order, best_mdl
 
 # Notice I've selected a specific time period to run this analysis
-res_tup = _get_best_model(lrets)
+res_tup = _get_best_model(log_returns)
 # aic: -38112.82032 | order: (4, 0, 4)
 
 tsplot(res_tup[2].resid, lags=30)
 
 #multiplying by 10 due to convergence warnings since we are dealing with very small numbers
-lrets_f = lrets.multiply(10)
+log_returns_f = log_returns.multiply(10)
 
 # Now we can fit the arch model using the best fit arima model parameters
 # Using student T distribution usually provides better fit
-am = arch_model(lrets_f, p=4, o=0, q=4, dist='StudentsT')
+am = arch_model(log_returns_f, p=4, o=0, q=4, dist='StudentsT')
 res = am.fit(update_freq=5, disp='off')
 res.summary()
 
@@ -281,7 +281,7 @@ fc_all.head()
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()
 ax = plt.gca()
-ts = lrets[-500:]
+ts = log_returns[-500:]
 ts.plot(ax=ax, label='AAPL Returns')
 # in sample prediction
 pred = best_mdl.predict(ts.index[0], ts.index[-1])

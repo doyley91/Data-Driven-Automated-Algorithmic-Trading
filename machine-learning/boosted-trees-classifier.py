@@ -3,44 +3,41 @@ import pandas as pd
 from sklearn import metrics
 from sklearn.ensemble import AdaBoostClassifier
 
-AAPL = fc.get_time_series('AAPL')
+AAPL = fc.get_time_series('AAPL').round(2)
 
-fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
 AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else 0, axis=1)
 
-# distance between Highest and Opening price
-AAPL['ho'] = AAPL['adj_high'] - AAPL['adj_open']
-
-# distance between Lowest and Opening price
-AAPL['lo'] = AAPL['adj_low'] - AAPL['adj_open']
-
-# difference between Closing price - Opening price
-AAPL['gain'] = AAPL['adj_close'] - AAPL['adj_open']
-
 AAPL = fc.get_sma_classifier_features(AAPL)
 
-training_set = AAPL[:-500]
-test_set = AAPL[-500:]
+train_size = int(len(AAPL) * 0.80)
+
+train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
 
 features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
 
 # values of features
-X = list(training_set[features].values)
+X = list(train[features].values)
 
 # target values
-Y = list(training_set['outcome'])
+Y = list(train['outcome'])
 
 # fit a Naive Bayes model to the data
 mdl = AdaBoostClassifier().fit(X, Y)
 print(mdl)
 
 # in-sample prediction
-pred = mdl.predict(test_set[features].values)
+pred = mdl.predict(test[features].values)
 
 # summarize the fit of the model
-print(metrics.classification_report(test_set['outcome'], pred))
-print(metrics.confusion_matrix(test_set['outcome'], pred))
+print(metrics.classification_report(test['outcome'], pred))
+print(metrics.confusion_matrix(test['outcome'], pred))
 
-results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
+results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
+
+# out-of-sample test
+n_steps = 21
+
+forecast = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)

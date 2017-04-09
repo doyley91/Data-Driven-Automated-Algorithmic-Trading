@@ -63,7 +63,7 @@ ax.set(title='Volatility Forecast', xlabel='time', ylabel='%')
 ax.legend(['Original Returns', 'Original Volatility', 'Forecast Volatility'])
 fig.tight_layout()
 
-prices = fc.convert_prices_to_log(sim_returns, sp500, test)
+prices = fc.get_log_prices(sim_returns, sp500, test)
 
 slope = trace[1000:]['mu'].mean()
 

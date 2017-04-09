@@ -9,13 +9,13 @@ plt.style.use('ggplot')
 
 AAPL = fc.get_time_series('AAPL')[-500:]
 
-fc.end_of_day_plot(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 returns = np.log(AAPL['adj_close'][1:] / AAPL['adj_close'][0:-1].values)
 
 returns = returns[np.isfinite(returns)]
 
-fc.end_of_day_plot(returns, title='AAPL', xlabel='time', ylabel='%', legend='Returns %')
+fc.plot_end_of_day(returns, title='AAPL', xlabel='time', ylabel='%', legend='Returns %')
 
 training_set = returns[:-50]
 test_set = returns[-50:]
@@ -64,7 +64,7 @@ ax.legend(['Original Returns', 'Original Volatility', 'Forecast Volatility'])
 fig.tight_layout()
 
 #Convert simulated returns to log-price
-prices = fc.convert_prices_to_log(sim_returns, AAPL['adj_close'], test_set)
+prices = fc.get_log_prices(sim_returns, AAPL['adj_close'], test_set)
 
 slope = trace[1000:]['mu'].mean()
 

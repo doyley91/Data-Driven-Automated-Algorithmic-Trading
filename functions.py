@@ -1,21 +1,22 @@
 import pandas as pd
+from pandas.tseries.holiday import USFederalHolidayCalendar
 import numpy as np
 import statsmodels.tsa.api as smt
 import statsmodels.api as sm
-import scipy.stats as scs
-from matplotlib import mlab
+import scipy.stats as stats
 from statsmodels.tsa.stattools import adfuller
 from scipy.stats.mstats import normaltest
 from scipy.stats import shapiro, kstest, anderson
+from arch.unitroot import KPSS
 import talib as ta
 from talib import MA_Type
 from sklearn.svm import SVC, LinearSVC
-import scipy.stats as stats
 from mpl_finance import candlestick_ohlc
-import matplotlib.dates as mdates
 from sqlalchemy import create_engine
 import quandl as qdl
+from matplotlib import mlab
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 plt.style.use('ggplot')
 
@@ -23,11 +24,13 @@ plt.style.use('ggplot')
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 
-def get_time_series(ticker=None):
+def get_time_series(ticker=None, start_date=None, end_date=None):
     """
     returns end-of-day data of the selected ticker in the format of a dataframe 
     if condition checks if one ticker or a list of tickers are being passed
     :param ticker: 
+    :param start_date:
+    :param end_date:
     :return: 
     """
     df = pd.read_csv(file_location, index_col='date', parse_dates=True)
@@ -35,14 +38,74 @@ def get_time_series(ticker=None):
         return df
     elif isinstance(ticker, list):
         df = df.loc[df['ticker'].isin(ticker)]
-        df = df[np.isfinite(df['adj_close'])]
     else:
         df = df.loc[df['ticker'] == ticker]
-        df = df[np.isfinite(df['adj_close'])]
+
+    if start_date is not None:
+        if start_date and end_date is not None:
+            df = df.loc[(df.index > start_date) & (df.index <= end_date)]
+        df = df.loc[(df.index > start_date)]
+
+    df = df[np.isfinite(df['adj_close'])]
+
     return df
 
 
-def end_of_day_plot(df, title=None, xlabel=None, ylabel=None, legend=None):
+def get_correlated_time_series(df):
+    """
+    pivots the dataframe to return the correlations of the stocks in the dataframe
+    :param df: 
+    :return: 
+    """
+    # pivoting the DataFrame to create a column for every ticker
+    df = df.pivot(index=None, columns='ticker', values='adj_close')
+
+    # creating a DataFrame with the correlation values of every column to every column
+    df = df.corr()
+
+    return df
+
+
+def get_positively_correlated_stocks(df, correlation=0.5):
+    """
+    Returns a list of positively correlated stocks from a correlated dataframe
+    :param df: 
+    :param correlation:
+    :return: 
+    """
+    indices = np.where(df > correlation)
+    indices = [(df.index[x], df.columns[y]) for x, y in zip(*indices) if x != y and x < y]
+
+    return indices
+
+
+def get_negatively_correlated_stocks(df, correlation=-0.5):
+    """
+    Returns a list of negatively correlated stocks from a correlated dataframe
+    :param df:
+    :param correlation:
+    :return: 
+    """
+    indices = np.where(df < correlation)
+    indices = [(df.index[x], df.columns[y]) for x, y in zip(*indices) if x != y and x < y]
+
+    return indices
+
+
+def get_neutrally_correlated_stocks(df, correlation=0.5):
+    """
+    Returns a list of neutrally correlated stocks from a correlated dataframe
+    :param df:
+    :param correlation:
+    :return: 
+    """
+    indices = np.where((df < correlation) & (df > -correlation))
+    indices = [(df.index[x], df.columns[y]) for x, y in zip(*indices) if x != y and x < y]
+
+    return indices
+
+
+def plot_end_of_day(df, title=None, xlabel=None, ylabel=None, legend=None):
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.plot(df)
@@ -65,7 +128,7 @@ def plot_ticker(df):
     fig.tight_layout()
 
 
-def test_stationarity(df):
+def get_stationarity_statistics(df):
     """
     returns a list of stationary statistics for the dataframe being passed
     :param df: 
@@ -86,10 +149,13 @@ def test_stationarity(df):
     # Anderson-Darling normality test
     anderson_results = anderson(df)
 
-    return adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results
+    # Kwiatkowski-Phillips-Schmidt-Shin normality test
+    kpss_results = KPSS(df)
+
+    return adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results
 
 
-def histplot(y):
+def plot_histogram(y):
     mu = np.mean(y)  # mean of distribution
     sigma = np.std(y)  # standard deviation of distribution
     x = mu + sigma * np.random.randn(10000)
@@ -122,7 +188,7 @@ def plot_time_series(y, lags=None):
     smt.graphics.plot_pacf(y, lags=lags, ax=pacf_ax, alpha=0.5)
     sm.qqplot(y, line='s', ax=qq_ax)
     qq_ax.set_title('QQ Plot')
-    scs.probplot(y, sparams=(y.mean(), y.std()), plot=pp_ax)
+    stats.probplot(y, sparams=(y.mean(), y.std()), plot=pp_ax)
 
     plt.tight_layout()
 
@@ -493,7 +559,7 @@ def _generate_proj_returns(mu, volatility, nu, sig):
     return log_return, next_vol
 
 
-def convert_prices_to_log(prices, df, test_set):
+def get_log_prices(prices, df, test_set):
     """
     converts the end of day close prices to log and returns them
     :param prices: 
@@ -506,33 +572,8 @@ def convert_prices_to_log(prices, df, test_set):
         for j in range(0, len(prices[k])):
             cur = cur + prices[k, j]
             prices[k, j] = cur
+
     return prices
-
-
-def get_correlated_dataframe(df):
-    """
-    pivots the dataframe to return the correlations of the stocks in the dataframe
-    :param df: 
-    :return: 
-    """
-    # pivoting the DataFrame to create a column for every ticker
-    df = df.pivot(index=None, columns='ticker', values='adj_close')
-
-    # creating a DataFrame with the correlation values of every column to every column
-    df = df.corr()
-
-    return df
-
-
-def get_correlated_stocks(df):
-    """
-    Returns a list of correlated stocks from a correlated dataframe
-    :param df: 
-    :return: 
-    """
-    indices = np.where(df > 0.5)
-    indices = [(df.index[x], df.columns[y]) for x, y in zip(*indices) if x != y and x < y]
-    return indices
 
 
 def plot_correlation(df_corr):
@@ -644,12 +685,14 @@ def forecast_classifier(model, sample, features, steps=1):
         sample.index = sample.index + pd.DateOffset(1)
         sample['outcome'][-1:] = model.predict(sample[features][-2:][:1])
         sample = get_sma_classifier_features(sample)
+
     return sample
 
 
 def forecast_regression(model, sample, features, steps=1):
     """
     forecasts n steps ahead using a regression
+    skips public holidays and weekends
     :param model: 
     :param sample: 
     :param features: 
@@ -657,10 +700,33 @@ def forecast_regression(model, sample, features, steps=1):
     :return: 
     """
     for k in range(1, steps):
-        sample.index = sample.index + pd.DateOffset(1)
+        sample = sample.shift(periods=1, freq='D', axis=0)
+
+        #if is_day_holiday(sample.index[-1:]):
+        #   sample = sample.shift(periods=1, freq='B', axis=0)
+
+        #while sample.index[-1:].weekday >= 5:
+        #   sample = sample.shift(periods=1, freq='D', axis=0)
+
         sample['adj_close'][-1:] = model.predict(sample[features][-2:][:1])
         sample = get_sma_regression_features(sample)
+
     return sample
+
+
+def is_day_holiday(date):
+    """
+    returns true if date passed is a holiday
+    :param date: 
+    :return: 
+    """
+    holiday = USFederalHolidayCalendar().holidays(start=date.strftime("%d-%m-%Y").item(),
+                                                  end=date.strftime("%d-%m-%Y").item())
+
+    if len(holiday) is 1:
+        return True
+
+    return False
 
 
 def export_to_sql():
@@ -681,15 +747,18 @@ def export_to_sql():
     pd.to_sql(TABLENAME, ENGINE, if_exists='append', index=False)
 
 
-def download_data():
+def download_data(dataset, start_date=None, end_date=None):
+    """
+    bulk download is currently not available to free access
+    :param dataset: 
+    :param start_date: 
+    :param end_date: 
+    :return: 
+    """
     # quandl.get(":database_code/:dataset_code", returns = ":return_format")
     qdl.ApiConfig.api_key = 'GY56ffY8tRJKuZyfYVsH'
 
     # When returns is omitted, a pandas dataframe is returned
-    data = qdl.get("WIKI/FB")
+    data = qdl.get(dataset, start_date=start_date, end_date=end_date)
 
-    # quandl.Dataset(":database_code/:dataset_code").data_fields()
-    metadata = qdl.Dataset("WIKI/FB").data_fields()
-
-    # Multiple datasets in one call, comma-delimit their codes and put them in an array
-    merged_data = qdl.get(["WIKI/FB", "EOD/AAPL", "WIKI/MSFT"])
+    return data
