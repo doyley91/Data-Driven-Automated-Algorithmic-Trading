@@ -29,7 +29,7 @@ print(mdl)
 
 dot_data = export_graphviz(mdl,
                            out_file=None,
-                           feature_names=list(train[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']]),
+                           feature_names=list(train[features]),
                            class_names='outcome',
                            filled=True,
                            rounded=True,

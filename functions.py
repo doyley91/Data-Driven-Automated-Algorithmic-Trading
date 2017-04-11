@@ -105,12 +105,17 @@ def get_neutrally_correlated_stocks(df, correlation=0.5):
     return indices
 
 
-def plot_end_of_day(df, title=None, xlabel=None, ylabel=None, legend=None):
+def plot_end_of_day(df, stocks=None, title=None, xlabel=None, ylabel=None, legend=None):
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.plot(df)
+    if stocks is not None:
+        for stock in stocks:
+            ax.plot(df[stock])
+            ax.legend(stocks)
+    else:
+        ax.plot(df)
+        ax.legend([legend])
     ax.set(title=title, xlabel=xlabel, ylabel=ylabel)
-    ax.legend([legend])
     fig.tight_layout()
 
 
@@ -153,6 +158,24 @@ def get_stationarity_statistics(df):
     kpss_results = KPSS(df)
 
     return adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results
+
+
+def get_stock_statistics(df):
+    """
+    returns a series of statistics
+    :param df: 
+    :return: 
+    """
+    mean = df.mean(axis=0)
+    median = df.median(axis=0)
+    maximum = df.max(axis=0)
+    minimum = df.min(axis=0)
+    var = df.var(axis=0)
+    std = df.std(axis=0)
+    skewness = df.skew(axis=0)
+    kurtosis = df.kurtosis(axis=0)
+
+    return mean, median, maximum, minimum, var, std, skewness, kurtosis
 
 
 def plot_histogram(y):

@@ -4,7 +4,7 @@ import numpy as np
 from arch import arch_model
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL').asfreq('D', method='ffill')
+AAPL = fc.get_time_series('AAPL')
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
@@ -42,12 +42,8 @@ print("Stationarity Statistics\n"
                                                                                      anderson_results,
                                                                                      kpss_results))
 
-train_size = int(len(log_returns) * 0.80)
-
-train, test = log_returns[0:train_size], log_returns[train_size:len(log_returns)]
-
 #GARCH model
-res_tup = fc.get_best_garch_model(train)
+res_tup = fc.get_best_garch_model(log_returns)
 
 # plotting the histogram of returns
 fc.plot_histogram(res_tup[2].resid)
@@ -68,6 +64,23 @@ fc.plot_histogram(log_returns)
 
 fc.plot_time_series(res.resid, lags=30)
 
+train_size = int(len(log_returns) * 0.80)
+
+train, test = log_returns[0:train_size], log_returns[train_size:len(log_returns)]
+
+# in sample prediction
+pred = res_tup[2].predict(start=len(train), end=len(train)+len(test)-1)
+
+results = pd.DataFrame(data=dict(original=test, prediction=pred), index=test.index)
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(results['original'])
+ax.plot(results['prediction'])
+ax.set(title='In-Sample Return Prediction\nGARCH({})'.format(res_tup[1]), xlabel='time', ylabel='$')
+ax.legend(['Original', 'Prediction'])
+fig.tight_layout()
+
 # Create a 21 day forecast of AAPL returns with 95%, 99% CI
 n_steps = 21
 
@@ -78,9 +91,6 @@ idx = pd.date_range(AAPL.index[-1], periods=n_steps, freq='D')
 fc_95 = pd.DataFrame(np.column_stack([f, ci95]), index=idx, columns=['forecast', 'lower_ci_95', 'upper_ci_95'])
 fc_99 = pd.DataFrame(np.column_stack([ci99]), index=idx, columns=['lower_ci_99', 'upper_ci_99'])
 fc_all = fc_95.combine_first(fc_99)
-
-# in sample prediction
-pred = res_tup[2].predict(start=test.index[0]-1, end=test.index[-1]).dropna()
 
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()

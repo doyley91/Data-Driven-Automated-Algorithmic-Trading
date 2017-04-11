@@ -1,7 +1,7 @@
 import functions as fc
 import pandas as pd
 import numpy as np
-from statsmodels.tsa.ar_model import AR
+from arch import arch_model
 import matplotlib.pyplot as plt
 
 AAPL = fc.get_time_series('AAPL')
@@ -56,11 +56,13 @@ print("Stationarity Statistics\n"
                                                                                      anderson_results,
                                                                                      kpss_results))
 
-# Select best lag order for AAPL returns
-mdl = AR(endog=AAPL['log_returns']).fit(maxlag=30, ic='aic', trend='nc')
-best_order = AR(AAPL['log_returns']).select_order(maxlag=30, ic='aic', trend='nc')
+train_size = int(len(AAPL) * 0.80)
 
-print('alpha estimate: {:3.5f} | best lag order = {}'.format(mdl.params[0], best_order))
+train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+
+# Select best lag order for AAPL returns
+mdl = arch_model(AAPL['log_returns']).fit(last_obs=train.index[-1])
+mdl.summary()
 
 adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(mdl.resid)
 
@@ -86,12 +88,10 @@ fc.plot_histogram(mdl.resid)
 
 fc.plot_time_series(mdl.resid, lags=30)
 
-train_size = int(len(AAPL) * 0.80)
-
-train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
-
 # in-sample prediction
 pred = mdl.predict(start=len(train), end=len(train)+len(test)-1)
+forecasts = mdl.forecast(horizon=5, start=train.index[-1:])
+forecasts.variance[train.index[-1]:].plot()
 
 pred = pred.multiply(10)
 
@@ -109,7 +109,7 @@ fig.tight_layout()
 # out-of-sample forecast
 n_days = 21
 
-forecast = mdl.predict(start=(len(train) + len(test) - 1), end=(len(train) + len(test) + n_days + 1))
+forecast = mdl.forecast(start=(len(train) + len(test) - 1), end=(len(train) + len(test) + n_days + 1))
 
 forecast = forecast.multiply(10)
 

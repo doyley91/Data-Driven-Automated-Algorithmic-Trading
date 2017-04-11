@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn import metrics
 from sklearn.ensemble import AdaBoostClassifier
 
-AAPL = fc.get_time_series('AAPL').round(2)
+AAPL = fc.get_time_series('AAPL').asfreq(freq='D', method='ffill').round(2)
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 

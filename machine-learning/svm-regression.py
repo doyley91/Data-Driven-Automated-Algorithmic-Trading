@@ -5,7 +5,7 @@ from sklearn.svm import SVR
 from sklearn import metrics
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL').round(2)
+AAPL = fc.get_time_series('AAPL').asfreq(freq='D', method='ffill').round(2)
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 

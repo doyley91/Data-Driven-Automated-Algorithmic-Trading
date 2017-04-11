@@ -3,17 +3,19 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL').asfreq('D', method='ffill').round(2)
+AAPL = fc.get_time_series('AAPL')
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # log returns
-log_returns = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1)).dropna()
+AAPL['log_returns'] = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1))
+
+AAPL['log_returns'].dropna(inplace=True)
 
 # plotting the histogram of returns
-fc.plot_histogram(log_returns)
+fc.plot_histogram(AAPL['log_returns'])
 
-fc.plot_time_series(log_returns, lags=30)
+fc.plot_time_series(AAPL['log_returns'], lags=30)
 
 # verify stationarity
 print("AAPL Series\n"
@@ -42,12 +44,8 @@ print("Stationarity Statistics\n"
                                                                                      anderson_results,
                                                                                      kpss_results))
 
-train_size = int(len(log_returns) * 0.80)
-
-train, test = log_returns[0:train_size], log_returns[train_size:len(log_returns)]
-
 # Fit MA model to AAPL returns
-res_tup = fc.get_best_ma_model(train)
+res_tup = fc.get_best_ma_model(AAPL['log_returns'])
 
 res_tup[2].summary()
 
@@ -76,16 +74,37 @@ fc.plot_histogram(res_tup[2].resid)
 
 fc.plot_time_series(res_tup[2].resid, lags=30)
 
-# in sample prediction
-pred = res_tup[2].predict(start=test.index[0]-1, end=test.index[-1]).dropna()
+train_size = int(len(AAPL) * 0.80)
 
-results = pd.DataFrame(data=dict(original=test, prediction=pred), index=test.index)
+train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+
+# in sample prediction
+pred = res_tup[2].predict(start=len(train), end=len(train)+len(test)-1)
+
+pred = pred.multiply(10)
+
+results = pd.DataFrame(data=dict(original=test['log_returns'].values, prediction=pred.values), index=test.index)
 
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(results['original'])
 ax.plot(results['prediction'])
-ax.set(title='{} Day AAPL Return Forecast\nAR{}'.format(len(pred)), xlabel='time', ylabel='$')
+ax.set(title='AR{} In-Sample Return Prediction'.format(res_tup[1]), xlabel='time', ylabel='$')
 ax.legend(['Original', 'Prediction'])
+fig.tight_layout()
+
+#out-of-sample forecast
+n_days = 21
+
+forecast = res_tup[2].forecast(steps=n_days)
+
+forecast = forecast.multiply(10)
+
+# Plot 21 day forecast for AAPL returns
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(forecast[0])
+ax.set(title='{} Day MA{} Out-Of-Sample Return Forecast'.format(n_days, res_tup[1]), xlabel='time', ylabel='$')
+ax.legend(['Prediction'])
 fig.tight_layout()

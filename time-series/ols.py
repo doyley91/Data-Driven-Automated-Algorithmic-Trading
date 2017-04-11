@@ -4,77 +4,33 @@ import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL').asfreq('D', method='ffill').round(2)
+AAPL = fc.get_time_series('AAPL')
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
-# log returns
-log_returns = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1)).dropna()
+AAPL = fc.get_sma_regression_features(AAPL).dropna()
 
-# plotting the histogram of returns
-fc.plot_histogram(log_returns)
+train_size = int(len(AAPL) * 0.80)
 
-fc.plot_time_series(log_returns, lags=30)
+train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
 
-print("AAPL Series\n"
-      "-------------\n"
-      "mean: {:.3f}\n"
-      "median: {:.3f}\n"
-      "maximum: {:.3f}\n"
-      "minimum: {:.3f}\n"
-      "variance: {:.3f}\n"
-      "standard deviation: {:.3f}\n"
-      "skewness: {:.3f}\n"
-      "kurtosis: {:.3f}".format(AAPL['adj_close'].mean(),
-                                AAPL['adj_close'].median(),
-                                AAPL['adj_close'].max(),
-                                AAPL['adj_close'].min(),
-                                AAPL['adj_close'].var(),
-                                AAPL['adj_close'].std(),
-                                AAPL['adj_close'].skew(),
-                                AAPL['adj_close'].kurtosis()))
-
-adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(log_returns)
-
-print("Stationarity Statistics\n"
-      "-------------\n"
-      "Augmented Dickey-Fuller unit root test: {}\n"
-      "MacKinnon’s approximate p-value: {}\n"
-      "Critical values for the test statistic at the 1 %, 5 %, and 10 % levels: {}\n"
-      "D’Agostino and Pearson’s normality test: {}\n"
-      "Shapiro-Wilk normality test: {}\n"
-      "Kolmogorov-Smirnov goodness of fit test: {}\n"
-      "Anderson-Darling test: {}\n"
-      "Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) stationarity test: {}".format(adfstat,
-                                                                                     pvalue,
-                                                                                     critvalues,
-                                                                                     dagostino_results,
-                                                                                     shapiro_results,
-                                                                                     ks_results,
-                                                                                     anderson_results,
-                                                                                     kpss_results))
-
-train_size = int(len(log_returns) * 0.80)
-
-train, test = log_returns[0:train_size], log_returns[train_size:len(log_returns)]
-
-mdl = sm.OLS(train, sm.add_constant(range(len(train)), prepend=True)).fit()
+mdl = sm.OLS(train['adj_close'], train['sma_15']).fit()
 mdl.summary()
 
-fc.plot_histogram(mdl.resid)
+mdl.params
 
-fc.plot_time_series(mdl.resid, lags=30)
+mdl.bse
 
 # in sample prediction
-pred = mdl.predict(sm.add_constant(range(len(test.index))))
+pred = mdl.predict(test['sma_15'])
 
-results = pd.DataFrame(data=dict(original=test, prediction=pred), index=test.index)
+results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
 
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(results['original'])
 ax.plot(results['prediction'])
-ax.set(title='AAPL In-Sample Return Prediction\nAR', xlabel='time', ylabel='$')
+ax.set(title='In-Sample Return Prediction\nOLS', xlabel='time', ylabel='$')
 ax.legend(['Original', 'Prediction'])
 fig.tight_layout()
