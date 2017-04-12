@@ -2,10 +2,9 @@ import functions as fc
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import SGDRegressor
-from sklearn import metrics
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL').round(2)
+AAPL = fc.get_time_series('AAPL')
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
@@ -28,14 +27,10 @@ mdl = SGDRegressor(loss="epsilon_insensitive").fit(X, Y)
 print(mdl)
 
 # make predictions
-pred = mdl.predict(test[features].values).round(2)
+pred = mdl.predict(test[features].values)
 
 # summarize the fit of the model
-metrics.explained_variance_score(test['adj_close'], pred)
-metrics.mean_absolute_error(test['adj_close'], pred)
-metrics.mean_squared_error(test['adj_close'], pred)
-metrics.median_absolute_error(test['adj_close'], pred)
-metrics.r2_score(test['adj_close'], pred)
+explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'], pred)
 
 # in-sample test
 results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
@@ -46,6 +41,7 @@ ax.plot(results['original'])
 ax.plot(results['prediction'])
 ax.set(title='Time Series Plot', xlabel='time', ylabel='$')
 ax.legend(['Original $', 'Forecast $'])
+fig.text(.8, .2, "Regression score: {}".format(r2_score.round(2)))
 fig.tight_layout()
 
 # out-of-sample test

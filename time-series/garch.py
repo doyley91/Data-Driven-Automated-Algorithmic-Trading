@@ -80,26 +80,3 @@ ax.plot(results['prediction'])
 ax.set(title='In-Sample Return Prediction\nGARCH({})'.format(res_tup[1]), xlabel='time', ylabel='$')
 ax.legend(['Original', 'Prediction'])
 fig.tight_layout()
-
-# Create a 21 day forecast of AAPL returns with 95%, 99% CI
-n_steps = 21
-
-f, err95, ci95 = res_tup[2].forecast(steps=n_steps) # 95% CI
-_, err99, ci99 = res_tup[2].forecast(steps=n_steps, alpha=0.01) # 99% CI
-
-idx = pd.date_range(AAPL.index[-1], periods=n_steps, freq='D')
-fc_95 = pd.DataFrame(np.column_stack([f, ci95]), index=idx, columns=['forecast', 'lower_ci_95', 'upper_ci_95'])
-fc_99 = pd.DataFrame(np.column_stack([ci99]), index=idx, columns=['lower_ci_99', 'upper_ci_99'])
-fc_all = fc_95.combine_first(fc_99)
-
-# Plot 21 day forecast for AAPL returns
-fig = plt.figure()
-ax = plt.gca()
-test.plot(ax=ax, label='AAPL Returns')
-pred.plot(ax=ax, style='r-', label='In-sample prediction')
-fc_all.plot(ax=ax, style=['b-', '0.2', '0.75', '0.2', '0.75'])
-plt.fill_between(fc_all.index, fc_all.lower_ci_95, fc_all.upper_ci_95, color='gray', alpha=0.7)
-plt.fill_between(fc_all.index, fc_all.lower_ci_99, fc_all.upper_ci_99, color='gray', alpha=0.2)
-plt.title('{} Day AAPL Return Forecast\nARIMA{}'.format(n_steps, res_tup[1]))
-plt.legend(loc='best', fontsize=10)
-plt.tight_layout()

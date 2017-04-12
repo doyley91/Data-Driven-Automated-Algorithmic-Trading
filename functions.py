@@ -14,6 +14,7 @@ from sklearn.svm import SVC, LinearSVC
 from mpl_finance import candlestick_ohlc
 from sqlalchemy import create_engine
 import quandl as qdl
+from sklearn import metrics
 from matplotlib import mlab
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -176,6 +177,23 @@ def get_stock_statistics(df):
     kurtosis = df.kurtosis(axis=0)
 
     return mean, median, maximum, minimum, var, std, skewness, kurtosis
+
+
+def get_classifier_metrics(original, prediction):
+    classification_report = metrics.classification_report(original, prediction)
+    confusion_matrix = metrics.confusion_matrix(original, prediction)
+
+    return classification_report, confusion_matrix
+
+
+def get_regression_metrics(original, prediction):
+    explained_variance_score = metrics.explained_variance_score(original, prediction)
+    mean_absolute_error = metrics.mean_absolute_error(original, prediction)
+    mean_squared_error = metrics.mean_squared_error(original, prediction)
+    median_absolute_error = metrics.median_absolute_error(original, prediction)
+    r2_score = metrics.r2_score(original, prediction)
+
+    return explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score
 
 
 def plot_histogram(y):
