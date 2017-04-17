@@ -16,7 +16,7 @@ plt.style.use('ggplot')
 
 AAPL = fc.get_time_series('AAPL').asfreq('D', method='ffill')
 
-fc.eodplot(AAPL)
+fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 training_set = AAPL[:-500]
 test_set = AAPL[-500:]

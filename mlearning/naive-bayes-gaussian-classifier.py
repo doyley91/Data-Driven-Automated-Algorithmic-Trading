@@ -1,10 +1,8 @@
 import functions as fc
 import pandas as pd
-from sklearn import metrics
-from sklearn.tree import DecisionTreeClassifier, export_graphviz
-import pydotplus as pydot
+from sklearn.naive_bayes import GaussianNB
 
-AAPL = fc.get_time_series('AAPL').round(2)
+AAPL = fc.get_time_series('AAPL')
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
@@ -25,27 +23,17 @@ X = list(train[features].values)
 # target values
 Y = list(train['outcome'])
 
-mdl = DecisionTreeClassifier().fit(X, Y)
+# fit a Naive Bayes model to the data
+mdl = GaussianNB().fit(X, Y)
 print(mdl)
 
-dot_data = export_graphviz(mdl,
-                           out_file=None,
-                           feature_names=list(train[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']]),
-                           class_names='outcome',
-                           filled=True,
-                           rounded=True,
-                           special_characters=True)
-
-graph = pydot.graph_from_dot_data(dot_data)
-graph.write_png("charts/decision-tree-classifier2.png")
-
+# make predictions
 pred = mdl.predict(test[features].values)
-pred_prob = mdl.predict_proba(test[features].values)
-
-print(metrics.classification_report(test['outcome'], pred))
-print(metrics.confusion_matrix(test['outcome'], pred))
 
 results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
+
+# summarize the fit of the model
+classification_report, confusion_matrix = fc.get_classifier_metrics(results['original'], results['prediction'])
 
 # out-of-sample test
 n_steps = 21

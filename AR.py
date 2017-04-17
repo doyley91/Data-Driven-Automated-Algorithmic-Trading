@@ -8,13 +8,15 @@ AAPL = fc.get_time_series('AAPL')
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
-# log price
-AAPL['log_price'] = np.log(AAPL['adj_close'])
+# log returns
+AAPL['log_returns'] = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1))
+
+AAPL['log_returns'].dropna(inplace=True)
 
 # plotting the histogram of returns
-fc.plot_histogram(AAPL['log_price'])
+fc.plot_histogram(AAPL['log_returns'])
 
-fc.plot_time_series(AAPL['log_price'], lags=30)
+fc.plot_time_series(AAPL['log_returns'], lags=30)
 
 print("AAPL Series\n"
       "-------------\n"
@@ -34,7 +36,7 @@ print("AAPL Series\n"
                                 AAPL['adj_close'].skew(),
                                 AAPL['adj_close'].kurtosis()))
 
-adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(AAPL['log_price'])
+adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(AAPL['log_returns'])
 
 print("Stationarity Statistics\n"
       "-------------\n"
@@ -54,6 +56,9 @@ print("Stationarity Statistics\n"
                                                                                      anderson_results,
                                                                                      kpss_results))
 
+# log price
+AAPL['log_price'] = np.log(AAPL['adj_close'])
+
 # Select best lag order for AAPL returns
 mdl = AR(endog=AAPL['log_price']).fit(maxlag=30, ic='aic', trend='nc')
 best_order = AR(AAPL['log_price']).select_order(maxlag=30, ic='aic', trend='nc')
@@ -62,7 +67,7 @@ print('alpha estimate: {:3.5f} | best lag order = {}'.format(mdl.params[0], best
 
 adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(mdl.resid)
 
-print("Stationarity Statistics\n"
+print("Stationarity Statistics\n" 
       "-------------\n"
       "Augmented Dickey-Fuller unit root test: {}\n"
       "MacKinnon’s approximate p-value: {}\n"
@@ -93,9 +98,6 @@ pred = mdl.predict(start=len(train), end=len(train)+len(test)-1)
 
 results = pd.DataFrame(data=dict(original=np.exp(test['log_price']), prediction=np.exp(pred)), index=test.index)
 
-# summarize the fit of the model
-explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(results['original'], results['prediction'])
-
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -108,14 +110,15 @@ fig.tight_layout()
 # out-of-sample forecast
 n_days = 21
 
-forecast = mdl.predict(start=(len(train) + len(test) - 1), end=(len(train) + len(test) + n_days + 1))
+forecast = mdl.predict(start=(len(train) + len(test)), end=(len(train) + len(test) + n_days))
 
 forecast = np.exp(forecast)
 
 # Plot 21 day forecast for AAPL returns
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(forecast)
+ax.plot(AAPL['adj_close'])
+ax.plot(forecast.values)
 ax.set(title='{} Day AR({}) Out-Of-Sample Return Forecast'.format(n_days, best_order), xlabel='time', ylabel='$')
 ax.legend(['Prediction'])
 fig.tight_layout()

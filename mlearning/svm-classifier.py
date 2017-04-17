@@ -13,35 +13,35 @@ AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else 
 
 AAPL = fc.get_sma_classifier_features(AAPL)
 
-training_set = AAPL[:-500]
-test_set = AAPL[-500:]
+train_size = int(len(AAPL) * 0.80)
+
+train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
 
 features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
 
 # values of features
-X = np.array(training_set[features].values)
+X = np.array(train[features].values)
 
 # target values
-Y = np.array(training_set['outcome'])
+Y = np.array(train['outcome'])
 
 # fit a SVM model to the data
 mdl = SVC().fit(X, Y)
 print(mdl)
 
 # make predictions
-pred = mdl.predict(test_set[features].values)
+pred = mdl.predict(test[features].values)
+
+results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
 
 # summarize the fit of the model
-print(metrics.classification_report(test_set['outcome'], pred))
-print(metrics.confusion_matrix(test_set['outcome'], pred))
-
-results = pd.DataFrame(data=dict(original=test_set['outcome'], prediction=pred), index=test_set.index)
+classification_report, confusion_matrix = fc.get_classifier_metrics(results['original'], results['prediction'])
 
 # using just 2 features
-X = np.array(training_set[features].values)
+X = np.array(train[features].values)
 
 fc.plot_svm_2(X, Y)
 
 # out-of-sample test
 n_steps = 21
-forecast = fc.forecast_classifier(model=mdl, sample=test_set, features=features, steps=n_steps)
+forecast = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)

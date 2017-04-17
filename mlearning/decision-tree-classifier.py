@@ -1,14 +1,15 @@
 import functions as fc
 import pandas as pd
 from sklearn import metrics
-from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier, export_graphviz
+import pydotplus as pydot
 
-AAPL = fc.get_time_series('AAPL').asfreq(freq='D', method='ffill').round(2)
+AAPL = fc.get_time_series('AAPL')
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
-AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else 0, axis=1)
+AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
 
 AAPL = fc.get_sma_classifier_features(AAPL)
 
@@ -24,14 +25,23 @@ X = list(train[features].values)
 # target values
 Y = list(train['outcome'])
 
-# fit a Naive Bayes model to the data
-mdl = AdaBoostClassifier().fit(X, Y)
+mdl = DecisionTreeClassifier().fit(X, Y)
 print(mdl)
 
-# in-sample prediction
-pred = mdl.predict(test[features].values)
+dot_data = export_graphviz(mdl,
+                           out_file=None,
+                           feature_names=list(train[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']]),
+                           class_names='outcome',
+                           filled=True,
+                           rounded=True,
+                           special_characters=True)
 
-# summarize the fit of the model
+graph = pydot.graph_from_dot_data(dot_data)
+graph.write_png("charts/decision-tree-classifier2.png")
+
+pred = mdl.predict(test[features].values)
+pred_prob = mdl.predict_proba(test[features].values)
+
 print(metrics.classification_report(test['outcome'], pred))
 print(metrics.confusion_matrix(test['outcome'], pred))
 

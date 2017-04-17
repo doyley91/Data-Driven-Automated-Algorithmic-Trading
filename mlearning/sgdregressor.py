@@ -4,15 +4,17 @@ import numpy as np
 from sklearn.linear_model import SGDRegressor
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL')
+ticker = ''
 
-fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+df = fc.get_time_series(ticker)
 
-AAPL = fc.get_sma_regression_features(AAPL).dropna()
+fc.plot_end_of_day(df['adj_close'], title=ticker, xlabel='time', ylabel='$', legend='Adjusted Close $')
 
-train_size = int(len(AAPL) * 0.80)
+df = fc.get_sma_regression_features(df).dropna()
 
-train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+train_size = int(len(df) * 0.80)
+
+train, test = df[0:train_size], df[train_size:len(df)]
 
 features = ['sma_15', 'sma_50']
 
@@ -41,7 +43,6 @@ ax.plot(results['original'])
 ax.plot(results['prediction'])
 ax.set(title='Time Series Plot', xlabel='time', ylabel='$')
 ax.legend(['Original $', 'Forecast $'])
-fig.text(.8, .2, "Regression score: {}".format(r2_score.round(2)))
 fig.tight_layout()
 
 # out-of-sample test

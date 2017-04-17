@@ -4,6 +4,7 @@ import numpy as np
 import statsmodels.tsa.api as smt
 import statsmodels.api as sm
 import scipy.stats as stats
+from statsmodels.tsa.arima_model import ARMA, ARIMA
 from statsmodels.tsa.stattools import adfuller
 from scipy.stats.mstats import normaltest
 from scipy.stats import shapiro, kstest, anderson
@@ -18,6 +19,7 @@ from sklearn import metrics
 from matplotlib import mlab
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import keys
 
 plt.style.use('ggplot')
 
@@ -35,6 +37,7 @@ def get_time_series(ticker=None, start_date=None, end_date=None):
     :return: 
     """
     df = pd.read_csv(file_location, index_col='date', parse_dates=True)
+
     if ticker is None:
         return df
     elif isinstance(ticker, list):
@@ -52,10 +55,11 @@ def get_time_series(ticker=None, start_date=None, end_date=None):
     return df
 
 
-def get_correlated_time_series(df):
+def get_correlated_time_series(df, save=False):
     """
     pivots the dataframe to return the correlations of the stocks in the dataframe
-    :param df: 
+    :param df:
+    :param save:
     :return: 
     """
     # pivoting the DataFrame to create a column for every ticker
@@ -63,6 +67,9 @@ def get_correlated_time_series(df):
 
     # creating a DataFrame with the correlation values of every column to every column
     df = df.corr()
+
+    if save:
+        df.to_csv("data/df_corr.csv")
 
     return df
 
@@ -106,9 +113,35 @@ def get_neutrally_correlated_stocks(df, correlation=0.5):
     return indices
 
 
-def plot_end_of_day(df, stocks=None, title=None, xlabel=None, ylabel=None, legend=None):
+def get_stocks_from_list(stocks, ticker):
+    """
+    returns a list of matching stocks in a list
+    :param stocks: 
+    :param ticker: 
+    :return: 
+    """
+    matching = [s for s in stocks if ticker in s]
+
+    tickers = np.unique(matching)
+
+    return tickers
+
+
+def plot_end_of_day(df, stocks=None, title=None, xlabel=None, ylabel=None, legend=None, save=False):
+    """
+    plots the end-of-day close price for the specified ticker(s)
+    :param df: 
+    :param stocks: 
+    :param title: 
+    :param xlabel: 
+    :param ylabel: 
+    :param legend: 
+    :param save: 
+    :return: 
+    """
     fig = plt.figure()
     ax = fig.add_subplot(111)
+
     if stocks is not None:
         for stock in stocks:
             ax.plot(df[stock])
@@ -116,8 +149,12 @@ def plot_end_of_day(df, stocks=None, title=None, xlabel=None, ylabel=None, legen
     else:
         ax.plot(df)
         ax.legend([legend])
+
     ax.set(title=title, xlabel=xlabel, ylabel=ylabel)
     fig.tight_layout()
+
+    if save:
+        fig.savefig("charts/{}.png".format(title))
 
 
 def plot_ticker(df):
@@ -197,6 +234,11 @@ def get_regression_metrics(original, prediction):
 
 
 def plot_histogram(y):
+    """
+    plots a histogram of the stock returns
+    :param y: 
+    :return: 
+    """
     mu = np.mean(y)  # mean of distribution
     sigma = np.std(y)  # standard deviation of distribution
     x = mu + sigma * np.random.randn(10000)
@@ -212,6 +254,12 @@ def plot_histogram(y):
 
 
 def plot_time_series(y, lags=None):
+    """
+    plots the stock return, acf, pacf, and qq 
+    :param y: 
+    :param lags: 
+    :return: 
+    """
     if not isinstance(y, pd.Series):
         y = pd.Series(y)
 
@@ -344,10 +392,10 @@ def get_best_ma_model(df):
     best_order = None
     best_mdl = None
 
-    rng = range(5)  # [0,1,2,3,4,5]
+    rng = range(11)
     for j in rng:
         try:
-            tmp_mdl = smt.ARMA(df, order=(0, j)).fit(maxlag=30, method='mle', trend='nc')
+            tmp_mdl = ARMA(df, order=(0, j)).fit(maxlag=30, method='mle', trend='nc', disp=-1)
             tmp_aic = tmp_mdl.aic
             if tmp_aic < best_aic:
                 best_aic = tmp_aic
@@ -374,7 +422,7 @@ def get_best_arma_model(df):
     for i in rng:
         for j in rng:
             try:
-                tmp_mdl = smt.ARMA(df, order=(i, j)).fit(method='mle', trend='nc')
+                tmp_mdl = ARMA(df, order=(i, j)).fit(method='mle', trend='nc', disp=-1)
                 tmp_aic = tmp_mdl.aic
                 if tmp_aic < best_aic:
                     best_aic = tmp_aic
@@ -400,13 +448,13 @@ def get_best_arima_model(df):
     best_order = None
     best_mdl = None
 
-    pq_rng = range(5)  # [0,1,2,3,4]
-    d_rng = range(2)  # [0,1]
+    pq_rng = range(6)
+    d_rng = range(3)
     for i in pq_rng:
         for d in d_rng:
             for j in pq_rng:
                 try:
-                    tmp_mdl = smt.ARIMA(df, order=(i, d, j)).fit(method='mle', trend='nc')
+                    tmp_mdl = ARIMA(df, order=(i, d, j)).fit(method='mle', trend='nc', disp=-1)
                     tmp_aic = tmp_mdl.aic
                     if tmp_aic < best_aic:
                         best_aic = tmp_aic
@@ -797,7 +845,7 @@ def download_data(dataset, start_date=None, end_date=None):
     :return: 
     """
     # quandl.get(":database_code/:dataset_code", returns = ":return_format")
-    qdl.ApiConfig.api_key = 'GY56ffY8tRJKuZyfYVsH'
+    qdl.ApiConfig.api_key = keys.quandl_api
 
     # When returns is omitted, a pandas dataframe is returned
     data = qdl.get(dataset, start_date=start_date, end_date=end_date)

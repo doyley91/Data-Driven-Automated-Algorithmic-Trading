@@ -1,0 +1,1 @@
+quandl_api = 'GY56ffY8tRJKuZyfYVsH'
