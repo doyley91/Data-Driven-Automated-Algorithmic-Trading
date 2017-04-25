@@ -11,4 +11,4 @@ ticker = "MSFT"
 tickers = fc.get_stocks_from_list(stocks, ticker)
 
 for symbol in tickers:
-    sgdregressor.ticker = symbol
+    sgdregressor.run(symbol)

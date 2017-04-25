@@ -11,24 +11,24 @@ AAPL = fc.get_time_series('AAPL')[-500:]
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
-returns = np.log(AAPL['adj_close'][1:] / AAPL['adj_close'][0:-1].values)
+AAPL['log_returns'] = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1))
 
-returns = returns[np.isfinite(returns)]
+AAPL['log_returns'].dropna(inplace=True)
 
-fc.plot_end_of_day(returns, title='AAPL', xlabel='time', ylabel='%', legend='Returns %')
+fc.plot_end_of_day(AAPL['log_returns'], title='AAPL', xlabel='time', ylabel='%', legend='Returns %')
 
-training_set = returns[:-50]
-test_set = returns[-50:]
+train, test = np.arange(0, 450), np.arange(451, len(AAPL['log_returns']))
+n = len(train)
 
 with pm.Model() as model:
     sigma = pm.Exponential('sigma', 1. / .02, testval=.1)
     mu = pm.Normal('mu', 0, sd=5, testval=.1)
 
     nu = pm.Exponential('nu', 1. / 10)
-    logs = pm.GaussianRandomWalk('logs', tau=sigma ** -2, shape=len(training_set))
+    logs = pm.GaussianRandomWalk('logs', tau=sigma ** -2, shape=n)
 
     # lam uses variance in pymc3, not sd like in scipy
-    r = pm.StudentT('r', nu, mu=mu, lam=1 / exp(-2 * logs), observed=training_set)
+    r = pm.StudentT('r', nu, mu=mu, lam=1 / exp(-2 * logs), observed=AAPL['log_returns'].values[train])
 
 with model:
     start = pm.find_MAP(vars=[logs], fmin=sp.optimize.fmin_powell)
@@ -42,12 +42,12 @@ with model:
 
 pm.traceplot(trace)
 
-sim_returns, vol = fc.generate_proj_returns(1000, trace, len(test_set))
+sim_returns, vol = fc.generate_proj_returns(1000, trace, len(test))
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(returns.values, color='blue')
-ax.plot(1+len(training_set)+np.arange(0, len(test_set)), sim_returns[1, :], color='red')
+ax.plot(AAPL['log_returns'].values, color='blue')
+ax.plot(1+len(train)+np.arange(0, len(test)), sim_returns[1, :], color='red')
 ax.set(title='Returns Forecast', xlabel='time', ylabel='%')
 ax.legend(['Original', 'Forecast'])
 fig.tight_layout()
@@ -55,8 +55,8 @@ fig.tight_layout()
 fig = plt.figure()
 ax = fig.add_subplot(111)
 [ax.plot(1 / np.exp(trace[k]['logs']), color='red', alpha=.2) for k in range(1000, len(trace))]
-ax.plot(returns.values, color='blue')
-[ax.plot(1 + len(training_set) + np.arange(0, len(test_set)), 1 / np.exp(vol[j, :]), alpha=.01, color='yellow') for j in
+ax.plot(AAPL['log_returns'].values, color='blue')
+[ax.plot(1 + len(train) + np.arange(0, len(test)), 1 / np.exp(vol[j, :]), alpha=.01, color='yellow') for j in
  range(0, 1000)]
 ax.set_ylim([-.05, .05])
 ax.set(title='Volatility Forecast', xlabel='time', ylabel='%')

@@ -3,51 +3,89 @@ Source: https://pymc-devs.github.io/pymc3/notebooks/getting_started.html
 '''
 
 import functions as fc
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import pymc3 as pm
-from pymc3 import Exponential, StudentT, Deterministic
-from pymc3.math import exp
-from pymc3.distributions.timeseries import GaussianRandomWalk
+import scipy as sp
 
 # setting the style of the charts
 plt.style.use('ggplot')
 
-AAPL = fc.get_time_series('AAPL').asfreq('D', method='ffill')
+AAPL = fc.get_time_series('AAPL')[-500:]
 
 fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
-training_set = AAPL[:-500]
-test_set = AAPL[-500:]
+AAPL['log_returns'] = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1))
 
-returns = training_set['adj_close'].pct_change()
+AAPL['log_returns'].dropna(inplace=True)
 
-# plotting the adj_close of AAPL
+fc.plot_end_of_day(AAPL['log_returns'], title='AAPL', xlabel='time', ylabel='%', legend='Returns %')
+
+train, test = np.arange(0, 450), np.arange(451, len(AAPL['log_returns']))
+n = len(train)
+
+with pm.Model() as model:
+    sigma = pm.Exponential('sigma', 1. / .02, testval=.1)
+    mu = pm.Normal('mu', 0, sd=5, testval=.1)
+
+    nu = pm.Exponential('nu', 1. / 10)
+    logs = pm.GaussianRandomWalk('logs', tau=sigma ** -2, shape=n)
+
+    # lam uses variance in pymc3, not sd like in scipy
+    r = pm.StudentT('r', nu, mu=mu, lam=1 / np.exp(-2 * logs), observed=AAPL['log_returns'].values[train])
+
+with model:
+    start = pm.find_MAP(vars=[logs], fmin=sp.optimize.fmin_l_bfgs_b)
+
+with model:
+    step = pm.NUTS(vars=[logs, mu, nu, sigma], scaling=start, gamma=.25)
+    start2 = pm.sample(100, step, start=start)[-1]
+
+    # Start next run at the last sampled position.
+    step = pm.NUTS(vars=[logs, mu, nu, sigma], scaling=start2, gamma=.55)
+    trace = pm.sample(2000, step, start=start2)
+
+pm.traceplot(trace)
+
+sim_returns, vol = fc.generate_proj_returns(1000, trace, len(test))
+
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(returns)
-ax.set(title='AAPL', xlabel='time', ylabel='$')
-ax.legend(['Adjusted Close $'])
+ax.plot(AAPL['log_returns'].values, color='blue')
+ax.plot(1+len(train)+np.arange(0, len(test)), sim_returns[1, :], color='red')
+ax.set(title='NUTS In-Sample Returns Prediction', xlabel='time', ylabel='%')
+ax.legend(['Original', 'Prediction'])
 fig.tight_layout()
-
-with pm.Model() as sp500_model:
-    nu = Exponential('nu', 1./10, testval=5.)
-    sigma = Exponential('sigma', 1./.02, testval=.1)
-    s = GaussianRandomWalk('s', sigma**-2, shape=len(returns))
-    volatility_process = Deterministic('volatility_process', exp(-2*s))
-    r = StudentT('r', nu, lam=1/volatility_process, observed=returns)
-
-with sp500_model:
-    trace = pm.sample(2000)
-
-pm.traceplot(trace[200:], [nu, sigma])
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(returns)
-ax.plot(returns.index, 1/np.exp(trace['s', ::5].T), 'r', alpha=.03)
-ax.set(title='volatility_process', xlabel='time', ylabel='volatility')
-ax.legend(['S&P500', 'stochastic volatility process'])
+[ax.plot(1 / np.exp(trace[k]['logs']), color='red', alpha=.2) for k in range(1000, len(trace))]
+ax.plot(AAPL['log_returns'].values, color='blue')
+[ax.plot(1 + len(train) + np.arange(0, len(test)), 1 / np.exp(vol[j, :]), alpha=.01, color='yellow') for j in
+ range(0, 1000)]
+ax.set(title='Volatility Forecast', xlabel='time', ylabel='%')
+ax.legend(['Original Returns', 'Original Volatility', 'Forecast Volatility'])
 fig.tight_layout()
-fig.savefig("charts/No-U-Turn-Sampler.png", dpi=300)
+
+# out-of-sample test
+n_steps = 21
+
+sim_returns, vol = fc.generate_proj_returns(1000, trace, len(test) + n_steps)
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(sim_returns[1, :][-n_steps:])
+ax.set(title='NUTS Out-of-Sample Returns Forecast', xlabel='time', ylabel='%')
+ax.legend(['Forecast'])
+fig.tight_layout()
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+[ax.plot(1 / np.exp(trace[k]['logs']), color='red', alpha=.2) for k in range(1000, len(trace))]
+ax.plot(AAPL['log_returns'].values, color='blue')
+[ax.plot(1 + len(train) + np.arange(0, len(test)), 1 / np.exp(vol[j, :]), alpha=.01, color='yellow') for j in
+ range(0, 1000)]
+ax.set(title='Volatility Forecast', xlabel='time', ylabel='%')
+ax.legend(['Original Returns', 'Original Volatility', 'Forecast Volatility'])
+fig.tight_layout()
+

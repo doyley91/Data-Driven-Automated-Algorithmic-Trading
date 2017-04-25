@@ -1,8 +1,7 @@
 import functions as fc
 import pandas as pd
 import numpy as np
-from sklearn.svm import SVR
-from sklearn import metrics
+from sklearn.neural_network import MLPRegressor
 import matplotlib.pyplot as plt
 
 AAPL = fc.get_time_series('AAPL').asfreq(freq='D', method='ffill').round(2)
@@ -24,11 +23,8 @@ X = np.array(train[features].values)
 Y = list(train['adj_close'])
 
 # fit a Naive Bayes model to the data
-mdl = SVR(kernel='linear').fit(X, Y)
+mdl = MLPRegressor(hidden_layer_sizes=(100, 100, 100)).fit(X, Y)
 print(mdl)
-
-print(mdl.coef_)
-print(mdl.intercept_)
 
 # in-sample test
 pred = mdl.predict(test[features].values)
@@ -50,17 +46,3 @@ fig.tight_layout()
 n_steps = 21
 forecast = fc.forecast_regression(model=mdl, sample=test.copy(), features=features, steps=n_steps)
 
-data = fc.download_data(dataset="WIKI/AAPL",
-                        start_date=test.index.shift(n=1, freq='B')[-1],
-                        end_date=test.index.shift(n=n_steps-1, freq='B')[-1])
-
-forecast_results = pd.DataFrame(data=dict(original=data['Adj. Close'], forecast=forecast['adj_close']),
-                                index=data.index)
-
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(forecast_results['original'])
-ax.plot(forecast_results['forecast'])
-ax.set(title='{} Day Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
-ax.legend(['Original $', 'Forecast $'])
-fig.tight_layout()
