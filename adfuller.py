@@ -220,7 +220,7 @@ fig.savefig("charts/AAPL-first-difference.png", dpi=300)
 
 #################################
 # Fit ARCH models
-from arch import arch_model
+from arch2 import arch_model
 
 # !!! The arch package swtiches the meaning of p and q of the GARCH models
 #     compared to the notation on Wikipedia !!!

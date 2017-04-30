@@ -51,7 +51,7 @@ perf_manual = buy_and_hold_algo.run(panel)
 perf_manual = dual_ema_algo.run(panel)
 
 #calculation
-perf_manual['pnl'][-1:].values
+total_pnl = perf_manual['pnl'][-1:].values
 
 buy_trade = perf_manual[["status"]].loc[perf_manual["status"] == "buy"].count()
 

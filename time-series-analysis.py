@@ -8,7 +8,7 @@ import statsmodels.formula.api as smf
 import statsmodels.tsa.api as smt
 import statsmodels.api as sm
 import scipy.stats as scs
-from arch import arch_model
+from arch2 import arch_model
 import matplotlib.pyplot as plt
 
 plt.style.use('ggplot')

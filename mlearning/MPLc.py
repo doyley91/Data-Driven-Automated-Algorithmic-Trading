@@ -3,18 +3,18 @@ import pandas as pd
 from sklearn.neural_network import MLPClassifier
 from sklearn import metrics
 
-AAPL = fc.get_time_series('AAPL')
+df = fc.get_time_series('AAPL')
 
-fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+fc.plot_end_of_day(df['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
-AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
+df['outcome'] = df.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
 
-AAPL = fc.get_sma_classifier_features(AAPL)
+df = fc.get_sma_classifier_features(df)
 
-train_size = int(len(AAPL) * 0.80)
+train_size = int(len(df) * 0.80)
 
-train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+train, test = df[0:train_size], df[train_size:len(df)]
 
 features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
 

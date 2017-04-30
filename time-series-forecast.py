@@ -11,7 +11,7 @@ import statsmodels.tsa.api as sm
 from statsmodels.tsa.stattools import acf, pacf
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt
-from arch import arch_model
+from arch2 import arch_model
 
 plt.style.use('ggplot')
 
