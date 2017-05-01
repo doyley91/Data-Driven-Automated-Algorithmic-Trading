@@ -11,7 +11,7 @@ def run(ticker='AAPL', start=None, end=None):
 
     df = fc.get_time_series(ticker, start, end)
 
-    fc.plot_end_of_day(df['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+    fc.plot_end_of_day(df['adj_close'], title=ticker, xlabel='time', ylabel='$', legend='Adjusted Close $')
 
     df = fc.get_sma_regression_features(df).dropna()
 
@@ -47,7 +47,7 @@ def run(ticker='AAPL', start=None, end=None):
     pred = mdl.predict(test[features].values)
 
     # summarize the fit of the model
-    explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'], pred)
+    explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'].values, pred)
 
     results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
 

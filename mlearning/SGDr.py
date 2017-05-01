@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 
 
 def run(ticker='AAPL', start=None, end=None):
-
     df = fc.get_time_series(ticker, start, end)
 
     fc.plot_end_of_day(df['adj_close'], title=ticker, xlabel='time', ylabel='$', legend='Adjusted Close $')
@@ -33,20 +32,19 @@ def run(ticker='AAPL', start=None, end=None):
     mdl = SGDRegressor(loss="epsilon_insensitive").fit(X, Y)
     print(mdl)
 
-    # make predictions
+    # in-sample test
     pred = mdl.predict(test[features].values)
 
     # summarize the fit of the model
-    explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'], pred)
+    explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'].values, pred)
 
-    # in-sample test
     results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.plot(results['original'])
     ax.plot(results['prediction'])
-    ax.set(title='Stochastic Gradient Descent In-Sample Prediction', xlabel='time', ylabel='$')
+    ax.set(title='SGD In-Sample Prediction', xlabel='time', ylabel='$')
     ax.legend(['Original $', 'Forecast $'])
     fig.tight_layout()
 
@@ -57,7 +55,7 @@ def run(ticker='AAPL', start=None, end=None):
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.plot(forecast['adj_close'][-n_steps:])
-    ax.set(title='{} Day Stochastic Gradient Descent Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
+    ax.set(title='{} Day SGD Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
     ax.legend(['Forecast $'])
     fig.tight_layout()
 

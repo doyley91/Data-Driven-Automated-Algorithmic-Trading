@@ -21,6 +21,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import keys
 
+pd.options.mode.chained_assignment = None  # default='warn'
 plt.style.use('ggplot')
 
 # location of the data set

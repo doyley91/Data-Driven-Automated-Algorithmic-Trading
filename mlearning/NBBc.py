@@ -2,27 +2,18 @@ import functions as fc
 import pandas as pd
 from sklearn.naive_bayes import BernoulliNB
 
-AAPL = fc.get_time_series('AAPL')
+df = fc.get_time_series('AAPL')
 
-fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+fc.plot_end_of_day(df['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
-AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
+df['outcome'] = df.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
 
-# distance between Highest and Opening price
-AAPL['ho'] = AAPL['adj_high'] - AAPL['adj_open']
+df = fc.get_sma_classifier_features(df)
 
-# distance between Lowest and Opening price
-AAPL['lo'] = AAPL['adj_low'] - AAPL['adj_open']
+train_size = int(len(df) * 0.80)
 
-# difference between Closing price - Opening price
-AAPL['gain'] = AAPL['adj_close'] - AAPL['adj_open']
-
-AAPL = fc.get_sma_classifier_features(AAPL)
-
-train_size = int(len(AAPL) * 0.80)
-
-train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+train, test = df[0:train_size], df[train_size:len(df)]
 
 features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
 

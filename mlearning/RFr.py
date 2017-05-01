@@ -37,7 +37,7 @@ def run(ticker='AAPL', start=None, end=None):
     pred = mdl.predict(test[features].values)
 
     # summarize the fit of the model
-    explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'], pred)
+    explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'].values, pred)
 
     results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
 

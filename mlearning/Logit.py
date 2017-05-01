@@ -1,21 +1,19 @@
 import functions as fc
 import pandas as pd
-from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
-import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL')
+df = fc.get_time_series('AAPL')
 
-fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+fc.plot_end_of_day(df['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
 
 # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
-AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
+df['outcome'] = df.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
 
-AAPL = fc.get_sma_regression_features(AAPL).dropna()
+df = fc.get_sma_regression_features(df).dropna()
 
-train_size = int(len(AAPL) * 0.80)
+train_size = int(len(df) * 0.80)
 
-train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+train, test = df[0:train_size], df[train_size:len(df)]
 
 features = ['sma_15', 'sma_50']
 

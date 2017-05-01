@@ -2,17 +2,23 @@ import functions as fc
 import pytz
 import pandas as pd
 from zipline.algorithm import TradingAlgorithm
-from strategies import buy, buy_and_hold, dual_ema
+from strategies import buy_and_hold
 from collections import OrderedDict
 
-stocks = ['AAPL', 'MSFT']
+df_corr = pd.read_csv("data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db_corr.csv", index_col='ticker')
+
+stocks = fc.get_neutrally_correlated_stocks(df_corr, correlation=0.1)
+
+ticker = "MSFT"
+
+tickers = fc.get_stocks_from_list(stocks, ticker)
 
 data = OrderedDict()
 
-for stock in stocks:
-    data[stock] = fc.get_time_series(stock)
+for ticker in tickers:
+    data[ticker] = fc.get_time_series(ticker)
 
-#converting dataframe data into panel
+# converting dataframe data into panel
 panel = pd.Panel(data)
 panel.minor_axis = ['ticker',
                     'open',
@@ -30,31 +36,20 @@ panel.minor_axis = ['ticker',
 
 panel.major_axis = panel.major_axis.tz_localize(pytz.utc)
 
-buy.stocks = buy_and_hold.stocks = dual_ema.stocks = stocks
+buy_and_hold.stocks = tickers
 
-#initializing trading enviroment
-buy_algo = TradingAlgorithm(initialize=buy.initialize,
-                            handle_data=buy.handle_data,
-                            capital_base=100000.0)
-
+# initializing trading enviroment
 buy_and_hold_algo = TradingAlgorithm(initialize=buy_and_hold.initialize,
-                                     handle_data=buy_and_hold.handle_data,
-                                     capital_base=100000.0)
+                                     handle_data=buy_and_hold.handle_data)
 
-dual_ema_algo = TradingAlgorithm(initialize=dual_ema.initialize,
-                                 handle_data=dual_ema.handle_data,
-                                 capital_base=100000.0)
-
-#run algo
-perf_manual = buy_algo.run(panel)
+# run algo
 perf_manual = buy_and_hold_algo.run(panel)
-perf_manual = dual_ema_algo.run(panel)
 
-#calculation
+# calculation
 total_pnl = perf_manual['pnl'][-1:].values
 
-buy_trade = perf_manual[["status"]].loc[perf_manual["status"] == "buy"].count()
+buy_trade = perf_manual[["status"]].loc[perf_manual['status'] == 'buy'].count()
 
-sell_trade = perf_manual[["status"]].loc[perf_manual["status"] == "sell"].count()
+sell_trade = perf_manual[["status"]].loc[perf_manual['status'] == 'sell'].count()
 
 total_trade = buy_trade + sell_trade
