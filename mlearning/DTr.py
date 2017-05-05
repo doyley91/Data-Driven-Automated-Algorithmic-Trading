@@ -2,83 +2,103 @@ import functions as fc
 import random as rand
 import pandas as pd
 import numpy as np
+from collections import OrderedDict
 from sklearn.tree import DecisionTreeRegressor, export_graphviz
 import pydotplus as pydot
 import matplotlib.pyplot as plt
 
 
-def run(ticker='AAPL', start=None, end=None):
+def run(tickers='AAPL', start=None, end=None, n_steps=21):
+    data = OrderedDict()
+    pred_data = OrderedDict()
+    forecast_data = OrderedDict()
 
-    df = fc.get_time_series(ticker, start, end)
+    for ticker in tickers:
+        data[ticker] = fc.get_time_series(ticker, start, end)
 
-    fc.plot_end_of_day(df['adj_close'], title=ticker, xlabel='time', ylabel='$', legend='Adjusted Close $')
+        data[ticker] = fc.get_sma_regression_features(data[ticker]).dropna()
 
-    df = fc.get_sma_regression_features(df).dropna()
+        # cross-validation testing
+        split = rand.uniform(0.60, 0.80)
 
-    # cross-validation testing
-    split = rand.uniform(0.60, 0.80)
+        train_size = int(len(data[ticker]) * split)
 
-    train_size = int(len(df) * split)
+        train, test = data[ticker][0:train_size], data[ticker][train_size:len(data[ticker])]
 
-    train, test = df[0:train_size], df[train_size:len(df)]
+        features = ['sma_15', 'sma_50']
 
-    features = ['sma_15', 'sma_50']
+        # values of features
+        X = np.array(train[features].values)
 
-    # values of features
-    X = np.array(train[features].values)
+        # target values
+        Y = np.array(train['adj_close'])
 
-    # target values
-    Y = np.array(train['adj_close'])
+        mdl = DecisionTreeRegressor().fit(X, Y)
+        print(mdl)
 
-    mdl = DecisionTreeRegressor().fit(X, Y)
-    print(mdl)
+        '''
+        dot_data = export_graphviz(mdl,
+                                   out_file=None,
+                                   feature_names=list(train[features]),
+                                   class_names='outcome',
+                                   filled=True,
+                                   rounded=True,
+                                   special_characters=True)
 
-    dot_data = export_graphviz(mdl,
-                               out_file=None,
-                               feature_names=list(train[features]),
-                               class_names='outcome',
-                               filled=True,
-                               rounded=True,
-                               special_characters=True)
+        graph = pydot.graph_from_dot_data(dot_data)
+        graph.write_png("charts/decision-tree-regression.png")
+        '''
 
-    graph = pydot.graph_from_dot_data(dot_data)
-    graph.write_png("charts/decision-tree-regression.png")
+        pred = mdl.predict(test[features].values)
 
-    pred = mdl.predict(test[features].values)
+        # summarize the fit of the model
+        explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(
+            test['adj_close'].values, pred)
 
-    # summarize the fit of the model
-    explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'].values, pred)
+        print("{} Decision Tree\n"
+              "-------------\n"
+              "Explained variance score: {:.3f}\n"
+              "Mean absolute error: {:.3f}\n"
+              "Mean squared error: {:.3f}\n"
+              "Median absolute error: {:.3f}\n"
+              "Coefficient of determination: {:.3f}".format(ticker,
+                                                            explained_variance_score,
+                                                            mean_absolute_error,
+                                                            mean_squared_error,
+                                                            median_absolute_error,
+                                                            r2_score))
 
-    results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
+        pred_results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
+
+        pred_data[ticker] = pred_results
+
+        # out-of-sample test
+        forecast_data[ticker] = fc.forecast_regression(model=mdl, sample=test.copy(), features=features, steps=n_steps)
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.plot(results['original'])
-    ax.plot(results['prediction'])
-    ax.set(title='Time Series Plot', xlabel='time', ylabel='$')
-    ax.legend(['Original $', 'Forecast $'])
+    for ticker in tickers:
+        ax.plot(data[ticker]['adj_close'])
+    ax.set(title='Time series plot', xlabel='time', ylabel='$')
+    ax.legend(tickers)
     fig.tight_layout()
-
-    # Plot the results
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    ax.scatter(X[:,1], Y, c="darkorange", label="data")
-    ax.plot(test['adj_close'].values, pred, color="cornflowerblue", label="max_depth=2", linewidth=2)
-    plt.xlabel("data")
-    plt.ylabel("target")
-    plt.title("Decision Tree Regression")
-    plt.legend()
-    fig.tight_layout()
-
-    # out-of-sample test
-    n_steps = 21
-    forecast = fc.forecast_regression(model=mdl, sample=test, features=features, steps=n_steps)
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.plot(forecast['adj_close'][-n_steps:])
-    ax.set(title='{} Day Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
-    ax.legend(['Forecast $'])
+    for ticker in tickers:
+        ax.plot(pred_data[ticker]['original'], color='red')
+        ax.plot(pred_data[ticker]['prediction'], color='blue')
+    ax.set(title='Neural Network In-Sample Prediction', xlabel='time', ylabel='$')
+    ax.legend(['Original $', 'Prediction $'])
     fig.tight_layout()
 
-    return forecast['adj_close'][-n_steps:]
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    for ticker in tickers:
+        ax.plot(forecast_data[ticker]['adj_close'][-n_steps:])
+    ax.set(title='{} Day Neural Network Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
+    ax.legend(tickers)
+    fig.tight_layout()
+
+    return forecast_data
+
