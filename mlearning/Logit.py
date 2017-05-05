@@ -1,42 +1,56 @@
 import functions as fc
 import pandas as pd
+from collections import OrderedDict
 from sklearn.linear_model import LogisticRegression
 
-df = fc.get_time_series('AAPL')
 
-fc.plot_end_of_day(df['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+def run(tickers='AAPL', start=None, end=None, n_steps=21):
+    data = OrderedDict()
+    pred_data = OrderedDict()
+    forecast_data = OrderedDict()
 
-# add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
-df['outcome'] = df.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
+    for ticker in tickers:
+        data[ticker] = fc.get_time_series(ticker, start, end)
 
-df = fc.get_sma_regression_features(df).dropna()
+        # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
+        data[ticker]['outcome'] = data[ticker].apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else 0, axis=1)
 
-train_size = int(len(df) * 0.80)
+        data[ticker] = fc.get_sma_regression_features(data[ticker]).dropna()
 
-train, test = df[0:train_size], df[train_size:len(df)]
+        train_size = int(len(data[ticker]) * 0.80)
 
-features = ['sma_15', 'sma_50']
+        train, test = data[ticker][0:train_size], data[ticker][train_size:len(data[ticker])]
 
-# values of features
-X = list(train[features].values)
+        features = ['sma_15', 'sma_50']
 
-# target values
-Y = list(train['outcome'].values)
+        # values of features
+        X = list(train[features].values)
 
-# fit a Naive Bayes model to the data
-mdl = LogisticRegression().fit(X, Y)
-print(mdl)
+        # target values
+        Y = list(train['outcome'].values)
 
-# make predictions
-pred = mdl.predict(test[features].values)
+        # fit a Naive Bayes model to the data
+        mdl = LogisticRegression().fit(X, Y)
+        print(mdl)
 
-# summarize the fit of the model
-results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
+        # make predictions
+        pred = mdl.predict(test[features].values)
 
-# summarize the fit of the model
-classification_report, confusion_matrix = fc.get_classifier_metrics(results['original'], results['prediction'])
+        # summarize the fit of the model
+        classification_report, confusion_matrix = fc.get_classifier_metrics(test['outcome'].values, pred)
 
-# out-of-sample test
-n_steps = 21
+        print("{} Logistic Regression\n"
+              "-------------\n"
+              "Classification report: {}\n\n"
+              "Confusion matrix: {}\n\n".format(ticker,
+                                                classification_report,
+                                                confusion_matrix))
 
-forecast = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
+        pred_results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
+
+        pred_data[ticker] = pred_results
+
+        # out-of-sample test
+        forecast_data[ticker] = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
+
+    return forecast_data

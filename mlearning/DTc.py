@@ -1,53 +1,72 @@
 import functions as fc
 import pandas as pd
 from sklearn import metrics
+from collections import OrderedDict
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 import pydotplus as pydot
 
-AAPL = fc.get_time_series('AAPL')
 
-fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+def run(tickers='AAPL', start=None, end=None, n_steps=21):
+    data = OrderedDict()
+    pred_data = OrderedDict()
+    forecast_data = OrderedDict()
 
-# add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
-AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else -1, axis=1)
+    for ticker in tickers:
+        data[ticker] = fc.get_time_series(ticker, start, end)
 
-AAPL = fc.get_sma_classifier_features(AAPL)
+        # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
+        data[ticker]['outcome'] = data[ticker].apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else 0, axis=1)
 
-train_size = int(len(AAPL) * 0.80)
+        data[ticker] = fc.get_sma_classifier_features(data[ticker])
 
-train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+        train_size = int(len(data[ticker]) * 0.80)
 
-features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
+        train, test = data[ticker][0:train_size], data[ticker][train_size:len(data[ticker])]
 
-# values of features
-X = list(train[features].values)
+        features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
 
-# target values
-Y = list(train['outcome'])
+        # values of features
+        X = list(train[features].values)
 
-mdl = DecisionTreeClassifier().fit(X, Y)
-print(mdl)
+        # target values
+        Y = list(train['outcome'])
 
-dot_data = export_graphviz(mdl,
-                           out_file=None,
-                           feature_names=list(train[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']]),
-                           class_names='outcome',
-                           filled=True,
-                           rounded=True,
-                           special_characters=True)
+        mdl = DecisionTreeClassifier().fit(X, Y)
+        print(mdl)
 
-graph = pydot.graph_from_dot_data(dot_data)
-graph.write_png("charts/decision-tree-classifier2.png")
+        '''
+        dot_data = export_graphviz(mdl,
+                                   out_file=None,
+                                   feature_names=list(train[['feat1', 'feat2', 'feat3', 'feat4', 'feat5']]),
+                                   class_names='outcome',
+                                   filled=True,
+                                   rounded=True,
+                                   special_characters=True)
+        
+        graph = pydot.graph_from_dot_data(dot_data)
+        graph.write_png("charts/decision-tree-classifier2.png")
+        '''
 
-pred = mdl.predict(test[features].values)
-pred_prob = mdl.predict_proba(test[features].values)
+        pred = mdl.predict(test[features].values)
+        pred_prob = mdl.predict_proba(test[features].values)
 
-print(metrics.classification_report(test['outcome'], pred))
-print(metrics.confusion_matrix(test['outcome'], pred))
+        # summarize the fit of the model
+        classification_report, confusion_matrix = fc.get_classifier_metrics(test['outcome'].values, pred)
 
-results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
+        print("{} Decision Tree\n"
+              "-------------\n"
+              "Classification report: {}\n"
+              "Confusion matrix: {}\n"
+              "Prediction probability: {}\n".format(ticker,
+                                                    classification_report,
+                                                    confusion_matrix,
+                                                    pred_prob))
 
-# out-of-sample test
-n_steps = 21
+        pred_results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
 
-forecast = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
+        pred_data[ticker] = pred_results
+
+        # out-of-sample test
+        forecast_data[ticker] = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
+
+    return forecast_data

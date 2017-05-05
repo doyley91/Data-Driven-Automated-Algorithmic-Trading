@@ -1,47 +1,57 @@
 import functions as fc
 import pandas as pd
 import numpy as np
-from sklearn import metrics
+from collections import OrderedDict
 from sklearn.svm import SVC
 
-AAPL = fc.get_time_series('AAPL')
 
-fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+def run(tickers='AAPL', start=None, end=None, n_steps=21):
+    data = OrderedDict()
+    pred_data = OrderedDict()
+    forecast_data = OrderedDict()
 
-# add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
-AAPL['outcome'] = AAPL.apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else 0, axis=1)
+    for ticker in tickers:
+        data[ticker] = fc.get_time_series(ticker, start, end)
 
-AAPL = fc.get_sma_classifier_features(AAPL)
+        # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
+        data[ticker]['outcome'] = data[ticker].apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else 0, axis=1)
 
-train_size = int(len(AAPL) * 0.80)
+        data[ticker] = fc.get_sma_classifier_features(data[ticker]).dropna()
 
-train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+        train_size = int(len(data[ticker]) * 0.80)
 
-features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
+        train, test = data[ticker][0:train_size], data[ticker][train_size:len(data[ticker])]
 
-# values of features
-X = np.array(train[features].values)
+        features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
 
-# target values
-Y = np.array(train['outcome'])
+        # values of features
+        X = np.array(train[features].values)
 
-# fit a SVM model to the data
-mdl = SVC().fit(X, Y)
-print(mdl)
+        # target values
+        Y = np.array(train['outcome'])
 
-# make predictions
-pred = mdl.predict(test[features].values)
+        # fit a SVM model to the data
+        mdl = SVC().fit(X, Y)
+        print(mdl)
 
-results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
+        # make predictions
+        pred = mdl.predict(test[features].values)
 
-# summarize the fit of the model
-classification_report, confusion_matrix = fc.get_classifier_metrics(results['original'], results['prediction'])
+        # summarize the fit of the model
+        classification_report, confusion_matrix = fc.get_classifier_metrics(test['outcome'].values, pred)
 
-# using just 2 features
-X = np.array(train[features].values)
+        print("{} Support Vector Machine\n"
+              "-------------\n"
+              "Classification report: {}\n\n"
+              "Confusion matrix: {}\n\n".format(ticker,
+                                                classification_report,
+                                                confusion_matrix))
 
-fc.plot_svm_2(X, Y)
+        pred_results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
 
-# out-of-sample test
-n_steps = 21
-forecast = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
+        pred_data[ticker] = pred_results
+
+        # out-of-sample test
+        forecast_data[ticker] = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
+
+    return forecast_data
