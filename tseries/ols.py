@@ -1,56 +1,90 @@
 import functions as fc
 import pandas as pd
-import numpy as np
+import random as rand
+from collections import OrderedDict
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL')
 
-fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+def run(tickers='AAPL', start=None, end=None, n_steps=21):
+    data = OrderedDict()
+    pred_data = OrderedDict()
+    forecast_data = OrderedDict()
 
-AAPL = fc.get_sma_regression_features(AAPL).dropna()
+    for ticker in tickers:
+        data[ticker] = fc.get_time_series(ticker, start, end)
 
-train_size = int(len(AAPL) * 0.80)
+        data[ticker] = fc.get_sma_regression_features(data[ticker]).dropna()
 
-train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+        # cross-validation testing
+        split = rand.uniform(0.60, 0.80)
 
-# values of features
-X = list(train['sma_15'].values)
+        train_size = int(len(data[ticker]) * split)
 
-# target values
-Y = list(train['adj_close'].values)
+        train, test = data[ticker][0:train_size], data[ticker][train_size:len(data[ticker])]
 
-mdl = sm.OLS(Y, X).fit()
-mdl.summary()
+        # values of features
+        X = list(train['sma_15'].values)
 
-mdl.params
+        # target values
+        Y = list(train['adj_close'].values)
 
-mdl.bse
+        mdl = sm.OLS(Y, X).fit()
+        print(mdl.summary())
 
-# in sample prediction
-pred = mdl.predict(test['sma_15'].values)
+        print(mdl.params)
 
-# summarize the fit of the model
-explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'], pred)
+        print(mdl.bse)
 
-results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
+        # in sample prediction
+        pred = mdl.predict(test['sma_15'].values)
 
-# Plot 21 day forecast for AAPL returns
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(results['original'])
-ax.plot(results['prediction'])
-ax.set(title='OLS In-Sample Return Prediction', xlabel='time', ylabel='$')
-ax.legend(['Original', 'Prediction'])
-fig.tight_layout()
+        # summarize the fit of the model
+        explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'].values, pred)
 
-# out-of-sample test
-n_steps = 21
-forecast = fc.forecast_regression(model=mdl, sample=test, features='sma_15', steps=n_steps)
+        print("{} Ordinary Least Squares\n"
+              "-------------\n"
+              "Explained variance score: {:.3f}\n"
+              "Mean absolute error: {:.3f}\n"
+              "Mean squared error: {:.3f}\n"
+              "Median absolute error: {:.3f}\n"
+              "Coefficient of determination: {:.3f}".format(ticker,
+                                                            explained_variance_score,
+                                                            mean_absolute_error,
+                                                            mean_squared_error,
+                                                            median_absolute_error,
+                                                            r2_score))
 
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(forecast['adj_close'][-n_steps:])
-ax.set(title='{} Day Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
-ax.legend(['Forecast $'])
-fig.tight_layout()
+        pred_results = pd.DataFrame(data=dict(original=test['adj_close'], prediction=pred), index=test.index)
+
+        pred_data[ticker] = pred_results
+
+        # out-of-sample test
+        forecast_data[ticker] = fc.forecast_regression(model=mdl, sample=test, features='sma_15', steps=n_steps)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    for ticker in tickers:
+        ax.plot(data[ticker]['adj_close'])
+    ax.set(title='Time series plot', xlabel='time', ylabel='$')
+    ax.legend(tickers)
+    fig.tight_layout()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    for ticker in tickers:
+        ax.plot(pred_data[ticker]['original'], color='red')
+        ax.plot(pred_data[ticker]['prediction'], color='blue')
+    ax.set(title='OLS In-Sample Prediction', xlabel='time', ylabel='$')
+    ax.legend(['Original $', 'Prediction $'])
+    fig.tight_layout()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    for ticker in tickers:
+        ax.plot(forecast_data[ticker]['adj_close'][-n_steps:])
+    ax.set(title='{} Day OLS Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
+    ax.legend(tickers)
+    fig.tight_layout()
+
+    return forecast_data

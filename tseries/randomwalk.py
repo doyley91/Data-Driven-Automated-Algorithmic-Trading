@@ -1,15 +1,20 @@
 import functions as fc
 import numpy as np
+from collections import OrderedDict
 
-df = fc.get_time_series('AAPL')
 
-fc.plot_end_of_day(df['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+def run(tickers='AAPL', start=None, end=None):
+    data = OrderedDict()
 
-df['first_difference'] = df['adj_close'].diff()
+    for ticker in tickers:
+        data[ticker] = fc.get_time_series(ticker, start, end)
 
-df['first_difference'].dropna(inplace=True)
+        # log_returns
+        data[ticker]['log_returns'] = np.log(data[ticker]['adj_close'] / data[ticker]['adj_close'].shift(1))
 
-# plotting the histogram of returns
-fc.plot_histogram(np.diff(df['first_difference']))
+        data[ticker]['log_returns'].dropna(inplace=True)
 
-fc.plot_time_series(np.diff(df['first_difference']), lags=30)
+        # plotting the histogram of returns
+        fc.plot_histogram(data[ticker]['log_returns'])
+
+        fc.plot_time_series(data[ticker]['log_returns'], lags=30)

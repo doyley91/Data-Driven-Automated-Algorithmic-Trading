@@ -61,7 +61,7 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         pred_data[ticker] = pred_results
 
         # out-of-sample test
-        forecast_data[ticker] = fc.forecast_regression(model=mdl, sample=test.copy(), features=features, steps=n_steps)
+        forecast_data[ticker] = fc.forecast_regression(model=mdl, sample=test, features=features, steps=n_steps)
 
     fig = plt.figure()
     ax = fig.add_subplot(111)

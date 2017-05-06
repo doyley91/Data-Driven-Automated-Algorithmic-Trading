@@ -1,85 +1,141 @@
 import functions as fc
 import pandas as pd
 import numpy as np
+from collections import OrderedDict
+import random as rand
 import matplotlib.pyplot as plt
 
-AAPL = fc.get_time_series('AAPL')
 
-fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+def run(tickers='AAPL', start=None, end=None, n_steps=21):
+    data = OrderedDict()
+    pred_data = OrderedDict()
+    forecast_data = OrderedDict()
 
-# log price
-AAPL['log_price'] = np.log(AAPL['adj_close'])
+    for ticker in tickers:
+        data[ticker] = fc.get_time_series(ticker, start, end)
 
-# plotting the histogram of returns
-fc.plot_histogram(AAPL['log_price'])
+        # log_returns
+        data[ticker]['log_returns'] = np.log(data[ticker]['adj_close'] / data[ticker]['adj_close'].shift(1))
 
-fc.plot_time_series(AAPL['log_price'], lags=30)
+        data[ticker]['log_returns'].dropna(inplace=True)
 
-print("AAPL Series\n"
-      "-------------\n"
-      "mean: {:.3f}\n"
-      "variance: {:.3f}\n"
-      "standard deviation: {:.3f}".format(AAPL['adj_close'].mean(), AAPL['adj_close'].var(), AAPL['adj_close'].std()))
+        # plotting the histogram of returns
+        fc.plot_histogram(data[ticker]['log_returns'])
 
-adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(AAPL['log_price'])
+        fc.plot_time_series(data[ticker]['log_returns'], lags=30)
 
-print("Stationarity Statistics\n"
-      "-------------\n"
-      "Augmented Dickey-Fuller unit root test: {}\n"
-      "MacKinnon’s approximate p-value: {}\n"
-      "Critical values for the test statistic at the 1 %, 5 %, and 10 % levels: {}\n"
-      "D’Agostino and Pearson’s normality test: {}\n"
-      "Shapiro-Wilk normality test: {}\n"
-      "Kolmogorov-Smirnov goodness of fit test: {}\n"
-      "Anderson-Darling test: {}\n"
-      "Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) stationarity test: {}".format(adfstat,
-                                                                                     pvalue,
-                                                                                     critvalues,
-                                                                                     dagostino_results,
-                                                                                     shapiro_results,
-                                                                                     ks_results,
-                                                                                     anderson_results,
-                                                                                     kpss_results))
+        print("{} Series\n"
+              "-------------\n"
+              "mean: {:.3f}\n"
+              "median: {:.3f}\n"
+              "maximum: {:.3f}\n"
+              "minimum: {:.3f}\n"
+              "variance: {:.3f}\n"
+              "standard deviation: {:.3f}\n"
+              "skewness: {:.3f}\n"
+              "kurtosis: {:.3f}".format(ticker,
+                                        data[ticker]['adj_close'].mean(),
+                                        data[ticker]['adj_close'].median(),
+                                        data[ticker]['adj_close'].max(),
+                                        data[ticker]['adj_close'].min(),
+                                        data[ticker]['adj_close'].var(),
+                                        data[ticker]['adj_close'].std(),
+                                        data[ticker]['adj_close'].skew(),
+                                        data[ticker]['adj_close'].kurtosis()))
 
-# Fit ARMA model to AAPL returns
-res_tup = fc.get_best_arma_model(AAPL['log_price'])
+        adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(
+            data[ticker]['log_returns'].values)
 
-res_tup[2].summary()
+        print("{} Stationarity Statistics\n"
+              "-------------\n"
+              "Augmented Dickey-Fuller unit root test: {}\n"
+              "MacKinnon’s approximate p-value: {}\n"
+              "Critical values for the test statistic at the 1 %, 5 %, and 10 % levels: {}\n"
+              "D’Agostino and Pearson’s normality test: {}\n"
+              "Shapiro-Wilk normality test: {}\n"
+              "Kolmogorov-Smirnov goodness of fit test: {}\n"
+              "Anderson-Darling test: {}\n"
+              "Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) stationarity test: {}".format(ticker,
+                                                                                             adfstat,
+                                                                                             pvalue,
+                                                                                             critvalues,
+                                                                                             dagostino_results,
+                                                                                             shapiro_results,
+                                                                                             ks_results,
+                                                                                             anderson_results,
+                                                                                             kpss_results))
 
-fc.plot_time_series(res_tup[2].resid, lags=30)
+        # Fit ARMA model to AAPL returns
+        res_tup = fc.get_best_arma_model(data[ticker]['log_returns'])
 
-train_size = int(len(AAPL) * 0.80)
+        res_tup[2].summary()
 
-train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
+        # verify stationarity
+        adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(
+            res_tup[2].resid.values)
 
-# in-sample prediction
-pred = res_tup[2].predict(start=len(train), end=len(train)+len(test)-1)
+        print("Stationarity Statistics\n"
+              "-------------\n"
+              "Augmented Dickey-Fuller unit root test: {}\n"
+              "MacKinnon’s approximate p-value: {}\n"
+              "Critical values for the test statistic at the 1 %, 5 %, and 10 % levels: {}\n"
+              "D’Agostino and Pearson’s normality test: {}\n"
+              "Shapiro-Wilk normality test: {}\n"
+              "Kolmogorov-Smirnov goodness of fit test: {}\n"
+              "Anderson-Darling test: {}\n"
+              "Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) stationarity test: {}".format(adfstat,
+                                                                                             pvalue,
+                                                                                             critvalues,
+                                                                                             dagostino_results,
+                                                                                             shapiro_results,
+                                                                                             ks_results,
+                                                                                             anderson_results,
+                                                                                             kpss_results))
 
-results = pd.DataFrame(data=dict(original=np.exp(test['log_price']), prediction=np.exp(pred)), index=test.index)
+        fc.plot_time_series(res_tup[2].resid, lags=30)
 
-# summarize the fit of the model
-explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(results['original'], results['prediction'])
+        # cross-validation testing
+        split = rand.uniform(0.60, 0.80)
 
-# Plot 21 day forecast for AAPL returns
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(results['original'])
-ax.plot(results['prediction'])
-ax.set(title='ARMA{} In-Sample Return Prediction'.format(res_tup[1]), xlabel='time', ylabel='$')
-ax.legend(['Original', 'Prediction'])
-fig.tight_layout()
+        train_size = int(len(data[ticker]) * split)
 
-#out-of-sample forecast
-n_days = 21
+        train, test = data[ticker][0:train_size], data[ticker][train_size:len(data[ticker])]
 
-forecast = res_tup[2].forecast(steps=n_days)
+        # in-sample prediction
+        pred_data[ticker] = res_tup[2].predict(start=len(train),
+                                               end=len(train) + len(test) - 1)
 
-forecast = np.exp(forecast[0])
+        pred_results = pd.DataFrame(data=dict(original=test['log_returns'],
+                                              prediction=pred_data[ticker].values),
+                                    index=test.index)
 
-# Plot 21 day forecast for AAPL returns
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(forecast)
-ax.set(title='{} Day ARMA{} Out-Of-Sample Return Forecast'.format(n_days, res_tup[1]), xlabel='time', ylabel='$')
-ax.legend(['Forecast'])
-fig.tight_layout()
+        # prediction plot
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(pred_results['original'])
+        ax.plot(pred_results['prediction'])
+        ax.set(title='{} ARMA{} In-Sample Return Prediction'.format(ticker, res_tup[1]), xlabel='time', ylabel='$')
+        ax.legend(['Original', 'Prediction'])
+        fig.tight_layout()
+
+        # out-of-sample forecast
+        forecast_data[ticker] = res_tup[2].forecast(steps=n_steps)
+
+        # forecast plot
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(forecast_data[ticker][0])
+        ax.set(title='{} Day {} ARMA{} Out-Of-Sample Return Forecast'.format(n_steps, ticker, res_tup[1]), xlabel='time', ylabel='$')
+        ax.legend(['Forecast'])
+        fig.tight_layout()
+
+    # end of day plot of all tickers
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    for ticker in tickers:
+        ax.plot(data[ticker]['adj_close'])
+    ax.set(title='Time series plot', xlabel='time', ylabel='$')
+    ax.legend(tickers)
+    fig.tight_layout()
+
+    return forecast_data
