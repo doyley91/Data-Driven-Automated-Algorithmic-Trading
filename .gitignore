@@ -3,3 +3,4 @@ charts/
 .idea/
 venv/
 keys.py
+results/

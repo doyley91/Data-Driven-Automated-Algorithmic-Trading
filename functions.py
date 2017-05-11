@@ -38,6 +38,7 @@ def get_time_series(ticker=None, start_date=None, end_date=None):
     :return: 
     """
     df = pd.read_csv(file_location, index_col='date', parse_dates=True)
+    df.index = df.index.tz_localize('UTC').tz_convert('UTC')
 
     if ticker is None:
         return df
