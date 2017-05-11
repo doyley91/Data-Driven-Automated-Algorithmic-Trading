@@ -36,7 +36,7 @@ class MachineLearningClassifier(TradingAlgorithm):
         Called every minute.
         """
         for ticker in tickers:
-            context.recent_prices[ticker].append(data[symbol(ticker)]['close'])  # Update the recent prices
+            context.recent_prices[ticker].append(data.current(symbol(ticker), 'close'))  # Update the recent prices
             if len(context.recent_prices[ticker]) >= context.window_length + 2:  # If there's enough recent price data
                 # Add independent variables, the prior changes
                 context.sma15 = ta.SMA(np.array(context.recent_prices[ticker]), 15)[context.window_length-1:]
@@ -54,7 +54,7 @@ class MachineLearningClassifier(TradingAlgorithm):
                 if len(context.Y) >= 100:  # There needs to be enough data points to make a good model
                     context.mdl.fit(context.X, context.Y[context.window_length-1:])  # Generate the model
 
-                    context.pred = context.mdl.predict(ta.SMA(np.array(context.recent_prices[ticker]))[-1:])  # Predict
+                    context.pred = context.mdl.predict(context.X[-1:])  # Predict
 
                     # If prediction = 1, buy all shares affordable, if 0 sell all shares
                     # order(asset=symbol(ticker), amount=100)
