@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from collections import OrderedDict
 from zipline.algorithm import TradingAlgorithm
-from zipline.api import symbol, order, record
+from zipline.api import symbol, order_target_percent, record
 import talib as ta
 
 
@@ -14,6 +14,14 @@ class MachineLearningRegressor(TradingAlgorithm):
         Called once at the start of the algorithm.
         """
         context.window_length = 50  # Amount of prior bars to study
+
+        context.data_points = 100
+
+        context.forecast_steps = 100  # Number of days to forecast
+
+        context.trading_freq = 50  # trading frequency, days
+
+        context.forecast = []
 
         context.mdl = RandomForestRegressor()  # Use a random forest classifier
 
@@ -38,29 +46,64 @@ class MachineLearningRegressor(TradingAlgorithm):
         for ticker in tickers:
             context.recent_prices[ticker].append(data.current(symbol(ticker), 'close'))  # Update the recent prices
             if len(context.recent_prices[ticker]) >= context.window_length + 2:  # If there's enough recent price data
-                # Add independent variables, the prior changes
-                context.sma15 = ta.SMA(np.array(context.recent_prices[ticker]), 15)[context.window_length-1:]
-                # drop nan values
-                context.sma15 = context.sma15[~np.isnan(context.sma15)]
+                # Limit trading frequency
+                if len(context.recent_prices[ticker]) % context.trading_freq != 0.0:
+                    return
 
                 # Add independent variables, the prior changes
-                context.sma50 = ta.SMA(np.array(context.recent_prices[ticker]), 50)
-                # drop nan values
-                context.sma50 = context.sma50[~np.isnan(context.sma50)]
+                context.sma15 = get_sma(close=context.recent_prices[ticker], days=15, window=context.window_length)
+                context.sma50 = get_sma(close=context.recent_prices[ticker], days=50, window=context.window_length)
 
                 context.X = np.array(list(zip(context.sma15, context.sma50)))
                 context.Y = context.recent_prices[ticker]  # Add dependent variable, the final change
 
-                if len(context.Y) >= 100:  # There needs to be enough data points to make a good model
-                    context.mdl.fit(context.X, context.Y[context.window_length-1:])  # Generate the model
+                if len(context.Y) >= context.data_points:  # There needs to be enough data points to make a good model
+                    context.mdl.fit(context.X, context.Y[context.window_length - 1:])  # Generate the model
 
                     context.pred = context.mdl.predict(context.X[-1:])  # Predict
 
+                    context.forecast = np.append(context.recent_prices[ticker], context.pred)
+
+                    for k in range(1, context.forecast_steps):
+                        context.sma15 = get_sma(close=context.forecast, days=15, window=context.window_length)
+                        context.sma50 = get_sma(close=context.forecast, days=50, window=context.window_length)
+
+                        context.X = np.array(list(zip(context.sma15, context.sma50)))
+
+                        context.pred = context.mdl.predict(context.X[-1:])
+
+                        context.forecast = np.append(context.forecast, context.pred)
+
                     # If prediction = 1, buy all shares affordable, if 0 sell all shares
-                    # order(asset=symbol(ticker), amount=100)
-                    order(asset=symbol(ticker), amount=100)
+                    if (context.forecast[-1:] - context.forecast[:1]) > 50:
+                        # order(asset=symbol(ticker), amount=100)
+                        order_target_percent(asset=symbol(ticker),
+                                             target=get_percentage_difference(first=context.forecast[:1],
+                                                                              last=context.forecast[-1:]))
+                    elif (context.forecast[-1:] - context.forecast[:1]) < 50:
+                        order_target_percent(asset=symbol(ticker),
+                                             target=-get_percentage_difference(first=context.forecast[:1],
+                                                                               last=context.forecast[-1:]))
 
                     record(prediction=int(context.pred))
+
+
+def get_sma(close, days, window):
+    sma = ta.SMA(np.array(close), days)[window - 1:]
+
+    # drop nan values
+    sma = sma[~np.isnan(sma)]
+
+    return sma
+
+
+def get_percentage_difference(first, last):
+    percent = ((last - first) / first) / 0.100
+
+    percent = float(np.around(percent, 2))
+
+    return percent
+
 
 if __name__ == '__main__':
     tickers = ['AAPL', 'MSFT']

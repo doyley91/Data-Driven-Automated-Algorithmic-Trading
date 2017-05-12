@@ -1,10 +1,11 @@
 import functions as fc
+import random as rand
 import pandas as pd
 from collections import OrderedDict
 from sklearn.neural_network import MLPClassifier
 
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -17,7 +18,10 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
 
         data[ticker] = fc.get_sma_classifier_features(data[ticker]).dropna()
 
-        train_size = int(len(data[ticker]) * 0.80)
+        # cross-validation testing
+        split = rand.uniform(0.60, 0.80)
+
+        train_size = int(len(data[ticker]) * split)
 
         train, test = data[ticker][0:train_size], data[ticker][train_size:len(data[ticker])]
 
@@ -54,3 +58,8 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         forecast_data[ticker] = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
 
     return forecast_data
+
+if __name__ == '__main__':
+    symbols = ['AAPL', 'MSFT']
+
+    run(tickers=symbols)

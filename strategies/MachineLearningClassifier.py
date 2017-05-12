@@ -16,27 +16,36 @@ class MachineLearningClassifier(TradingAlgorithm):
         """
         context.window_length = 6  # Amount of prior bars to study
 
+        context.data_points = 100
+
+        context.forecast_steps = 100  # Number of days to forecast
+
+        context.forecast = []
+
         context.mdl = RandomForestClassifier()  # Use a random forest classifier
+
+        context.sma2 = context.sma3 = context.sma4 = context.sma5 = context.sma6 = []
+
+        context.sma2_result = context.sma3_result = context.sma4_result = context.sma5_result = context.sma6_result = []
 
         # deques are lists with a maximum length where old entries are shifted out
         context.recent_open_price = OrderedDict()  # Stores recent open prices
         context.recent_close_price = OrderedDict()  # Stores recent close prices
-        context.sma2 = OrderedDict()
-        context.sma3 = OrderedDict()
-        context.sma4 = OrderedDict()
-        context.sma5 = OrderedDict()
-        context.sma6 = OrderedDict()
-        context.sma6 = OrderedDict()
+        context.sma_2_result = OrderedDict()
+        context.sma_3_result = OrderedDict()
+        context.sma_4_result = OrderedDict()
+        context.sma_5_result = OrderedDict()
+        context.sma_6_result = OrderedDict()
         context.result = OrderedDict()
 
         for ticker in tickers:
             context.recent_open_price[ticker] = []
             context.recent_close_price[ticker] = []
-            context.sma2[ticker] = []
-            context.sma3[ticker] = []
-            context.sma4[ticker] = []
-            context.sma5[ticker] = []
-            context.sma6[ticker] = []
+            context.sma_2_result[ticker] = []
+            context.sma_3_result[ticker] = []
+            context.sma_4_result[ticker] = []
+            context.sma_5_result[ticker] = []
+            context.sma_6_result[ticker] = []
             context.result[ticker] = []
 
         context.X = []  # Independent, or input variables
@@ -51,77 +60,104 @@ class MachineLearningClassifier(TradingAlgorithm):
         for ticker in tickers:
             context.recent_open_price[ticker].append(data.current(symbol(ticker), 'open'))  # Update the recent prices
             context.recent_close_price[ticker].append(data.current(symbol(ticker), 'close'))  # Update the recent prices
-            if len(context.recent_close_price[ticker]) == context.window_length + 2:  # If there's enough recent price data
-                # Add independent variables, the prior changes
-                context.sma2[ticker] = ta.SMA(np.array(context.recent_close_price[ticker]), 2)[context.window_length - 1:]
-                # drop nan values
-                context.sma2[ticker] = context.sma2[ticker][~np.isnan(context.sma2[ticker])]
 
+            # If there's enough recent price data
+            if len(context.recent_close_price[ticker]) >= context.window_length + 2:
                 # Add independent variables, the prior changes
-                context.sma3[ticker] = ta.SMA(np.array(context.recent_close_price[ticker]), 3)
-                # drop nan values
-                context.sma3[ticker] = context.sma3[ticker][~np.isnan(context.sma3[ticker])]
-
-                # Add independent variables, the prior changes
-                context.sma4[ticker] = ta.SMA(np.array(context.recent_close_price[ticker]), 4)[context.window_length - 1:]
-                # drop nan values
-                context.sma4[ticker] = context.sma4[ticker][~np.isnan(context.sma4[ticker])]
-
-                # Add independent variables, the prior changes
-                context.sma5[ticker] = ta.SMA(np.array(context.recent_close_price[ticker]), 5)[context.window_length - 1:]
-                # drop nan values
-                context.sma5[ticker] = context.sma5[ticker][~np.isnan(context.sma5[ticker])]
-
-                # Add independent variables, the prior changes
-                context.sma6[ticker] = ta.SMA(np.array(context.recent_close_price[ticker]), 6)
-                # drop nan values
-                context.sma6[ticker] = context.sma6[ticker][~np.isnan(context.sma6[ticker])]
+                context.sma2 = get_sma(context.recent_close_price[ticker], 2, context.window_length)
+                context.sma3 = get_sma(context.recent_close_price[ticker], 3, context.window_length)
+                context.sma4 = get_sma(context.recent_close_price[ticker], 4, context.window_length)
+                context.sma5 = get_sma(context.recent_close_price[ticker], 5, context.window_length)
+                context.sma6 = get_sma(context.recent_close_price[ticker], 6, context.window_length)
 
                 # Make a list of 1's and 0's, 1 when the price increased from the prior bar
-                context.sma2 = np.apply_along_axis(
-                    func1d=lambda x: 1 if context.recent_close_price > context.sma2[ticker] else 0,
-                    axis=1,
-                    arr=context.sma2[ticker])
+                context.sma_2_result[ticker] = np.append(context.sma_2_result[ticker],
+                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
+                                                                            context.sma2[-1:]))
+                context.sma_3_result[ticker] = np.append(context.sma_3_result[ticker],
+                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
+                                                                            context.sma3[-1:]))
 
-                context.sma3 = np.apply_along_axis(
-                    func1d=lambda x: 1 if context.recent_close_price > context.sma3[ticker] else 0,
-                    axis=1,
-                    arr=context.sma3[ticker])
+                context.sma_4_result[ticker] = np.append(context.sma_4_result[ticker],
+                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
+                                                                            context.sma4[-1:]))
 
-                context.sma4 = np.apply_along_axis(
-                    func1d=lambda x: 1 if context.recent_close_price > context.sma4[ticker] else 0,
-                    axis=1,
-                    arr=context.sma4[ticker])
+                context.sma_5_result[ticker] = np.append(context.sma_5_result[ticker],
+                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
+                                                                            context.sma5[-1:]))
 
-                context.sma5 = np.apply_along_axis(
-                    func1d=lambda x: 1 if context.recent_close_price > context.sma5[ticker] else 0,
-                    axis=1,
-                    arr=context.sma5[ticker])
+                context.sma_6_result[ticker] = np.append(context.sma_6_result[ticker],
+                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
+                                                                            context.sma6[-1:]))
 
-                context.sma6 = np.apply_along_axis(
-                    func1d=lambda x: 1 if context.recent_close_price > context.sma6[ticker] else 0,
-                    axis=1,
-                    arr=context.sma6[ticker])
-
-                context.result[ticker] = np.apply_along_axis(
-                    func1d=lambda x: 1 if context.recent_close_price > context.recent_open_price[ticker] else 0,
-                    axis=1,
-                    arr=context.result[ticker])
+                context.result[ticker] = np.append(context.result[ticker],
+                                                   is_x_higher_than_y(context.recent_close_price[ticker][-1:],
+                                                                      context.recent_open_price[ticker][-1:]))
 
                 # Add independent variables, the prior changes
-                context.X = np.array(list(zip(context.sma2, context.sma3, context.sma4, context.sma5, context.sma6)))
-                context.Y = context.result  # Add dependent variable, the final change
+                context.X = np.array(list(zip(context.sma_2_result[ticker],
+                                              context.sma_3_result[ticker],
+                                              context.sma_4_result[ticker],
+                                              context.sma_5_result[ticker],
+                                              context.sma_6_result[ticker])))
 
-                if len(context.Y) >= 100:  # There needs to be enough data points to make a good model
+                context.Y = context.result[ticker]  # Add dependent variable, the final change
+
+                if len(context.Y) >= context.data_points:  # There needs to be enough data points to make a good model
                     context.mdl.fit(context.X, context.Y)  # Generate the model
 
                     context.pred = context.mdl.predict(context.X[-1:])  # Predict
 
+                    for k in range(1, context.forecast_steps):
+                        context.forecast = np.append(context.forecast, context.pred)
+
+                        sma2 = ta.SMA(np.array(context.recent_close_price[ticker]), 2)[context.window_length - 1:]
+                        sma3 = ta.SMA(np.array(context.recent_close_price[ticker]), 3)[context.window_length - 1:]
+                        sma4 = ta.SMA(np.array(context.recent_close_price[ticker]), 4)[context.window_length - 1:]
+                        sma5 = ta.SMA(np.array(context.recent_close_price[ticker]), 5)[context.window_length - 1:]
+                        sma6 = ta.SMA(np.array(context.recent_close_price[ticker]), 6)[context.window_length - 1:]
+
+                        context.sma2_result = np.append(context.sma2_result,
+                                                is_x_higher_than_y(context.forecast[-1:],
+                                                                   sma2[-1:]))
+                        context.sma3_result = np.append(context.sma3_result,
+                                                is_x_higher_than_y(context.forecast[-1:],
+                                                                   sma3[-1:]))
+                        context.sma4_result = np.append(context.sma4_result,
+                                                is_x_higher_than_y(context.forecast[-1:],
+                                                                   sma4[-1:]))
+                        context.sma5_result = np.append(context.sma5_result,
+                                                is_x_higher_than_y(context.forecast[-1:],
+                                                                   sma5[-1:]))
+                        context.sma6_result = np.append(context.sma6_result,
+                                                is_x_higher_than_y(context.forecast[-1:],
+                                                                   sma6[-1:]))
+
+                        context.X = np.array(list(zip(context.sma2_result,
+                                                  context.sma3_result,
+                                                  context.sma4_result,
+                                                  context.sma5_result,
+                                                  context.sma6_result)))
+
+                        context.pred = context.mdl.predict(context.X[-1:])
+
                     # If prediction = 1, buy all shares affordable, if 0 sell all shares
-                    # order(asset=symbol(ticker), amount=100)
-                    order(asset=symbol(ticker), ammount=100)
+                    order(asset=symbol(ticker), amount=100)
 
                     record(prediction=int(context.pred))
+
+
+def is_x_higher_than_y(x, y):
+    return 1 if x > y else 0
+
+
+def get_sma(close, days, window):
+    sma = ta.SMA(np.array(close), days)[window - 1:]
+
+    # drop nan values
+    sma = sma[~np.isnan(sma)]
+
+    return sma
 
 
 if __name__ == '__main__':

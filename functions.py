@@ -612,7 +612,7 @@ def get_sma_classifier_features(df):
     df['sma_3'] = ta.SMA(np.array(df['adj_close']), 3)
     df['sma_4'] = ta.SMA(np.array(df['adj_close']), 4)
     df['sma_5'] = ta.SMA(np.array(df['adj_close']), 5)
-    df['sma_6'] = ta.SMA(np.array(df['adj_close']), 5)
+    df['sma_6'] = ta.SMA(np.array(df['adj_close']), 6)
 
     df['sma_2'] = df.apply(lambda x: 1 if x['adj_close'] > x['sma_2'] else 0, axis=1)
     df['sma_3'] = df.apply(lambda x: 1 if x['adj_close'] > x['sma_3'] else 0, axis=1)
