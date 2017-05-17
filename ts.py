@@ -2,17 +2,17 @@
 Source: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
 '''
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from matplotlib.pyplot import style
-from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import acf, pacf
+from statsmodels.tsa.stattools import adfuller
 
 style.use('ggplot')
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set, converting date column to datetime, making the trading date the index for the Pandas DataFrame and sorting the DataFrame by date
@@ -31,6 +31,7 @@ ax.plot(AAPL['adj_close'])
 ax.set(title='AAPL', xlabel='time', ylabel='$')
 ax.legend(['Adjusted Close $'])
 fig.tight_layout()
+
 
 def get_stationarity_statistics(timeseries):
     # Determing rolling statistics
@@ -56,6 +57,7 @@ def get_stationarity_statistics(timeseries):
     for key, value in dftest[4].items():
         dfoutput['Critical Value (%s)' % key] = value
     print(dfoutput)
+
 
 get_stationarity_statistics(AAPL['adj_close'])
 
@@ -129,15 +131,15 @@ fig = plt.figure()
 ax1 = fig.add_subplot(121)
 ax1.plot(lag_acf)
 ax1.axhline(y=0, linestyle='--', color='gray')
-ax1.axhline(y=-1.96/np.sqrt(len(ts_log_diff)), linestyle='--', color='gray')
-ax1.axhline(y=1.96/np.sqrt(len(ts_log_diff)),linestyle='--', color='gray')
+ax1.axhline(y=-1.96 / np.sqrt(len(ts_log_diff)), linestyle='--', color='gray')
+ax1.axhline(y=1.96 / np.sqrt(len(ts_log_diff)), linestyle='--', color='gray')
 ax1.set(title='Autocorrelation Function', xlabel='time', ylabel='Correlation')
 ax1.legend(['Log Returns'])
 ax2 = fig.add_subplot(122)
 ax2.plot(lag_pacf)
-ax2.axhline(y=0, linestyle='--',color='gray')
-ax2.axhline(y=-1.96/np.sqrt(len(ts_log_diff)), linestyle='--', color='gray')
-ax2.axhline(y=1.96/np.sqrt(len(ts_log_diff)), linestyle='--', color='gray')
+ax2.axhline(y=0, linestyle='--', color='gray')
+ax2.axhline(y=-1.96 / np.sqrt(len(ts_log_diff)), linestyle='--', color='gray')
+ax2.axhline(y=1.96 / np.sqrt(len(ts_log_diff)), linestyle='--', color='gray')
 ax2.set(title='Partial Autocorrelation Function', xlabel='time', ylabel='Correlation')
 ax2.legend(['Log Returns'])
 fig.tight_layout()

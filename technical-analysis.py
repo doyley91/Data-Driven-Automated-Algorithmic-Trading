@@ -2,12 +2,12 @@
 Source: https://mrjbq7.github.io/ta-lib/func_groups/price_transform.html
 '''
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 import talib
 from talib import MA_Type
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set
@@ -22,7 +22,7 @@ df.sort_values(by='date')
 # making the trading date the index for the Pandas DataFrame
 df.set_index('date', inplace=True)
 
-#pivoting the DataFrame to create a column for every ticker
+# pivoting the DataFrame to create a column for every ticker
 pdf = df.pivot(index=None, columns='ticker', values='adj_close')
 
 # calculate a simple moving average of the close prices
@@ -38,11 +38,11 @@ df['mom_adj_close'] = df.apply(talib.MOM(np.array(df['adj_close']), timeperiod=5
 df['real'] = df.apply(talib.AD(df['adj_high'], df['adj_low'], df['adj_close'], df['adj_volume']))
 
 # ADOSC - Chaikin A/D Oscillator
-df['real'] = df.apply(talib.ADOSC(df['adj_high'], df['adj_low'], df['adj_close'], df['adj_volume'], fastperiod=3, slowperiod=10))
+df['real'] = df.apply(
+    talib.ADOSC(df['adj_high'], df['adj_low'], df['adj_close'], df['adj_volume'], fastperiod=3, slowperiod=10))
 
 # OBV - On Balance Volume
 df['real'] = df.apply(talib.OBV(df['adj_close'], df['adj_volume']))
-
 
 df['sma_50'] = [talib.SMA(np.array(x.index(), dtype='float'), 20) for x in df.iteritems()]
 
@@ -56,7 +56,7 @@ AAPL = AAPL.loc['2000-6-1':'2017-6-1']
 
 AAPL['SMA_20'] = talib.SMA(np.asarray(AAPL['adj_close']), 20)
 AAPL['SMA_50'] = talib.SMA(np.asarray(AAPL['adj_close']), 50)
-AAPL.plot(y=['adj_close','SMA_20','SMA_50'], title='AAPL Close & Moving Averages')
+AAPL.plot(y=['adj_close', 'SMA_20', 'SMA_50'], title='AAPL Close & Moving Averages')
 
 AAPL['upper'], AAPL['middle'], AAPL['lower'] = talib.BBANDS(np.array(AAPL['adj_close']), matype=MA_Type.T3)
 AAPL.plot(y=['adj_close', 'upper', 'middle', 'lower'], title='AAPL triple exponential bollinger bands')

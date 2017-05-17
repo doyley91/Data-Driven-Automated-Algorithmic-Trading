@@ -1,6 +1,6 @@
-from mlearning import SGDc, SVMc, Logit, BTc, DTc, KNNc, MLPc, RFc, NBBc, NBGc
 import pandas as pd
-from matplotlib import pyplot as plt
+
+from mlearning import SGDc, SVMc, Logit, BTc, DTc, KNNc, MLPc, RFc, NBBc, NBGc
 
 ticker = 'AAPL'
 
@@ -24,4 +24,3 @@ regression_results = pd.DataFrame(data=dict(SGD=SGDc_results.values,
                                             MLP=MLPc_results.values,
                                             RF=RFc_results.values),
                                   index=SGDc_results.index)
-

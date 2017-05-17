@@ -1,10 +1,12 @@
-import functions as fc
 import random as rand
-import pandas as pd
-import numpy as np
 from collections import OrderedDict
-from statsmodels.tsa.ar_model import AR
+
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from statsmodels.tsa.ar_model import AR
+
+import functions as fc
 
 
 def run(tickers='AAPL', start=None, end=None, n_steps=21):

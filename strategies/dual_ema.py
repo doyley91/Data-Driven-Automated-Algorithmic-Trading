@@ -1,8 +1,8 @@
-import pandas as pd
-from zipline.api import order, record
-from talib import EMA
-import matplotlib.pyplot as plt
 import logbook
+import matplotlib.pyplot as plt
+import pandas as pd
+from talib import EMA
+from zipline.api import order, record
 
 stocks = []
 

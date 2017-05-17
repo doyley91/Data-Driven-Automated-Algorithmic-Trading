@@ -1,9 +1,11 @@
-import functions as fc
-import pandas as pd
 import random as rand
 from collections import OrderedDict
-import statsmodels.api as sm
+
 import matplotlib.pyplot as plt
+import pandas as pd
+import statsmodels.api as sm
+
+import functions as fc
 
 
 def run(tickers='AAPL', start=None, end=None, n_steps=21):
@@ -40,7 +42,8 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         pred = mdl.predict(test['sma_15'].values)
 
         # summarize the fit of the model
-        explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'].values, pred)
+        explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(
+            test['adj_close'].values, pred)
 
         print("{} Ordinary Least Squares\n"
               "-------------\n"

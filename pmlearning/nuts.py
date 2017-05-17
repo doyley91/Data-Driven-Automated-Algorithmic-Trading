@@ -2,11 +2,12 @@
 Source: https://pymc-devs.github.io/pymc3/notebooks/getting_started.html
 '''
 
-import functions as fc
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 import pymc3 as pm
 import scipy as sp
+
+import functions as fc
 
 # setting the style of the charts
 plt.style.use('ggplot')
@@ -52,7 +53,7 @@ sim_returns, vol = fc.generate_proj_returns(1000, trace, len(test))
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(AAPL['log_returns'].values, color='blue')
-ax.plot(1+len(train)+np.arange(0, len(test)), sim_returns[1, :], color='red')
+ax.plot(1 + len(train) + np.arange(0, len(test)), sim_returns[1, :], color='red')
 ax.set(title='NUTS In-Sample Returns Prediction', xlabel='time', ylabel='%')
 ax.legend(['Original', 'Prediction'])
 fig.tight_layout()
@@ -88,4 +89,3 @@ ax.plot(AAPL['log_returns'].values, color='blue')
 ax.set(title='Volatility Forecast', xlabel='time', ylabel='%')
 ax.legend(['Original Returns', 'Original Volatility', 'Forecast Volatility'])
 fig.tight_layout()
-

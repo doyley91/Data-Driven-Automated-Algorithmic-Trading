@@ -1,8 +1,10 @@
-import functions as fc
 import random as rand
-import pandas as pd
 from collections import OrderedDict
+
+import pandas as pd
 from sklearn.neural_network import MLPClassifier
+
+import functions as fc
 
 
 def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
@@ -58,6 +60,7 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
         forecast_data[ticker] = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
 
     return forecast_data
+
 
 if __name__ == '__main__':
     symbols = ['AAPL', 'MSFT']

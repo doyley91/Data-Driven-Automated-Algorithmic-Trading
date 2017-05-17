@@ -7,14 +7,12 @@ import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
 import pymc3 as pm
-from pymc3 import Exponential, StudentT, Deterministic
-from pymc3.math import exp
 from pymc3.distributions.timeseries import GaussianRandomWalk
 
 # setting the style of the charts
 plt.style.use('ggplot')
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set, converting date column to datetime, making the trading date the index for the Pandas DataFrame and sorting the DataFrame by date
@@ -71,7 +69,7 @@ with pm.Model():
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(returns)
-ax.plot(returns.index, 1/np.exp(trace['s', ::5].T), 'r', alpha=.03)
+ax.plot(returns.index, 1 / np.exp(trace['s', ::5].T), 'r', alpha=.03)
 ax.set(title='volatility_process', xlabel='time', ylabel='volatility')
 ax.legend(['S&P500', 'stochastic volatility process'])
 

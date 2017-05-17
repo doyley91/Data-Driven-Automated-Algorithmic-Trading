@@ -1,9 +1,10 @@
-import functions as fc
-import numpy as np
-import scipy as sp
-import pymc3 as pm
-from pymc3.math import exp
 import matplotlib.pyplot as plt
+import numpy as np
+import pymc3 as pm
+import scipy as sp
+from pymc3.math import exp
+
+import functions as fc
 
 plt.style.use('ggplot')
 
@@ -47,7 +48,7 @@ sim_returns, vol = fc.generate_proj_returns(1000, trace, len(test))
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(AAPL['log_returns'].values, color='blue')
-ax.plot(1+len(train)+np.arange(0, len(test)), sim_returns[1, :], color='red')
+ax.plot(1 + len(train) + np.arange(0, len(test)), sim_returns[1, :], color='red')
 ax.set(title='Returns Forecast', xlabel='time', ylabel='%')
 ax.legend(['Original', 'Forecast'])
 fig.tight_layout()

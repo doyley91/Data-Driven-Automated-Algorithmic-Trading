@@ -1,13 +1,15 @@
-import functions as fc
 import random as rand
-import pandas as pd
-import numpy as np
 from collections import OrderedDict
-from sklearn.neighbors import KNeighborsRegressor
+
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.neighbors import KNeighborsRegressor
+
+import functions as fc
 
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -40,9 +42,10 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         pred = mdl.predict(test[features].values)
 
         # summarize the fit of the model
-        explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(test['adj_close'].values, pred)
+        explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score = fc.get_regression_metrics(
+            test['adj_close'].values, pred)
 
-        print("{} Decision Tree\n"
+        print("{} K-Nearest Neighbour\n"
               "-------------\n"
               "Explained variance score: {:.3f}\n"
               "Mean absolute error: {:.3f}\n"
@@ -62,6 +65,22 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         # out-of-sample test
         forecast_data[ticker] = fc.forecast_regression(model=mdl, sample=test.copy(), features=features, steps=n_steps)
 
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(pred_data[ticker]['original'], color='red')
+        ax.plot(pred_data[ticker]['prediction'], color='blue')
+        ax.set(title='{} K-Nearest Neighbour In-Sample Prediction'.format(ticker), xlabel='time', ylabel='$')
+        ax.legend(['Original $', 'Prediction $'])
+        fig.tight_layout()
+
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(forecast_data[ticker]['adj_close'][-n_steps:])
+        ax.set(title='{} Day {} K-Nearest Neighbour Out-of-Sample Forecast'.format(n_steps, ticker), xlabel='time',
+               ylabel='$')
+        ax.legend(['Forecast $'])
+        fig.tight_layout()
+
     fig = plt.figure()
     ax = fig.add_subplot(111)
     for ticker in tickers:
@@ -70,21 +89,10 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
     ax.legend(tickers)
     fig.tight_layout()
 
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    for ticker in tickers:
-        ax.plot(pred_data[ticker]['original'], color='red')
-        ax.plot(pred_data[ticker]['prediction'], color='blue')
-    ax.set(title='Neural Network In-Sample Prediction', xlabel='time', ylabel='$')
-    ax.legend(['Original $', 'Prediction $'])
-    fig.tight_layout()
-
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    for ticker in tickers:
-        ax.plot(forecast_data[ticker]['adj_close'][-n_steps:])
-    ax.set(title='{} Day Neural Network Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
-    ax.legend(tickers)
-    fig.tight_layout()
-
     return forecast_data
+
+
+if __name__ == '__main__':
+    symbols = ['AAPL', 'MSFT']
+
+    run(tickers=symbols)

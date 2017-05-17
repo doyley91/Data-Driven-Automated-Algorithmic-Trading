@@ -2,17 +2,17 @@
 Source: http://cs.bme.hu/~adam.zlatniczki/education/stockforecast/08_volatility_modelling.py
 '''
 
-import pandas as pd
+import matplotlib.pyplot as plt
 import numpy as np
-from statsmodels.graphics import tsaplots
-from statsmodels.tsa.stattools import adfuller
+import pandas as pd
 import statsmodels
 from scipy.stats.mstats import normaltest
-import matplotlib.pyplot as plt
+from statsmodels.graphics import tsaplots
+from statsmodels.tsa.stattools import adfuller
 
 plt.style.use('ggplot')
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set, converting date column to datetime, making the trading date the index for the Pandas DataFrame and sorting the DataFrame by date
@@ -33,7 +33,7 @@ ax.legend(['Adjusted Close $'])
 fig.tight_layout()
 
 returns = AAPL['adj_close'].diff(1) / AAPL['adj_close'].shift(1)
-returns = returns[1:] # drop NA
+returns = returns[1:]  # drop NA
 
 # plotting the first difference
 fig = plt.figure()
@@ -56,8 +56,8 @@ adfuller(returns, regression="nc")
 normaltest(returns)
 # the series is not white noise, ARIMA models should be applied!
 
-tsaplots.plot_acf(returns, lags=30) # seems quite okay, significant lag=2
-tsaplots.plot_pacf(returns, lags=30) # significant at lag=2
+tsaplots.plot_acf(returns, lags=30)  # seems quite okay, significant lag=2
+tsaplots.plot_pacf(returns, lags=30)  # significant at lag=2
 # we can conclude that at most p=2 and q=2
 
 # fit ARIMA models to the returns
@@ -165,7 +165,7 @@ fig.savefig("charts/AAPL-first-difference.png", dpi=300)
 
 # serieal dependence can be checked by plotting the ACF and PACF on the absolute or squared series
 tsaplots.plot_acf(np.square(residuals), lags=20)
-tsaplots.plot_pacf(np.square(residuals), lags=20) # lag=8
+tsaplots.plot_pacf(np.square(residuals), lags=20)  # lag=8
 # since squaring very little values gives even less ones, which results in very small
 # differences, we got zero autocorrelations; this might be misleading, try the abs.
 
@@ -188,8 +188,8 @@ lbvalue, lbpvalue, bpvalue, bppvalue = diagnostic.acorr_ljungbox(np.square(resid
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(lbpvalue)# Ljung-Box test  p-values (better for small smaples)
-ax.plot(bppvalue)# Box-Pierce test p-values (better for larger samples)
+ax.plot(lbpvalue)  # Ljung-Box test  p-values (better for small smaples)
+ax.plot(bppvalue)  # Box-Pierce test p-values (better for larger samples)
 ax.axhline(0.05, color="r")
 ax.set(title='AAPL First Diference', xlabel='time', ylabel='$')
 ax.legend(['Ljung-Box', 'Box-Pierce'])
@@ -197,20 +197,18 @@ fig.tight_layout()
 # saves the plot with a dpi of 300
 fig.savefig("charts/AAPL-first-difference.png", dpi=300)
 
-
 lbvalue, lbpvalue, bpvalue, bppvalue = diagnostic.acorr_ljungbox(np.abs(residuals), boxpierce=True)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(lbpvalue)# Ljung-Box test  p-values (better for small smaples)
-ax.plot(bppvalue)# Box-Pierce test p-values (better for larger samples)
+ax.plot(lbpvalue)  # Ljung-Box test  p-values (better for small smaples)
+ax.plot(bppvalue)  # Box-Pierce test p-values (better for larger samples)
 ax.axhline(0.0005, color="r")
 ax.set(title='AAPL First Diference', xlabel='time', ylabel='$')
 ax.legend(['Ljung-Box', 'Box-Pierce'])
 fig.tight_layout()
 # saves the plot with a dpi of 300
 fig.savefig("charts/AAPL-first-difference.png", dpi=300)
-
 
 # We found that the null-hypothesis is rejected at every lag, which means there
 # is significant autocorrelation, thus ARCH effect
@@ -274,7 +272,6 @@ res4 = am4.fit()
 res4.plot()
 res4.summary()
 
-
 # let's try a different distribution for the innovation
 am5 = arch_model(returns, mean="Constant", vol="ARCH", p=8, dist="StudentsT")
 res5 = am5.fit()
@@ -292,7 +289,6 @@ ax.legend(['ARCH(8), Normal innovation', 'ARCH(8), Student innovation'])
 fig.tight_layout()
 # saves the plot with a dpi of 300
 fig.savefig("charts/AAPL-first-difference.png", dpi=300)
-
 
 # If we assume that the residuals follow an ARMA process, then we are talking
 # about a GARCH(p, q) model

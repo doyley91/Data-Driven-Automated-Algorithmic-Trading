@@ -1,16 +1,18 @@
-import functions as fc
 import random as rand
 from collections import OrderedDict
+
 from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier, VotingClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression, SGDClassifier
-from sklearn.neural_network import MLPClassifier
 from sklearn.naive_bayes import GaussianNB, BernoulliNB
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+
+import functions as fc
 
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -79,3 +81,9 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
             'outcome']
 
     return forecast_data
+
+
+if __name__ == '__main__':
+    symbols = ['AAPL', 'MSFT']
+
+    run(tickers=symbols)

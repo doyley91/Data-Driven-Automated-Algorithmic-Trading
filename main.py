@@ -1,9 +1,11 @@
-import functions as fc
-import pytz
-import pandas as pd
-from zipline.algorithm import TradingAlgorithm
-from strategies import buy_and_hold
 from collections import OrderedDict
+
+import pandas as pd
+import pytz
+from zipline.algorithm import TradingAlgorithm
+
+import functions as fc
+from strategies import buy_and_hold
 
 df_corr = pd.read_csv("data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db_corr.csv", index_col='ticker')
 

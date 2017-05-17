@@ -1,6 +1,8 @@
-import functions as fc
-import numpy as np
 from collections import OrderedDict
+
+import numpy as np
+
+import functions as fc
 
 
 def run(tickers='AAPL', start=None, end=None):

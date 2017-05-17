@@ -1,12 +1,14 @@
 # Use a random forest classifier. More here: http://scikit-learn.org/stable/user_guide.html
-import functions as fc
-import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
 from collections import OrderedDict
+
 import numpy as np
+import pandas as pd
+import talib as ta
+from sklearn.ensemble import RandomForestClassifier
 from zipline.algorithm import TradingAlgorithm
 from zipline.api import record, order, symbol
-import talib as ta
+
+import functions as fc
 
 
 class MachineLearningClassifier(TradingAlgorithm):
@@ -118,26 +120,26 @@ class MachineLearningClassifier(TradingAlgorithm):
                         sma6 = ta.SMA(np.array(context.recent_close_price[ticker]), 6)[context.window_length - 1:]
 
                         context.sma2_result = np.append(context.sma2_result,
-                                                is_x_higher_than_y(context.forecast[-1:],
-                                                                   sma2[-1:]))
+                                                        is_x_higher_than_y(context.forecast[-1:],
+                                                                           sma2[-1:]))
                         context.sma3_result = np.append(context.sma3_result,
-                                                is_x_higher_than_y(context.forecast[-1:],
-                                                                   sma3[-1:]))
+                                                        is_x_higher_than_y(context.forecast[-1:],
+                                                                           sma3[-1:]))
                         context.sma4_result = np.append(context.sma4_result,
-                                                is_x_higher_than_y(context.forecast[-1:],
-                                                                   sma4[-1:]))
+                                                        is_x_higher_than_y(context.forecast[-1:],
+                                                                           sma4[-1:]))
                         context.sma5_result = np.append(context.sma5_result,
-                                                is_x_higher_than_y(context.forecast[-1:],
-                                                                   sma5[-1:]))
+                                                        is_x_higher_than_y(context.forecast[-1:],
+                                                                           sma5[-1:]))
                         context.sma6_result = np.append(context.sma6_result,
-                                                is_x_higher_than_y(context.forecast[-1:],
-                                                                   sma6[-1:]))
+                                                        is_x_higher_than_y(context.forecast[-1:],
+                                                                           sma6[-1:]))
 
                         context.X = np.array(list(zip(context.sma2_result,
-                                                  context.sma3_result,
-                                                  context.sma4_result,
-                                                  context.sma5_result,
-                                                  context.sma6_result)))
+                                                      context.sma3_result,
+                                                      context.sma4_result,
+                                                      context.sma5_result,
+                                                      context.sma6_result)))
 
                         context.pred = context.mdl.predict(context.X[-1:])
 

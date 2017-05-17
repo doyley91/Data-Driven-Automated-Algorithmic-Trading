@@ -1,5 +1,5 @@
-import statsmodels.api as sm
 import pandas
+import statsmodels.api as sm
 
 data = sm.datasets.sunspots.load()
 

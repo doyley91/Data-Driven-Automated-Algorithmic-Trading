@@ -1,9 +1,11 @@
-import functions as fc
-import pandas as pd
-import numpy as np
-from collections import OrderedDict
 import random as rand
+from collections import OrderedDict
+
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+import functions as fc
 
 
 def run(tickers='AAPL', start=None, end=None, n_steps=21):
@@ -125,7 +127,8 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         fig = plt.figure()
         ax = fig.add_subplot(111)
         ax.plot(forecast_data[ticker][0])
-        ax.set(title='{} Day {} ARMA{} Out-Of-Sample Return Forecast'.format(n_steps, ticker, res_tup[1]), xlabel='time', ylabel='$')
+        ax.set(title='{} Day {} ARMA{} Out-Of-Sample Return Forecast'.format(n_steps, ticker, res_tup[1]),
+               xlabel='time', ylabel='$')
         ax.legend(['Forecast'])
         fig.tight_layout()
 

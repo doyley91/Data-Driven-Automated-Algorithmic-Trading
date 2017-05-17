@@ -2,17 +2,16 @@
 Source: https://pymc-devs.github.io/pymc3/notebooks/stochastic_volatility.html
 '''
 
-import pandas as pd
+import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import pymc3 as pm
 from pymc3.distributions.timeseries import GaussianRandomWalk
-from scipy import optimize
-import matplotlib.pyplot as plt
 
 # not quite sure what this does but we need it
 n = 400
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set
@@ -55,19 +54,19 @@ plt.plot(variance)
 
 model = pm.Model()
 with model:
-    sigma = pm.Exponential('sigma', 1./.02, testval=.1)
+    sigma = pm.Exponential('sigma', 1. / .02, testval=.1)
 
-    nu = pm.Exponential('nu', 1./10)
-    s = GaussianRandomWalk('s', sigma**-2, shape=n)
+    nu = pm.Exponential('nu', 1. / 10)
+    s = GaussianRandomWalk('s', sigma ** -2, shape=n)
 
-    r = pm.StudentT('r', nu, lam=pm.math.exp(-2*s), observed=variance)
+    r = pm.StudentT('r', nu, lam=pm.math.exp(-2 * s), observed=variance)
 
 with model:
     trace = pm.sample(2000)
 
 pm.traceplot(trace, model.vars[:-1], figsize=(20, 10))
 
-#creating a new figure
+# creating a new figure
 fig = plt.figure(figsize=(16, 12))
 
 # saving the plot to memory
@@ -88,16 +87,16 @@ fig.savefig("charts/AAPL-natural-log.png", dpi=300)
 # closes the plot
 plt.close()
 
-#creating a new figure
+# creating a new figure
 fig = plt.figure(figsize=(16, 12))
 
 ax1 = plt.plot(np.abs(variance))
 
-#ax1.set_xlim(xmin=0)
+# ax1.set_xlim(xmin=0)
 
 ax2 = plt.plot(np.exp(trace[s][::10].T), 'r', alpha=.03)
 
-#ax2.set_xlim(xmin=0)
+# ax2.set_xlim(xmin=0)
 
 fig.suptitle(str(s), fontsize=20)
 

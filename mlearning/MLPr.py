@@ -1,13 +1,15 @@
-import functions as fc
 import random as rand
-import pandas as pd
-import numpy as np
 from collections import OrderedDict
-from sklearn.neural_network import MLPRegressor
+
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.neural_network import MLPRegressor
+
+import functions as fc
 
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -89,3 +91,9 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
     fig.tight_layout()
 
     return forecast_data
+
+
+if __name__ == '__main__':
+    symbols = ['AAPL', 'MSFT']
+
+    run(tickers=symbols)

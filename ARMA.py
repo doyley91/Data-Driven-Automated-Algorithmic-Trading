@@ -2,17 +2,17 @@
 Source: http://statsmodels.sourceforge.net/devel/examples/notebooks/generated/tsa_arma_0.html
 '''
 
-import numpy as np
-from scipy import stats
-import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import style
+import numpy as np
+import pandas as pd
 import statsmodels.api as sm
+from matplotlib.pyplot import style
+from scipy import stats
 from statsmodels.graphics.api import qqplot
 
 style.use('ggplot')
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set, converting date column to datetime, making the trading date the index for the Pandas DataFrame and sorting the DataFrame by date
@@ -90,7 +90,9 @@ fig, ax = plt.subplots()
 ax = AAPL.ix['2016':].plot(ax=ax)
 fig = arma_mod30.plot_predict('2016', '2017', dynamic=True, ax=ax, plot_insample=False)
 
+
 def mean_forecast_err(y, yhat):
     return y.sub(yhat).mean()
+
 
 mean_forecast_err(AAPL['adj_close'], predict_adj_close)

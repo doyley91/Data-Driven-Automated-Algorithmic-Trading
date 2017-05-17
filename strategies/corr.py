@@ -1,6 +1,7 @@
+import pandas as pd
+
 import functions as fc
 from mlearning import SGDr
-import pandas as pd
 
 df_corr = pd.read_csv("data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db_corr.csv", index_col='ticker')
 

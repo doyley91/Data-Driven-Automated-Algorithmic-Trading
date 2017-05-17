@@ -1,12 +1,14 @@
 '''works with only zipline 1.7.0(not 0.7.0), accepts data panel structure to definr the symbol, data frame not acceoted'''
 
+from collections import OrderedDict
+
+import pandas as pd
+import pytz
+from zipline.algorithm import TradingAlgorithm
+from zipline.api import order, symbol, record, order_target
+
 # import libraries
 import functions as fc
-import pytz
-from zipline.api import order, symbol, record, order_target
-from zipline.algorithm import TradingAlgorithm
-from collections import OrderedDict
-import pandas as pd
 
 # extracting data from csv
 datas = OrderedDict()
@@ -55,17 +57,23 @@ def handle_data(context, panel):
         # recording the data
         record(date=date, MA1=MA1, MA2=MA2, Price=current_price, status="buy", shares=number_of_shares, \
                PnL=current_pnl, cash=cash, value=value)
-        csv_data.append([date, format(MA1, '.2f'), format(MA2, '.2f'), format(current_price, '.2f'), "buy", number_of_shares, format(current_pnl, '.2f'), format(cash, '.2f'),
-                         format(value, '.2f')])
+        csv_data.append(
+            [date, format(MA1, '.2f'), format(MA2, '.2f'), format(current_price, '.2f'), "buy", number_of_shares,
+             format(current_pnl, '.2f'), format(cash, '.2f'),
+             format(value, '.2f')])
     # to sell stocks
     elif (MA1 < MA2) and current_positions != 0:
         order_target(context.security, 0)
-        record(date=date, MA1=MA1, MA2=MA2, Price=current_price, status="sell", shares="--", PnL=current_pnl, cash=cash, value=value)
-        csv_data.append([date, format(MA1, '.2f'), format(MA2, '.2f'), format(current_price, '.2f'), "sell", "--", format(current_pnl, '.2f'), format(cash, '.2f'), format(value, '.2f')])
+        record(date=date, MA1=MA1, MA2=MA2, Price=current_price, status="sell", shares="--", PnL=current_pnl, cash=cash,
+               value=value)
+        csv_data.append([date, format(MA1, '.2f'), format(MA2, '.2f'), format(current_price, '.2f'), "sell", "--",
+                         format(current_pnl, '.2f'), format(cash, '.2f'), format(value, '.2f')])
     # do nothing just record the data
     else:
-        record(date=date, MA1=MA1, MA2=MA2, Price=current_price, status="--", shares="--", PnL=current_pnl, cash=cash, value=value)
-        csv_data.append([date, format(MA1, '.2f'), format(MA2, '.2f'), format(current_price, '.2f'), "--", "--", format(current_pnl, '.2f'), format(cash, '.2f'), format(value, '.2f')])
+        record(date=date, MA1=MA1, MA2=MA2, Price=current_price, status="--", shares="--", PnL=current_pnl, cash=cash,
+               value=value)
+        csv_data.append([date, format(MA1, '.2f'), format(MA2, '.2f'), format(current_price, '.2f'), "--", "--",
+                         format(current_pnl, '.2f'), format(cash, '.2f'), format(value, '.2f')])
 
 
 # initializing trading enviroment
@@ -83,4 +91,5 @@ print("\n\n\ntotal pnl : " + str(float(perf_manual[["PnL"]].iloc[-1])))
 buy_trade = perf_manual[["status"]].loc[perf_manual["status"] == "buy"].count()
 sell_trade = perf_manual[["status"]].loc[perf_manual["status"] == "sell"].count()
 total_trade = buy_trade + sell_trade
-print("buy trade : " + str(int(buy_trade)) + " sell trade : " + str(int(sell_trade)) + " total trade : " + str(int(total_trade)))
+print("buy trade : " + str(int(buy_trade)) + " sell trade : " + str(int(sell_trade)) + " total trade : " + str(
+    int(total_trade)))

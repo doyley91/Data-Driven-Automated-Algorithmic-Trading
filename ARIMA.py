@@ -4,18 +4,18 @@ http://www.johnwittenauer.net/a-simple-time-series-analysis-of-the-sp-500-index/
 http://nbviewer.jupyter.org/github/jdwittenauer/ipython-notebooks/blob/master/notebooks/misc/TimeSeriesStockAnalysis.ipynb
 '''
 
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import statsmodels.api as sm
+import numpy as np
+import pandas as pd
 import seaborn as sns
+import statsmodels.api as sm
+from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import acf
 from statsmodels.tsa.stattools import pacf
-from statsmodels.tsa.seasonal import seasonal_decompose
 
 plt.style.use('ggplot')
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set, converting date column to datetime, making the trading date the index for the Pandas DataFrame and sorting the DataFrame by date

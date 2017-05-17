@@ -1,11 +1,13 @@
-import functions as fc
-import pandas as pd
-import numpy as np
 from collections import OrderedDict
+
+import numpy as np
+import pandas as pd
 from sklearn.svm import SVC
 
+import functions as fc
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+
+def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -55,3 +57,9 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         forecast_data[ticker] = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
 
     return forecast_data
+
+
+if __name__ == '__main__':
+    symbols = ['AAPL', 'MSFT']
+
+    run(tickers=symbols)

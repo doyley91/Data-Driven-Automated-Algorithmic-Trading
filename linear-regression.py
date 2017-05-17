@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
-import statsmodels.api as sm
-import pandas as pd
 import numpy as np
+import pandas as pd
+import statsmodels.api as sm
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set, converting date column to datetime, making the trading date the index for the Pandas DataFrame and sorting the DataFrame by date
@@ -24,8 +24,8 @@ ax.legend(['Adjusted Close $'])
 fig.tight_layout()
 
 AAPL["regression"] = sm.OLS(AAPL["adj_close"],
-    sm.add_constant(range(len(AAPL.index)),
-    prepend=True)).fit().fittedvalues
+                            sm.add_constant(range(len(AAPL.index)),
+                                            prepend=True)).fit().fittedvalues
 
 fig = plt.figure()
 ax = fig.add_subplot(111)

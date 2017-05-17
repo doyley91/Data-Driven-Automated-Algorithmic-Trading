@@ -1,10 +1,12 @@
-import functions as fc
-import pandas as pd
 from collections import OrderedDict
+
+import pandas as pd
 from sklearn.linear_model import SGDClassifier
 
+import functions as fc
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+
+def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()

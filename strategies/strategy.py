@@ -10,23 +10,23 @@ def initialize(context):
 
 
 def handle_data(context, panel):
-    #calculating moving average
+    # calculating moving average
     MA1 = panel[context.security].mavg(50)
     MA2 = panel[context.security].mavg(100)
     date = str(panel[context.security].datetime)[:10]
 
-    #calculating price, pnl, portfolio value
+    # calculating price, pnl, portfolio value
     current_price = panel[context.security].price
     current_positions = context.portfolio.positions[symbol('SPY')].amount
     cash = context.portfolio.cash
     value = context.portfolio.portfolio_value
     current_pnl = context.portfolio.pnl
 
-    #to buy stock
+    # to buy stock
     if (MA1 > MA2) and current_positions == 0:
-        number_of_shares = int(cash/current_price)
+        number_of_shares = int(cash / current_price)
         order(context.security, number_of_shares)
-        #recording the data
+        # recording the data
         record(date=date,
                MA1=MA1,
                MA2=MA2,
@@ -47,7 +47,7 @@ def handle_data(context, panel):
                          format(cash, '.2f'),
                          format(value, '.2f')])
 
-    #to sell stocks
+    # to sell stocks
     elif (MA1 < MA2) and current_positions != 0:
         order_target(context.security, 0)
         record(date=date,
@@ -60,10 +60,10 @@ def handle_data(context, panel):
                cash=cash,
                value=value)
 
-        csv_data.append([date,format(MA1, '.2f'), format(MA2, '.2f'), format(current_price, '.2f'),
+        csv_data.append([date, format(MA1, '.2f'), format(MA2, '.2f'), format(current_price, '.2f'),
                          "sell", "--", format(current_pnl, '.2f'), format(cash, '.2f'), format(value, '.2f')])
 
-    #do nothing just record the data
+    # do nothing just record the data
     else:
         record(date=date,
                MA1=MA1,

@@ -1,7 +1,5 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-import pylab as pl
-import numpy as np
 
 # read the data in
 df = pd.read_csv("http://www.ats.ucla.edu/stat/data/binary.csv")
@@ -30,4 +28,3 @@ mdl = LogisticRegression().fit(X, Y)
 print(mdl)
 
 pred = mdl.predict(test[train_cols])
-

@@ -1,11 +1,13 @@
-import functions as fc
-from pandas_datareader.data import DataReader
-import numpy as np
 import datetime as dt
-import pymc3 as pm
-from pymc3.math import exp
-import scipy as sp
+
 import matplotlib.pyplot as plt
+import numpy as np
+import pymc3 as pm
+import scipy as sp
+from pandas_datareader.data import DataReader
+from pymc3.math import exp
+
+import functions as fc
 
 np.random.seed(1000000)  # Who wants to be a millionaire
 
@@ -47,7 +49,7 @@ sim_returns, vol = fc.generate_proj_returns(1000, trace, len(test))
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(returns.values, color='blue')
-ax.plot(1+len(train)+np.arange(0,len(test)), sim_returns[1,:], color='red')
+ax.plot(1 + len(train) + np.arange(0, len(test)), sim_returns[1, :], color='red')
 ax.set(title='Returns Forecast', xlabel='time', ylabel='%')
 ax.legend(['Original', 'Forecast'])
 fig.tight_layout()
@@ -76,10 +78,10 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 [ax.plot(ind, prices[j, :], alpha=.02, color='red') for j in range(0, 1000)]
 ax.plot(ind, trend + np.log(sp500.values)[len(train) + 1],
-         alpha=1,
-         linewidth=2,
-         color='black',
-         linestyle='dotted')
+        alpha=1,
+        linewidth=2,
+        color='black',
+        linestyle='dotted')
 ax.plot(np.log(sp500)[ind2])
 ax.set_ylim([7.4, 7.8])
 ax.set_xlim([0, len(sp500) - 2])

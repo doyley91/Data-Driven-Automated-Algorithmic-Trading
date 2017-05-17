@@ -1,8 +1,9 @@
-import functions as fc
-import pandas as pd
-import numpy as np
-import statsmodels.tsa.api as smt
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import statsmodels.tsa.api as smt
+
+import functions as fc
 
 AAPL = fc.get_time_series('AAPL')
 
@@ -30,7 +31,7 @@ fc.plot_time_series(mdl.resid, lags=30)
 
 # in-sample prediction
 pred = mdl.predict(start=test.index[0], end=test.index[-1]).dropna()
-pred = mdl.predict(start=len(train)+1, end=len(train)+len(test))
+pred = mdl.predict(start=len(train) + 1, end=len(train) + len(test))
 
 results = pd.DataFrame(data=dict(original=log_returns, prediction=pred), index=test.index)
 
@@ -43,13 +44,13 @@ ax.set(title='In-Sample Return Forecast\nAR{}'.format(best_order), xlabel='time'
 ax.legend(['Original', 'Prediction'])
 fig.tight_layout()
 
-#out-of-sample forecast
+# out-of-sample forecast
 n_days = 21
 
 forecast = mdl.predict(start=test.index[-1], end=test.index[-1] + n_days)
-forecast = mdl.predict(start=len(train)+len(test), end=len(train)+len(test)+n_days-1)
+forecast = mdl.predict(start=len(train) + len(test), end=len(train) + len(test) + n_days - 1)
 
-#out-of-sample forecast
+# out-of-sample forecast
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(forecast)

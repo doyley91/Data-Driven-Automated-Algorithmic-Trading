@@ -2,20 +2,20 @@
 Source: http://srome.github.io/Eigenvesting-IV-Predicting-Stock-And-Portfolio-Returns-With-Bayesian-Statistics/
 '''
 
-import pandas as pd
+import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+import pymc3 as pm
 import scipy as sp
 import scipy.stats as stats
-import pymc3 as pm
-import matplotlib.pyplot as plt
 
 # setting the style of the charts
 plt.style.use('ggplot')
 
-#Who wants to be a millionaire
+# Who wants to be a millionaire
 np.random.seed(1000000)
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set, converting date column to datetime, making the trading date the index for the Pandas DataFrame and sorting the DataFrame by date
@@ -109,7 +109,7 @@ sim_returns, vol = generate_proj_returns(1000, trace, len(test))
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(AAPL['First Difference'], color='blue')
-ax.plot(1+len(train)+np.arange(0,len(test)), new_ret[1,:], color='red')
+ax.plot(1 + len(train) + np.arange(0, len(test)), new_ret[1, :], color='red')
 ax.set(title='AAPL', xlabel='time', ylabel='$')
 ax.legend(['Adjusted Close $'])
 fig.tight_layout()
@@ -117,20 +117,20 @@ fig.tight_layout()
 # plotting the adj_close of AAPL
 fig = plt.figure()
 ax = fig.add_subplot(111)
-[ax.plot(1/np.exp(trace[k]['logs']),color='r',alpha=.2) for k in range(1000,len(trace))]
+[ax.plot(1 / np.exp(trace[k]['logs']), color='r', alpha=.2) for k in range(1000, len(trace))]
 ax.plot(AAPL['First Difference'])
-[ax.plot(1+len(train)+np.arange(0,len(test)),1/np.exp(vol[j,:]), alpha=.01, color='y') for j in range(0,1000)]
+[ax.plot(1 + len(train) + np.arange(0, len(test)), 1 / np.exp(vol[j, :]), alpha=.01, color='y') for j in range(0, 1000)]
 ax = plt.gca()
-ax.set_ylim([-.05,.05])
+ax.set_ylim([-.05, .05])
 ax.set(title='AAPL', xlabel='time', ylabel='$')
 ax.legend(['Adjusted Close $'])
 fig.tight_layout()
 
-#Convert simulated returns to log-price
+# Convert simulated returns to log-price
 prices = np.copy(sim_returns)
 for k in range(0, len(prices)):
     cur = np.log(AAPL['adj_close'][test[0]])
-    for j in range(0,len(prices[k])):
+    for j in range(0, len(prices[k])):
         cur = cur + prices[k, j]
         prices[k, j] = cur
 

@@ -1,6 +1,6 @@
-import pandas as pd
-from zipline.api import order, record, symbol
 import matplotlib.pyplot as plt
+import pandas as pd
+from zipline.api import order, symbol
 
 stocks = []
 

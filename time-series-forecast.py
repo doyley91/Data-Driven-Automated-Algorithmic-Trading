@@ -4,18 +4,16 @@ http://www.inertia7.com/projects/time-series-stock-market-python
 https://github.com/inertia7/timeSeries_sp500_python/blob/master/scripts.py
 '''
 
-import pandas as pd
-import numpy as np
-import statsmodels.tsa.api as sm
-#from statsmodels.tsa.arima_model import ARIMA, ARIMAResults
-from statsmodels.tsa.stattools import acf, pacf
-from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt
-from arch2 import arch_model
+import numpy as np
+import pandas as pd
+import statsmodels.tsa.api as sm
+# from statsmodels.tsa.arima_model import ARIMA, ARIMAResults
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 
 plt.style.use('ggplot')
 
-#location of the data set
+# location of the data set
 file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
 # importing the data set, converting date column to datetime, making the trading date the index for the Pandas DataFrame and sorting the DataFrame by date
@@ -54,7 +52,7 @@ acf = plot_acf(AAPL_train['adj_close'], lags=20)
 pacf = plot_pacf(AAPL_train['adj_close'], lags=20)
 
 first_difference = AAPL_train['adj_close'] - AAPL_train['adj_close'].shift().dropna()
-#first_difference = first_difference[np.isfinite(first_difference)]
+# first_difference = first_difference[np.isfinite(first_difference)]
 
 # plotting the adj_close of AAPL
 fig = plt.figure()
@@ -68,7 +66,7 @@ acfDiff = plot_acf(first_difference, lags=20)
 
 pacfDiff = plot_pacf(first_difference, lags=20)
 
-#AIC must be lowest
+# AIC must be lowest
 mod = sm.ARIMA(AAPL_train['adj_close'], order=(0, 1, 1))
 
 results = mod.fit()
@@ -77,7 +75,7 @@ results.summary()
 
 predVals = results.predict(start=len(AAPL_train['adj_close']), end=len(AAPL['adj_close']), typ='levels').dropna()
 
-#predVals = predVals[np.isfinite(predVals)]
+# predVals = predVals[np.isfinite(predVals)]
 
 forecast = pd.concat([AAPL['adj_close'], predVals], axis=1, keys=['original', 'predicted'])
 

@@ -1,4 +1,5 @@
 import sys
+
 import logbook
 import numpy as np
 from zipline.finance import commission
@@ -91,7 +92,7 @@ def rebalance_portfolio(algo, data, desired_port):
         positions_value = algo.portfolio.starting_cash
     else:
         positions_value = algo.portfolio.positions_value + \
-            algo.portfolio.cash
+                          algo.portfolio.cash
 
     for i, sid in enumerate(algo.sids):
         current_amount[i] = algo.portfolio.positions[sid].amount

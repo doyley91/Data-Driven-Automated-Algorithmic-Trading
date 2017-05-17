@@ -1,12 +1,12 @@
+import matplotlib.pyplot as plt
 import numpy as np
 # Support Vector Machine
 from sklearn import datasets, svm
-import matplotlib.pyplot as plt
 
 # import some data to play with
 iris = datasets.load_iris()
 X = iris.data[:, :2]  # we only take the first two features. We could
-                      # avoid this ugly slicing by using a two-dim dataset
+# avoid this ugly slicing by using a two-dim dataset
 y = iris.target
 
 h = .02  # step size in the mesh
@@ -30,7 +30,6 @@ titles = ['SVC with linear kernel',
           'LinearSVC (linear kernel)',
           'SVC with RBF kernel',
           'SVC with polynomial (degree 3) kernel']
-
 
 for i, clf in enumerate((svc, lin_svc, rbf_svc, poly_svc)):
     # Plot the decision boundary. For that, we will assign a color to each

@@ -1,8 +1,8 @@
-import functions as fc
-import pandas as pd
-import numpy as np
-from statsmodels.tsa.ar_model import AR
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+import functions as fc
 
 AAPL = fc.get_time_series('AAPL')
 
@@ -36,7 +36,8 @@ print("AAPL Series\n"
                                 AAPL['adj_close'].skew(),
                                 AAPL['adj_close'].kurtosis()))
 
-adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(AAPL['log_returns'])
+adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(
+    AAPL['log_returns'])
 
 print("Stationarity Statistics\n"
       "-------------\n"
@@ -64,9 +65,10 @@ res_tup = fc.get_best_arma_model(AAPL['log_price'])
 
 res_tup[2].summary()
 
-adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(res_tup[2].resid)
+adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(
+    res_tup[2].resid)
 
-print("Stationarity Statistics\n" 
+print("Stationarity Statistics\n"
       "-------------\n"
       "Augmented Dickey-Fuller unit root test: {}\n"
       "MacKinnon’s approximate p-value: {}\n"
@@ -93,7 +95,7 @@ train_size = int(len(AAPL) * 0.80)
 train, test = AAPL[0:train_size], AAPL[train_size:len(AAPL)]
 
 # in-sample prediction
-pred = res_tup[2].predict(start=len(train), end=len(train)+len(test)-1)
+pred = res_tup[2].predict(start=len(train), end=len(train) + len(test) - 1)
 
 results = pd.DataFrame(data=dict(original=np.exp(test['log_price']), prediction=np.exp(pred)), index=test.index)
 

@@ -1,13 +1,15 @@
-import functions as fc
-import pandas as pd
-from collections import OrderedDict
 import locale as loc
-from zipline.algorithm import TradingAlgorithm
-from pytz import timezone
-from dateutil.tz import tzutc
+from collections import OrderedDict
+
+import pandas as pd
 from dateutil.parser import parse
-from zipline.finance.slippage import FixedSlippage
+from dateutil.tz import tzutc
+from pytz import timezone
+from zipline.algorithm import TradingAlgorithm
 from zipline.finance.commission import PerTrade
+from zipline.finance.slippage import FixedSlippage
+
+import functions as fc
 
 central = timezone('US/Central')
 HOLDTIME = 5

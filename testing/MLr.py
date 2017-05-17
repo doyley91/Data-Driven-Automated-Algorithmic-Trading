@@ -1,6 +1,7 @@
-from mlearning import SGDr, SVMr, LinearRegression, BTr, DTr, KNNr, MLPr, RFr
 import pandas as pd
 from matplotlib import pyplot as plt
+
+from mlearning import SGDr, SVMr, LinearRegression, BTr, DTr, KNNr, MLPr, RFr
 
 tickers = 'AAPL'
 

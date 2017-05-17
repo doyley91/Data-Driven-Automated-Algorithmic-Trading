@@ -1,10 +1,12 @@
-import functions as fc
-import pandas as pd
 from collections import OrderedDict
+
+import pandas as pd
 from sklearn.ensemble import AdaBoostClassifier
 
+import functions as fc
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+
+def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -43,8 +45,8 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
               "-------------\n"
               "Classification report: {}\n\n"
               "Confusion matrix: {}\n\n".format(ticker,
-                                              classification_report,
-                                              confusion_matrix))
+                                                classification_report,
+                                                confusion_matrix))
 
         pred_results = pd.DataFrame(data=dict(original=test['outcome'], prediction=pred), index=test.index)
 
@@ -54,3 +56,9 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         forecast_data[ticker] = fc.forecast_classifier(model=mdl, sample=test, features=features, steps=n_steps)
 
     return forecast_data
+
+
+if __name__ == '__main__':
+    symbols = ['AAPL', 'MSFT']
+
+    run(tickers=symbols)

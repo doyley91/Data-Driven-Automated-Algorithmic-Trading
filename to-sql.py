@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from sqlalchemy import create_engine
 import pandas as pd
+from sqlalchemy import create_engine
 
 DB_TYPE = 'postgresql'
 DB_DRIVER = 'psycopg2'

@@ -1,24 +1,25 @@
-import pandas as pd
-from pandas.tseries.holiday import USFederalHolidayCalendar
+import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
 import numpy as np
-import statsmodels.tsa.api as smt
-import statsmodels.api as sm
+import pandas as pd
+import quandl as qdl
 import scipy.stats as stats
+import statsmodels.api as sm
+import statsmodels.tsa.api as smt
+import talib as ta
+from arch.unitroot import KPSS
+from matplotlib import mlab
+from mpl_finance import candlestick_ohlc
+from pandas.tseries.holiday import USFederalHolidayCalendar
+from scipy.stats import shapiro, kstest, anderson
+from scipy.stats.mstats import normaltest
+from sklearn import metrics
+from sklearn.svm import SVC, LinearSVC
+from sqlalchemy import create_engine
 from statsmodels.tsa.arima_model import ARMA, ARIMA
 from statsmodels.tsa.stattools import adfuller
-from scipy.stats.mstats import normaltest
-from scipy.stats import shapiro, kstest, anderson
-from arch.unitroot import KPSS
-import talib as ta
 from talib import MA_Type
-from sklearn.svm import SVC, LinearSVC
-from mpl_finance import candlestick_ohlc
-from sqlalchemy import create_engine
-import quandl as qdl
-from sklearn import metrics
-from matplotlib import mlab
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
+
 import keys
 
 pd.options.mode.chained_assignment = None  # default='warn'
@@ -594,10 +595,10 @@ def get_sma_regression_features(df):
     :return: 
     """
     # calculate a simple moving average of the close prices
-    df['sma_15'] = ta.SMA(np.array(df['adj_close']), 15)
+    df['sma_15'] = ta.SMA(np.array(df['adj_close'].shift(1)), 15)
 
     # 50 day simple moving average
-    df['sma_50'] = ta.SMA(np.array(df['adj_close']), 50)
+    df['sma_50'] = ta.SMA(np.array(df['adj_close'].shift(1)), 50)
 
     return df
 
@@ -608,11 +609,11 @@ def get_sma_classifier_features(df):
     :param df: 
     :return: 
     """
-    df['sma_2'] = ta.SMA(np.array(df['adj_close']), 2)
-    df['sma_3'] = ta.SMA(np.array(df['adj_close']), 3)
-    df['sma_4'] = ta.SMA(np.array(df['adj_close']), 4)
-    df['sma_5'] = ta.SMA(np.array(df['adj_close']), 5)
-    df['sma_6'] = ta.SMA(np.array(df['adj_close']), 6)
+    df['sma_2'] = ta.SMA(np.array(df['adj_close'].shift(1)), 2)
+    df['sma_3'] = ta.SMA(np.array(df['adj_close'].shift(1)), 3)
+    df['sma_4'] = ta.SMA(np.array(df['adj_close'].shift(1)), 4)
+    df['sma_5'] = ta.SMA(np.array(df['adj_close'].shift(1)), 5)
+    df['sma_6'] = ta.SMA(np.array(df['adj_close'].shift(1)), 6)
 
     df['sma_2'] = df.apply(lambda x: 1 if x['adj_close'] > x['sma_2'] else 0, axis=1)
     df['sma_3'] = df.apply(lambda x: 1 if x['adj_close'] > x['sma_3'] else 0, axis=1)
@@ -793,10 +794,10 @@ def forecast_regression(model, sample, features, steps=1):
     for k in range(1, steps):
         sample = sample.shift(periods=1, freq='D', axis=0)
 
-        #if is_day_holiday(sample.index[-1:]):
+        # if is_day_holiday(sample.index[-1:]):
         #   sample = sample.shift(periods=1, freq='B', axis=0)
 
-        #while sample.index[-1:].weekday >= 5:
+        # while sample.index[-1:].weekday >= 5:
         #   sample = sample.shift(periods=1, freq='D', axis=0)
 
         sample['adj_close'][-1:] = model.predict(sample[features][-2:][:1])

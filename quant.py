@@ -3,7 +3,6 @@ This is a template algorithm on Quantopian for you to adapt and fill in.
 """
 from quantopian.algorithm import attach_pipeline, pipeline_output
 from quantopian.pipeline import Pipeline
-from quantopian.pipeline.data.builtin import USEquityPricing
 from quantopian.pipeline.factors import AverageDollarVolume
 
 
