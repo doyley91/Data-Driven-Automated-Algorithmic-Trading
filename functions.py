@@ -854,3 +854,11 @@ def download_data(dataset, start_date=None, end_date=None):
     data = qdl.get(dataset, start_date=start_date, end_date=end_date)
 
     return data
+
+
+def zipline_fix():
+    df = pd.read_csv('data/^GSPC.csv', index_col='Date', parse_dates=True)
+    df.index = df.index.tz_localize('UTC').tz_convert('UTC')
+    df = df.convert_objects(convert_numeric=True)
+    df = df['Adj Close'].pct_change()
+    df.to_csv('~/.zipline/data/^GSPC_benchmark.csv')

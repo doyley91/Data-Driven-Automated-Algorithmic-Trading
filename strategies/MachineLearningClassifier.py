@@ -1,159 +1,160 @@
-# Use a random forest classifier. More here: http://scikit-learn.org/stable/user_guide.html
+import sys
 from collections import OrderedDict
 
+import logbook as log
 import numpy as np
 import pandas as pd
 import talib as ta
 from sklearn.ensemble import RandomForestClassifier
 from zipline.algorithm import TradingAlgorithm
-from zipline.api import record, order, symbol
+from zipline.api import record, order_target_percent, symbol
 
 import functions as fc
 
 
 class MachineLearningClassifier(TradingAlgorithm):
-    def initialize(context):
+    def initialize(self):
         """
         Called once at the start of the algorithm.
         """
-        context.window_length = 6  # Amount of prior bars to study
+        self.securities = tickers
 
-        context.data_points = 100
+        # Amount of prior bars to study
+        self.window_length = 6
 
-        context.forecast_steps = 100  # Number of days to forecast
+        self.data_points = 100
 
-        context.forecast = []
+        # Use a random forest classifier
+        self.mdl = RandomForestClassifier()
 
-        context.mdl = RandomForestClassifier()  # Use a random forest classifier
+        # Stores recent open prices
+        self.recent_open_price = OrderedDict()
 
-        context.sma2 = context.sma3 = context.sma4 = context.sma5 = context.sma6 = []
+        # Stores recent close prices
+        self.recent_close_price = OrderedDict()
 
-        context.sma2_result = context.sma3_result = context.sma4_result = context.sma5_result = context.sma6_result = []
+        self.invested = OrderedDict()
+        self.sma2_result = OrderedDict()
+        self.sma3_result = OrderedDict()
+        self.sma4_result = OrderedDict()
+        self.sma5_result = OrderedDict()
+        self.sma6_result = OrderedDict()
+        self.result = OrderedDict()
 
-        # deques are lists with a maximum length where old entries are shifted out
-        context.recent_open_price = OrderedDict()  # Stores recent open prices
-        context.recent_close_price = OrderedDict()  # Stores recent close prices
-        context.sma_2_result = OrderedDict()
-        context.sma_3_result = OrderedDict()
-        context.sma_4_result = OrderedDict()
-        context.sma_5_result = OrderedDict()
-        context.sma_6_result = OrderedDict()
-        context.result = OrderedDict()
+        for security in self.securities:
+            self.recent_open_price[security] = []
+            self.recent_close_price[security] = []
+            self.sma2_result[security] = []
+            self.sma3_result[security] = []
+            self.sma4_result[security] = []
+            self.sma5_result[security] = []
+            self.sma6_result[security] = []
+            self.result[security] = []
+            self.invested[security] = False
 
-        for ticker in tickers:
-            context.recent_open_price[ticker] = []
-            context.recent_close_price[ticker] = []
-            context.sma_2_result[ticker] = []
-            context.sma_3_result[ticker] = []
-            context.sma_4_result[ticker] = []
-            context.sma_5_result[ticker] = []
-            context.sma_6_result[ticker] = []
-            context.result[ticker] = []
+        # Independent, or input variables
+        self.X = []
 
-        context.X = []  # Independent, or input variables
-        context.Y = []  # Dependent, or output variable
+        # Dependent, or output variable
+        self.Y = []
 
-        context.pred = 0  # Stores most recent prediction
+        # Stores most recent prediction
+        self.pred = 0
 
-    def handle_data(context, data):
+    def handle_data(self, data):
         """
         Called every minute.
         """
-        for ticker in tickers:
-            context.recent_open_price[ticker].append(data.current(symbol(ticker), 'open'))  # Update the recent prices
-            context.recent_close_price[ticker].append(data.current(symbol(ticker), 'close'))  # Update the recent prices
+        for security in self.securities:
+            self.recent_open_price[security].append(data.current(symbol(security), 'open'))  # Update the recent prices
+            self.recent_close_price[security].append(data.current(symbol(security), 'close'))  # Update the recent prices
 
             # If there's enough recent price data
-            if len(context.recent_close_price[ticker]) >= context.window_length + 2:
+            if len(self.recent_close_price[security]) >= self.window_length + 2:
                 # Add independent variables, the prior changes
-                context.sma2 = get_sma(context.recent_close_price[ticker], 2, context.window_length)
-                context.sma3 = get_sma(context.recent_close_price[ticker], 3, context.window_length)
-                context.sma4 = get_sma(context.recent_close_price[ticker], 4, context.window_length)
-                context.sma5 = get_sma(context.recent_close_price[ticker], 5, context.window_length)
-                context.sma6 = get_sma(context.recent_close_price[ticker], 6, context.window_length)
+                self.sma2 = get_sma(self.recent_close_price[security], 2, self.window_length)
+                self.sma3 = get_sma(self.recent_close_price[security], 3, self.window_length)
+                self.sma4 = get_sma(self.recent_close_price[security], 4, self.window_length)
+                self.sma5 = get_sma(self.recent_close_price[security], 5, self.window_length)
+                self.sma6 = get_sma(self.recent_close_price[security], 6, self.window_length)
 
                 # Make a list of 1's and 0's, 1 when the price increased from the prior bar
-                context.sma_2_result[ticker] = np.append(context.sma_2_result[ticker],
-                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
-                                                                            context.sma2[-1:]))
-                context.sma_3_result[ticker] = np.append(context.sma_3_result[ticker],
-                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
-                                                                            context.sma3[-1:]))
+                self.sma2_result[security] = np.append(self.sma2_result[security],
+                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                         self.sma2[-1:]))
+                self.sma3_result[security] = np.append(self.sma3_result[security],
+                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                         self.sma3[-1:]))
 
-                context.sma_4_result[ticker] = np.append(context.sma_4_result[ticker],
-                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
-                                                                            context.sma4[-1:]))
+                self.sma4_result[security] = np.append(self.sma4_result[security],
+                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                         self.sma4[-1:]))
 
-                context.sma_5_result[ticker] = np.append(context.sma_5_result[ticker],
-                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
-                                                                            context.sma5[-1:]))
+                self.sma5_result[security] = np.append(self.sma5_result[security],
+                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                         self.sma5[-1:]))
 
-                context.sma_6_result[ticker] = np.append(context.sma_6_result[ticker],
-                                                         is_x_higher_than_y(context.recent_close_price[ticker][-1:],
-                                                                            context.sma6[-1:]))
+                self.sma6_result[security] = np.append(self.sma6_result[security],
+                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                         self.sma6[-1:]))
 
-                context.result[ticker] = np.append(context.result[ticker],
-                                                   is_x_higher_than_y(context.recent_close_price[ticker][-1:],
-                                                                      context.recent_open_price[ticker][-1:]))
+                self.result[security] = np.append(self.result[security],
+                                                is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                   self.recent_open_price[security][-1:]))
 
                 # Add independent variables, the prior changes
-                context.X = np.array(list(zip(context.sma_2_result[ticker],
-                                              context.sma_3_result[ticker],
-                                              context.sma_4_result[ticker],
-                                              context.sma_5_result[ticker],
-                                              context.sma_6_result[ticker])))
+                self.X = np.array(list(zip(self.sma2_result[security],
+                                           self.sma3_result[security],
+                                           self.sma4_result[security],
+                                           self.sma5_result[security],
+                                           self.sma6_result[security])))
 
-                context.Y = context.result[ticker]  # Add dependent variable, the final change
+                # Add dependent variable, the final change
+                self.Y = self.result[security]
 
-                if len(context.Y) >= context.data_points:  # There needs to be enough data points to make a good model
-                    context.mdl.fit(context.X, context.Y)  # Generate the model
+                # There needs to be enough data points to make a good model
+                if len(self.Y) >= self.data_points:
+                    # Generate the model
+                    self.mdl.fit(self.X, self.Y)
 
-                    context.pred = context.mdl.predict(context.X[-1:])  # Predict
-
-                    for k in range(1, context.forecast_steps):
-                        context.forecast = np.append(context.forecast, context.pred)
-
-                        sma2 = ta.SMA(np.array(context.recent_close_price[ticker]), 2)[context.window_length - 1:]
-                        sma3 = ta.SMA(np.array(context.recent_close_price[ticker]), 3)[context.window_length - 1:]
-                        sma4 = ta.SMA(np.array(context.recent_close_price[ticker]), 4)[context.window_length - 1:]
-                        sma5 = ta.SMA(np.array(context.recent_close_price[ticker]), 5)[context.window_length - 1:]
-                        sma6 = ta.SMA(np.array(context.recent_close_price[ticker]), 6)[context.window_length - 1:]
-
-                        context.sma2_result = np.append(context.sma2_result,
-                                                        is_x_higher_than_y(context.forecast[-1:],
-                                                                           sma2[-1:]))
-                        context.sma3_result = np.append(context.sma3_result,
-                                                        is_x_higher_than_y(context.forecast[-1:],
-                                                                           sma3[-1:]))
-                        context.sma4_result = np.append(context.sma4_result,
-                                                        is_x_higher_than_y(context.forecast[-1:],
-                                                                           sma4[-1:]))
-                        context.sma5_result = np.append(context.sma5_result,
-                                                        is_x_higher_than_y(context.forecast[-1:],
-                                                                           sma5[-1:]))
-                        context.sma6_result = np.append(context.sma6_result,
-                                                        is_x_higher_than_y(context.forecast[-1:],
-                                                                           sma6[-1:]))
-
-                        context.X = np.array(list(zip(context.sma2_result,
-                                                      context.sma3_result,
-                                                      context.sma4_result,
-                                                      context.sma5_result,
-                                                      context.sma6_result)))
-
-                        context.pred = context.mdl.predict(context.X[-1:])
+                    # Predict
+                    self.pred = self.mdl.predict(self.X[-1:])
 
                     # If prediction = 1, buy all shares affordable, if 0 sell all shares
-                    order(asset=symbol(ticker), amount=100)
+                    if self.pred:
+                        if not self.invested[security]:
+                            order_target_percent(asset=symbol(security), target=0.5)
+                            self.invested[security] = True
+                    else:
+                        if self.invested[security]:
+                            order_target_percent(asset=symbol(security), target=-0.5)
+                            self.invested[security] = False
 
-                    record(prediction=int(context.pred))
+    def record_vars(self):
+        """
+        Plot variables at the end of each day.
+        """
+        record(prediction=int(self.pred))
 
 
 def is_x_higher_than_y(x, y):
+    """
+    1 if forecast price is higher than today's price, else 0
+    :param x: 
+    :param y: 
+    :return: 
+    """
     return 1 if x > y else 0
 
 
 def get_sma(close, days, window):
+    """
+    calculates the simple moving average
+    :param close: 
+    :param days: 
+    :param window: 
+    :return: 
+    """
     sma = ta.SMA(np.array(close), days)[window - 1:]
 
     # drop nan values
@@ -163,14 +164,30 @@ def get_sma(close, days, window):
 
 
 if __name__ == '__main__':
+    """ 
+    This is executed when run from the command line 
+    """
+    zipline_logging = log.NestedSetup([
+        log.NullHandler(level=log.DEBUG),
+        log.StreamHandler(sys.stdout, level=log.INFO),
+        log.StreamHandler(sys.stderr, level=log.ERROR),
+    ])
+    zipline_logging.push_application()
+
+    start = '2010-1-1'
+
+    end = '2017-1-1'
+
     tickers = ['AAPL', 'MSFT']
+
+    benchmark = 'GSPC'
 
     data = OrderedDict()
 
     for ticker in tickers:
         data[ticker] = fc.get_time_series(ticker=ticker,
-                                          start_date='2011-5-1',
-                                          end_date='2014-1-5')
+                                          start_date=start,
+                                          end_date=end)
 
         data[ticker].drop(['open',
                            'high',
@@ -196,8 +213,20 @@ if __name__ == '__main__':
     # #print df
 
     # # # # # # Run Strategy
-    results = Strategy.main(panel)
+    results = Strategy.run(panel)
     results['algorithm_returns'] = (1 + results.returns).cumprod()
 
-    results.to_csv('output.csv')
-    print(results['algorithm_returns'].tail(1)[0] * 100)
+    results.to_csv('data/mlc-results.csv')
+
+    data[benchmark] = fc.get_time_series(ticker=benchmark,
+                                         start_date=start,
+                                         end_date=end,
+                                         file_location='data/GSPC.csv')
+
+    data[benchmark].drop(['close'],
+                         axis=1,
+                         inplace=True)
+
+    data[benchmark].rename(columns={'ticker': 'sid',
+                                    'adj_close': 'close'},
+                           inplace=True)

@@ -2,7 +2,7 @@
 Module Docstring
 """
 
-__author__ = "Your Name"
+__author__ = "Gabriel Gauci Maistre"
 __version__ = "0.1.0"
 __license__ = "MIT"
 
@@ -41,7 +41,7 @@ class MachineLearningRegressor(TradingAlgorithm):
         self.trading_freq = 50
 
         # forecast increase to invest in
-        self.forecast_difference = 5
+        self.forecast_difference = 10
 
         # Use a random forest regressor
         self.mdl = RandomForestRegressor()
@@ -54,6 +54,15 @@ class MachineLearningRegressor(TradingAlgorithm):
         for security in self.securities:
             self.recent_prices[security] = []
             self.invested[security] = False
+
+        # Stores the 15 and 50 day simple moving average
+        self.sma15 = self.sma50 = []
+
+        # Independent, or input variables
+        self.X = []
+
+        # Dependent, or output variable
+        self.Y = []
 
         # Stores most recent prediction
         self.pred = deque(maxlen=self.pred_steps - 1)
@@ -70,8 +79,11 @@ class MachineLearningRegressor(TradingAlgorithm):
         Called every minute.
         """
         for security in self.securities:
-            self.recent_prices[security].append(data.current(symbol(security), 'close'))  # Update the recent prices
-            if len(self.recent_prices[security]) >= self.window_length + 2:  # If there's enough recent price data
+            # Update the recent prices
+            self.recent_prices[security].append(data.current(symbol(security), 'close'))
+
+            # If there's enough recent price data
+            if len(self.recent_prices[security]) >= self.window_length + 2:
                 # Limit trading frequency
                 # if len(self.recent_prices[security]) % self.trading_freq != 0.0:
                 #   return
@@ -167,7 +179,7 @@ if __name__ == '__main__':
     ])
     zipline_logging.push_application()
 
-    start = '2013-1-1'
+    start = '2010-1-1'
 
     end = '2017-1-1'
 
