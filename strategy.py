@@ -24,7 +24,7 @@ buy_and_hold_algo = TradingAlgorithm(initialize=buy_and_hold.initialize,
                                      handle_data=buy_and_hold.handle_data)
 
 # run algo
-results = buy_and_hold_algo.run(panel)
+results = buy_and_hold_algo.main(panel)
 
 # calculation
 total_pnl = results['pnl'][-1:].values

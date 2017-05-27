@@ -1,0 +1,96 @@
+\contentsline {chapter}{Declaration of Authorship}{i}{dummy.1}
+\vspace {1em}
+\contentsline {chapter}{Abstract}{iii}{dummy.2}
+\vspace {1em}
+\contentsline {chapter}{Acknowledgements}{iv}{dummy.3}
+\vspace {1em}
+\contentsline {chapter}{List of Figures}{viii}{dummy.5}
+\contentsline {chapter}{List of Tables}{ix}{dummy.7}
+\contentsline {chapter}{Abbreviations}{x}{dummy.9}
+\contentsline {chapter}{Physical Constants}{xi}{dummy.12}
+\contentsline {chapter}{Symbols}{xii}{dummy.15}
+\vspace {2em}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.18}
+\contentsline {section}{\numberline {1.1}Efficient Market Hypothesis - EMH}{2}{section.19}
+\contentsline {subsection}{\numberline {1.1.1}Breaking down EMH}{2}{subsection.20}
+\contentsline {subsection}{\numberline {1.1.2}What EMH means for investors}{2}{subsection.21}
+\contentsline {section}{\numberline {1.2}Zero-Sum Game}{3}{section.22}
+\contentsline {subsection}{\numberline {1.2.1}Zero-Sum Game \& Economics}{3}{subsection.23}
+\contentsline {chapter}{\numberline {2}Background Theory}{5}{chapter.24}
+\contentsline {section}{\numberline {2.1}Time Series Analysis}{5}{section.25}
+\contentsline {subsection}{\numberline {2.1.1}ARMA}{6}{subsection.26}
+\contentsline {subsection}{\numberline {2.1.2}ARIMA}{7}{subsection.27}
+\contentsline {section}{\numberline {2.2}Statistical Machine Learning}{8}{section.28}
+\contentsline {subsection}{\numberline {2.2.1}Classification}{8}{subsection.29}
+\contentsline {subsection}{\numberline {2.2.2}Support Vector Machines}{9}{subsection.30}
+\contentsline {subsection}{\numberline {2.2.3}Regression}{9}{subsection.31}
+\contentsline {subsection}{\numberline {2.2.4}Decision Trees}{10}{subsection.32}
+\contentsline {section}{\numberline {2.3}Bayesian Statistics}{10}{section.33}
+\contentsline {subsection}{\numberline {2.3.1}Markov Chain Monte Carlo}{11}{subsection.34}
+\contentsline {chapter}{\numberline {3}Experminetal Setup}{13}{chapter.35}
+\contentsline {section}{\numberline {3.1}Data Tidying}{13}{section.36}
+\contentsline {section}{\numberline {3.2}Stock Selection}{13}{section.37}
+\contentsline {section}{\numberline {3.3}Time Series Analysis}{13}{section.38}
+\contentsline {subsection}{\numberline {3.3.1}Random Walk}{14}{subsection.39}
+\contentsline {subsection}{\numberline {3.3.2}Ordinary Least Squares (OLS)}{14}{subsection.40}
+\contentsline {subsection}{\numberline {3.3.3}Auto Regressive (AR)}{14}{subsection.41}
+\contentsline {subsection}{\numberline {3.3.4}Moving Average (MA)}{14}{subsection.42}
+\contentsline {subsection}{\numberline {3.3.5}Auto Regressive Moving Average (ARMA)}{15}{subsection.43}
+\contentsline {subsection}{\numberline {3.3.6}Auto Regressive Integrated Moving Average (ARIMA)}{15}{subsection.44}
+\contentsline {section}{\numberline {3.4}Machine Learning}{15}{section.45}
+\contentsline {subsection}{\numberline {3.4.1}Classification}{15}{subsection.46}
+\contentsline {subsubsection}{\numberline {3.4.1.1}Decision Tree}{15}{subsubsection.47}
+\contentsline {subsubsection}{\numberline {3.4.1.2}Boosted Decision Tree}{16}{subsubsection.48}
+\contentsline {subsubsection}{\numberline {3.4.1.3}Support Vector Machine (SVM)}{16}{subsubsection.49}
+\contentsline {subsubsection}{\numberline {3.4.1.4}Random Forest}{16}{subsubsection.50}
+\contentsline {subsubsection}{\numberline {3.4.1.5}K-Nearest Neighbour}{17}{subsubsection.51}
+\contentsline {subsubsection}{\numberline {3.4.1.6}Logistic Regression}{17}{subsubsection.52}
+\contentsline {subsubsection}{\numberline {3.4.1.7}Bernoulli Naive Bayes}{18}{subsubsection.53}
+\contentsline {subsubsection}{\numberline {3.4.1.8}Gaussian Naive Bayes}{18}{subsubsection.54}
+\contentsline {subsubsection}{\numberline {3.4.1.9}Neural Network}{18}{subsubsection.55}
+\contentsline {subsection}{\numberline {3.4.2}Regression}{19}{subsection.56}
+\contentsline {subsubsection}{\numberline {3.4.2.1}Decision Tree}{19}{subsubsection.57}
+\contentsline {subsubsection}{\numberline {3.4.2.2}Boosted Decision Tree}{19}{subsubsection.58}
+\contentsline {subsubsection}{\numberline {3.4.2.3}Random Forest}{20}{subsubsection.59}
+\contentsline {subsubsection}{\numberline {3.4.2.4}Linear Regression}{20}{subsubsection.60}
+\contentsline {subsubsection}{\numberline {3.4.2.5}Neural Network}{20}{subsubsection.61}
+\contentsline {section}{\numberline {3.5}Bayesian Statistics}{20}{section.62}
+\contentsline {subsection}{\numberline {3.5.1}No-U-Turn Sampler (NUTS)}{20}{subsection.63}
+\contentsline {subsection}{\numberline {3.5.2}Metropolis-Hastings}{21}{subsection.64}
+\contentsline {section}{\numberline {3.6}Strategy}{21}{section.65}
+\contentsline {subsection}{\numberline {3.6.1}Classification}{21}{subsection.66}
+\contentsline {subsection}{\numberline {3.6.2}Regression}{22}{subsection.67}
+\contentsline {chapter}{\numberline {4}Research Findings}{23}{chapter.68}
+\contentsline {section}{\numberline {4.1}Time Series Analysis}{24}{section.69}
+\contentsline {subsection}{\numberline {4.1.1}Random Walk}{24}{subsection.70}
+\contentsline {subsection}{\numberline {4.1.2}Ordinary Least Squares (OLS)}{24}{subsection.71}
+\contentsline {subsection}{\numberline {4.1.3}Auto Regressive (AR)}{25}{subsection.72}
+\contentsline {subsection}{\numberline {4.1.4}Moving Average (MA)}{25}{subsection.73}
+\contentsline {subsection}{\numberline {4.1.5}Auto Regressive Moving Average (ARMA)}{25}{subsection.74}
+\contentsline {subsection}{\numberline {4.1.6}Auto Regressive Integrated Moving Average (ARIMA)}{26}{subsection.75}
+\contentsline {section}{\numberline {4.2}Machine Learning}{26}{section.76}
+\contentsline {subsection}{\numberline {4.2.1}Classification}{26}{subsection.77}
+\contentsline {subsubsection}{\numberline {4.2.1.1}Decision Tree}{27}{subsubsection.78}
+\contentsline {subsubsection}{\numberline {4.2.1.2}Boosted Decision Tree}{27}{subsubsection.79}
+\contentsline {subsubsection}{\numberline {4.2.1.3}Support Vector Machine (SVM)}{27}{subsubsection.80}
+\contentsline {subsubsection}{\numberline {4.2.1.4}Random Forest}{27}{subsubsection.81}
+\contentsline {subsubsection}{\numberline {4.2.1.5}K-Nearest Neighbour}{28}{subsubsection.82}
+\contentsline {subsubsection}{\numberline {4.2.1.6}Gaussian Naive Bayes}{28}{subsubsection.83}
+\contentsline {subsubsection}{\numberline {4.2.1.7}Bernoulli Naive Bayes}{28}{subsubsection.84}
+\contentsline {subsubsection}{\numberline {4.2.1.8}Neural Network}{28}{subsubsection.85}
+\contentsline {subsection}{\numberline {4.2.2}Regression}{29}{subsection.86}
+\contentsline {subsubsection}{\numberline {4.2.2.1}Decision Tree}{29}{subsubsection.87}
+\contentsline {subsubsection}{\numberline {4.2.2.2}Boosted Decision Tree}{34}{subsubsection.88}
+\contentsline {subsubsection}{\numberline {4.2.2.3}K-Nearest Neighbour}{40}{subsubsection.89}
+\contentsline {subsubsection}{\numberline {4.2.2.4}Random Forest}{45}{subsubsection.90}
+\contentsline {subsubsection}{\numberline {4.2.2.5}Linear Regression}{51}{subsubsection.91}
+\contentsline {subsubsection}{\numberline {4.2.2.6}Neural Network}{56}{subsubsection.92}
+\contentsline {section}{\numberline {4.3}Bayesian Statistics}{62}{section.93}
+\contentsline {subsection}{\numberline {4.3.1}No-U-Turn Sampler (NUTS)}{62}{subsection.94}
+\contentsline {subsection}{\numberline {4.3.2}Metropolis-Hastings}{62}{subsection.95}
+\contentsline {chapter}{\numberline {5}Discussion and Suggestions for Future Research}{63}{chapter.96}
+\contentsline {chapter}{\numberline {6}Conclusion}{64}{chapter.97}
+\vspace {2em}
+\contentsline {chapter}{\numberline {A}An Appendix}{65}{appendix.98}
+\vspace {2em}
+\contentsline {chapter}{Bibliography}{67}{dummy.99}

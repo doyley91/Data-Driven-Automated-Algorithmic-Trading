@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 
 # read the data in
-df = pd.read_csv("http://www.ats.ucla.edu/stat/data/binary.csv")
+df = pd.read_csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
 
 # rename the 'rank' column because there is also a DataFrame method called 'rank'
 df.columns = ["admit", "gre", "gpa", "prestige"]

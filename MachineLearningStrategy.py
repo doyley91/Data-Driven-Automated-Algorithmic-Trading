@@ -181,7 +181,7 @@ if __name__ == '__main__':
     # #print df
 
     # # # # # # Run Strategy
-    results = Strategy.run(panel)
+    results = Strategy.main(panel)
     results['algorithm_returns'] = (1 + results.returns).cumprod()
 
     results.to_csv('output.csv')

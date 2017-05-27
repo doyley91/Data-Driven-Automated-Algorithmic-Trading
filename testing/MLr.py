@@ -5,14 +5,14 @@ from mlearning import SGDr, SVMr, LinearRegression, BTr, DTr, KNNr, MLPr, RFr
 
 tickers = 'AAPL'
 
-SGDr_results = SGDr.run(tickers=tickers)
-SVMr_results = SVMr.run(tickers=tickers)
-LinearRegression_results = LinearRegression.run(tickers=tickers)
-BTr_results = BTr.run(tickers=tickers)
-DTr_results = DTr.run(tickers=tickers)
-KNNr_results = KNNr.run(tickers=tickers)
-MLPr_results = MLPr.run(tickers=tickers)
-RFr_results = RFr.run(tickers=tickers)
+SGDr_results = SGDr.main(tickers=tickers)
+SVMr_results = SVMr.main(tickers=tickers)
+LinearRegression_results = LinearRegression.main(tickers=tickers)
+BTr_results = BTr.main(tickers=tickers)
+DTr_results = DTr.main(tickers=tickers)
+KNNr_results = KNNr.main(tickers=tickers)
+MLPr_results = MLPr.main(tickers=tickers)
+RFr_results = RFr.main(tickers=tickers)
 
 regression_results = pd.DataFrame(data=dict(SGD=SGDr_results.values,
                                             SVM=SVMr_results.values,

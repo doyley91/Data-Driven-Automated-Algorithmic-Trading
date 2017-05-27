@@ -13,7 +13,7 @@ from statsmodels.tsa.stattools import adfuller
 style.use('ggplot')
 
 # location of the data set
-file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
+file_location = "data/WIKI_PRICES.csv"
 
 # importing the data set, converting date column to datetime, making the trading date the index for the Pandas DataFrame and sorting the DataFrame by date
 df = pd.read_csv(file_location, index_col='date', parse_dates=True)

@@ -1,0 +1,1914 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>Data Driven Investing: Advanced Risk and Portfolio Management in Quantitative
+Finance</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html,htex4ht --> 
+<meta name="src" content="Thesis.tex"> 
+<meta name="date" content="2017-04-25 10:04:00"> 
+<link rel="stylesheet" type="text/css" href="Thesis.css"> 
+</head><body 
+>
+                                                                                
+                                                                                
+<div class="maketitle">
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<a 
+href="University" Web Site URL Here (include http://mcast.edu.mt/) ><span 
+class="cmbx-12">MCAST</span></a>
+
+<h2 class="titleHead">Data Driven Investing: Advanced Risk
+and Portfolio Management in
+Quantitative Finance</h2>
+<span 
+class="cmr-17">by</span>
+<a 
+href="gabriel@gaucimaistre.com" ><span 
+class="cmr-17">Gabriel Gauci Maistre</span></a>
+<span 
+class="cmr-12">A thesis submitted in partial fulfillment for the</span>
+<span 
+class="cmr-12">degree of Bachelor of Science</span>
+<span 
+class="cmr-12">in the</span>
+<a 
+href="Faculty" Web Site URL Here (include http://ict.mcast.edu.mt/) ><span 
+class="cmr-12">Information and Communications Technology</span></a>
+<a 
+href="Department" or School Web Site URL Here (include http://mcast.edu.mt/) ><span 
+class="cmr-12">Malta College of Art, Science, and Technology</span></a>
+<div class="date" ><span 
+class="cmr-12x-x-120">April 2017</span></div>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+</div>
+<a 
+ id="x1-2r1"></a>
+<a 
+ id="Q1-1-1"></a>
+<div class="center" 
+>
+<!--l. 71--><p class="noindent" >
+<!--l. 71--><p class="noindent" ><span 
+class="cmbx-12x-x-172">Declaration of Authorship</span>
+</div>
+<!--l. 71--><p class="noindent" >I, Gabriel Gauci Maistre, declare that this thesis titled, &#8216;Data Driven Investing: Advanced
+Risk and Portfolio Management in Quantitative Finance&#8217; and the work presented in it are my
+own. I confirm that:
+<ul class="itemize1">
+<li class="itemize">This work was done wholly or mainly while in candidature for a research degree
+at this University.
+</li>
+<li class="itemize">Where any part of this thesis has previously been submitted for a degree or any
+other qualification at this University or any other institution, this has been clearly
+stated.
+</li>
+<li class="itemize">Where I  have  consulted  the  published  work  of  others,  this  is  always  clearly
+attributed.
+</li>
+<li class="itemize">Where I have quoted from the work of others, the source is always given. With the
+exception of such quotations, this thesis is entirely my own work.
+</li>
+<li class="itemize">I have acknowledged all main sources of help.
+                                                                                
+                                                                                
+</li>
+<li class="itemize">Where the thesis is based on work done by myself jointly with others, I have made
+clear exactly what was done by others and what I have contributed myself. <br 
+class="newline" /></li></ul>
+<!--l. 71--><p class="noindent" >Signed:<br 
+class="newline" />____________________________________________________
+<!--l. 71--><p class="noindent" >Date:<br 
+class="newline" />____________________________________________________
+                                                                                
+                                                                                
+<!--l. 80--><p class="noindent" ><span 
+class="cmti-10x-x-109">&#8220;If past history was all there was to the game, the richest people would be librarians.&#8221;</span>
+                                                                  <div class="flushright" 
+>
+<!--l. 82--><p class="noindent" >
+Warren Buffett</div>
+                                                                                
+                                                                                
+<a 
+ id="x1-3r2"></a>
+<a 
+ id="Q1-1-2"></a>
+<div class="center" 
+>
+<!--l. 92--><p class="noindent" >
+<!--l. 92--><p class="noindent" ><a 
+href="University" Web Site URL Here (include http://mcast.edu.mt/) >MCAST</a>
+<!--l. 92--><p class="noindent" ><span 
+class="cmti-12x-x-172">Abstract</span>
+<!--l. 92--><p class="noindent" ><a 
+href="Faculty" Web Site URL Here (include http://ict.mcast.edu.mt/) >Information and Communications Technology</a>
+<!--l. 92--><p class="noindent" ><a 
+href="Department" or School Web Site URL Here (include http://mcast.edu.mt/) >Malta College of Art, Science, and Technology</a>
+<!--l. 92--><p class="noindent" >Bachelor of Science
+<!--l. 92--><p class="noindent" >by <a 
+href="gabriel@gaucimaistre.com" >Gabriel Gauci Maistre</a>
+</div>
+<!--l. 95--><p class="noindent" >The Thesis Abstract is written here (and usually kept to just this page). The page is kept
+centered vertically so can expand into the blank space above the title too&#x2026;
+                                                                                
+                                                                                
+<a 
+ id="x1-4r3"></a>
+<a 
+ id="Q1-1-3"></a>
+<div class="center" 
+>
+<!--l. 110--><p class="noindent" >
+<!--l. 110--><p class="noindent" ><span 
+class="cmti-12x-x-172">Acknowledgements</span>
+</div>
+<!--l. 110--><p class="noindent" >Alan Gatt l-ahjar lecturer - Nicholas Gollcher
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<h2 class="likechapterHead"><a 
+ id="x1-10003"></a>Contents</h2> <div class="tableofcontents">
+<span class="chapterToc" ><a 
+href="#Q1-1-1">Declaration of Authorship</a></span>
+<br /><span class="chapterToc" ><a 
+href="#Q1-1-2">Abstract</a></span>
+<br /><span class="chapterToc" ><a 
+href="#Q1-1-3">Acknowledgements</a></span>
+<br /><span class="chapterToc" ><a 
+href="#Q1-1-5">List of Figures</a></span>
+<br /><span class="chapterToc" ><a 
+href="#Q1-1-7">List of Tables</a></span>
+<br /><span class="chapterToc" ><a 
+href="#Q1-1-9">Abbreviations</a></span>
+<br /><span class="chapterToc" ><a 
+href="#Q1-1-11">Physical Constants</a></span>
+<br /><span class="chapterToc" ><a 
+href="#Q1-1-13">Symbols</a></span>
+<br /><span class="chapterToc" >1 <a 
+href="#x1-70001" id="QQ2-1-15">Introduction</a></span>
+<br />&#x00A0;<span class="sectionToc" >1.1 <a 
+href="#x1-80001.1" id="QQ2-1-16">Efficient Market Hypothesis - EMH</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >1.1.1 <a 
+href="#x1-90001.1.1" id="QQ2-1-17">Breaking down EMH</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >1.1.2 <a 
+href="#x1-100001.1.2" id="QQ2-1-18">What EMH means for investors</a></span>
+<br />&#x00A0;<span class="sectionToc" >1.2 <a 
+href="#x1-110001.2" id="QQ2-1-19">Zero-Sum Game</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >1.2.1 <a 
+href="#x1-120001.2.1" id="QQ2-1-20">Zero-Sum Game &amp; Economics</a></span>
+<br /><span class="chapterToc" >2 <a 
+href="#x1-130002" id="QQ2-1-21">Background Theory</a></span>
+<br />&#x00A0;<span class="sectionToc" >2.1 <a 
+href="#x1-140002.1" id="QQ2-1-22">Time Series Analysis</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >2.1.1 <a 
+href="#x1-150002.1.1" id="QQ2-1-23">ARMA</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >2.1.2 <a 
+href="#x1-160002.1.2" id="QQ2-1-24">ARIMA</a></span>
+<br />&#x00A0;<span class="sectionToc" >2.2 <a 
+href="#x1-170002.2" id="QQ2-1-25">Statistical Machine Learning</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >2.2.1 <a 
+href="#x1-180002.2.1" id="QQ2-1-26">Classification</a></span>
+                                                                                
+                                                                                
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >2.2.2 <a 
+href="#x1-190002.2.2" id="QQ2-1-27">Support Vector Machines</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >2.2.3 <a 
+href="#x1-200002.2.3" id="QQ2-1-28">Regression</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >2.2.4 <a 
+href="#x1-210002.2.4" id="QQ2-1-29">Decision Trees</a></span>
+<br />&#x00A0;<span class="sectionToc" >2.3 <a 
+href="#x1-220002.3" id="QQ2-1-30">Bayesian Statistics</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >2.3.1 <a 
+href="#x1-230002.3.1" id="QQ2-1-31">Markov Chain Monte Carlo</a></span>
+<br /><span class="chapterToc" >3 <a 
+href="#x1-240003" id="QQ2-1-32">Experminetal Setup</a></span>
+<br />&#x00A0;<span class="sectionToc" >3.1 <a 
+href="#x1-250003.1" id="QQ2-1-33">Data Tidying</a></span>
+<br />&#x00A0;<span class="sectionToc" >3.2 <a 
+href="#x1-260003.2" id="QQ2-1-34">Stock Selection</a></span>
+<br />&#x00A0;<span class="sectionToc" >3.3 <a 
+href="#x1-270003.3" id="QQ2-1-35">Time Series Analysis</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.3.1 <a 
+href="#x1-280003.3.1" id="QQ2-1-36">Random Walk</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.3.2 <a 
+href="#x1-290003.3.2" id="QQ2-1-37">Ordinary Least Squares (OLS)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.3.3 <a 
+href="#x1-300003.3.3" id="QQ2-1-38">Auto Regressive (AR)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.3.4 <a 
+href="#x1-310003.3.4" id="QQ2-1-39">Moving Average (MA)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.3.5 <a 
+href="#x1-320003.3.5" id="QQ2-1-40">Auto Regressive Moving Average (ARMA)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.3.6 <a 
+href="#x1-330003.3.6" id="QQ2-1-41">Auto Regressive Integrated Moving Average (ARIMA)</a></span>
+<br />&#x00A0;<span class="sectionToc" >3.4 <a 
+href="#x1-340003.4" id="QQ2-1-42">Machine Learning</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.4.1 <a 
+href="#x1-350003.4.1" id="QQ2-1-43">Classification</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.1.1 <a 
+href="#x1-360003.4.1.1" id="QQ2-1-44">Decision Tree</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.1.2 <a 
+href="#x1-370003.4.1.2" id="QQ2-1-45">Boosted Decision Tree</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.1.3 <a 
+href="#x1-380003.4.1.3" id="QQ2-1-46">Support Vector Machine (SVM)</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.1.4 <a 
+href="#x1-390003.4.1.4" id="QQ2-1-47">Random Forest</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.1.5 <a 
+href="#x1-400003.4.1.5" id="QQ2-1-48">K-Nearest Neighbour</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.1.6 <a 
+href="#x1-410003.4.1.6" id="QQ2-1-49">Bernoulli Naive Bayes</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.1.7 <a 
+href="#x1-420003.4.1.7" id="QQ2-1-50">Gaussian Naive Bayes</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.4.2 <a 
+href="#x1-430003.4.2" id="QQ2-1-51">Regression</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.2.1 <a 
+href="#x1-440003.4.2.1" id="QQ2-1-52">Decision Tree</a></span>
+                                                                                
+                                                                                
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.2.2 <a 
+href="#x1-450003.4.2.2" id="QQ2-1-53">Boosted Decision Tree</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.2.3 <a 
+href="#x1-460003.4.2.3" id="QQ2-1-54">Random Forest</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.2.4 <a 
+href="#x1-470003.4.2.4" id="QQ2-1-55">Linear Regression</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >3.4.2.5 <a 
+href="#x1-480003.4.2.5" id="QQ2-1-56">Logistic Regression</a></span>
+<br />&#x00A0;<span class="sectionToc" >3.5 <a 
+href="#x1-490003.5" id="QQ2-1-57">Bayesian Statistics</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.5.1 <a 
+href="#x1-500003.5.1" id="QQ2-1-58">No-U-Turn Sampler (NUTS)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >3.5.2 <a 
+href="#x1-510003.5.2" id="QQ2-1-59">Metropolis-Hastings</a></span>
+<br /><span class="chapterToc" >4 <a 
+href="#x1-520004" id="QQ2-1-60">Research Findings</a></span>
+<br />&#x00A0;<span class="sectionToc" >4.1 <a 
+href="#x1-530004.1" id="QQ2-1-61">Time Series Analysis</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.1.1 <a 
+href="#x1-540004.1.1" id="QQ2-1-62">Random Walk</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.1.2 <a 
+href="#x1-550004.1.2" id="QQ2-1-63">Ordinary Least Squares (OLS)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.1.3 <a 
+href="#x1-560004.1.3" id="QQ2-1-64">Auto Regressive (AR)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.1.4 <a 
+href="#x1-570004.1.4" id="QQ2-1-65">Moving Average (MA)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.1.5 <a 
+href="#x1-580004.1.5" id="QQ2-1-66">Auto Regressive Moving Average (ARMA)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.1.6 <a 
+href="#x1-590004.1.6" id="QQ2-1-67">Auto Regressive Integrated Moving Average (ARIMA)</a></span>
+<br />&#x00A0;<span class="sectionToc" >4.2 <a 
+href="#x1-600004.2" id="QQ2-1-68">Machine Learning</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.2.1 <a 
+href="#x1-610004.2.1" id="QQ2-1-69">Classification</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.1.1 <a 
+href="#x1-620004.2.1.1" id="QQ2-1-70">Decision Tree</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.1.2 <a 
+href="#x1-630004.2.1.2" id="QQ2-1-71">Boosted Decision Tree</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.1.3 <a 
+href="#x1-640004.2.1.3" id="QQ2-1-72">Support Vector Machine (SVM)</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.1.4 <a 
+href="#x1-650004.2.1.4" id="QQ2-1-73">Random Forest</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.1.5 <a 
+href="#x1-660004.2.1.5" id="QQ2-1-74">K-Nearest Neighbour</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.1.6 <a 
+href="#x1-670004.2.1.6" id="QQ2-1-75">Naive Bayes</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.2.2 <a 
+href="#x1-680004.2.2" id="QQ2-1-76">Regression</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.2.1 <a 
+href="#x1-690004.2.2.1" id="QQ2-1-77">Decision Tree</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.2.2 <a 
+href="#x1-700004.2.2.2" id="QQ2-1-78">Boosted Decision Tree</a></span>
+                                                                                
+                                                                                
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.2.3 <a 
+href="#x1-710004.2.2.3" id="QQ2-1-79">Random Forest</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.2.4 <a 
+href="#x1-720004.2.2.4" id="QQ2-1-80">Linear Regression</a></span>
+<br />&#x00A0;&#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.2.5 <a 
+href="#x1-730004.2.2.5" id="QQ2-1-81">Logistic Regression</a></span>
+<br />&#x00A0;<span class="sectionToc" >4.3 <a 
+href="#x1-740004.3" id="QQ2-1-82">Bayesian Statistics</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.3.1 <a 
+href="#x1-750004.3.1" id="QQ2-1-83">No-U-Turn Sampler (NUTS)</a></span>
+<br />&#x00A0;&#x00A0;<span class="subsectionToc" >4.3.2 <a 
+href="#x1-760004.3.2" id="QQ2-1-84">Metropolis-Hastings</a></span>
+<br /><span class="chapterToc" >5 <a 
+href="#x1-770005" id="QQ2-1-85">Conclusions, Discussion, and Suggestions for Future Research</a></span>
+<br /><span class="appendixToc" >A <a 
+href="#x1-78000A" id="QQ2-1-86">An Appendix</a></span>
+<br /><span class="chapterToc" ><a 
+href="#Q1-1-87">Bibliography</a></span>
+</div>
+<a 
+ id="x1-1001r4"></a>
+<a 
+ id="Q1-1-5"></a>
+                                                                                
+                                                                                
+<h2 class="likechapterHead"><a 
+ id="x1-20004"></a>List of Figures</h2> <div class="tableofcontents">
+</div>
+                                                                                
+                                                                                
+<a 
+ id="x1-2001r5"></a>
+<a 
+ id="Q1-1-7"></a>
+                                                                                
+                                                                                
+<h2 class="likechapterHead"><a 
+ id="x1-30005"></a>List of Tables</h2> <div class="tableofcontents">
+</div>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<a 
+ id="x1-3001r6"></a>
+<a 
+ id="Q1-1-9"></a>
+                                                                                
+                                                                                
+<h2 class="likechapterHead"><a 
+ id="x1-40006"></a>Abbreviations</h2>
+<a 
+ id="x1-4001r1"></a><!--l. 150--><div class="longtable"><table id="TBL-1" class="longtable" 
+cellspacing="0" cellpadding="0"  
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1"><col 
+id="TBL-1-2"></colgroup>
+<tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">EMH </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">E</span>fficient <span 
+class="cmbx-10x-x-109">M</span>arket <span 
+class="cmbx-10x-x-109">H</span>ypothesis                      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">RWH </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">R</span>andom <span 
+class="cmbx-10x-x-109">W</span>alk <span 
+class="cmbx-10x-x-109">H</span>ypothesis                        </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">OLS </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">O</span>rdinary <span 
+class="cmbx-10x-x-109">L</span>east <span 
+class="cmbx-10x-x-109">S</span>quares                            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-4-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">AR </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-4-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">A</span>uto <span 
+class="cmbx-10x-x-109">R</span>egressive                                      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-5-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">MA </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-5-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">M</span>oving <span 
+class="cmbx-10x-x-109">A</span>verage                                      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-6-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">ARMA </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-6-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">A</span>uto <span 
+class="cmbx-10x-x-109">R</span>egressive <span 
+class="cmbx-10x-x-109">M</span>oving <span 
+class="cmbx-10x-x-109">A</span>verage               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-7-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">ARIMA</span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-7-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">A</span>uto <span 
+class="cmbx-10x-x-109">R</span>egressive <span 
+class="cmbx-10x-x-109">I</span>ntegrated <span 
+class="cmbx-10x-x-109">M</span>oving <span 
+class="cmbx-10x-x-109">A</span>verage</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-8-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-8-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">ADF </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-8-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">A</span>ugmented <span 
+class="cmbx-10x-x-109">D</span>ickey <span 
+class="cmbx-10x-x-109">F</span>uller                         </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-9-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-9-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">SVM </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-9-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">S</span>upport <span 
+class="cmbx-10x-x-109">V</span>ector <span 
+class="cmbx-10x-x-109">M</span>achine                          </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-10-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-10-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">SGD </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-10-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">S</span>tochastic <span 
+class="cmbx-10x-x-109">G</span>radient <span 
+class="cmbx-10x-x-109">D</span>escent                      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-11-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-11-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">ADF </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-11-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">A</span>ugmented <span 
+class="cmbx-10x-x-109">D</span>ickey <span 
+class="cmbx-10x-x-109">F</span>uller                         </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-12-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-12-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">SMA </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-12-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">S</span>imple <span 
+class="cmbx-10x-x-109">M</span>oving <span 
+class="cmbx-10x-x-109">A</span>verage                            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-13-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-13-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">AIC </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-13-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">A</span>lkaline <span 
+class="cmbx-10x-x-109">I</span>nformation <span 
+class="cmbx-10x-x-109">C</span>riterion                   </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-14-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-14-1"  
+class="td11"><span 
+class="cmbx-10x-x-109">IC </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-14-2"  
+class="td11"><span 
+class="cmbx-10x-x-109">I</span>nformation <span 
+class="cmbx-10x-x-109">C</span>riterion                               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-15-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-15-1"  
+class="td11"> </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-16-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-16-1"  
+class="td11"> </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-17-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-17-1"  
+class="td11"> </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-18-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-18-1"  
+class="td11"></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-18-2"  
+class="td11">
+</td></tr>
+</table></div>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<a 
+ id="x1-4002r7"></a>
+<a 
+ id="Q1-1-11"></a>
+                                                                                
+                                                                                
+<h2 class="likechapterHead"><a 
+ id="x1-50007"></a>Physical Constants</h2>
+<a 
+ id="x1-5001r2"></a><!--l. 160--><div class="longtable"><table id="TBL-2" class="longtable" 
+cellspacing="0" cellpadding="0"  
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"><col 
+id="TBL-2-2"><col 
+id="TBL-2-3"><col 
+id="TBL-2-4"></colgroup>
+<tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-1"  
+class="td11">Speed of Light</td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-1-2"  
+class="td11"><span 
+class="cmmi-10x-x-109">c</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-3"  
+class="td11">=</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-4"  
+class="td11">2<span 
+class="cmmi-10x-x-109">.</span>997<span 
+class="cmmi-10x-x-109">&#x00A0;</span>924<span 
+class="cmmi-10x-x-109">&#x00A0;</span>58 <span 
+class="cmsy-10x-x-109">&#x00D7; </span>10<sup><span 
+class="cmr-8">8</span></sup><span 
+class="cmmi-10x-x-109">&#x00A0;</span>ms<sup><span 
+class="cmsy-8">-</span>s</sup> (exact)</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-1"  
+class="td11">            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-1"  
+class="td11">            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-4-1"  
+class="td11">            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-5-1"  
+class="td11">            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-6-1"  
+class="td11">  </td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-2"  
+class="td11"> </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-3"  
+class="td11">  </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-6-4"  
+class="td11">
+</td></tr>
+</table></div>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<a 
+ id="x1-5002r8"></a>
+<a 
+ id="Q1-1-13"></a>
+                                                                                
+                                                                                
+<h2 class="likechapterHead"><a 
+ id="x1-60008"></a>Symbols</h2>
+<a 
+ id="x1-6001r3"></a><!--l. 172--><div class="longtable"><table id="TBL-3" class="longtable" 
+cellspacing="0" cellpadding="0"  
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1"><col 
+id="TBL-3-2"><col 
+id="TBL-3-3"></colgroup>
+<tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-1-1"  
+class="td11"><span 
+class="cmmi-10x-x-109">a </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-1-2"  
+class="td11">distance             </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-1-3"  
+class="td11">m          </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-1"  
+class="td11"><span 
+class="cmmi-10x-x-109">P</span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-2"  
+class="td11">power                </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-3"  
+class="td11">W (Js<sup><span 
+class="cmsy-8">-</span><span 
+class="cmr-8">1</span></sup>)</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-1"  
+class="td11"> </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-2"  
+class="td11">               </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-3"  
+class="td11">        </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-4-1"  
+class="td11"><span 
+class="cmmi-10x-x-109">&#x03C9; </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-4-2"  
+class="td11">angular frequency</td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-4-3"  
+class="td11">rads<sup><span 
+class="cmsy-8">-</span><span 
+class="cmr-8">1</span></sup>     </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-5-1"  
+class="td11"> </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-6-1"  
+class="td11"> </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-7-1"  
+class="td11"> </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-8-1"  
+class="td11"> </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-9-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-9-1"  
+class="td11"></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-9-2"  
+class="td11">         </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-9-3"  
+class="td11">
+</td></tr>
+</table></div>
+                                                                                
+                                                                                
+<div class="center" 
+>
+<!--l. 181--><p class="noindent" >
+<!--l. 181--><p class="noindent" ><span 
+class="cmsl-12x-x-120">To my parents, Keith &amp; Christine Gauci Maistre. Without them,</span>
+<span 
+class="cmsl-12x-x-120">and their unconditional love and support, none of this would have</span>
+<span 
+class="cmsl-12x-x-120">been possible.</span></div>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;1</span><br /><a 
+ id="x1-70001"></a>Introduction</h2>
+<!--l. 3--><p class="noindent" >&#8221;Investing in stocks is just like gambling&#8221; - is a phrase commonly heard coming
+from people describing stock investing. But is it really just like gambling? Were all
+those investors who made billions from the stock market just lucky? To understand
+this, we must first review what it means to buy stocks. In the stock market, buying
+stocks means owning a share of the company. It entitles the stock holder to a claim
+on assets as well as a fraction of the profits which the company generates. It is
+unfortunately very common for investors to misunderstand this concept, often thinking of
+shares as simply a trading vehicle and forget that stock represents the ownership of a
+company.
+<!--l. 5--><p class="noindent" >So how are stocks valued? The value of a companys stock depends on a number of
+factors, and assessing the value is not an easy practice. Investors are constantly trying
+to assess the profit that will be left over to shareholders. This is why stock prices
+fluctuate. The outlook for business conditions is always changing, and so are the future
+earnings of a company. Since many people fail to understand this concept, it is far too
+common to believe that the short-term price movements of a company are random.
+However, it is the long-term price movements of a company which reflect the value of a
+company as it is supposed to be worth the present value of the profits it will make. A
+company can survive without profits in the short term, as long as expectations of future
+earnings exist. A company may try to fool investors in the beginning, however a
+companys stock price will eventually be expected to show the true value of the
+firm.
+<!--l. 7--><p class="noindent" >So how is this all different to gambling? Gambling is a zero-sum game. It merely takes money
+from a loser and gives it to a winner. No value is ever created. By investing, we increase the
+overall wealth of an economy. As companies compete, they increase productivity and develop
+products that can make our lives better. This does not mean that stock investing cannot be
+a gamble, as it is extremely common for many people to skip the due diligence
+before spending a huge chunk of their life savings on stock, often losing it all in the
+process.
+<!--l. 9--><p class="noindent" >This thesis aims to disprove two hypotheses, the Efficient Market Hypotheses - EMH, and the
+Zero-Sum Game theory.
+<h3 class="sectionHead"><span class="titlemark">1.1 </span> <a 
+ id="x1-80001.1"></a>Efficient Market Hypothesis - EMH</h3>
+<!--l. 13--><p class="noindent" >In financial economics, the efficient market hypothesis (EMH) is an investment theory which
+states it is impossible for an investor to &#8221;beat the market&#8221; because stock market
+                                                                                
+                                                                                
+efficiency causes existing share prices to always incorporate and reflect all relevant
+information. In accordance to the EMH, stocks always trade at their fair value on stock
+exchanges and only react to new information or charges in discount rates, making it
+impossible for investors to make a profit by either purchasing undervalued stocks or
+selling stocks for inflated prices. This means that as such, it should be impossible to
+outperform the overall market through expert stock selection or market timing, and the
+only way an investor can possibly obtain higher returns is by purchasing riskier
+investments.
+<!--l. 15--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">1.1.1 </span> <a 
+ id="x1-90001.1.1"></a>Breaking down EMH</h4>
+<!--l. 16--><p class="noindent" >Although it is a cornerstone of modern financial theory, the EMH is highly controversial
+and often disputed. Believers argue it is pointless to search for undervalued stocks
+or to try to predict trends in the market through either fundamental or technical
+analysis.
+<!--l. 18--><p class="noindent" >While academics point to a large body of evidence in support of EMH, an equal amount of
+dissension also exists. For example, investors such as Warren Buffett have consistently beaten
+the market over long periods of time, which in itself is impossible by definition according to
+the EMH. Detractors of the EMH also point to events such as the 1987 stock market
+crash, when the Dow Jones Industrial Average (DJIA) fell by over 20% in a single
+day, which was clear evidence that stock prices can seriously deviate from their fair
+values.
+<!--l. 20--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">1.1.2 </span> <a 
+ id="x1-100001.1.2"></a>What EMH means for investors</h4>
+<!--l. 21--><p class="noindent" >Proponents of the EMH conclude that, because of the randomness of the market, investors
+would be better off by investing in a low-cost, passive portfolio such as one comprising of
+various low risk index funds. Data compiled by Morningstar Inc. through its June 2015
+Active/Passive Barometer study supports the conclusion. Morningstar compared active
+managers returns in all categories against a composite made of related index funds
+and exchange-traded funds (ETFs). The study found that year-over-year, only two
+groups of active managers successfully outperformed passive funds more than 50% of
+                                                                                
+                                                                                
+the time. These were U.S. small growth funds and diversified emerging markets
+funds.
+<!--l. 23--><p class="noindent" >In all of the other categories, including U.S. large blend, U.S. large value, and U.S. large
+growth, among others, investors would have fared better by investing in low-cost index funds
+or ETFs. While a percentage of active managers do outperform passive funds at some point,
+the challenge for investors is being able to identify which ones will do so. Less than 25% of the
+top-performing active managers are able to consistently outperform their passive manager
+counterparts.
+<!--l. 25--><p class="noindent" >
+<h3 class="sectionHead"><span class="titlemark">1.2 </span> <a 
+ id="x1-110001.2"></a>Zero-Sum Game</h3>
+<!--l. 27--><p class="noindent" >Zero-sum, not to be confused with Empty sum, or Zero game, is a mathematical
+representation of a situation found in game theory and economic theory, in which one persons
+gain is equivalent to anothers loss, so the net change in wealth or benefit is zero. A zero-sum
+game may have as few as two players, or millions of participants.
+<!--l. 29--><p class="noindent" >Zero-sum games are found in game theory, but are less common than non-zero sum games.
+Poker and gambling are popular examples of zero-sum games since the sum of the amounts
+won by some players equals the combined losses of the others. Games such as chess and
+tennis, in which there is one winner and one loser, are also zero-sum games. In the
+financial markets, options and futures are examples of zero-sum games, excluding
+transaction costs. For every person who gains on a contract, there is a counter-party who
+loses.
+<!--l. 31--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">1.2.1 </span> <a 
+ id="x1-120001.2.1"></a>Zero-Sum Game &amp; Economics</h4>
+<!--l. 33--><p class="noindent" >When the Zero-Sum Game theory is applied specifically to economics, there are multiple
+factors to consider in oder to understand a zero-sum game. A zero-sum game assumes a
+version of perfect competition and perfect information; that is, both opponents in the model
+have all the relevant information to make an informed decision. To take a step back, most
+transactions or trades are inherently non zero-sum games because when two parties agree
+to trade they do so with the understanding that the goods or services they are
+                                                                                
+                                                                                
+receiving are more valuable than the goods or services they are trading for it, after
+transaction costs. This is called positive-sum, and most transactions fall under this
+category.
+<!--l. 35--><p class="noindent" >Options and futures trading is the closest practical example to a zero-sum game scenario.
+Options and futures are essentially informed bets on what the future price of a
+certain commodity will be in a strict timeframe. While this is a very simplified
+explanation of options and futures, generally if the price of that commodity rises
+within that timeframe, you can sell the futures contract at a profit. Thus, if an
+investor makes money off of that bet, there will be a corresponding loss. This is
+why futures and options trading often comes with disclaimers to not be undertaken
+by inexperienced traders. However, futures and options provide liquidity for the
+corresponding markets and can be very successful, for the right investor or company that
+is.
+<!--l. 37--><p class="noindent" >It is important to note that the stock market overall is often considered a zero-sum game,
+which is a misconception, along with other popular misunderstandings. Historically and in
+contemporary culture the stock market is often equated with gambling, which is definitely a
+zero-sum game. When an investor buys a stock, it is a share of ownership of a company that
+entitles that investor to a fraction of the company&#8217;s profits. The value of a stock can go up or
+down depending on the economy and a host of other factors, but ultimately, ownership of that
+stock will eventually result in a profit or a loss that is not based on chance or the guarantee of
+someone else&#8217;s loss. In contrast, gambling means that somebody wins the money of another
+who loses it.
+<!--l. 39--><p class="noindent" >There are other such myths regarding the stock market, some of which include: falling stocks
+must go up again at some point and stocks that go up must come down, as well as that the
+stock market is exclusively for the extremely wealthy.
+                                                                                
+                                                                                
+<h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;2</span><br /><a 
+ id="x1-130002"></a>Background Theory</h2>
+<!--l. 3--><p class="noindent" >Computational finance is a branch of applied computer science that deals with problems of
+practical interest in finance. Some slightly different definitions are the study of data and
+algorithms currently used in finance and the mathematics of computer programs that realize
+financial models or systems. Using computational finance in order to allocate assets in
+a portfolio is not at all unheard of and was first documented 1952.[<a 
+href="#XMarkowitz:1952aa">1</a>] Markowitz
+first introduced the concept of portfolio selection as an exercise in mean-variance
+optimisation. This required more computer power than was available at the time, so he
+worked on useful algorithms for approximate solutions. He theorised that risk-averse
+investors could construct portfolios to optimise or maximise expected return based on
+a given level of market risk, emphasising that risk is an inherent part of higher
+reward. According to his theory, it&#8217;s possible to construct an &#8221;efficient frontier&#8221; of
+optimal portfolios offering the maximum possible expected return for a given level of
+risk.
+<h3 class="sectionHead"><span class="titlemark">2.1 </span> <a 
+ id="x1-140002.1"></a>Time Series Analysis</h3>
+<!--l. 7--><p class="noindent" >A time series is a series of data points which may be indexed, listed, or graphed, in a time
+order. Most commonly, a time series is a sequence taken at successive equally spaced points in
+time. Thus it is a sequence of discrete-time data. Examples of time series are heights of ocean
+tides, counts of sunspots, and the daily closing value of the Dow Jones Industrial Average.
+Brockwell et al provide a formal description of time series as having a set of observations xt,
+each one being recorded at a specific time t. A discrete-time time series (the type to
+which this book is primarily devoted) is one in which the set T0 of times at which
+observations are made is a discrete set, as is the case, for example, when observations
+are made at fixed time intervals. Continuous time time series are obtained when
+observations are recorded continuously over some time interval, e.g., when T0 = [0,
+1].[<a 
+href="#XPeter-J.-Brockwell:2016aa">2</a> ]
+<!--l. 9--><p class="noindent" >Significant &#8221;time series momentum&#8221; has also been documented in equity index, currency,
+commodity, and bond futures for each of the 58 liquid instruments they consider.[<a 
+href="#XMoskowitz:2011aa">3</a>] They find
+persistence in returns for 1 to 12 months that partially reverses over longer horizons,
+consistent with sentiment theories of initial under-reaction and delayed over-reaction. A
+diversified portfolio of time series momentum strategies across all asset classes delivers
+substantial abnormal returns with little exposure to standard asset pricing factors and
+performs best during extreme markets. Examining the trading activities of speculators and
+hedgers, they find that speculators profit from time series momentum at the expense of
+hedgers.
+                                                                                
+                                                                                
+<!--l. 11--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">2.1.1 </span> <a 
+ id="x1-150002.1.1"></a>ARMA</h4>
+<!--l. 13--><p class="noindent" >In the statistical analysis of time series, autoregressivemoving-average (ARMA)
+models provide a parsimonious description of a weakly stationary stochastic process in
+terms of two polynomials, one for the autoregression and the second for the moving
+average.
+<!--l. 15--><p class="noindent" >Forecasting interest rates is of great concern for financial researchers, economists, and players
+in the fixed income markets. A study was carried out to develop an appropriate model for
+forecasting the short-term interest rates, implicit yield on 91 day treasury bill, overnight
+MIBOR rate, and call money rate.[<a 
+href="#XRadha:2015aa">5</a>] The short-term interest rates are forecasted
+using univariate models such as the Random Walk, ARIMA, ARMA-GARCH, and
+ARMA-EGARCH. The appropriate model for forecasting is determined considering a six-year
+period from 1999. The results show that interest rates time series have volatility clustering
+effect and hence GARCH based models are more appropriate to forecast than the other
+models. Radha et al found that for commercial paper rate ARIMA-EGARCH model is the
+most appropriate model, while for implicit yield 91 day Treasury bill, overnight MIBOR rate,
+and call money rate, the ARIMA-GARCH model is the most appropriate model for
+forecasting.
+<!--l. 17--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">2.1.2 </span> <a 
+ id="x1-160002.1.2"></a>ARIMA</h4>
+<!--l. 19--><p class="noindent" >In time series analysis, an autoregressive integrated moving average (ARIMA) model, and a
+generalized autoregressive conditional heteroscedasticity (GARCH) model, are a generalization
+of an ARMA model. All the aforementioned models are fitted to time series data either to
+better understand the data or to predict future points in the series (forecasting). ARIMA
+models are applied in some cases where data show evidence of non-stationarity, where an
+initial differencing step (corresponding to the &#8221;integrated&#8221; part of the model) can be applied
+to reduce the non-stationarity. GARCH models are applied when ARMA models are assumed
+for the error variance.
+<!--l. 21--><p class="noindent" >The existence of weak-form efficiency in the Russian stock market is examined for
+the period 1st September 1995 to 1st May 2001 using daily, weekly and monthly
+                                                                                
+                                                                                
+Russian Trading System index time series.[<a 
+href="#XAbrosimova:2002aa">6</a>] Several different approaches are used to
+assess the predictability of the RTS index time series. Unit root, autocorrelation and
+variance ratio tests are conducted for the null hypothesis of a random walk model. The
+results support the null hypothesis for the monthly data only. Further analysis is
+performed for the daily and weekly data. Linear and non-linear modelling of the serial
+dependence is conducted using ARIMA and GARCH models estimated on the in-sample
+period 1st September 1995 to 1st January 2001. Forecasts based on the best fitting
+models are performed for the out-of-sample period 2nd January 2001 to 1st May
+2001. Comparisons of the forecasts reveal that none of the models outperforms the
+others, and the most accurate forecasts are obtained for just the first out-of-sample
+observation. Whilst our research results provide some limited evidence of short-term
+market predictability on the RTS, there is insufficient evidence to suggest that it
+would lead to a profitable trading rule, once transaction costs and risk are taken into
+account.
+<!--l. 23--><p class="noindent" >The main intention of this paper is to investigate, with new daily data, whether prices in the
+two Chinese stock exchanges (Shanghai and Shenzhen) follow a random-walk process
+as required by market efficiency.[<a 
+href="#XDarrat:2001aa">7</a>] We use two different approaches, the standard
+variance-ratio test of Lo and MacKinlay (1988) and a model-comparison test that
+compares the ex post forecasts from a NAIVE model with those obtained from several
+alternative models (ARIMA, GARCH and Artificial Neural Network-ANN). To
+evaluate ex post forecasts, we utilize several procedures including RMSE, MAE,
+Theil&#8217;s U, and encompassing tests. In contrast to the variance-ratio test, results from
+the model-comparison approach are quite decisive in rejecting the random-walk
+hypothesis in both Chinese stock markets. Moreover, our results provide strong support
+for the ANN as a potentially useful device for predicting stock prices in emerging
+markets.
+<!--l. 25--><p class="noindent" >
+<h3 class="sectionHead"><span class="titlemark">2.2 </span> <a 
+ id="x1-170002.2"></a>Statistical Machine Learning</h3>
+<!--l. 27--><p class="noindent" >A machine learning algorithm is an algorithm that is able to learn through examples from
+data. To understand what an algorithm is, Cormen et al informally describe algorithms as
+&#8221;any well-defined computational procedures which takes some value, or set of values, as input
+and produce some value, or set of values, as output. An algorithm is thus a sequence of
+computational steps that transform the input into the output.&#8221;[<a 
+href="#XCormen:2009aa">13</a>] In simple terms, it
+is possible to say that an algorithm is a sequence of steps which allow to solve a
+                                                                                
+                                                                                
+certain task. Similarly to a normal algorith, a machine learning algorithm as defined
+formally by Tom M. Mitchell, states that &#8221;A computer program is said to learn
+from experience E with respect to some class of tasks T and performance measure
+P, if its performance at tasks in T, as measured by P, improves with experience
+E.&#8221;[<a 
+href="#XMitchell:1997aa">14</a> ]
+<!--l. 29--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">2.2.1 </span> <a 
+ id="x1-180002.2.1"></a>Classification</h4>
+<!--l. 31--><p class="noindent" >Classifiers are a class of machine learning algorithms which identify in which category a new
+observation belongs to, on the basis of a training set of data containing observations
+whose category membership is known. A model based on discriminant analysis was
+sought out to categorise a stock as manipulated or non-manipulated based on certain
+key variables that capture the characteristics of the stock.[<a 
+href="#XMurugesan:2012aa">15</a>] The model in which
+Murugesan et al chose, helps them identify stocks witnessing activities that are
+indicative of potential manipulation irrespective of the type of manipulation, such as
+action-based, information-based, or trade-based. The model which they proposed, helps
+investigators to arrive at a shortlist of securities that are potentially manipulated
+and which could be subject to further detailed investigation to detect the type and
+nature of the manipulation, if any. In a market like India, where there are about
+5000 plus securities listed on its major exchanges, it becomes extremely difficult to
+monitor all securities for potential market abuse. Academics who have earlier used
+discriminant analysis have used the Linear Classification Function without validating the
+assumption that governs the model. Through their research, they have tested the
+assumption on data from the Indian capital market and found that the data does
+not comply with the assumptions that govern the use of the linear classification
+function. This therefore resulted in them using the Quadratic Classification Function,
+which is the appropriate technique for instances where the data does not meet the
+sated assumptions, to categorise stocks into two categories, namely manipulated and
+non-manipulated.
+<!--l. 33--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">2.2.2 </span> <a 
+ id="x1-190002.2.2"></a>Support Vector Machines</h4>
+<!--l. 35--><p class="noindent" >Support vector machines (SVM), are a class of machine learning algorithms that have become
+                                                                                
+                                                                                
+incredibly popular in the past few years. SVMs are very similar to classifiers in the sense that
+they also classify data by drawing a line, called a decision boundary, to separate
+them. However, SVMs go a step further by calculating a vector from the data point
+with the smallest margin to the decision boundary. This is called a support vector.
+There exists vast research articles which predict the stock market as well pricing of
+stock index financial instruments but most of the proposed models focus on the
+accurate forecasting of the levels of the underlying stock index. There is a lack of
+studies examining the predictability of the direction of stock index movement. Given
+the notion that a prediction with little forecast error does not necessarily translate
+into capital gain, the authors of this research attempt to predict the direction of
+the S&amp;P CNX NIFTY Market Index of the National Stock Exchange, one of the
+fastest growing financial exchanges in developing Asian countries.[<a 
+href="#XKumar:2016aa">16</a>] Random forest
+and Support Vector Machines (SVM) are very specific type of machine learning
+method, and are promising tools for the prediction of financial time series. The tested
+classification models, which predict direction, include linear discriminant analysis,
+logit, artificial neural network, random forest, and SVM. Empirical experimentation
+suggests that the SVM outperforms the other classification methods in terms of
+predicting the direction of the stock market movement and random forest method
+outperforms neural network, discriminant analysis and logit model used in their
+study.
+<!--l. 37--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">2.2.3 </span> <a 
+ id="x1-200002.2.3"></a>Regression</h4>
+<!--l. 39--><p class="noindent" >Regression analysis is widely used for prediction and forecasting to understand which among
+the independent variables are related to the dependent variable while also exploring the forms
+of these relationships. In restricted circumstances, regression analysis can be used to infer
+causal relationships between the independent and dependent variables. Regression analysis
+helps one understand how the typical value of the dependent variable changes when any one of
+the independent variables is varied, while the other independent variables are held fixed.
+Kakushadze et al provide a systematic quantitative framework in what is intended to
+be a pedagogical fashion for discussing mean-reversion and optimisation.[<a 
+href="#XKakushadze:2015aa">17</a>] In
+their paper, they start off their research with pair trading and add complexity by
+following the sequence mean-reversion via demeaning, regression, weighted regression,
+(constrained) optimization, factor models. They discuss in further detail how to conduct
+mean-reversion based on this approach, including common pitfalls encountered in
+practical applications, such as the difference between maximising the Sharpe ratio and
+                                                                                
+                                                                                
+minimising an objective function when trading costs are included. Kakushadze et al
+also discuss explicit algorithms for optimization with linear costs, constraints and
+bounds, and also illustrate their discussion on an explicit intraday mean-reversion
+alpha.
+<!--l. 41--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">2.2.4 </span> <a 
+ id="x1-210002.2.4"></a>Decision Trees</h4>
+<!--l. 43--><p class="noindent" >Decision tree learning uses a decision tree as a predictive model which maps observations
+about an item, represented in the branches, to conclusions about the item&#8217;s target
+value represented in the leaves. Tree models where the target variable can take
+a finite set of values are called classification trees; in these tree structures, leaves
+represent class labels and branches represent conjunctions of features that lead to those
+class labels. Decision trees where the target variable can take continuous values,
+typically real numbers, are called regression trees. Creamer et al propose a multi-stock
+automated trading system which relies on a layered structure consisting of a machine
+learning algorithm, an online learning utility, and a risk management overlay.[<a 
+href="#XCreamer:2010aa">18</a>] An
+alternating decision tree (ADT), which is implemented with Logitboost, was chosen
+as their underlying algorithm. One of the strengths of their approach is that the
+algorithm is able to select the best combination of rules derived from well-known
+technical analysis indicators and is also able to select the best parameters of the
+technical indicators. Additionally, their online learning layer combines the output of
+several ADTs and suggests a short or long position. Finally, the risk management
+layer in which they implemented, can validate the trading signal when it exceeds a
+specified non-zero threshold and limit the application of their trading strategy when
+it is not profitable. They tested the expert weighting algorithm with data of 100
+randomly selected companies of the S&amp;P 500 index during the period 20032005. They
+found that their algorithm generates abnormal returns during the test period. Their
+experiments show that the boosting approach was able to improve the predictive capacity
+when indicators were combined and aggregated as a single predictor. Even more, the
+combination of indicators of different stocks demonstrated to be adequate in order to
+reduce the use of computational resources, and still maintain an adequate predictive
+capacity.
+<!--l. 45--><p class="noindent" >
+                                                                                
+                                                                                
+<h3 class="sectionHead"><span class="titlemark">2.3 </span> <a 
+ id="x1-220002.3"></a>Bayesian Statistics</h3>
+<!--l. 47--><p class="noindent" >Bayesian Statistics, a form of probabilistic programming, describes probabilistic models and
+then performs inference in those models. Probabilistic reasoning is a foundational technology
+of machine learning and has been used by companies such as Google, Amazon, and Microsoft.
+Probabilistic reasoning has been used for predicting stock prices, recommending
+movies, diagnosing computers, detecting cyber intrusions, and image detection.
+Gelman et al defines bayesian inference as the process of fitting a probability model
+to a set of data and summarising the result by a probability distribution on the
+parameters of the model and on unobserved quantities such as predictions for new
+observations.[<a 
+href="#XGelman:2014aa">8</a> ]
+<!--l. 49--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">2.3.1 </span> <a 
+ id="x1-230002.3.1"></a>Markov Chain Monte Carlo</h4>
+<!--l. 51--><p class="noindent" >In statistics, Markov chain Monte Carlo (MCMC) methods are a class of algorithms for
+sampling from a probability distribution based on constructing a Markov chain that has the
+desired distribution of its equilibrium distribution. The state of the chain after a number of
+steps is then used as a sample of the desired distribution. The quality of the sample improves
+as a function of the number of steps.
+<!--l. 53--><p class="noindent" >A 1993 paper was prepared for the purpose of presenting the methodology and uses of the
+Markov Chain Monte Carlo simulation technique as applied in the evaluation of investment
+projects to analyse and assess risk.[<a 
+href="#XSavvides:1994aa">9</a>] In the first part of his paper, he highlights the
+importance of risk analysis in investment appraisal. The author follows by presenting the
+various stages in the application of the risk analysis process and examines the interpretation of
+the results generated by a risk analysis application including investment decision criteria and
+various measures of risk based on the expected value concept. In the final part of his paper, he
+draws some conclusions regarding the usefulness and limitations of risk analysis in investment
+appraisal.
+<!--l. 55--><p class="noindent" >Stochastic volatility models are increasingly important in practical derivatives pricing
+applications, yet relatively little work has been undertaken in the development of practical
+Monte Carlo simulation methods for this class of models. This paper considers several new
+algorithms for time-discretization and Monte Carlo simulation of Heston-type stochastic
+volatility models.[<a 
+href="#XAndersen:2007aa">10</a>] The algorithms are based on a careful analysis of the properties of affine
+stochastic volatility diffusions, and are straightforward and quick to implement and execute.
+Tests on realistic model parameterizations reveal that the computational efficiency and
+                                                                                
+                                                                                
+robustness of the simulation schemes proposed in the paper compare very favorably to existing
+methods.
+<!--l. 57--><p class="noindent" >Bond yields today are well below and stock market valuations are well above their historical
+average.[<a 
+href="#XBlanchett:2013aa">11</a> ] There are no historical periods in the United States where comparable low bond
+yields and high equity valuations have occurred simultaneously. Both current bond
+yields and stock values have been shown to predict near-term returns. Portfolio
+returns in the first decade of retirement have an outsize impact on retirement income
+strategies. Traditional Monte Carlo simulation approaches generally do not incorporate
+market valuations into their analysis. In order to simulate how retirees will fare in
+a low return environment for both stocks and bonds, Blanchett et al incorporate
+the predictive ability of current valuations to simulate its impact on retirement
+portfolios. Blanchett et al estimate bond returns through an autoregressive model that
+uses an initial bond yield value where yields drift in the future. Blanchett et al use
+the cyclically adjusted price-to-earnings (CAPE) ratio as an estimate of market
+valuation to predict short-run stock performance. Our simulations indicate that the
+safety of a given withdrawal strategy is significantly affected by the initial bond yield
+and CAPE value at retirement, and that the relative impact varies based on the
+portfolio equity allocation. Using valuation measures current as of April 15, 2013, which
+is a bond yield of 2.0% and a CAPE of 22, Blanchett et al find the probability
+of success for a 40% equity allocation with a 4% initial withdrawal rate over a 30
+year period is approximately 48%. This success rate is materially lower than past
+studies and has sobering implications on the likelihood of success for retirees today, as
+well as how much those near retirement may need to save to ensure a successful
+retirement.
+<!--l. 59--><p class="noindent" >This paper provides a numerical approach based on a Monte Carlo simulation for valuing
+dynamic capital budgeting problems with many embedded real options dependent on
+numerous state variables.[<a 
+href="#XGamba:2003aa">12</a>] Schwartz et al propose a way of decomposing a complex capital
+budgeting problem with many options into a set of simple options, suitably accounting for
+interaction and interdependence among them. The decomposition approach is numerically
+implemented using an extension of the Least Squares Monte Carlo algorithm, presented by
+Longstaff and Schwartz (2001) applied to our multi-option setting. Schwartz et al
+also provide a number of applications of our approach to well-known real options
+models and real life capital budgeting problems. Moreover, Schwartz et al present a
+set of numerical experiments to provide evidence for the accuracy of the proposed
+methodology.
+                                                                                
+                                                                                
+<h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;3</span><br /><a 
+ id="x1-240003"></a>Experminetal Setup</h2>
+<h3 class="sectionHead"><span class="titlemark">3.1 </span> <a 
+ id="x1-250003.1"></a>Data Tidying</h3>
+<!--l. 4--><p class="noindent" >A data set containing end of day stock prices, dividends, and splits for 3,000 US companies,
+curated by the Quandl community, and released into the public domain, was used. The date
+column in the CSV file was loaded into memory, and said column was converted to a date data
+type. The DataFrame was then sorted using the date column, starting from the oldest date,
+ending with the latest. The date column was also set to the index. The DataFrame was split
+into two, the training data set consisting of 80%, and the test data set consisting of 20% of the
+original DataFrame.
+<!--l. 6--><p class="noindent" >
+<h3 class="sectionHead"><span class="titlemark">3.2 </span> <a 
+ id="x1-260003.2"></a>Stock Selection</h3>
+<!--l. 7--><p class="noindent" >The pairwise correlation of all the columns in the DataFrame was computing and stored in a
+new DataFrame. A list of stock pairs with low correlation were extracted.
+<!--l. 9--><p class="noindent" >
+<h3 class="sectionHead"><span class="titlemark">3.3 </span> <a 
+ id="x1-270003.3"></a>Time Series Analysis</h3>
+<!--l. 10--><p class="noindent" >The seleceted stock was extracted from the data set and stored in a DataFrame. The
+log price of the stocks was calculated by calculating the logarithm of the stock&#8217;s
+adjusted close price. The resulting values from the said calculation were then stored in
+a a new column in the DataFrame and all infinite values were dropped from the
+series.
+<!--l. 12--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.3.1 </span> <a 
+ id="x1-280003.3.1"></a>Random Walk</h4>
+                                                                                
+                                                                                
+<!--l. 13--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 15--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.3.2 </span> <a 
+ id="x1-290003.3.2"></a>Ordinary Least Squares (OLS)</h4>
+<!--l. 16--><p class="noindent" >The series was fitted to an OLS model. The 15 day SMA was used as a nobs x k array where
+nobs is the number of observations and k is the number of regressors, to train the model, while
+the adjusted close price of the stock was used as the dependent variable for the model to
+predict. The mean absolute error, mean squared error, median absolute error, and r2 score
+were used as metrics in order to rank the performance of the model&#8217;s prediction capabilities in
+in-sample testing.
+<!--l. 18--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.3.3 </span> <a 
+ id="x1-300003.3.3"></a>Auto Regressive (AR)</h4>
+<!--l. 19--><p class="noindent" >The notation AR(p) indicates an autoregressive model of order p. The AR(p) model is defined
+as
+<!--l. 21--><p class="noindent" ><img 
+src="Thesis0x.png" alt="xt=c+&#x2211;p&#x03C6;iXt-i + &#x03B5;t
+i=1  "  class="math" >
+<!--l. 23--><p class="noindent" ><img 
+src="Thesis1x.png" alt="&#x03C6;1,...,&#x03C6;p "  class="math" >are the parameters of the model, c is a constant, and <img 
+src="Thesis2x.png" alt="&#x03B5;t  "  class="math" > is white
+noise.
+<!--l. 25--><p class="noindent" >The series was fitted to an AR(p) model with a maximum lag value of 30. The IC was used
+to fit the AR model in order to select the optimal lag length. No constants were
+passed when fitting the AR model to the series. The optimal lag for the fit of the AR
+model was then calculated using the same paramaters passed when fitting the AR
+model.
+                                                                                
+                                                                                
+<!--l. 27--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.3.4 </span> <a 
+ id="x1-310003.3.4"></a>Moving Average (MA)</h4>
+<!--l. 28--><p class="noindent" >The notation MA(p, q) indicates a moving average model of order (p, q). The MA(p, q) model
+is defined as
+<!--l. 30--><p class="noindent" ><img 
+src="Thesis3x.png" alt="&#x2211;q
+xt=&#x03BC;+&#x03B5;t+i=1&#x03B8;i&#x03B5;t-i  "  class="math" >
+<!--l. 32--><p class="noindent" >where the <img 
+src="Thesis4x.png" alt="&#x03B8;1,...,&#x03B8;q  "  class="math" > are the parameters of the model, <span 
+class="cmmi-10x-x-109">&#x03BC; </span>is the expectation of
+<span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">t</span> </sub> (often assumed to equal 0), and the <img 
+src="Thesis5x.png" alt="&#x03B5;t,&#x03B5;t-1,...  "  class="math" > are again, white noise error
+terms.
+<!--l. 34--><p class="noindent" >The series was fitted to an MA(p, q) model with an order selected based on the lowest AIC. A
+maximum lag of 30 was once again passed to the MA model with no constant. The
+exact loglikelihood for the fit of the MA model was maximized via the Kalman
+Filter.
+<!--l. 36--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.3.5 </span> <a 
+ id="x1-320003.3.5"></a>Auto Regressive Moving Average (ARMA)</h4>
+<!--l. 37--><p class="noindent" >The notation ARMA(p, q) refers to the model with p autoregressive terms and q
+moving-average terms. This model contains the AR(p) and MA(q) models,
+<!--l. 39--><p class="noindent" ><img 
+src="Thesis6x.png" alt="x=c+&#x03B5;+&#x2211;q  &#x03C6; X   &#x03B8; &#x03B5;
+tti=1 i  t- ii t- i  "  class="math" >
+<!--l. 41--><p class="noindent" >The series was fitted to an ARMA(p, q, r) model with an order selected based on the lowest
+AIC. No constants were passed to the ARMA model. The exact loglikelihood for the fit of the
+ARMA model was maximized via the Kalman Filter.
+<!--l. 43--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.3.6 </span> <a 
+ id="x1-330003.3.6"></a>Auto Regressive Integrated Moving Average (ARIMA)</h4>
+<!--l. 44--><p class="noindent" >Given a time series of data <span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">t</span></sub> where t is an integer index and the <span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">t</span></sub> are real numbers, an
+ARMA(p, q) model is given by
+                                                                                
+                                                                                
+<!--l. 46--><p class="noindent" ><img 
+src="Thesis7x.png" alt="xt-&#x03B1;1Xt-1-...&#x03B1;p&#x2032;Xt-p&#x2032; = &#x03B5;t + &#x03B8;1&#x03F5;t-1 + &#x22C5;&#x22C5;&#x22C5;+ &#x03B8;q&#x03F5;t-q  "  class="math" >
+<!--l. 48--><p class="noindent" >The series was fitted to an ARIMA(p, q, r) model with an order selected based on the lowest
+AIC. No constants were passed to the ARIMA model. The exact loglikelihood for the fit of the
+ARIMA model was maximized via the Kalman Filter.
+<!--l. 50--><p class="noindent" >
+<h3 class="sectionHead"><span class="titlemark">3.4 </span> <a 
+ id="x1-340003.4"></a>Machine Learning</h3>
+<!--l. 51--><p class="noindent" >The data set was plit for training and testing purposes when fitting and predicting data. The
+training data set consisted of 80% of the whole data set, while the test data set consisted of
+20%.
+<!--l. 53--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.4.1 </span> <a 
+ id="x1-350003.4.1"></a>Classification</h4>
+<!--l. 54--><p class="noindent" >2, 3, 4, 5, and 6 day SMAs were used as the features to train the models, while a binary value
+used to determine whether the current day&#8217;s adjusted close has risen or not from the previous
+day was used as the target valued for the model to predict. In-sample testing was carried out
+using the models predict function, passing the test data set&#8217;s features in order to predict the
+output. The classification report and confusion matrix were used as metrics in order to rank
+the performance of the model&#8217;s prediction capabilities in in-sample testing. An algorithm was
+developed for out-of-sample testing. The algotihm iterates for a number of n steps, increasing
+the index by 1 each step, forecasting the next day&#8217;s outcome, and calculating the
+SMAs.
+<!--l. 56--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.1.1 </span> <a 
+ id="x1-360003.4.1.1"></a>Decision Tree</h5>
+<!--l. 57--><p class="noindent" >The decision tree classifier was fit using the Gini impurity criterion to measure the quality of
+the split. The model was given the liberty to select the best strategy in order to split the
+tree at each node. The maximum allowed depth of the tree was left unrestricted,
+which was the same as for the maximum leaf nodes. A threshold of 1e-7 was used
+                                                                                
+                                                                                
+to terminate the tree growth to determine if a node is a leaf, if the impurity of a
+node is below the threshold, the node is a leaf. The minimum number of samples
+required to be at a leaf node was set to 1, while the minimum number of samples
+required to split an internal node was set to 2. The data fitted to the model was not
+presorted, and the random number generator used by the model was that of Numpy&#8217;s
+RandomState.
+<!--l. 59--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.1.2 </span> <a 
+ id="x1-370003.4.1.2"></a>Boosted Decision Tree</h5>
+<!--l. 60--><p class="noindent" >The boosted decision tree was fit using the &#8217;SAME.R&#8217; real algorithm which converges at a
+faster rate, achieving a lower test error with fewer boosting iterations. The maximum number
+of estimators at which boosting is terminated was set to 50; in case of perfect fit, the learning
+procedure is stopped early. The learning rate which is the contribution of each classifier of the
+model was shrunk by 1. The best estimator used to fit the data to the model was a Decision
+Tree Classifier, and the random number generator used by the model was that of Numpy&#8217;s
+RandomState.
+<!--l. 62--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.1.3 </span> <a 
+ id="x1-380003.4.1.3"></a>Support Vector Machine (SVM)</h5>
+<!--l. 63--><p class="noindent" >The C-Support Vector Classification implementation was used for the SVM model with a 0
+penalty parameter of the error term. A kernal type of &#8217;rbf&#8217; was used when fitted the model to
+the data, along with a polynomia kernal function degree of 3. The gama &#8217;rbf&#8217; Kernel
+coefficient was calculated by dividing the number of features by 1, while no probability
+estimates were used when fitting. A shrinking heuristic was used and a tolerance of 1e-3 was
+used for stopping criterion. A cache size of 200MB was used for the kernal when
+fitting the model, and all classes were assigned a weight of one. Verbose output
+was not used, and the random number generator used by the model was that of
+Numpy&#8217;s RandomState. No limits were set on the iterations within the solver, and a
+one-vs-rest decision function of shape (number of samples, number of classes) was
+returned.
+                                                                                
+                                                                                
+<!--l. 65--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.1.4 </span> <a 
+ id="x1-390003.4.1.4"></a>Random Forest</h5>
+<!--l. 66--><p class="noindent" >The random forest was fit with bootstrap samples when building the trees, while all the
+weights associated were set to 1. The gini function to measure the quality of a split, and no
+maximum depth of the tree was set, allowing the nodes to expand until all leaves are pure or
+until all leaves contain less than the minimum split samples. The number of features to
+consider when looking for the best split was the square root of the number of passed,
+and no limit on the maximum leaf nodes for growing trees was set. A threshold
+of 1e-7 was used to terminate the tree growth to determine if a node is a leaf, if
+the impurity of a node is below the threshold, the node is a leaf. The minimum
+number of samples required to be at a leaf node was set to 1, and the minimum
+number of samples required to split an internal node was set to 2. The minimum
+weighted fraction of the sum total of weights (of all the input samples) required to be
+at a leaf node was set to 0, and the number of trees in the forest was set to 10.
+The number of jobs to use for the computation was set to 1, making use of only 1
+CPU core, and out-of-bag samples to estimate the generalization accuracy were
+not used. The verbosity of the tree building process was not controlled, and the
+random number generator used by the model was that of Numpy&#8217;s RandomState.
+The model was built using a cold start by not making use of the previous call to
+fit and add more estimators to the ensemble, meaning a whole new forest was fit
+instead.
+<!--l. 68--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.1.5 </span> <a 
+ id="x1-400003.4.1.5"></a>K-Nearest Neighbour</h5>
+<!--l. 69--><p class="noindent" >The k-nearest neighbour was fit with a number of 5 neighbors to use for k-neighbors queries,
+with a uniform weight making all points in each neighborhood weighted equally when carrying
+out predictions. The model was left at libery to select the most appropriate algorithm based
+on the values passed when fitting the model to the data. The lead size of the model was set to
+30, and a minkowski distance metric with p equal to 2 which equivalent to the standard
+Euclidean metric. The number of jobs to use for the computation was set to 1, making use of
+only 1 CPU core.
+<!--l. 71--><p class="noindent" >
+                                                                                
+                                                                                
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.1.6 </span> <a 
+ id="x1-410003.4.1.6"></a>Bernoulli Naive Bayes</h5>
+<!--l. 72--><p class="noindent" >The model was fit with an additive (Laplace/Lidstone) smoothing parameter of 0 for no
+smoothing, and the threshold for binarizing (mapping to booleans) of sample features was set
+to 0, and was presumed to already consist of binary vectors. The model was set to learn class
+prior probabilities, which means that the priors were adjusted according to the
+data.
+<!--l. 74--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.1.7 </span> <a 
+ id="x1-420003.4.1.7"></a>Gaussian Naive Bayes</h5>
+<!--l. 75--><p class="noindent" >The model was fit to the data with no previous prior probabilities of the classes, thus the
+priors were not adjusted according to the data.
+<!--l. 77--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.4.2 </span> <a 
+ id="x1-430003.4.2"></a>Regression</h4>
+<!--l. 78--><p class="noindent" >15 and 50 day SMAs were used as the features to train the models, while the adjusted close
+price of the stock was used as the target valued for the model to predict. In-sample testing was
+carried out using the models predict function, passing the test data set&#8217;s features in order to
+predict the output. The mean absolute error, mean squared error, median absolute error, and
+<span 
+class="cmmi-10x-x-109">R</span><sup><span 
+class="cmr-8">2</span> </sup> (coefficient of determination) score were used as metrics in order to rank the performance
+of the model&#8217;s prediction capabilities in in-sample testing. An algorithm was developed for
+out-of-sample testing. The algotihm iterates for a number of n steps, increasing
+the index by 1 each step, forecasting the next day&#8217;s outcome, and calculating the
+SMAs.
+<!--l. 80--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.2.1 </span> <a 
+ id="x1-440003.4.2.1"></a>Decision Tree</h5>
+<!--l. 81--><p class="noindent" >The decision tree model was fit with a mean squared error, which is equal to variance
+reduction as feature selection criterion, and mae for the mean absolute error. The
+maximum allowed depth of the tree was left unrestricted, which was the same as for the
+                                                                                
+                                                                                
+maximum leaf nodes. A threshold of 1e-7 was used to terminate the tree growth
+to determine if a node is a leaf, if the impurity of a node is below the threshold,
+the node is a leaf. The minimum number of samples required to be at a leaf node
+was set to 1, while the minimum number of samples required to split an internal
+node was set to 2. The data fitted to the model was not presorted, and the random
+number generator used by the model was that of Numpy&#8217;s RandomState. The model
+was given the liberty to select the best strategy in order to split the tree at each
+node.
+<!--l. 83--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.2.2 </span> <a 
+ id="x1-450003.4.2.2"></a>Boosted Decision Tree</h5>
+<!--l. 84--><p class="noindent" >The boosted decision tree was fit with with a decision tree regressor as the base estimator
+from which the boosted ensemble is built. The maximum number of estimators at which the
+boosting is terminated was set to 50, and the learning rate which shrinks the contribution of
+each regressor was set to 1.0. The loss function used when updating the weights after each
+boosting iteration was set to linear, and the random number generator used by the model was
+that of Numpy&#8217;s RandomState.
+<!--l. 86--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.2.3 </span> <a 
+ id="x1-460003.4.2.3"></a>Random Forest</h5>
+<!--l. 87--><p class="noindent" >The ramdom forest was fit with a mean absolute error, and bootstrap samples were used when
+building trees. The maximum features to consider when looking for the best split were left to
+the model to select the best number, and the number of jobs to run in parallel for both the
+fitting of the model and its predictions. The model was built using a cold start by not making
+use of the previous call to fit and add more estimators to the ensemble, meaning a whole new
+forest was fit instead. A threshold of 1e-7 was used to terminate the tree growth to determine
+if a node is a leaf, if the impurity of a ode is below the threshold, the node is a
+leaf. The minimum number of samples required to be at a leaf node was set to 1,
+while the minimum number of samples required to split an internal node was set to
+2.
+                                                                                
+                                                                                
+<!--l. 89--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.2.4 </span> <a 
+ id="x1-470003.4.2.4"></a>Linear Regression</h5>
+<!--l. 90--><p class="noindent" >The linear regression was fit with no nornalised regressors, note that this makes the
+hyperparameters learnt more robust and almost independent of the number of samples. The
+number of jobs to use for the computation was set to 1, making use of only 1 CPU core.
+The intercept of the model was calculated which centers the data being fit to the
+model.
+<!--l. 92--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">3.4.2.5 </span> <a 
+ id="x1-480003.4.2.5"></a>Logistic Regression</h5>
+<!--l. 93--><p class="noindent" >The logistic regression was fit with an inverse of regularization of strength 0 specifying
+stronger regularisation, while all the weights associated were set to 1. Dual formulation was
+used in conjunction with the l2 penalty with a liblinear solver. A constant (bias or intercept)
+was added to the decision function, and the intercept scalar was set to 1. The maximum
+number of iterations taken for the solvers to converge were set to 100, while the multiclass
+option used was ovr, thus fitting binary problem for each label. The number of jobs to use for
+the computation was set to 1, making use of only 1 CPU core, and the random number
+generator used by the model was that of Numpy&#8217;s RandomState. The tolerance for stopping
+criteria was set to 0.0001, and verbosity was used with a value of 0 for the liblinear solver.
+he model was built using a cold start by not making use of the previous call to
+fit and add more estimators to the ensemble, meaning a whole new forest was fit
+instead.
+<!--l. 95--><p class="noindent" >
+<h3 class="sectionHead"><span class="titlemark">3.5 </span> <a 
+ id="x1-490003.5"></a>Bayesian Statistics</h3>
+<!--l. 96--><p class="noindent" >The last 500 rows of the selected stocks were extracted from the data set and stored into a
+DataFrame. The log returns were calculated by dividing each day&#8217;s adjusted close with the
+adjusted close of the following day, in logarithmic form. The resulting values from the said
+calculation were then stored in a a new column in the DataFrame and all infinite values were
+dropped from the series.
+                                                                                
+                                                                                
+<!--l. 98--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.5.1 </span> <a 
+ id="x1-500003.5.1"></a>No-U-Turn Sampler (NUTS)</h4>
+<!--l. 99--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 101--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">3.5.2 </span> <a 
+ id="x1-510003.5.2"></a>Metropolis-Hastings</h4>
+<!--l. 102--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+                                                                                
+                                                                                
+<h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;4</span><br /><a 
+ id="x1-520004"></a>Research Findings</h2> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi,
+non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus
+mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus
+maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce
+ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum
+vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at
+augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue
+nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<h3 class="sectionHead"><span class="titlemark">4.1 </span> <a 
+ id="x1-530004.1"></a>Time Series Analysis</h3>
+<!--l. 5--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 7--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.1.1 </span> <a 
+ id="x1-540004.1.1"></a>Random Walk</h4>
+<!--l. 8--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+                                                                                
+                                                                                
+<!--l. 10--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.1.2 </span> <a 
+ id="x1-550004.1.2"></a>Ordinary Least Squares (OLS)</h4>
+<!--l. 11--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 13--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.1.3 </span> <a 
+ id="x1-560004.1.3"></a>Auto Regressive (AR)</h4>
+<!--l. 14--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 16--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.1.4 </span> <a 
+ id="x1-570004.1.4"></a>Moving Average (MA)</h4>
+<!--l. 17--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+                                                                                
+                                                                                
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 19--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.1.5 </span> <a 
+ id="x1-580004.1.5"></a>Auto Regressive Moving Average (ARMA)</h4>
+<!--l. 20--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 22--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.1.6 </span> <a 
+ id="x1-590004.1.6"></a>Auto Regressive Integrated Moving Average (ARIMA)</h4>
+<!--l. 23--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 25--><p class="noindent" >
+<h3 class="sectionHead"><span class="titlemark">4.2 </span> <a 
+ id="x1-600004.2"></a>Machine Learning</h3>
+                                                                                
+                                                                                
+<!--l. 26--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 28--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.2.1 </span> <a 
+ id="x1-610004.2.1"></a>Classification</h4>
+<!--l. 29--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 31--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.1.1 </span> <a 
+ id="x1-620004.2.1.1"></a>Decision Tree</h5>
+<!--l. 32--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+                                                                                
+                                                                                
+<!--l. 34--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.1.2 </span> <a 
+ id="x1-630004.2.1.2"></a>Boosted Decision Tree</h5>
+<!--l. 35--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 37--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.1.3 </span> <a 
+ id="x1-640004.2.1.3"></a>Support Vector Machine (SVM)</h5>
+<!--l. 38--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 40--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.1.4 </span> <a 
+ id="x1-650004.2.1.4"></a>Random Forest</h5>
+<!--l. 41--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+                                                                                
+                                                                                
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 43--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.1.5 </span> <a 
+ id="x1-660004.2.1.5"></a>K-Nearest Neighbour</h5>
+<!--l. 44--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 46--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.1.6 </span> <a 
+ id="x1-670004.2.1.6"></a>Naive Bayes</h5>
+<!--l. 47--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+                                                                                
+                                                                                
+<!--l. 49--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.2.2 </span> <a 
+ id="x1-680004.2.2"></a>Regression</h4>
+<!--l. 50--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 52--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.2.1 </span> <a 
+ id="x1-690004.2.2.1"></a>Decision Tree</h5>
+<!--l. 53--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 55--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.2.2 </span> <a 
+ id="x1-700004.2.2.2"></a>Boosted Decision Tree</h5>
+<!--l. 56--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+                                                                                
+                                                                                
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 58--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.2.3 </span> <a 
+ id="x1-710004.2.2.3"></a>Random Forest</h5>
+<!--l. 59--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 61--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.2.4 </span> <a 
+ id="x1-720004.2.2.4"></a>Linear Regression</h5>
+<!--l. 62--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 64--><p class="noindent" >
+<h5 class="subsubsectionHead"><span class="titlemark">4.2.2.5 </span> <a 
+ id="x1-730004.2.2.5"></a>Logistic Regression</h5>
+                                                                                
+                                                                                
+<!--l. 65--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 67--><p class="noindent" >
+<h3 class="sectionHead"><span class="titlemark">4.3 </span> <a 
+ id="x1-740004.3"></a>Bayesian Statistics</h3>
+<!--l. 68--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+<!--l. 70--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.3.1 </span> <a 
+ id="x1-750004.3.1"></a>No-U-Turn Sampler (NUTS)</h4>
+<!--l. 71--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+                                                                                
+                                                                                
+<!--l. 73--><p class="noindent" >
+<h4 class="subsectionHead"><span class="titlemark">4.3.2 </span> <a 
+ id="x1-760004.3.2"></a>Metropolis-Hastings</h4>
+<!--l. 74--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+                                                                                
+                                                                                
+<h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;5</span><br /><a 
+ id="x1-770005"></a>Conclusions, Discussion, and Suggestions for Future Research</h2>
+<!--l. 3--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc
+eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam
+eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla
+vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet
+enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis
+justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed
+hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas
+augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut
+lorem.
+                                                                                
+                                                                                
+<a 
+ id="x1-77001r85"></a>
+<h2 class="appendixHead"><span class="titlemark">Appendix&#x00A0;A</span><br /><a 
+ id="x1-78000A"></a>An Appendix</h2>
+<!--l. 3--><p class="noindent" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at pulvinar nisi. Phasellus
+hendrerit, diam placerat interdum iaculis, mauris justo cursus risus, in viverra purus eros at
+ligula. Ut metus justo, consequat a tristique posuere, laoreet nec nibh. Etiam et
+scelerisque mauris. Phasellus vel massa magna. Ut non neque id tortor pharetra
+bibendum vitae sit amet nisi. Duis nec quam quam, sed euismod justo. Pellentesque eu
+tellus vitae ante tempus malesuada. Nunc accumsan, quam in congue consequat,
+lectus lectus dapibus erat, id aliquet urna neque at massa. Nulla facilisi. Morbi
+ullamcorper eleifend posuere. Donec libero leo, faucibus nec bibendum at, mattis et urna.
+Proin consectetur, nunc ut imperdiet lobortis, magna neque tincidunt lectus, id
+iaculis nisi justo id nibh. Pellentesque vel sem in erat vulputate faucibus molestie ut
+lorem.
+<!--l. 5--><p class="noindent" >Quisque tristique urna in lorem laoreet at laoreet quam congue. Donec dolor turpis, blandit
+non imperdiet aliquet, blandit et felis. In lorem nisi, pretium sit amet vestibulum sed, tempus
+et sem. Proin non ante turpis. Nulla imperdiet fringilla convallis. Vivamus vel bibendum nisl.
+Pellentesque justo lectus, molestie vel luctus sed, lobortis in libero. Nulla facilisi. Aliquam erat
+volutpat. Suspendisse vitae nunc nunc. Sed aliquet est suscipit sapien rhoncus non
+adipiscing nibh consequat. Aliquam metus urna, faucibus eu vulputate non, luctus eu
+justo.
+<!--l. 7--><p class="noindent" >Donec urna leo, vulputate vitae porta eu, vehicula blandit libero. Phasellus eget massa et leo
+condimentum mollis. Nullam molestie, justo at pellentesque vulputate, sapien velit ornare
+diam, nec gravida lacus augue non diam. Integer mattis lacus id libero ultrices sit amet mollis
+neque molestie. Integer ut leo eget mi volutpat congue. Vivamus sodales, turpis id venenatis
+placerat, tellus purus adipiscing magna, eu aliquam nibh dolor id nibh. Pellentesque habitant
+morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed cursus
+convallis quam nec vehicula. Sed vulputate neque eget odio fringilla ac sodales urna
+feugiat.
+<!--l. 9--><p class="noindent" >Phasellus nisi quam, volutpat non ullamcorper eget, congue fringilla leo. Cras et erat et nibh
+placerat commodo id ornare est. Nulla facilisi. Aenean pulvinar scelerisque eros
+eget interdum. Nunc pulvinar magna ut felis varius in hendrerit dolor accumsan.
+Nunc pellentesque magna quis magna bibendum non laoreet erat tincidunt. Nulla
+facilisi.
+<!--l. 11--><p class="noindent" >Duis eget massa sem, gravida interdum ipsum. Nulla nunc nisl, hendrerit sit amet commodo
+vel, varius id tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac dolor est.
+Suspendisse ultrices tincidunt metus eget accumsan. Nullam facilisis, justo vitae convallis
+                                                                                
+                                                                                
+sollicitudin, eros augue malesuada metus, nec sagittis diam nibh ut sapien. Duis
+blandit lectus vitae lorem aliquam nec euismod nisi volutpat. Vestibulum ornare
+dictum tortor, at faucibus justo tempor non. Nulla facilisi. Cras non massa nunc,
+eget euismod purus. Nunc metus ipsum, euismod a consectetur vel, hendrerit nec
+nunc.
+                                                                                
+                                                                                
+<a 
+ id="x1-78001r9"></a>
+<a 
+ id="Q1-1-87"></a>
+                                                                                
+                                                                                
+<h2 class="likechapterHead"><a 
+ id="x1-790009"></a>Bibliography</h2>
+<div class="thebibliography">
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XMarkowitz:1952aa"></a>[1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Harry Markowitz. Portfolio selection. <span 
+class="cmti-10x-x-109">American Finance Association</span>, 1952.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XPeter-J.-Brockwell:2016aa"></a>[2]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Peter&#x00A0;J. Brockwell and Richard&#x00A0;A. Davis.  <span 
+class="cmti-10x-x-109">Introduction to Time Series and</span>
+<span 
+class="cmti-10x-x-109">Forecasting</span>. Springer, 2016.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XMoskowitz:2011aa"></a>[3]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Tobias  Moskowitz,  Yao  Hua&#x00A0;Ooi,  and  Lasse&#x00A0;H.  Pedersen.     Time  series
+momentum. <span 
+class="cmti-10x-x-109">Chicago Booth Research</span>, September 2011.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XArnold:2007aa"></a>[4]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Tom Arnold, Mark Bertus, and Jonathan&#x00A0;M. Godbey.  A simplified approach
+to understanding the kalman filter technique, December 2007.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XRadha:2015aa"></a>[5]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>S.&#x00A0;Radha  and  M.&#x00A0;Thenmozhi.   Forecasting  short  term  interest  rates  using
+arma, arma-garch and arma-egarch models. <span 
+class="cmti-10x-x-109">Indian Institute of Capital Markets 9th</span>
+<span 
+class="cmti-10x-x-109">Capital Markets Conference Paper</span>, January 2006.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XAbrosimova:2002aa"></a>[6]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Natalia Abrosimova, Gishan Dissanaike, and Dirk Linowski. Testing weak-form
+efficiency of the russian stock market. In <span 
+class="cmti-10x-x-109">EFA 2002 Berlin Meetings</span>, 2002.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XDarrat:2001aa"></a>[7]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Ali&#x00A0;F. Darrat and Maosen Zhong.  On testing the random walk hypothesis: A
+model-comparison approach, 2001.
+                                                                                
+                                                                                
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XGelman:2014aa"></a>[8]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Andrew Gelman, John&#x00A0;B. Carlin, Hal&#x00A0;S. Stern, David&#x00A0;B. Dunson, Aki Vehtari,
+and Donald&#x00A0;B. Rubin. <span 
+class="cmti-10x-x-109">Bayesian Data Analysis</span>. CRC Press, 2014.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XSavvides:1994aa"></a>[9]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Savvakis&#x00A0;C.  Savvides.    Risk  analysis  in  investment  appraisal  risk  analysis
+in investment appraisal risk analysis in investment appraisal.  <span 
+class="cmti-10x-x-109">Project Appraisal</span>
+<span 
+class="cmti-10x-x-109">Journal</span>, Vol. 9(No. 1), March 1994.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XAndersen:2007aa"></a>[10]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Leif B.&#x00A0;G. Andersen.  Efficient simulation of the heston stochastic volatility
+model, 2007.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XBlanchett:2013aa"></a>[11]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>David Blanchett, Michael&#x00A0;S. Finke, and Wade&#x00A0;D. Pfau.  Asset valuations and
+safe portfolio withdrawal rates, 2013.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XGamba:2003aa"></a>[12]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Andrea Gamba. Real options valuation: A monte carlo approach, 2003.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XCormen:2009aa"></a>[13]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Thomas&#x00A0;H. Cormen and Chales&#x00A0;E. Leiserson. <span 
+class="cmti-10x-x-109">Introduction to Algorithms</span>. The
+MIT Press, 2009.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XMitchell:1997aa"></a>[14]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Tom&#x00A0;M. Mitchell. <span 
+class="cmti-10x-x-109">Machine Learning</span>. McGraw Hill, 1997.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XMurugesan:2012aa"></a>[15]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Punniyamoorthy Murugesan and Jose&#x00A0;Joy Thoppan.  Detection of stock price
+manipulation using discriminant analysis, June 2012.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XKumar:2016aa"></a>[16]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Manish  Kumar  and  M.&#x00A0;Thenmozhi.   Forecasting  stock  index  movement:  A
+comparison of support vector machines and random forest, June 2016.
+                                                                                
+                                                                                
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XKakushadze:2015aa"></a>[17]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Zura Kakushadze.     Mean-reversion  and  optimization  mean-reversion  and
+optimization. <span 
+class="cmti-10x-x-109">Journal of Asset Management</span>, 16(1):14&#8211;40, 2015.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XCreamer:2010aa"></a>[18]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Germán&#x00A0;G. Creamer and Yoav Freund. Automated trading with boosting and
+expert weighting. <span 
+class="cmti-10x-x-109">Quantitative Finance</span>, Vol. 4(No. 10):pp. 401&#8211;420, April 2010.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XRochie:2016aa"></a>[19]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Cullen&#x00A0;O.  Rochie.   Understanding  modern  portfolio  construction,  February
+2016.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XBekkers:2009aa"></a>[20]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Niel Bekkers,  Ronald&#x00A0;Q.  Doeswijk,  and  Trevin&#x00A0;W.  Lam.    Strategic  asset
+allocation: Determining the optimal portfolio with ten asset classes, October 2009.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XMeucci:2009aa"></a>[21]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Attilio Meucci. Managing diversification. <span 
+class="cmti-10x-x-109">Bloomberg Education &amp; Quantitative</span>
+<span 
+class="cmti-10x-x-109">Research and Education Paper</span>, pages 74&#8211;79, April 2009.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XJorion:1999aa"></a>[22]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Philippe Jorion. Risk management lessons from long-term capital management,
+June 1999.
+</p>
+<p class="bibitem" ><span class="biblabel">
+<a 
+ id="XArunkumar:2016aa"></a>[23]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span>Rekha Arunkumar and G.&#x00A0;Kotreshwar. Risk management in commercial banks
+(a case study of public and private sector banks). <span 
+class="cmti-10x-x-109">Indian Institute of Capital Markets</span>
+<span 
+class="cmti-10x-x-109">9th Capital Markets Conference Paper</span>, 2005.
+</p>
+</div>
+ 
+</body></html> 
+
+                                                                                
+
+

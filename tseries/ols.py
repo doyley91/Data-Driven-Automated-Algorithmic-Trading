@@ -8,7 +8,7 @@ import statsmodels.api as sm
 import functions as fc
 
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -65,6 +65,23 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         # out-of-sample test
         forecast_data[ticker] = fc.forecast_regression(model=mdl, sample=test, features='sma_15', steps=n_steps)
 
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(pred_data[ticker]['original'], color='red')
+        ax.plot(pred_data[ticker]['prediction'], color='blue')
+        ax.set(title='{} OLS In-Sample Prediction'.format(ticker), xlabel='time', ylabel='$')
+        ax.legend(['Original $', 'Prediction $'])
+        fig.tight_layout()
+        fig.savefig('charts/{}-OLS-In-Sample-Prediction'.format(ticker))
+
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(forecast_data[ticker]['adj_close'][-n_steps:])
+        ax.set(title='{} Day {} OLS Out-of-Sample Forecast'.format(n_steps, ticker), xlabel='time', ylabel='$')
+        ax.legend(tickers)
+        fig.tight_layout()
+        fig.savefig('charts/{}-Day-{}-OLS-Out-of-Sample-Forecast'.format(n_steps, ticker))
+
     fig = plt.figure()
     ax = fig.add_subplot(111)
     for ticker in tickers:
@@ -72,22 +89,11 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
     ax.set(title='Time series plot', xlabel='time', ylabel='$')
     ax.legend(tickers)
     fig.tight_layout()
-
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    for ticker in tickers:
-        ax.plot(pred_data[ticker]['original'], color='red')
-        ax.plot(pred_data[ticker]['prediction'], color='blue')
-    ax.set(title='OLS In-Sample Prediction', xlabel='time', ylabel='$')
-    ax.legend(['Original $', 'Prediction $'])
-    fig.tight_layout()
-
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    for ticker in tickers:
-        ax.plot(forecast_data[ticker]['adj_close'][-n_steps:])
-    ax.set(title='{} Day OLS Out-of-Sample Forecast'.format(n_steps), xlabel='time', ylabel='$')
-    ax.legend(tickers)
-    fig.tight_layout()
+    fig.savefig('charts/stocks.png')
 
     return forecast_data
+
+if __name__ == '__main__':
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
+
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)

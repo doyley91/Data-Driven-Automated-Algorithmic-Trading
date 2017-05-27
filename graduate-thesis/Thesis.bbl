@@ -1,0 +1,100 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Markowitz(1952)]{Markowitz:1952aa}
+Harry Markowitz.
+\newblock Portfolio selection.
+\newblock \emph{American Finance Association}, 1952.
+
+\bibitem[Brockwell and Davis(2016)]{Peter-J.-Brockwell:2016aa}
+Peter~J. Brockwell and Richard~A. Davis.
+\newblock \emph{Introduction to Time Series and Forecasting}.
+\newblock Springer, 2016.
+
+\bibitem[Moskowitz et~al.(2011)Moskowitz, Hua~Ooi, and
+  Pedersen]{Moskowitz:2011aa}
+Tobias Moskowitz, Yao Hua~Ooi, and Lasse~H. Pedersen.
+\newblock Time series momentum.
+\newblock \emph{Chicago Booth Research}, September 2011.
+
+\bibitem[Radha and Thenmozhi(2006)]{Radha:2015aa}
+S.~Radha and M.~Thenmozhi.
+\newblock Forecasting short term interest rates using arma, arma-garch and
+  arma-egarch models.
+\newblock \emph{Indian Institute of Capital Markets 9th Capital Markets
+  Conference Paper}, January 2006.
+
+\bibitem[Abrosimova et~al.(2002)Abrosimova, Dissanaike, and
+  Linowski]{Abrosimova:2002aa}
+Natalia Abrosimova, Gishan Dissanaike, and Dirk Linowski.
+\newblock Testing weak-form efficiency of the russian stock market.
+\newblock In \emph{EFA 2002 Berlin Meetings}, 2002.
+
+\bibitem[Darrat and Zhong(2001)]{Darrat:2001aa}
+Ali~F. Darrat and Maosen Zhong.
+\newblock On testing the random walk hypothesis: A model-comparison approach,
+  2001.
+
+\bibitem[Cormen and Leiserson(2009)]{Cormen:2009aa}
+Thomas~H. Cormen and Chales~E. Leiserson.
+\newblock \emph{Introduction to Algorithms}.
+\newblock The MIT Press, 2009.
+
+\bibitem[Mitchell(1997)]{Mitchell:1997aa}
+Tom~M. Mitchell.
+\newblock \emph{Machine Learning}.
+\newblock McGraw Hill, 1997.
+
+\bibitem[Murugesan and Thoppan(2012)]{Murugesan:2012aa}
+Punniyamoorthy Murugesan and Jose~Joy Thoppan.
+\newblock Detection of stock price manipulation using discriminant analysis,
+  June 2012.
+
+\bibitem[Kumar and Thenmozhi(2016)]{Kumar:2016aa}
+Manish Kumar and M.~Thenmozhi.
+\newblock Forecasting stock index movement: A comparison of support vector
+  machines and random forest, June 2016.
+
+\bibitem[Kakushadze(2015)]{Kakushadze:2015aa}
+Zura Kakushadze.
+\newblock Mean-reversion and optimization mean-reversion and optimization.
+\newblock \emph{Journal of Asset Management}, 16\penalty0 (1):\penalty0 14--40,
+  2015.
+
+\bibitem[Creamer and Freund(2010)]{Creamer:2010aa}
+Germ{\'a}n~G. Creamer and Yoav Freund.
+\newblock Automated trading with boosting and expert weighting.
+\newblock \emph{Quantitative Finance}, Vol. 4\penalty0 (No. 10):\penalty0 pp.
+  401--420, April 2010.
+
+\bibitem[Gelman et~al.(2014)Gelman, Carlin, Stern, Dunson, Vehtari, and
+  Rubin]{Gelman:2014aa}
+Andrew Gelman, John~B. Carlin, Hal~S. Stern, David~B. Dunson, Aki Vehtari, and
+  Donald~B. Rubin.
+\newblock \emph{Bayesian Data Analysis}.
+\newblock CRC Press, 2014.
+
+\bibitem[Savvides(1994)]{Savvides:1994aa}
+Savvakis~C. Savvides.
+\newblock Risk analysis in investment appraisal risk analysis in investment
+  appraisal risk analysis in investment appraisal.
+\newblock \emph{Project Appraisal Journal}, Vol. 9\penalty0 (No. 1), March
+  1994.
+
+\bibitem[Andersen(2007)]{Andersen:2007aa}
+Leif B.~G. Andersen.
+\newblock Efficient simulation of the heston stochastic volatility model, 2007.
+
+\bibitem[Blanchett et~al.(2013)Blanchett, Finke, and Pfau]{Blanchett:2013aa}
+David Blanchett, Michael~S. Finke, and Wade~D. Pfau.
+\newblock Asset valuations and safe portfolio withdrawal rates, 2013.
+
+\bibitem[Gamba(2003)]{Gamba:2003aa}
+Andrea Gamba.
+\newblock Real options valuation: A monte carlo approach, 2003.
+
+\end{thebibliography}

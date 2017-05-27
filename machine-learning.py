@@ -7,7 +7,7 @@ from sklearn import svm, model_selection, neighbors
 from sklearn.ensemble import VotingClassifier, RandomForestClassifier
 
 # location of the data set
-file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
+file_location = "data/WIKI_PRICES.csv"
 
 # importing the data set
 df = pd.read_csv(file_location)

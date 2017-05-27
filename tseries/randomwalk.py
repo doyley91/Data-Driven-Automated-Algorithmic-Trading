@@ -5,7 +5,7 @@ import numpy as np
 import functions as fc
 
 
-def run(tickers='AAPL', start=None, end=None):
+def main(tickers=['AAPL'], start=None, end=None):
     data = OrderedDict()
 
     for ticker in tickers:
@@ -17,6 +17,11 @@ def run(tickers='AAPL', start=None, end=None):
         data[ticker]['log_returns'].dropna(inplace=True)
 
         # plotting the histogram of returns
-        fc.plot_histogram(data[ticker]['log_returns'])
+        fc.plot_histogram(y=data[ticker]['log_returns'], ticker=ticker)
 
-        fc.plot_time_series(data[ticker]['log_returns'], lags=30)
+        fc.plot_time_series(y=data[ticker]['log_returns'], lags=30, ticker=ticker)
+
+if __name__ == '__main__':
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
+
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1')

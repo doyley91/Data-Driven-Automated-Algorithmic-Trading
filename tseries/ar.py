@@ -9,7 +9,7 @@ from statsmodels.tsa.ar_model import AR
 import functions as fc
 
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -23,9 +23,9 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         data[ticker]['log_returns'].dropna(inplace=True)
 
         # plotting the histogram of returns
-        fc.plot_histogram(data[ticker]['log_returns'])
+        fc.plot_histogram(y=data[ticker]['log_returns'], ticker=ticker)
 
-        fc.plot_time_series(data[ticker]['log_returns'], lags=30)
+        fc.plot_time_series(y=data[ticker]['log_returns'], lags=30, ticker=ticker)
 
         print("{} Series\n"
               "-------------\n"
@@ -95,9 +95,9 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
                                                                                              anderson_results,
                                                                                              kpss_results))
 
-        fc.plot_histogram(mdl.resid)
+        fc.plot_histogram(y=mdl.resid, ticker=ticker)
 
-        fc.plot_time_series(mdl.resid, lags=30)
+        fc.plot_time_series(y=mdl.resid, lags=30, ticker=ticker)
 
         # cross-validation testing
         split = rand.uniform(0.60, 0.80)
@@ -134,7 +134,7 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         ax.set(title='{} Day {} AR({}) Out-Of-Sample Return Forecast'.format(n_steps, ticker, best_order),
                xlabel='time',
                ylabel='$')
-        ax.legend(tickers)
+        ax.legend(ticker)
         fig.tight_layout()
 
     # end of day plot of all tickers
@@ -147,3 +147,8 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
     fig.tight_layout()
 
     return forecast_data
+
+if __name__ == '__main__':
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
+
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)

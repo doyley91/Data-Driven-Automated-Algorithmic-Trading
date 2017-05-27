@@ -15,10 +15,14 @@ ticker = "MSFT"
 
 tickers = fc.get_stocks_from_list(stocks, ticker)
 
+start = '2013-1-1'
+
+end = '2017-1-1'
+
 data = OrderedDict()
 
 for ticker in tickers:
-    data[ticker] = fc.get_time_series(ticker)
+    data[ticker] = fc.get_time_series(ticker, start, end)
 
 # converting dataframe data into panel
 panel = pd.Panel(data)
@@ -35,8 +39,6 @@ panel.minor_axis = ['ticker',
                     'adj_low',
                     'adj_close',
                     'adj_volume']
-
-panel.major_axis = panel.major_axis.tz_localize(pytz.utc)
 
 buy_and_hold.stocks = tickers
 

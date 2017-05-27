@@ -6,7 +6,7 @@ from sklearn.tree import DecisionTreeClassifier
 import functions as fc
 
 
-def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
+def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -73,6 +73,6 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
 
 
 if __name__ == '__main__':
-    symbols = ['AAPL', 'MSFT']
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
 
-    run(tickers=symbols)
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)

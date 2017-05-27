@@ -8,7 +8,7 @@ import pandas as pd
 import functions as fc
 
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+def main(tickers='AAPL', start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -22,9 +22,9 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         data[ticker]['log_returns'].dropna(inplace=True)
 
         # plotting the histogram of returns
-        fc.plot_histogram(data[ticker]['log_returns'])
+        fc.plot_histogram(y=data[ticker]['log_returns'], ticker=ticker)
 
-        fc.plot_time_series(data[ticker]['log_returns'], lags=30)
+        fc.plot_time_series(y=data[ticker]['log_returns'], lags=30, ticker=ticker)
 
         print("{} Series\n"
               "-------------\n"
@@ -94,9 +94,9 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
                                                                                              anderson_results,
                                                                                              kpss_results))
 
-        fc.plot_histogram(res_tup[2].resid)
+        #fc.plot_histogram(y=res_tup[2].resid, ticker=ticker)
 
-        fc.plot_time_series(res_tup[2].resid, lags=30)
+        #fc.plot_time_series(y=res_tup[2].resid, lags=30, ticker=ticker)
 
         # cross-validation testing
         split = rand.uniform(0.60, 0.80)
@@ -145,3 +145,8 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
     fig.tight_layout()
 
     return forecast_data
+
+if __name__ == '__main__':
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
+
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)

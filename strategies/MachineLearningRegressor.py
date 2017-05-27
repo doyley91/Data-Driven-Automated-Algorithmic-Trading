@@ -1,10 +1,17 @@
-import logbook as log
+"""
+Module Docstring
+"""
+
+__author__ = "Your Name"
+__version__ = "0.1.0"
+__license__ = "MIT"
+
 import sys
 from collections import OrderedDict, deque
 
+import logbook as log
 import numpy as np
 import pandas as pd
-import pyfolio as pf
 import talib as ta
 from sklearn.ensemble import RandomForestRegressor
 from zipline.algorithm import TradingAlgorithm
@@ -14,107 +21,109 @@ import functions as fc
 
 
 class MachineLearningRegressor(TradingAlgorithm):
-    def initialize(context):
+    def initialize(self):
         """
         Called once at the start of the algorithm.
         The initialize function is the place to set your tradable universe and define any parameters
         """
-        # set_slippage(slippage.FixedSlippage(spread=0.00))
-        # set_commission(commission.PerShare(cost=0, min_trade_cost=0))
+        self.securities = tickers
 
-        context.securities = tickers
+        # Amount of prior bars to study
+        self.window_length = 50
 
-        # set_benchmark(symbol(context.securities['SP500']))
+        # There needs to be enough data points to make a good model
+        self.data_points = 100
 
-        context.window_length = 50  # Amount of prior bars to study
+        # Number of days to forecast
+        self.pred_steps = 100
 
-        context.data_points = 100  # There needs to be enough data points to make a good model
+        # trading frequency, days
+        self.trading_freq = 50
 
-        context.pred_steps = 100  # Number of days to forecast
+        # forecast increase to invest in
+        self.forecast_difference = 5
 
-        context.trading_freq = 50  # trading frequency, days
+        # Use a random forest regressor
+        self.mdl = RandomForestRegressor()
 
-        context.forecast_difference = 10  # forecast increase to invest in
+        # Stores recent prices
+        self.recent_prices = OrderedDict()
 
-        context.mdl = RandomForestRegressor()  # Use a random forest regressor
+        self.invested = OrderedDict()
 
-        context.recent_prices = OrderedDict()  # Stores recent prices
+        for security in self.securities:
+            self.recent_prices[security] = []
+            self.invested[security] = False
 
-        context.invested = OrderedDict()
-
-        for security in context.securities:
-            context.recent_prices[security] = []
-            context.invested[security] = False
-
-        context.sma15 = context.sma50 = []  # Stores the 15 and 50 day simple moving average
-
-        context.X = []  # Independent, or input variables
-        context.Y = []  # Dependent, or output variable
-
-        context.pred = deque(maxlen=context.pred_steps - 1)  # Stores most recent prediction
+        # Stores most recent prediction
+        self.pred = deque(maxlen=self.pred_steps - 1)
 
         # schedule_function(record_vars, date_rules.every_day(), time_rules.market_close())
 
-    def before_trading_start(context, data):
+    def before_trading_start(self, data):
         """
         Called every day before market open.
         """
 
-    def handle_data(context, data):
+    def handle_data(self, data):
         """
         Called every minute.
         """
-        for security in context.securities:
-            context.recent_prices[security].append(data.current(symbol(security), 'close'))  # Update the recent prices
-            if len(context.recent_prices[security]) >= context.window_length + 2:  # If there's enough recent price data
+        for security in self.securities:
+            self.recent_prices[security].append(data.current(symbol(security), 'close'))  # Update the recent prices
+            if len(self.recent_prices[security]) >= self.window_length + 2:  # If there's enough recent price data
                 # Limit trading frequency
-                # if len(context.recent_prices[security]) % context.trading_freq != 0.0:
+                # if len(self.recent_prices[security]) % self.trading_freq != 0.0:
                 #   return
 
-                # Add independent variables, the prior changes
-                context.sma15 = get_sma(close=context.recent_prices[security], days=15, window=context.window_length)
-                context.sma50 = get_sma(close=context.recent_prices[security], days=50, window=context.window_length)
+                # Stores the 15 and 50 day simple moving average
+                self.sma15 = get_sma(close=self.recent_prices[security], days=15, window=self.window_length)
+                self.sma50 = get_sma(close=self.recent_prices[security], days=50, window=self.window_length)
 
-                context.X = np.array(list(zip(context.sma15, context.sma50)))
-                context.Y = context.recent_prices[security]  # Add dependent variable, the final change
+                # Independent, or input variables
+                self.X = np.array(list(zip(self.sma15, self.sma50)))
+                # Dependent, or output variable
+                self.Y = self.recent_prices[security]
 
-                if len(context.Y) >= context.data_points:
-                    context.mdl.fit(context.X, context.Y[context.window_length - 1:])  # Generate the model
+                if len(self.Y) >= self.data_points:
+                    # Generate the model
+                    self.mdl.fit(self.X, self.Y[self.window_length - 1:])
 
-                    for k in range(1, context.pred_steps):
-                        context.pred.append(context.mdl.predict(context.X[-1:]))  # Predict
+                    for k in range(1, self.pred_steps):
+                        # Predict
+                        self.pred.append(self.mdl.predict(self.X[-1:]))
 
-                        context.sma15 = get_sma(close=np.append(context.recent_prices[security],
-                                                                context.pred),
-                                                days=15,
-                                                window=context.window_length)
+                        self.sma15 = get_sma(close=np.append(self.recent_prices[security],
+                                                             self.pred),
+                                             days=15,
+                                             window=self.window_length)
 
-                        context.sma50 = get_sma(close=np.append(context.recent_prices[security],
-                                                                context.pred),
-                                                days=50,
-                                                window=context.window_length)
+                        self.sma50 = get_sma(close=np.append(self.recent_prices[security],
+                                                             self.pred),
+                                             days=50,
+                                             window=self.window_length)
 
-                        context.X = np.array(list(zip(context.sma15, context.sma50)))
+                        self.X = np.array(list(zip(self.sma15, self.sma50)))
 
                     # If prediction goes up by a certain amount buy, else short
-                    if (context.pred[-1] - context.pred[0]) > context.forecast_difference:
-                        if not context.invested[security]:
+                    if (self.pred[-1] - self.pred[0]) > self.forecast_difference:
+                        if not self.invested[security]:
                             order_target_percent(asset=symbol(security),
-                                                 target=get_percentage_difference(first=context.pred[0],
-                                                                                  last=context.pred[-1]))
-                            context.invested[security] = True
-                    elif (context.pred[-1] - context.pred[0]) < -context.forecast_difference:
-                        if context.invested[security]:
+                                                 target=get_percentage_difference(first=self.pred[0],
+                                                                                  last=self.pred[-1]))
+                            self.invested[security] = True
+                    elif (self.pred[-1] - self.pred[0]) < -self.forecast_difference:
+                        if self.invested[security]:
                             order_target_percent(asset=symbol(security),
-                                                 target=-get_percentage_difference(first=context.pred[0],
-                                                                                   last=context.pred[-1]))
-                            context.invested[security] = False
+                                                 target=-get_percentage_difference(first=self.pred[0],
+                                                                                   last=self.pred[-1]))
+                            self.invested[security] = False
 
-    def record_vars(context, data):
+    def record_vars(self):
         """
         Plot variables at the end of each day.
         """
-        record(prediction=int(context.pred[0]))
+        record(prediction=int(self.pred[0]))
 
 
 def get_sma(close, days, window):
@@ -148,6 +157,9 @@ def get_percentage_difference(first, last):
 
 
 if __name__ == '__main__':
+    """ 
+    This is executed when run from the command line 
+    """
     zipline_logging = log.NestedSetup([
         log.NullHandler(level=log.DEBUG),
         log.StreamHandler(sys.stdout, level=log.INFO),
@@ -155,8 +167,15 @@ if __name__ == '__main__':
     ])
     zipline_logging.push_application()
 
+    start = '2013-1-1'
+
+    end = '2017-1-1'
+
     # tickers to pass to the algorithm
     tickers = ['AAPL', 'MSFT']
+
+    # index to benchmark the algorithm
+    benchmark = 'GSPC'
 
     # initialising an ordered dictionary to store all our stocks
     data = OrderedDict()
@@ -164,8 +183,8 @@ if __name__ == '__main__':
     # tidying the data for the backtester
     for ticker in tickers:
         data[ticker] = fc.get_time_series(ticker=ticker,
-                                          start_date='2010-1-1',
-                                          end_date='2017-1-1')
+                                          start_date=start,
+                                          end_date=end)
 
         data[ticker].drop(['open',
                            'high',
@@ -192,6 +211,26 @@ if __name__ == '__main__':
     # run strategy
     results = algo.run(panel)
 
+    # calculate cumulative returns of the algorithm
+    results['algorithm_returns'] = (1 + results.returns).cumprod()
+
+    # save the results to a csv
+    results.to_csv('data/mlr-results.csv')
+
+    data[benchmark] = fc.get_time_series(ticker=benchmark,
+                                         start_date=start,
+                                         end_date=end,
+                                         file_location='data/GSPC.csv')
+
+    data[benchmark].drop(['close'],
+                         axis=1,
+                         inplace=True)
+
+    data[benchmark].rename(columns={'ticker': 'sid',
+                                    'adj_close': 'close'},
+                           inplace=True)
+
+    """
     # get the returns, positions, and transactions from the zipline backtest object
     returns, positions, transactions, gross_lev = pf.utils.extract_rets_pos_txn_from_zipline(results)
 
@@ -201,3 +240,4 @@ if __name__ == '__main__':
     # create a full tear sheet for our algorithm. As an example, set the live start date to something arbitrary
     pf.create_full_tear_sheet(returns, positions=positions, transactions=transactions,
                               gross_lev=gross_lev, live_start_date='2009-10-22', round_trips=True)
+    """

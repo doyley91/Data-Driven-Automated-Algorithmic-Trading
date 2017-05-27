@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Thesis.aux
+The style file: unsrtnat.bst
+Database file #1: Bibliography.bib
+Warning--entry type for "Gamba:2003aa" isn't style-file defined
+--line 19 of file Bibliography.bib
+Warning--entry type for "Blanchett:2013aa" isn't style-file defined
+--line 28 of file Bibliography.bib
+Warning--entry type for "Andersen:2007aa" isn't style-file defined
+--line 37 of file Bibliography.bib
+Warning--entry type for "Darrat:2001aa" isn't style-file defined
+--line 46 of file Bibliography.bib
+Warning--entry type for "Murugesan:2012aa" isn't style-file defined
+--line 131 of file Bibliography.bib
+Warning--entry type for "Kumar:2016aa" isn't style-file defined
+--line 140 of file Bibliography.bib
+You've used 17 entries,
+            2481 wiz_defined-function locations,
+            653 strings with 6831 characters,
+and the built_in function-call counts, 5184 in all, are:
+= -- 401
+> -- 249
+< -- 13
++ -- 104
+- -- 70
+* -- 325
+:= -- 826
+add.period$ -- 45
+call.type$ -- 17
+change.case$ -- 30
+chr.to.int$ -- 17
+cite$ -- 17
+duplicate$ -- 292
+empty$ -- 530
+format.name$ -- 101
+if$ -- 1109
+int.to.chr$ -- 1
+int.to.str$ -- 18
+missing$ -- 15
+newline$ -- 87
+num.names$ -- 51
+pop$ -- 187
+preamble$ -- 1
+purify$ -- 17
+quote$ -- 0
+skip$ -- 188
+stack$ -- 0
+substring$ -- 86
+swap$ -- 41
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 107
+warning$ -- 0
+while$ -- 37
+width$ -- 0
+write$ -- 202
+(There were 6 warnings)

@@ -92,7 +92,7 @@ if __name__ == '__main__':
     # #print df
 
     # # # # # # Run Strategy
-    results = Strategy.run(df)
+    results = Strategy.main(df)
     results['algorithm_returns'] = (1 + results.returns).cumprod()
 
     results.to_csv('output.csv')

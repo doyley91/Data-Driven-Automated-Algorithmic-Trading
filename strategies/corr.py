@@ -12,4 +12,4 @@ ticker = "MSFT"
 tickers = fc.get_stocks_from_list(stocks, ticker)
 
 for symbol in tickers:
-    SGDr.run(symbol)
+    SGDr.main(symbol)

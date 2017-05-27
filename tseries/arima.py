@@ -1,3 +1,11 @@
+"""
+Module Docstring
+"""
+
+__author__ = "Gabriel Gauci Maistre"
+__version__ = "0.1.0"
+__license__ = "MIT"
+
 import random as rand
 from collections import OrderedDict
 
@@ -8,7 +16,10 @@ import pandas as pd
 import functions as fc
 
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
+    """
+    Main entry point of the app 
+    """
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -75,7 +86,7 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(
             res_tup[2].resid.values)
 
-        print("Stationarity Statistics\n"
+        print("{} Stationarity Statistics\n"
               "-------------\n"
               "Augmented Dickey-Fuller unit root test: {}\n"
               "MacKinnon’s approximate p-value: {}\n"
@@ -84,7 +95,8 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
               "Shapiro-Wilk normality test: {}\n"
               "Kolmogorov-Smirnov goodness of fit test: {}\n"
               "Anderson-Darling test: {}\n"
-              "Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) stationarity test: {}".format(adfstat,
+              "Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) stationarity test: {}".format(ticker,
+                                                                                             adfstat,
                                                                                              pvalue,
                                                                                              critvalues,
                                                                                              dagostino_results,
@@ -121,6 +133,7 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         ax.set(title='{} ARIMA{} In-Sample Return Prediction'.format(ticker, res_tup[1]), xlabel='time', ylabel='$')
         ax.legend(['Original', 'Prediction'])
         fig.tight_layout()
+        fig.savefig('charts/{}-ARIMA-In-Sample-Return-Prediction'.format(ticker))
 
         # out-of-sample forecast
         forecast_data[ticker] = res_tup[2].forecast(steps=n_steps)
@@ -132,6 +145,7 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
         ax.set(title='{} Day {} ARIMA Out-Of-Sample Return Forecast'.format(n_steps, ticker), xlabel='time', ylabel='$')
         ax.legend(['Forecast'])
         fig.tight_layout()
+        fig.savefig('charts/{}-Day-{}-ARIMA-Out-Of-Sample-Return-Forecast'.format(n_steps, ticker))
 
     # end of day plot of all tickers
     fig = plt.figure()
@@ -143,3 +157,11 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
     fig.tight_layout()
 
     return forecast_data
+
+if __name__ == '__main__':
+    """ 
+    This is executed when run from the command line 
+    """
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
+
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)

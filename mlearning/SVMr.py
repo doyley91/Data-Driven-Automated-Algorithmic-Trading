@@ -9,7 +9,7 @@ from sklearn.svm import SVR
 import functions as fc
 
 
-def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
+def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -70,19 +70,21 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.plot(pred_data[ticker]['original'], color='red')
-        ax.plot(pred_data[ticker]['prediction'], color='blue')
-        ax.set(title='{} Neural Network In-Sample Prediction'.format(ticker), xlabel='time', ylabel='$')
+        ax.plot(pred_data[ticker]['original'])
+        ax.plot(pred_data[ticker]['prediction'])
+        ax.set(title='{} Support Vector Machine In-Sample Prediction'.format(ticker), xlabel='time', ylabel='$')
         ax.legend(['Original $', 'Prediction $'])
         fig.tight_layout()
+        fig.savefig('charts/{}-Support-Vector-Machine-In-Sample-Prediction.png'.format(ticker))
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
         ax.plot(forecast_data[ticker]['adj_close'][-n_steps:])
-        ax.set(title='{} Day {} Support Vector Machine Out-of-Sample Forecast'.format(n_steps, ticker), xlabel='time',
+        ax.set(title='{} Day {} Support Vector Machine Out of Sample Forecast'.format(n_steps, ticker), xlabel='time',
                ylabel='$')
         ax.legend(['Forecast $'])
         fig.tight_layout()
+        fig.savefig('charts/{}-Day-{}-Support-Vector-Machine-Out-of-Sample-Forecast.png'.format(n_steps, ticker))
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -91,11 +93,12 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     ax.set(title='Time series plot', xlabel='time', ylabel='$')
     ax.legend(tickers)
     fig.tight_layout()
+    fig.savefig('charts/stocks.png')
 
     return forecast_data
 
 
 if __name__ == '__main__':
-    symbols = ['AAPL', 'MSFT']
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
 
-    run(tickers=symbols)
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)

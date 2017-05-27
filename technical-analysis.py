@@ -8,7 +8,7 @@ import talib
 from talib import MA_Type
 
 # location of the data set
-file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
+file_location = "data/WIKI_PRICES.csv"
 
 # importing the data set
 df = pd.read_csv(file_location)

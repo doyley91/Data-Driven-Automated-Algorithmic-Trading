@@ -9,7 +9,10 @@ from sklearn.neural_network import MLPRegressor
 import functions as fc
 
 
-def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
+def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
+    """
+    Main entry point of the app 
+    """
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -72,6 +75,7 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
         ax.set(title='{} Neural Network In-Sample Prediction'.format(ticker), xlabel='time', ylabel='$')
         ax.legend(['Original $', 'Prediction $'])
         fig.tight_layout()
+        fig.savefig('charts/{}-Neural-Network-In-Sample-Prediction.png'.format(ticker))
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
@@ -81,6 +85,7 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
                ylabel='$')
         ax.legend(['Forecast $'])
         fig.tight_layout()
+        fig.savefig('charts/{}-Day-{}-Neural-Network-Out-of-Sample-Forecast.png'.format(n_steps, ticker))
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -89,11 +94,14 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     ax.set(title='Time series plot', xlabel='time', ylabel='$')
     ax.legend(tickers)
     fig.tight_layout()
+    fig.savefig('charts/stocks.png')
 
     return forecast_data
 
-
 if __name__ == '__main__':
-    symbols = ['AAPL', 'MSFT']
+    """ 
+    This is executed when run from the command line 
+    """
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
 
-    run(tickers=symbols)
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)

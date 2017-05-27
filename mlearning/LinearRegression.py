@@ -9,7 +9,7 @@ from sklearn.linear_model import LinearRegression
 import functions as fc
 
 
-def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
+def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -67,11 +67,12 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.plot(pred_data[ticker]['original'], color='red')
-        ax.plot(pred_data[ticker]['prediction'], color='blue')
+        ax.plot(pred_data[ticker]['original'])
+        ax.plot(pred_data[ticker]['prediction'])
         ax.set(title='{} Linear Regression In-Sample Prediction'.format(ticker), xlabel='time', ylabel='$')
         ax.legend(['Original $', 'Prediction $'])
         fig.tight_layout()
+        fig.savefig('charts/{}-Linear-Regression-In-Sample-Prediction.png'.format(ticker))
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
@@ -80,6 +81,7 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
                ylabel='$')
         ax.legend(['Forecast $'])
         fig.tight_layout()
+        fig.savefig('charts/{}-Day-{}-Linear-Regression-Out-of-Sample-Forecast.png'.format(n_steps, ticker))
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -88,11 +90,12 @@ def run(tickers=['AAPL'], start=None, end=None, n_steps=21):
     ax.set(title='Time series plot', xlabel='time', ylabel='$')
     ax.legend(tickers)
     fig.tight_layout()
+    fig.savefig('charts/stocks.png')
 
     return forecast_data
 
 
 if __name__ == '__main__':
-    symbols = ['AAPL', 'MSFT']
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
 
-    run(tickers=symbols)
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)

@@ -8,7 +8,7 @@ import pandas as pd
 import functions as fc
 
 
-def run(tickers='AAPL', start=None, end=None, n_steps=21):
+def main(tickers='AAPL', start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
@@ -142,3 +142,8 @@ def run(tickers='AAPL', start=None, end=None, n_steps=21):
     fig.tight_layout()
 
     return forecast_data
+
+if __name__ == '__main__':
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
+
+    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)

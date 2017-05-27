@@ -4,16 +4,16 @@ from mlearning import SGDc, SVMc, Logit, BTc, DTc, KNNc, MLPc, RFc, NBBc, NBGc
 
 ticker = 'AAPL'
 
-SGDc_results = SGDc.run(ticker=ticker)
-SVMc_results = SVMc.run(ticker=ticker)
-Logit_results = Logit.run(ticker=ticker)
-BTc_results = BTc.run(ticker=ticker)
-DTc_results = DTc.run(ticker=ticker)
-KNNc_results = KNNc.run(ticker=ticker)
-MLPc_results = MLPc.run(ticker=ticker)
-RFc_results = RFc.run(ticker=ticker)
-NBBc_results = NBBc.run(ticker=ticker)
-NBGc_results = NBGc.run(ticker=ticker)
+SGDc_results = SGDc.main(ticker=ticker)
+SVMc_results = SVMc.main(ticker=ticker)
+Logit_results = Logit.main(ticker=ticker)
+BTc_results = BTc.main(ticker=ticker)
+DTc_results = DTc.main(ticker=ticker)
+KNNc_results = KNNc.main(ticker=ticker)
+MLPc_results = MLPc.main(ticker=ticker)
+RFc_results = RFc.main(ticker=ticker)
+NBBc_results = NBBc.main(ticker=ticker)
+NBGc_results = NBGc.main(ticker=ticker)
 
 regression_results = pd.DataFrame(data=dict(SGD=SGDc_results.values,
                                             SVM=SVMc_results.values,

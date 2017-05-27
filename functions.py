@@ -25,14 +25,12 @@ import keys
 pd.options.mode.chained_assignment = None  # default='warn'
 plt.style.use('ggplot')
 
-# location of the data set
-file_location = "data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
 
-
-def get_time_series(ticker=None, start_date=None, end_date=None):
+def get_time_series(ticker=None, start_date=None, end_date=None, file_location="data/WIKI_PRICES.csv"):
     """
     returns end-of-day data of the selected ticker in the format of a dataframe 
     if condition checks if one ticker or a list of tickers are being passed
+    :param file_location: 
     :param ticker: 
     :param start_date:
     :param end_date:
@@ -236,9 +234,10 @@ def get_regression_metrics(original, prediction):
     return explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score
 
 
-def plot_histogram(y):
+def plot_histogram(y, ticker=''):
     """
     plots a histogram of the stock returns
+    :param ticker: 
     :param y: 
     :return: 
     """
@@ -252,13 +251,14 @@ def plot_histogram(y):
     plt.plot(bins, y, 'r--')
     plt.xlabel('Returns')
     plt.ylabel('Probability')
-    plt.title('Histogram of returns: $\mu={}$, $\sigma={}$'.format(mu, sigma))
+    plt.title('{} histogram of returns: $\mu={}$, $\sigma={}$'.format(ticker, mu, sigma))
     plt.tight_layout()
 
 
-def plot_time_series(y, lags=None):
+def plot_time_series(y, lags=None, ticker=''):
     """
     plots the stock return, acf, pacf, and qq 
+    :param ticker: 
     :param y: 
     :param lags: 
     :return: 
@@ -275,7 +275,7 @@ def plot_time_series(y, lags=None):
     pp_ax = plt.subplot2grid(layout, (2, 1))
 
     y.plot(ax=ts_ax)
-    ts_ax.set_title('Time Series Analysis Plots')
+    ts_ax.set_title('{} Time Series Analysis Plots'.format(ticker))
     smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, alpha=0.5)
     smt.graphics.plot_pacf(y, lags=lags, ax=pacf_ax, alpha=0.5)
     sm.qqplot(y, line='s', ax=qq_ax)

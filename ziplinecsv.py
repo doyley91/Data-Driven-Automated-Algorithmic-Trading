@@ -80,7 +80,7 @@ def handle_data(context, panel):
 algo_obj = TradingAlgorithm(initialize=initialize, handle_data=handle_data, capital_base=100000.0)
 
 # run algo
-perf_manual = algo_obj.run(panel)
+perf_manual = algo_obj.main(panel)
 # plotting graph
 print(perf_manual[["MA1", "MA2", "Price", "status", "PnL"]][50:])
 perf_manual[["MA1", "MA2", "Price"]].plot()
