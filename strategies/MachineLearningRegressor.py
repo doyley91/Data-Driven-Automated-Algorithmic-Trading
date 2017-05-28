@@ -12,6 +12,7 @@ from collections import OrderedDict, deque
 import logbook as log
 import numpy as np
 import pandas as pd
+import pyfolio as pf
 import talib as ta
 from sklearn.ensemble import RandomForestRegressor
 from zipline.algorithm import TradingAlgorithm
@@ -242,10 +243,10 @@ if __name__ == '__main__':
                                     'adj_close': 'close'},
                            inplace=True)
 
-    """
     # get the returns, positions, and transactions from the zipline backtest object
     returns, positions, transactions, gross_lev = pf.utils.extract_rets_pos_txn_from_zipline(results)
 
+    """
     # plot of the top 5 drawdown periods
     pf.plot_drawdown_periods(returns, top=5).set_xlabel('Date')
 

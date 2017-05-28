@@ -4,10 +4,11 @@ from collections import OrderedDict
 import logbook as log
 import numpy as np
 import pandas as pd
+import pyfolio as pf
 import talib as ta
 from sklearn.ensemble import RandomForestClassifier
 from zipline.algorithm import TradingAlgorithm
-from zipline.api import record, order_target_percent, symbol
+from zipline.api import record, order_target_percent, symbol, get_datetime
 
 import functions as fc
 
@@ -23,6 +24,11 @@ class MachineLearningClassifier(TradingAlgorithm):
         self.window_length = 6
 
         self.data_points = 100
+
+        # trading frequency, days
+        self.trading_freq = 20
+
+        self.day_count = -1
 
         # Use a random forest classifier
         self.mdl = RandomForestClassifier()
@@ -67,10 +73,23 @@ class MachineLearningClassifier(TradingAlgorithm):
         """
         for security in self.securities:
             self.recent_open_price[security].append(data.current(symbol(security), 'open'))  # Update the recent prices
-            self.recent_close_price[security].append(data.current(symbol(security), 'close'))  # Update the recent prices
+            self.recent_close_price[security].append(
+                data.current(symbol(security), 'close'))  # Update the recent prices
 
             # If there's enough recent price data
             if len(self.recent_close_price[security]) >= self.window_length + 2:
+                # Trade only once per day
+                loc_dt = pd.Timestamp(get_datetime()).tz_convert('US/Eastern')
+                if loc_dt.hour == 16 and loc_dt.minute == 0:
+                    self.day_count += 1
+                    pass
+                else:
+                    return
+
+                # Limit trading frequency
+                if len(self.recent_close_price[security]) % self.trading_freq != 0.0:
+                    return
+
                 # Add independent variables, the prior changes
                 self.sma2 = get_sma(self.recent_close_price[security], 2, self.window_length)
                 self.sma3 = get_sma(self.recent_close_price[security], 3, self.window_length)
@@ -80,27 +99,27 @@ class MachineLearningClassifier(TradingAlgorithm):
 
                 # Make a list of 1's and 0's, 1 when the price increased from the prior bar
                 self.sma2_result[security] = np.append(self.sma2_result[security],
-                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
-                                                                         self.sma2[-1:]))
+                                                       is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                          self.sma2[-1:]))
                 self.sma3_result[security] = np.append(self.sma3_result[security],
-                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
-                                                                         self.sma3[-1:]))
+                                                       is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                          self.sma3[-1:]))
 
                 self.sma4_result[security] = np.append(self.sma4_result[security],
-                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
-                                                                         self.sma4[-1:]))
+                                                       is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                          self.sma4[-1:]))
 
                 self.sma5_result[security] = np.append(self.sma5_result[security],
-                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
-                                                                         self.sma5[-1:]))
+                                                       is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                          self.sma5[-1:]))
 
                 self.sma6_result[security] = np.append(self.sma6_result[security],
-                                                      is_x_higher_than_y(self.recent_close_price[security][-1:],
-                                                                         self.sma6[-1:]))
+                                                       is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                          self.sma6[-1:]))
 
                 self.result[security] = np.append(self.result[security],
-                                                is_x_higher_than_y(self.recent_close_price[security][-1:],
-                                                                   self.recent_open_price[security][-1:]))
+                                                  is_x_higher_than_y(self.recent_close_price[security][-1:],
+                                                                     self.recent_open_price[security][-1:]))
 
                 # Add independent variables, the prior changes
                 self.X = np.array(list(zip(self.sma2_result[security],
@@ -123,11 +142,11 @@ class MachineLearningClassifier(TradingAlgorithm):
                     # If prediction = 1, buy all shares affordable, if 0 sell all shares
                     if self.pred:
                         if not self.invested[security]:
-                            order_target_percent(asset=symbol(security), target=0.5)
+                            order_target_percent(asset=symbol(security), target=1.0)
                             self.invested[security] = True
                     else:
                         if self.invested[security]:
-                            order_target_percent(asset=symbol(security), target=-0.5)
+                            order_target_percent(asset=symbol(security), target=-1.0)
                             self.invested[security] = False
 
     def record_vars(self):
@@ -178,7 +197,7 @@ if __name__ == '__main__':
 
     end = '2017-1-1'
 
-    tickers = ['AAPL', 'MSFT']
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
 
     benchmark = 'GSPC'
 
@@ -230,3 +249,6 @@ if __name__ == '__main__':
     data[benchmark].rename(columns={'ticker': 'sid',
                                     'adj_close': 'close'},
                            inplace=True)
+
+    # get the returns, positions, and transactions from the zipline backtest object
+    returns, positions, transactions = pf.utils.extract_rets_pos_txn_from_zipline(results)
