@@ -7,7 +7,7 @@ from zipline.algorithm import TradingAlgorithm
 import functions as fc
 from strategies import buy_and_hold
 
-df_corr = pd.read_csv("data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db_corr.csv", index_col='ticker')
+df_corr = pd.read_csv("data/WIKI_PRICES_corr.csv", index_col='ticker')
 
 stocks = fc.get_neutrally_correlated_stocks(df_corr, correlation=0.1)
 

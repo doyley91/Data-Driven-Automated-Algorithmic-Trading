@@ -17,13 +17,13 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
         # add the outcome variable, 1 if the trading session was positive (close>open), 0 otherwise
         data[ticker]['outcome'] = data[ticker].apply(lambda x: 1 if x['adj_close'] > x['adj_open'] else 0, axis=1)
 
-        data[ticker] = fc.get_sma_regression_features(data[ticker]).dropna()
+        data[ticker] = fc.get_sma_classifier_features(data[ticker]).dropna()
 
         train_size = int(len(data[ticker]) * 0.80)
 
         train, test = data[ticker][0:train_size], data[ticker][train_size:len(data[ticker])]
 
-        features = ['sma_15', 'sma_50']
+        features = ['sma_2', 'sma_3', 'sma_4', 'sma_5', 'sma_6']
 
         # values of features
         X = list(train[features].values)
