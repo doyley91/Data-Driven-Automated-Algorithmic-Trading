@@ -1,3 +1,11 @@
+"""
+Module Docstring
+"""
+
+__author__ = "Gabriel Gauci Maistre"
+__version__ = "0.1.0"
+__license__ = "MIT"
+
 import random as rand
 from collections import OrderedDict
 
@@ -9,13 +17,13 @@ from statsmodels.tsa.ar_model import AR
 import functions as fc
 
 
-def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
+def main(tickers=['AAPL'], n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
 
     for ticker in tickers:
-        data[ticker] = fc.get_time_series(ticker, start, end)
+        data[ticker] = fc.get_time_series(ticker)[-500:]
 
         # log_returns
         data[ticker]['log_returns'] = np.log(data[ticker]['adj_close'] / data[ticker]['adj_close'].shift(1))
@@ -95,9 +103,9 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
                                                                                              anderson_results,
                                                                                              kpss_results))
 
-        fc.plot_histogram(y=mdl.resid, ticker=ticker)
+        fc.plot_histogram(y=mdl.resid, ticker=ticker, title='AR')
 
-        fc.plot_time_series(y=mdl.resid, lags=30, ticker=ticker)
+        fc.plot_time_series(y=mdl.resid, lags=30, ticker=ticker, title='AR')
 
         # cross-validation testing
         split = rand.uniform(0.60, 0.80)
@@ -117,11 +125,12 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
         # prediction plot
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.plot(pred_results['original'], color='red')
-        ax.plot(pred_results['prediction'], color='blue')
+        ax.plot(pred_results['original'])
+        ax.plot(pred_results['prediction'])
         ax.set(title='{} AR({}) In-Sample Return Prediction'.format(ticker, best_order), xlabel='time', ylabel='%')
         ax.legend(['Original $', 'Prediction $'])
         fig.tight_layout()
+        fig.savefig('charts/{}-AR-In-Sample-Return-Prediction.png'.format(ticker))
 
         # out-of-sample forecast
         forecast_data[ticker] = mdl.predict(start=(len(train) + len(test) - 2),
@@ -131,11 +140,12 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
         fig = plt.figure()
         ax = fig.add_subplot(111)
         ax.plot(forecast_data[ticker][-n_steps:])
-        ax.set(title='{} Day {} AR({}) Out-Of-Sample Return Forecast'.format(n_steps, ticker, best_order),
+        ax.set(title='{} Day {} AR({}) Out-of-Sample Return Forecast'.format(n_steps, ticker, best_order),
                xlabel='time',
                ylabel='$')
-        ax.legend(ticker)
+        ax.legend([ticker])
         fig.tight_layout()
+        fig.savefig('charts/{}-Day-{}-AR-Out-of-Sample-Return-Forecast.png'.format(n_steps, ticker))
 
     # end of day plot of all tickers
     fig = plt.figure()
@@ -145,10 +155,11 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     ax.set(title='Time series plot', xlabel='time', ylabel='$')
     ax.legend(tickers)
     fig.tight_layout()
+    fig.savefig('charts/stocks.png')
 
     return forecast_data
 
 if __name__ == '__main__':
     tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
 
-    main(tickers=tickers, start='1990-1-1', end='2017-1-1', n_steps=100)
+    main(tickers=tickers, n_steps=100)

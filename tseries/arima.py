@@ -106,9 +106,9 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
                                                                                              kpss_results))
 
         # plotting the histogram of returns
-        fc.plot_histogram(res_tup[2].resid)
+        fc.plot_histogram(y=res_tup[2].resid, ticker=ticker, title='ARIMA')
 
-        fc.plot_time_series(res_tup[2].resid, lags=30)
+        fc.plot_time_series(y=res_tup[2].resid, lags=30, ticker=ticker, title='ARIMA')
 
         # cross-validation testing
         split = rand.uniform(0.60, 0.80)

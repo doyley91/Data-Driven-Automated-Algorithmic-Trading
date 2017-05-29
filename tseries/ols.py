@@ -1,3 +1,11 @@
+"""
+Module Docstring
+"""
+
+__author__ = "Gabriel Gauci Maistre"
+__version__ = "0.1.0"
+__license__ = "MIT"
+
 import random as rand
 from collections import OrderedDict
 

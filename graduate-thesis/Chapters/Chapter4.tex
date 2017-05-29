@@ -4,31 +4,141 @@ For the purpose of bencharking the performance of the algorithms, a total of fiv
 \includegraphics[width=\textwidth]{stocks}
 
 \section{Time Series Analysis}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
 
 \subsection{Random Walk}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
+\includegraphics[width=\textwidth]{MSFT-time-series}
+\includegraphics[width=\textwidth]{MSFT-histogram}
+\includegraphics[width=\textwidth]{CDE-time-series}
+\includegraphics[width=\textwidth]{CDE-histogram}
+\includegraphics[width=\textwidth]{NAVB-time-series}
+\includegraphics[width=\textwidth]{NAVB-histogram}
+\includegraphics[width=\textwidth]{HRG-time-series}
+\includegraphics[width=\textwidth]{HRG-histogram}
+\includegraphics[width=\textwidth]{HL-time-series}
+\includegraphics[width=\textwidth]{HL-histogram}
 
 \subsection{Ordinary Least Squares (OLS)}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
+MSFT scored a mean absolute error regression loss of 5.606, and a coefficient of determination of 0.458.
+
+\includegraphics[width=\textwidth]{MSFT-OLS-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-MSFT-OLS-Out-of-Sample-Forecast}
+
+CDE scored a mean absolute error regression loss of 2.906, and a coefficient of determination of 0.816.
+
+\includegraphics[width=\textwidth]{CDE-OLS-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-CDE-OLS-Out-of-Sample-Forecast}
+
+NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of determination of 0.693.
+
+\includegraphics[width=\textwidth]{NAVB-OLS-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-CDE-OLS-Out-of-Sample-Forecast}
+
+HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
+
+\includegraphics[width=\textwidth]{HRG-OLS-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-HRG-OLS-Out-of-Sample-Forecast}
+
+HL scored a mean absolute error regression loss of 0.506, and a coefficient of determination of 0.923.
+
+\includegraphics[width=\textwidth]{HL-OLS-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-HL-OLS-Out-of-Sample-Forecast}
 
 \subsection{Auto Regressive (AR)}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
+\includegraphics[width=\textwidth]{MSFT-AR-time-series}
+\includegraphics[width=\textwidth]{MSFT-AR-histogram}
+\includegraphics[width=\textwidth]{MSFT-AR-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-MSFT-AR-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{CDE-AR-time-series}
+\includegraphics[width=\textwidth]{CDE-AR-histogram}
+\includegraphics[width=\textwidth]{CDE-AR-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-CDE-AR-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{NAVB-AR-time-series}
+\includegraphics[width=\textwidth]{NAVB-AR-histogram}
+\includegraphics[width=\textwidth]{NAVB-AR-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-NAVB-AR-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{HRG-AR-time-series}
+\includegraphics[width=\textwidth]{HRG-AR-histogram}
+\includegraphics[width=\textwidth]{HRG-AR-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-HRG-AR-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{HL-AR-time-series}
+\includegraphics[width=\textwidth]{HL-AR-histogram}
+\includegraphics[width=\textwidth]{HL-AR-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-HL-AR-Out-of-Sample-Return-Forecast}
 
 \subsection{Moving Average (MA)}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
+\includegraphics[width=\textwidth]{MSFT-MA-time-series}
+\includegraphics[width=\textwidth]{MSFT-MA-histogram}
+\includegraphics[width=\textwidth]{MSFT-MA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-MSFT-MA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{CDE-MA-time-series}
+\includegraphics[width=\textwidth]{CDE-MA-histogram}
+\includegraphics[width=\textwidth]{CDE-MA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-CDE-MA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{NAVB-MA-time-series}
+\includegraphics[width=\textwidth]{NAVB-MA-histogram}
+\includegraphics[width=\textwidth]{NAVB-MA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-NAVB-MA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{HRG-MA-time-series}
+\includegraphics[width=\textwidth]{HRG-MA-histogram}
+\includegraphics[width=\textwidth]{HRG-MA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-HRG-MA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{HL-MA-time-series}
+\includegraphics[width=\textwidth]{HL-MA-histogram}
+\includegraphics[width=\textwidth]{HL-MA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-HL-MA-Out-of-Sample-Return-Forecast}
 
 \subsection{Auto Regressive Moving Average (ARMA)}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
+\includegraphics[width=\textwidth]{MSFT-ARMA-time-series}
+\includegraphics[width=\textwidth]{MSFT-ARMA-histogram}
+\includegraphics[width=\textwidth]{MSFT-ARMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-MSFT-ARMA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{CDE-ARMA-time-series}
+\includegraphics[width=\textwidth]{CDE-ARMA-histogram}
+\includegraphics[width=\textwidth]{CDE-ARMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-CDE-ARMA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{NAVB-ARMA-time-series}
+\includegraphics[width=\textwidth]{NAVB-ARMA-histogram}
+\includegraphics[width=\textwidth]{NAVB-ARMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-NAVB-ARMA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{HRG-ARMA-time-series}
+\includegraphics[width=\textwidth]{HRG-ARMA-histogram}
+\includegraphics[width=\textwidth]{HRG-ARMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-HRG-ARMA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{HL-ARMA-time-series}
+\includegraphics[width=\textwidth]{HL-ARMA-histogram}
+\includegraphics[width=\textwidth]{HL-ARMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-HL-ARMA-Out-of-Sample-Return-Forecast}
 
 \subsection{Auto Regressive Integrated Moving Average (ARIMA)}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
+\includegraphics[width=\textwidth]{MSFT-ARIMA-time-series}
+\includegraphics[width=\textwidth]{MSFT-ARIMA-histogram}
+\includegraphics[width=\textwidth]{MSFT-ARIMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-MSFT-ARIMA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{CDE-ARIMA-time-series}
+\includegraphics[width=\textwidth]{CDE-ARIMA-histogram}
+\includegraphics[width=\textwidth]{CDE-ARIMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-CDE-ARIMA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{NAVB-ARIMA-time-series}
+\includegraphics[width=\textwidth]{NAVB-ARIMA-histogram}
+\includegraphics[width=\textwidth]{NAVB-ARIMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-NAVB-ARIMA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{HRG-ARIMA-time-series}
+\includegraphics[width=\textwidth]{HRG-ARIMA-histogram}
+\includegraphics[width=\textwidth]{HRG-ARIMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-HRG-ARIMA-Out-of-Sample-Return-Forecast}
+\includegraphics[width=\textwidth]{HL-ARIMA-time-series}
+\includegraphics[width=\textwidth]{HL-ARIMA-histogram}
+\includegraphics[width=\textwidth]{HL-ARIMA-In-Sample-Return-Prediction}
+\includegraphics[width=\textwidth]{100-Day-HL-ARIMA-Out-of-Sample-Return-Forecast}
 
 \section{Machine Learning}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
 
 \subsection{Classification}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
 
 \subsubsection{Decision Tree}
 
@@ -181,7 +291,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor t
 \end{center}
 
 \subsection{Regression}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
 
 \subsubsection{Decision Tree}
 MSFT scored a mean absolute error regression loss of 5.606, and a coefficient of determination of 0.458.

@@ -234,9 +234,10 @@ def get_regression_metrics(original, prediction):
     return explained_variance_score, mean_absolute_error, mean_squared_error, median_absolute_error, r2_score
 
 
-def plot_histogram(y, ticker=''):
+def plot_histogram(y, ticker='', title=''):
     """
     plots a histogram of the stock returns
+    :param title:
     :param ticker:
     :param y:
     :return:
@@ -260,10 +261,10 @@ def plot_histogram(y, ticker=''):
     # Tweak spacing to prevent clipping of ylabel
     plt.subplots_adjust(left=0.15)
     fig.tight_layout()
-    fig.savefig('charts/{}-histogram.png'.format(ticker))
+    fig.savefig('charts/{}-{}-histogram.png'.format(ticker, title))
 
 
-def plot_time_series(y, lags=None, ticker=''):
+def plot_time_series(y, lags=None, ticker='', title=''):
     """
     plots the stock return, acf, pacf, and qq 
     :param ticker: 
@@ -291,7 +292,10 @@ def plot_time_series(y, lags=None, ticker=''):
     ax4.set_title('QQ Plot')
 
     fig.tight_layout()
-    fig.savefig('charts/{}-time-series.png'.format(ticker))
+    if title is not '':
+        fig.savefig('charts/{}-{}-time-series.png'.format(ticker, title))
+    else:
+        fig.savefig('charts/{}-time-series.png'.format(ticker))
 
 
 def plot_svm(X, Y, ylabel, xlabel):

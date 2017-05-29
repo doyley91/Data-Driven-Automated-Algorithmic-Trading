@@ -94,7 +94,9 @@ def main(tickers='AAPL', start=None, end=None, n_steps=21):
                                                                                              anderson_results,
                                                                                              kpss_results))
 
-        fc.plot_time_series(res_tup[2].resid, lags=30)
+        fc.plot_histogram(y=res_tup[2].resid, ticker=ticker, title='ARMA')
+
+        fc.plot_time_series(y=res_tup[2].resid, lags=30, ticker=ticker, title='ARMA')
 
         # cross-validation testing
         split = rand.uniform(0.60, 0.80)
@@ -119,6 +121,7 @@ def main(tickers='AAPL', start=None, end=None, n_steps=21):
         ax.set(title='{} ARMA{} In-Sample Return Prediction'.format(ticker, res_tup[1]), xlabel='time', ylabel='$')
         ax.legend(['Original', 'Prediction'])
         fig.tight_layout()
+        fig.savefig('charts/{}-ARMA-In-Sample-Return-Prediction'.format(ticker))
 
         # out-of-sample forecast
         forecast_data[ticker] = res_tup[2].forecast(steps=n_steps)
@@ -127,10 +130,11 @@ def main(tickers='AAPL', start=None, end=None, n_steps=21):
         fig = plt.figure()
         ax = fig.add_subplot(111)
         ax.plot(forecast_data[ticker][0])
-        ax.set(title='{} Day {} ARMA{} Out-Of-Sample Return Forecast'.format(n_steps, ticker, res_tup[1]),
+        ax.set(title='{} Day {} ARMA{} Out-of-Sample Return Forecast.png'.format(n_steps, ticker, res_tup[1]),
                xlabel='time', ylabel='$')
         ax.legend(['Forecast'])
         fig.tight_layout()
+        fig.savefig('charts/{}-Day-{}-ARMA-Out-of-Sample-Return-Forecast.png'.format(n_steps, ticker))
 
     # end of day plot of all tickers
     fig = plt.figure()
@@ -140,6 +144,7 @@ def main(tickers='AAPL', start=None, end=None, n_steps=21):
     ax.set(title='Time series plot', xlabel='time', ylabel='$')
     ax.legend(tickers)
     fig.tight_layout()
+    fig.savefig('charts/stocks.png')
 
     return forecast_data
 

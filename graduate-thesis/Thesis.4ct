@@ -3,16 +3,16 @@
 \doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-2}{}{Abstract}}{v}\relax 
 \doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-3}{}{Acknowledgements}}{vi}\relax 
 \doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-10003}{QQ2-1-4}{Contents}}{8}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-5}{}{List of Figures}}{xi}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-20004}{QQ2-1-6}{List of Figures}}{12}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-7}{}{List of Tables}}{xiii}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-30005}{QQ2-1-8}{List of Tables}}{14}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-9}{}{Abbreviations}}{xvi}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-40006}{QQ2-1-10}{Abbreviations}}{17}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-11}{}{Physical Constants}}{xix}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-50007}{QQ2-1-12}{Physical Constants}}{20}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-13}{}{Symbols}}{xxii}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-60008}{QQ2-1-14}{Symbols}}{23}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-5}{}{List of Figures}}{xii}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-20004}{QQ2-1-6}{List of Figures}}{13}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-7}{}{List of Tables}}{xiv}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-30005}{QQ2-1-8}{List of Tables}}{15}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-9}{}{Abbreviations}}{xvii}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-40006}{QQ2-1-10}{Abbreviations}}{18}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-11}{}{Physical Constants}}{xx}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-50007}{QQ2-1-12}{Physical Constants}}{21}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-13}{}{Symbols}}{xxiii}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-60008}{QQ2-1-14}{Symbols}}{24}\relax 
 \doTocEntry\tocchapter{1}{\csname a:TocLink\endcsname{1}{x1-70001}{QQ2-1-15}{Introduction}}{2}\relax 
 \doTocEntry\tocsection{1.1}{\csname a:TocLink\endcsname{1}{x1-80001.1}{QQ2-1-16}{Efficient Market Hypothesis - EMH}}{2}\relax 
 \doTocEntry\tocsubsection{1.1.1}{\csname a:TocLink\endcsname{1}{x1-90001.1.1}{QQ2-1-17}{Breaking down EMH}}{3}\relax 
@@ -25,66 +25,80 @@
 \doTocEntry\tocsubsection{2.1.2}{\csname a:TocLink\endcsname{1}{x1-160002.1.2}{QQ2-1-24}{ARIMA}}{7}\relax 
 \doTocEntry\tocsection{2.2}{\csname a:TocLink\endcsname{1}{x1-170002.2}{QQ2-1-25}{Statistical Machine Learning}}{8}\relax 
 \doTocEntry\tocsubsection{2.2.1}{\csname a:TocLink\endcsname{1}{x1-180002.2.1}{QQ2-1-26}{Classification}}{9}\relax 
-\doTocEntry\tocsubsection{2.2.2}{\csname a:TocLink\endcsname{1}{x1-190002.2.2}{QQ2-1-27}{Support Vector Machines}}{9}\relax 
+\doTocEntry\tocsubsection{2.2.2}{\csname a:TocLink\endcsname{1}{x1-190002.2.2}{QQ2-1-27}{Support Vector Machines}}{10}\relax 
 \doTocEntry\tocsubsection{2.2.3}{\csname a:TocLink\endcsname{1}{x1-200002.2.3}{QQ2-1-28}{Regression}}{10}\relax 
 \doTocEntry\tocsubsection{2.2.4}{\csname a:TocLink\endcsname{1}{x1-210002.2.4}{QQ2-1-29}{Decision Trees}}{11}\relax 
 \doTocEntry\tocsection{2.3}{\csname a:TocLink\endcsname{1}{x1-220002.3}{QQ2-1-30}{Bayesian Statistics}}{12}\relax 
 \doTocEntry\tocsubsection{2.3.1}{\csname a:TocLink\endcsname{1}{x1-230002.3.1}{QQ2-1-31}{Markov Chain Monte Carlo}}{12}\relax 
-\doTocEntry\tocchapter{3}{\csname a:TocLink\endcsname{1}{x1-240003}{QQ2-1-32}{Experminetal Setup}}{14}\relax 
-\doTocEntry\tocsection{3.1}{\csname a:TocLink\endcsname{1}{x1-250003.1}{QQ2-1-33}{Data Tidying}}{14}\relax 
-\doTocEntry\tocsection{3.2}{\csname a:TocLink\endcsname{1}{x1-260003.2}{QQ2-1-34}{Stock Selection}}{14}\relax 
-\doTocEntry\tocsection{3.3}{\csname a:TocLink\endcsname{1}{x1-270003.3}{QQ2-1-35}{Time Series Analysis}}{14}\relax 
-\doTocEntry\tocsubsection{3.3.1}{\csname a:TocLink\endcsname{1}{x1-280003.3.1}{QQ2-1-36}{Random Walk}}{14}\relax 
-\doTocEntry\tocsubsection{3.3.2}{\csname a:TocLink\endcsname{1}{x1-290003.3.2}{QQ2-1-37}{Ordinary Least Squares (OLS)}}{15}\relax 
-\doTocEntry\tocsubsection{3.3.3}{\csname a:TocLink\endcsname{1}{x1-300003.3.3}{QQ2-1-38}{Auto Regressive (AR)}}{15}\relax 
+\doTocEntry\tocchapter{3}{\csname a:TocLink\endcsname{1}{x1-240003}{QQ2-1-32}{Experminetal Setup}}{15}\relax 
+\doTocEntry\tocsection{3.1}{\csname a:TocLink\endcsname{1}{x1-250003.1}{QQ2-1-33}{Data Tidying}}{15}\relax 
+\doTocEntry\tocsection{3.2}{\csname a:TocLink\endcsname{1}{x1-260003.2}{QQ2-1-34}{Stock Selection}}{15}\relax 
+\doTocEntry\tocsection{3.3}{\csname a:TocLink\endcsname{1}{x1-270003.3}{QQ2-1-35}{Time Series Analysis}}{15}\relax 
+\doTocEntry\tocsubsection{3.3.1}{\csname a:TocLink\endcsname{1}{x1-280003.3.1}{QQ2-1-36}{Random Walk}}{15}\relax 
+\doTocEntry\tocsubsection{3.3.2}{\csname a:TocLink\endcsname{1}{x1-290003.3.2}{QQ2-1-37}{Ordinary Least Squares (OLS)}}{16}\relax 
+\doTocEntry\tocsubsection{3.3.3}{\csname a:TocLink\endcsname{1}{x1-300003.3.3}{QQ2-1-38}{Auto Regressive (AR)}}{16}\relax 
 \doTocEntry\tocsubsection{3.3.4}{\csname a:TocLink\endcsname{1}{x1-310003.3.4}{QQ2-1-39}{Moving Average (MA)}}{16}\relax 
-\doTocEntry\tocsubsection{3.3.5}{\csname a:TocLink\endcsname{1}{x1-320003.3.5}{QQ2-1-40}{Auto Regressive Moving Average (ARMA)}}{16}\relax 
-\doTocEntry\tocsubsection{3.3.6}{\csname a:TocLink\endcsname{1}{x1-330003.3.6}{QQ2-1-41}{Auto Regressive Integrated Moving Average (ARIMA)}}{16}\relax 
+\doTocEntry\tocsubsection{3.3.5}{\csname a:TocLink\endcsname{1}{x1-320003.3.5}{QQ2-1-40}{Auto Regressive Moving Average (ARMA)}}{17}\relax 
+\doTocEntry\tocsubsection{3.3.6}{\csname a:TocLink\endcsname{1}{x1-330003.3.6}{QQ2-1-41}{Auto Regressive Integrated Moving Average (ARIMA)}}{17}\relax 
 \doTocEntry\tocsection{3.4}{\csname a:TocLink\endcsname{1}{x1-340003.4}{QQ2-1-42}{Machine Learning}}{17}\relax 
-\doTocEntry\tocsubsection{3.4.1}{\csname a:TocLink\endcsname{1}{x1-350003.4.1}{QQ2-1-43}{Classification}}{17}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.1}{\csname a:TocLink\endcsname{1}{x1-360003.4.1.1}{QQ2-1-44}{Decision Tree}}{17}\relax 
+\doTocEntry\tocsubsection{3.4.1}{\csname a:TocLink\endcsname{1}{x1-350003.4.1}{QQ2-1-43}{Classification}}{18}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.1}{\csname a:TocLink\endcsname{1}{x1-360003.4.1.1}{QQ2-1-44}{Decision Tree}}{18}\relax 
 \doTocEntry\tocsubsubsection{3.4.1.2}{\csname a:TocLink\endcsname{1}{x1-370003.4.1.2}{QQ2-1-45}{Boosted Decision Tree}}{18}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.3}{\csname a:TocLink\endcsname{1}{x1-380003.4.1.3}{QQ2-1-46}{Support Vector Machine (SVM)}}{18}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.3}{\csname a:TocLink\endcsname{1}{x1-380003.4.1.3}{QQ2-1-46}{Support Vector Machine (SVM)}}{19}\relax 
 \doTocEntry\tocsubsubsection{3.4.1.4}{\csname a:TocLink\endcsname{1}{x1-390003.4.1.4}{QQ2-1-47}{Random Forest}}{19}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.5}{\csname a:TocLink\endcsname{1}{x1-400003.4.1.5}{QQ2-1-48}{K-Nearest Neighbour}}{19}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.6}{\csname a:TocLink\endcsname{1}{x1-410003.4.1.6}{QQ2-1-49}{Bernoulli Naive Bayes}}{20}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.7}{\csname a:TocLink\endcsname{1}{x1-420003.4.1.7}{QQ2-1-50}{Gaussian Naive Bayes}}{20}\relax 
-\doTocEntry\tocsubsection{3.4.2}{\csname a:TocLink\endcsname{1}{x1-430003.4.2}{QQ2-1-51}{Regression}}{20}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.1}{\csname a:TocLink\endcsname{1}{x1-440003.4.2.1}{QQ2-1-52}{Decision Tree}}{20}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.2}{\csname a:TocLink\endcsname{1}{x1-450003.4.2.2}{QQ2-1-53}{Boosted Decision Tree}}{21}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.3}{\csname a:TocLink\endcsname{1}{x1-460003.4.2.3}{QQ2-1-54}{Random Forest}}{21}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.4}{\csname a:TocLink\endcsname{1}{x1-470003.4.2.4}{QQ2-1-55}{Linear Regression}}{22}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.5}{\csname a:TocLink\endcsname{1}{x1-480003.4.2.5}{QQ2-1-56}{Logistic Regression}}{22}\relax 
-\doTocEntry\tocsection{3.5}{\csname a:TocLink\endcsname{1}{x1-490003.5}{QQ2-1-57}{Bayesian Statistics}}{22}\relax 
-\doTocEntry\tocsubsection{3.5.1}{\csname a:TocLink\endcsname{1}{x1-500003.5.1}{QQ2-1-58}{No-U-Turn Sampler (NUTS)}}{23}\relax 
-\doTocEntry\tocsubsection{3.5.2}{\csname a:TocLink\endcsname{1}{x1-510003.5.2}{QQ2-1-59}{Metropolis-Hastings}}{23}\relax 
-\doTocEntry\tocchapter{4}{\csname a:TocLink\endcsname{1}{x1-520004}{QQ2-1-60}{Research Findings}}{24}\relax 
-\doTocEntry\tocsection{4.1}{\csname a:TocLink\endcsname{1}{x1-530004.1}{QQ2-1-61}{Time Series Analysis}}{24}\relax 
-\doTocEntry\tocsubsection{4.1.1}{\csname a:TocLink\endcsname{1}{x1-540004.1.1}{QQ2-1-62}{Random Walk}}{24}\relax 
-\doTocEntry\tocsubsection{4.1.2}{\csname a:TocLink\endcsname{1}{x1-550004.1.2}{QQ2-1-63}{Ordinary Least Squares (OLS)}}{25}\relax 
-\doTocEntry\tocsubsection{4.1.3}{\csname a:TocLink\endcsname{1}{x1-560004.1.3}{QQ2-1-64}{Auto Regressive (AR)}}{25}\relax 
-\doTocEntry\tocsubsection{4.1.4}{\csname a:TocLink\endcsname{1}{x1-570004.1.4}{QQ2-1-65}{Moving Average (MA)}}{25}\relax 
-\doTocEntry\tocsubsection{4.1.5}{\csname a:TocLink\endcsname{1}{x1-580004.1.5}{QQ2-1-66}{Auto Regressive Moving Average (ARMA)}}{26}\relax 
-\doTocEntry\tocsubsection{4.1.6}{\csname a:TocLink\endcsname{1}{x1-590004.1.6}{QQ2-1-67}{Auto Regressive Integrated Moving Average (ARIMA)}}{26}\relax 
-\doTocEntry\tocsection{4.2}{\csname a:TocLink\endcsname{1}{x1-600004.2}{QQ2-1-68}{Machine Learning}}{26}\relax 
-\doTocEntry\tocsubsection{4.2.1}{\csname a:TocLink\endcsname{1}{x1-610004.2.1}{QQ2-1-69}{Classification}}{27}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.1}{\csname a:TocLink\endcsname{1}{x1-620004.2.1.1}{QQ2-1-70}{Decision Tree}}{27}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.2}{\csname a:TocLink\endcsname{1}{x1-630004.2.1.2}{QQ2-1-71}{Boosted Decision Tree}}{28}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.3}{\csname a:TocLink\endcsname{1}{x1-640004.2.1.3}{QQ2-1-72}{Support Vector Machine (SVM)}}{28}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.4}{\csname a:TocLink\endcsname{1}{x1-650004.2.1.4}{QQ2-1-73}{Random Forest}}{28}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.5}{\csname a:TocLink\endcsname{1}{x1-660004.2.1.5}{QQ2-1-74}{K-Nearest Neighbour}}{29}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.6}{\csname a:TocLink\endcsname{1}{x1-670004.2.1.6}{QQ2-1-75}{Naive Bayes}}{29}\relax 
-\doTocEntry\tocsubsection{4.2.2}{\csname a:TocLink\endcsname{1}{x1-680004.2.2}{QQ2-1-76}{Regression}}{30}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.1}{\csname a:TocLink\endcsname{1}{x1-690004.2.2.1}{QQ2-1-77}{Decision Tree}}{30}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.2}{\csname a:TocLink\endcsname{1}{x1-700004.2.2.2}{QQ2-1-78}{Boosted Decision Tree}}{30}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.3}{\csname a:TocLink\endcsname{1}{x1-710004.2.2.3}{QQ2-1-79}{Random Forest}}{31}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.4}{\csname a:TocLink\endcsname{1}{x1-720004.2.2.4}{QQ2-1-80}{Linear Regression}}{31}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.5}{\csname a:TocLink\endcsname{1}{x1-730004.2.2.5}{QQ2-1-81}{Logistic Regression}}{31}\relax 
-\doTocEntry\tocsection{4.3}{\csname a:TocLink\endcsname{1}{x1-740004.3}{QQ2-1-82}{Bayesian Statistics}}{32}\relax 
-\doTocEntry\tocsubsection{4.3.1}{\csname a:TocLink\endcsname{1}{x1-750004.3.1}{QQ2-1-83}{No-U-Turn Sampler (NUTS)}}{32}\relax 
-\doTocEntry\tocsubsection{4.3.2}{\csname a:TocLink\endcsname{1}{x1-760004.3.2}{QQ2-1-84}{Metropolis-Hastings}}{33}\relax 
-\doTocEntry\tocchapter{5}{\csname a:TocLink\endcsname{1}{x1-770005}{QQ2-1-85}{Conclusions, Discussion, and Suggestions for Future Research}}{34}\relax 
-\doTocEntry\tocappendix{A}{\csname a:TocLink\endcsname{1}{x1-78000A}{QQ2-1-86}{An Appendix}}{35}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-87}{}{Bibliography}}{37}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-790009}{QQ2-1-88}{Bibliography}}{38}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.5}{\csname a:TocLink\endcsname{1}{x1-400003.4.1.5}{QQ2-1-48}{K-Nearest Neighbour}}{20}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.6}{\csname a:TocLink\endcsname{1}{x1-410003.4.1.6}{QQ2-1-49}{Logistic Regression}}{20}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.7}{\csname a:TocLink\endcsname{1}{x1-420003.4.1.7}{QQ2-1-50}{Bernoulli Naive Bayes}}{21}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.8}{\csname a:TocLink\endcsname{1}{x1-430003.4.1.8}{QQ2-1-51}{Gaussian Naive Bayes}}{21}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.9}{\csname a:TocLink\endcsname{1}{x1-440003.4.1.9}{QQ2-1-52}{Neural Network}}{21}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.10}{\csname a:TocLink\endcsname{1}{x1-450003.4.1.10}{QQ2-1-53}{Stochastic Gradient Descent}}{22}\relax 
+\doTocEntry\tocsubsection{3.4.2}{\csname a:TocLink\endcsname{1}{x1-460003.4.2}{QQ2-1-54}{Regression}}{22}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.1}{\csname a:TocLink\endcsname{1}{x1-470003.4.2.1}{QQ2-1-55}{Decision Tree}}{23}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.2}{\csname a:TocLink\endcsname{1}{x1-480003.4.2.2}{QQ2-1-56}{Boosted Decision Tree}}{23}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.3}{\csname a:TocLink\endcsname{1}{x1-490003.4.2.3}{QQ2-1-57}{Random Forest}}{23}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.4}{\csname a:TocLink\endcsname{1}{x1-500003.4.2.4}{QQ2-1-58}{Linear Regression}}{24}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.5}{\csname a:TocLink\endcsname{1}{x1-510003.4.2.5}{QQ2-1-59}{Neural Network}}{24}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.6}{\csname a:TocLink\endcsname{1}{x1-520003.4.2.6}{QQ2-1-60}{Stochastic Gradient Descent}}{24}\relax 
+\doTocEntry\tocsection{3.5}{\csname a:TocLink\endcsname{1}{x1-530003.5}{QQ2-1-61}{Bayesian Statistics}}{25}\relax 
+\doTocEntry\tocsubsection{3.5.1}{\csname a:TocLink\endcsname{1}{x1-540003.5.1}{QQ2-1-62}{No-U-Turn Sampler (NUTS)}}{25}\relax 
+\doTocEntry\tocsubsection{3.5.2}{\csname a:TocLink\endcsname{1}{x1-550003.5.2}{QQ2-1-63}{Metropolis-Hastings}}{25}\relax 
+\doTocEntry\tocsection{3.6}{\csname a:TocLink\endcsname{1}{x1-560003.6}{QQ2-1-64}{Strategy}}{26}\relax 
+\doTocEntry\tocsubsection{3.6.1}{\csname a:TocLink\endcsname{1}{x1-570003.6.1}{QQ2-1-65}{Classification}}{26}\relax 
+\doTocEntry\tocsubsection{3.6.2}{\csname a:TocLink\endcsname{1}{x1-580003.6.2}{QQ2-1-66}{Regression}}{26}\relax 
+\doTocEntry\tocchapter{4}{\csname a:TocLink\endcsname{1}{x1-590004}{QQ2-1-67}{Research Findings}}{28}\relax 
+\doTocEntry\tocsection{4.1}{\csname a:TocLink\endcsname{1}{x1-600004.1}{QQ2-1-68}{Time Series Analysis}}{28}\relax 
+\doTocEntry\tocsubsection{4.1.1}{\csname a:TocLink\endcsname{1}{x1-610004.1.1}{QQ2-1-69}{Random Walk}}{28}\relax 
+\doTocEntry\tocsubsection{4.1.2}{\csname a:TocLink\endcsname{1}{x1-620004.1.2}{QQ2-1-70}{Ordinary Least Squares (OLS)}}{28}\relax 
+\doTocEntry\tocsubsection{4.1.3}{\csname a:TocLink\endcsname{1}{x1-630004.1.3}{QQ2-1-71}{Auto Regressive (AR)}}{28}\relax 
+\doTocEntry\tocsubsection{4.1.4}{\csname a:TocLink\endcsname{1}{x1-640004.1.4}{QQ2-1-72}{Moving Average (MA)}}{29}\relax 
+\doTocEntry\tocsubsection{4.1.5}{\csname a:TocLink\endcsname{1}{x1-650004.1.5}{QQ2-1-73}{Auto Regressive Moving Average (ARMA)}}{29}\relax 
+\doTocEntry\tocsubsection{4.1.6}{\csname a:TocLink\endcsname{1}{x1-660004.1.6}{QQ2-1-74}{Auto Regressive Integrated Moving Average (ARIMA)}}{29}\relax 
+\doTocEntry\tocsection{4.2}{\csname a:TocLink\endcsname{1}{x1-670004.2}{QQ2-1-75}{Machine Learning}}{29}\relax 
+\doTocEntry\tocsubsection{4.2.1}{\csname a:TocLink\endcsname{1}{x1-680004.2.1}{QQ2-1-76}{Classification}}{29}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.1}{\csname a:TocLink\endcsname{1}{x1-690004.2.1.1}{QQ2-1-77}{Decision Tree}}{29}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.2}{\csname a:TocLink\endcsname{1}{x1-700004.2.1.2}{QQ2-1-78}{Boosted Decision Tree}}{30}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.3}{\csname a:TocLink\endcsname{1}{x1-710004.2.1.3}{QQ2-1-79}{Support Vector Machine (SVM)}}{30}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.4}{\csname a:TocLink\endcsname{1}{x1-720004.2.1.4}{QQ2-1-80}{Random Forest}}{31}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.5}{\csname a:TocLink\endcsname{1}{x1-730004.2.1.5}{QQ2-1-81}{K-Nearest Neighbour}}{31}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.6}{\csname a:TocLink\endcsname{1}{x1-740004.2.1.6}{QQ2-1-82}{Gaussian Naive Bayes}}{31}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.7}{\csname a:TocLink\endcsname{1}{x1-750004.2.1.7}{QQ2-1-83}{Bernoulli Naive Bayes}}{32}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.8}{\csname a:TocLink\endcsname{1}{x1-760004.2.1.8}{QQ2-1-84}{Neural Network}}{32}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.9}{\csname a:TocLink\endcsname{1}{x1-770004.2.1.9}{QQ2-1-85}{Logistic Regression}}{33}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.10}{\csname a:TocLink\endcsname{1}{x1-780004.2.1.10}{QQ2-1-86}{Stochastic Gradient Descent}}{33}\relax 
+\doTocEntry\tocsubsection{4.2.2}{\csname a:TocLink\endcsname{1}{x1-790004.2.2}{QQ2-1-87}{Regression}}{33}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.1}{\csname a:TocLink\endcsname{1}{x1-800004.2.2.1}{QQ2-1-88}{Decision Tree}}{34}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.2}{\csname a:TocLink\endcsname{1}{x1-810004.2.2.2}{QQ2-1-89}{Boosted Decision Tree}}{34}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.3}{\csname a:TocLink\endcsname{1}{x1-820004.2.2.3}{QQ2-1-90}{K-Nearest Neighbour}}{34}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.4}{\csname a:TocLink\endcsname{1}{x1-830004.2.2.4}{QQ2-1-91}{Random Forest}}{35}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.5}{\csname a:TocLink\endcsname{1}{x1-840004.2.2.5}{QQ2-1-92}{Linear Regression}}{35}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.6}{\csname a:TocLink\endcsname{1}{x1-850004.2.2.6}{QQ2-1-93}{Neural Network}}{36}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.7}{\csname a:TocLink\endcsname{1}{x1-860004.2.2.7}{QQ2-1-94}{Stochastic Gradient Descent}}{36}\relax 
+\doTocEntry\tocsection{4.3}{\csname a:TocLink\endcsname{1}{x1-870004.3}{QQ2-1-95}{Bayesian Statistics}}{37}\relax 
+\doTocEntry\tocsubsection{4.3.1}{\csname a:TocLink\endcsname{1}{x1-880004.3.1}{QQ2-1-96}{No-U-Turn Sampler (NUTS)}}{37}\relax 
+\doTocEntry\tocsubsection{4.3.2}{\csname a:TocLink\endcsname{1}{x1-890004.3.2}{QQ2-1-97}{Metropolis-Hastings}}{38}\relax 
+\doTocEntry\tocchapter{5}{\csname a:TocLink\endcsname{1}{x1-900005}{QQ2-1-98}{Discussion and Suggestions for Future Research}}{39}\relax 
+\doTocEntry\tocchapter{6}{\csname a:TocLink\endcsname{1}{x1-910006}{QQ2-1-99}{Conclusion}}{40}\relax 
+\doTocEntry\tocappendix{A}{\csname a:TocLink\endcsname{1}{x1-92000A}{QQ2-1-100}{An Appendix}}{41}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-101}{}{Bibliography}}{43}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-930009}{QQ2-1-102}{Bibliography}}{44}\relax 
 \par 

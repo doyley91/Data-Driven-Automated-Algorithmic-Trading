@@ -9,9 +9,9 @@ htfcss: cmbx  font-weight: bold;
 htfcss: cmbxsl  font-weight: bold; font-style: oblique;
 htfcss: cmbx  font-weight: bold;
 htfcss: cmbxsl  font-weight: bold; font-style: oblique;
-File: Thesis.html
-File: Thesis.css
-File: Thesis.tmp
+File: thesis.html
+File: thesis.css
+File: thesis.tmp
 Css: p.noindent { text-indent: 0em }
 Css: td p.noindent { text-indent: 0em; margin-top:0em; }
 Css: p.nopar { text-indent: 0em; }
@@ -159,14 +159,14 @@ Css: .lstinputlisting .label{margin-right:0.5em;}
 Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
 Css: div.longtable{text-align:center;}
 Css: div.verbatiminput {font-family: monospace; white-space: nowrap; }
---- needs --- Thesis.idv[2] ==> Thesis0x.png ---
---- needs --- Thesis.idv[3] ==> Thesis1x.png ---
---- needs --- Thesis.idv[4] ==> Thesis2x.png ---
---- needs --- Thesis.idv[6] ==> Thesis3x.png ---
---- needs --- Thesis.idv[7] ==> Thesis4x.png ---
---- needs --- Thesis.idv[8] ==> Thesis5x.png ---
---- needs --- Thesis.idv[9] ==> Thesis6x.png ---
---- needs --- Thesis.idv[11] ==> Thesis7x.png ---
+--- needs --- thesis.idv[2] ==> thesis0x.png ---
+--- needs --- thesis.idv[4] ==> thesis1x.png ---
+--- needs --- thesis.idv[6] ==> thesis2x.png ---
+--- needs --- thesis.idv[7] ==> thesis3x.png ---
+--- needs --- thesis.idv[8] ==> thesis4x.png ---
+--- needs --- thesis.idv[9] ==> thesis5x.png ---
+--- needs --- thesis.idv[11] ==> thesis6x.png ---
+--- needs --- thesis.idv[12] ==> thesis7x.png ---
 --- characters ---
 Font("cmr","10","10","109")
 Font("cmr","12","12","100")
