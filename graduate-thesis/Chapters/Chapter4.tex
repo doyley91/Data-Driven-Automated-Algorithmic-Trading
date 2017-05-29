@@ -165,6 +165,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor t
     \end{tabular}
 \end{center}
 
+\subsubsection{Stochastic Gradient Descent}
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
+    \hline
+    Ticker & Precision & True Negatives & False Negatives & True Positives & False Positives \\ \hline
+    MSFT & 0.77 & 493 & 130 & 548 & 190 \\ \hline
+    CDE & 0.76 & 462 & 106 & 542 & 236 \\ \hline
+    NAVB & 0.59 & 1032 & 707 & 118 & 80 \\ \hline
+    HRG & 0.72 & 761 & 225 & 1059 & 518 \\ \hline
+    HL & 0.80 & 535 & 83 & 527 & 215 \\
+    \hline
+    \end{tabular}
+\end{center}
+
 \subsection{Regression}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
 
@@ -353,6 +368,37 @@ HL scored a mean absolute error regression loss of 0.506, and a coefficient of d
 \includegraphics[width=\textwidth]{HL-Neural-Network-In-Sample-Prediction}
 
 \includegraphics[width=\textwidth]{100-Day-HL-Neural-Network-Out-of-Sample-Forecast}
+
+\subsubsection{Stochastic Gradient Descent}
+MSFT scored a mean absolute error regression loss of 0.829, and a coefficient of determination of 0.990.
+
+\includegraphics[width=\textwidth]{MSFT-SGD-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-MSFT-SGD-Out-of-Sample-Forecast}
+
+CDE scored a mean absolute error regression loss of 4.724, and a coefficient of determination of 0.788.
+
+\includegraphics[width=\textwidth]{CDE-SGD-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-CDE-SGD-Out-of-Sample-Forecast}
+
+NAVB scored a mean absolute error regression loss of 0.142, and a coefficient of determination of 0.955.
+
+\includegraphics[width=\textwidth]{NAVB-SGD-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-CDE-SGD-Out-of-Sample-Forecast}
+
+HRG scored a mean absolute error regression loss of 0.292, and a coefficient of determination of 0.987.
+
+\includegraphics[width=\textwidth]{HRG-SGD-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-HRG-SGD-Out-of-Sample-Forecast}
+
+HL scored a mean absolute error regression loss of 0.275, and a coefficient of determination of 0.962.
+
+\includegraphics[width=\textwidth]{HL-SGD-In-Sample-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-HL-SGD-Out-of-Sample-Forecast}
 
 \section{Bayesian Statistics}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.

@@ -155,6 +155,7 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     ax.set(title='Time series plot', xlabel='time', ylabel='$')
     ax.legend(tickers)
     fig.tight_layout()
+    fig.savefig('charts/stocks.png')
 
     return forecast_data
 

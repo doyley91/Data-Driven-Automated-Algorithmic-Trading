@@ -8,6 +8,7 @@ __license__ = "MIT"
 
 import sys
 from collections import OrderedDict, deque
+from time import gmtime, strftime
 
 import logbook as log
 import numpy as np
@@ -56,15 +57,6 @@ class MachineLearningRegressor(TradingAlgorithm):
             self.recent_prices[security] = []
             self.invested[security] = False
 
-        # Stores the 15 and 50 day simple moving average
-        self.sma15 = self.sma50 = []
-
-        # Independent, or input variables
-        self.X = []
-
-        # Dependent, or output variable
-        self.Y = []
-
         # Stores most recent prediction
         self.pred = deque(maxlen=self.pred_steps - 1)
 
@@ -90,33 +82,34 @@ class MachineLearningRegressor(TradingAlgorithm):
                 #   return
 
                 # Stores the 15 and 50 day simple moving average
-                self.sma15 = get_sma(close=self.recent_prices[security], days=15, window=self.window_length)
-                self.sma50 = get_sma(close=self.recent_prices[security], days=50, window=self.window_length)
+                sma15 = get_sma(close=self.recent_prices[security], days=15, window=self.window_length)
+                sma50 = get_sma(close=self.recent_prices[security], days=50, window=self.window_length)
 
                 # Independent, or input variables
-                self.X = np.array(list(zip(self.sma15, self.sma50)))
-                # Dependent, or output variable
-                self.Y = self.recent_prices[security]
+                X = np.array(list(zip(sma15, sma50)))
 
-                if len(self.Y) >= self.data_points:
+                # Dependent, or output variable
+                Y = self.recent_prices[security]
+
+                if len(Y) >= self.data_points:
                     # Generate the model
-                    self.mdl.fit(self.X, self.Y[self.window_length - 1:])
+                    self.mdl.fit(X, Y[self.window_length - 1:])
 
                     for k in range(1, self.pred_steps):
                         # Predict
-                        self.pred.append(self.mdl.predict(self.X[-1:]))
+                        self.pred.append(self.mdl.predict(X[-1:]))
 
-                        self.sma15 = get_sma(close=np.append(self.recent_prices[security],
-                                                             self.pred),
-                                             days=15,
-                                             window=self.window_length)
+                        sma15 = get_sma(close=np.append(self.recent_prices[security],
+                                                        self.pred),
+                                        days=15,
+                                        window=self.window_length)
 
-                        self.sma50 = get_sma(close=np.append(self.recent_prices[security],
-                                                             self.pred),
-                                             days=50,
-                                             window=self.window_length)
+                        sma50 = get_sma(close=np.append(self.recent_prices[security],
+                                                        self.pred),
+                                        days=50,
+                                        window=self.window_length)
 
-                        self.X = np.array(list(zip(self.sma15, self.sma50)))
+                        X = np.array(list(zip(sma15, sma50)))
 
                     # If prediction goes up by a certain amount buy, else short
                     if (self.pred[-1] - self.pred[0]) > self.forecast_difference:
@@ -173,6 +166,7 @@ if __name__ == '__main__':
     """ 
     This is executed when run from the command line 
     """
+    # enable zipline debug log
     zipline_logging = log.NestedSetup([
         log.NullHandler(level=log.DEBUG),
         log.StreamHandler(sys.stdout, level=log.INFO),
@@ -185,7 +179,7 @@ if __name__ == '__main__':
     end = '2017-1-1'
 
     # tickers to pass to the algorithm
-    tickers = ['AAPL', 'MSFT']
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
 
     # index to benchmark the algorithm
     benchmark = 'GSPC'
@@ -228,7 +222,7 @@ if __name__ == '__main__':
     results['algorithm_returns'] = (1 + results.returns).cumprod()
 
     # save the results to a csv
-    results.to_csv('data/mlr-results.csv')
+    results.to_csv('results/mlr-results-{}.csv'.format(strftime("%Y-%m-%d-%H:%M:%S", gmtime())))
 
     data[benchmark] = fc.get_time_series(ticker=benchmark,
                                          start_date=start,

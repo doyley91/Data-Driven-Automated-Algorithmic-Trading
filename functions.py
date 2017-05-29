@@ -237,22 +237,30 @@ def get_regression_metrics(original, prediction):
 def plot_histogram(y, ticker=''):
     """
     plots a histogram of the stock returns
-    :param ticker: 
-    :param y: 
-    :return: 
+    :param ticker:
+    :param y:
+    :return:
     """
+    fig = plt.figure()
+
     mu = np.mean(y)  # mean of distribution
     sigma = np.std(y)  # standard deviation of distribution
     x = mu + sigma * np.random.randn(10000)
+
+    num_bins = 50
     # the histogram of the data
-    n, bins, patches = plt.hist(x, bins=50, normed=1, facecolor='green', alpha=0.5)
+    n, bins, patches = plt.hist(x, num_bins, normed=1, facecolor='green', alpha=0.5)
     # add a 'best fit' line
     y = mlab.normpdf(bins, mu, sigma)
     plt.plot(bins, y, 'r--')
-    plt.xlabel('Returns')
-    plt.ylabel('Probability')
-    plt.title('{} histogram of returns: $\mu={}$, $\sigma={}$'.format(ticker, mu, sigma))
-    plt.tight_layout()
+    plt.xlabel('returns')
+    plt.ylabel('probability')
+    plt.title('{} Histogram of returns \n $\mu={}$ \n $\sigma={}$'.format(ticker, mu, sigma))
+
+    # Tweak spacing to prevent clipping of ylabel
+    plt.subplots_adjust(left=0.15)
+    fig.tight_layout()
+    fig.savefig('charts/{}-histogram.png'.format(ticker))
 
 
 def plot_time_series(y, lags=None, ticker=''):
@@ -267,22 +275,23 @@ def plot_time_series(y, lags=None, ticker=''):
         y = pd.Series(y)
 
     fig = plt.figure()
-    layout = (3, 2)
-    ts_ax = plt.subplot2grid(layout, (0, 0), colspan=2)
-    acf_ax = plt.subplot2grid(layout, (1, 0))
-    pacf_ax = plt.subplot2grid(layout, (1, 1))
-    qq_ax = plt.subplot2grid(layout, (2, 0))
-    pp_ax = plt.subplot2grid(layout, (2, 1))
+    ax1 = plt.subplot2grid((3, 2), (0, 0), colspan=2)
+    ax2 = plt.subplot2grid((3, 2), (1, 0))
+    ax3 = plt.subplot2grid((3, 2), (1, 1))
+    ax4 = plt.subplot2grid((3, 2), (2, 0))
+    ax5 = plt.subplot2grid((3, 2), (2, 1))
 
-    y.plot(ax=ts_ax)
-    ts_ax.set_title('{} Time Series Analysis Plots'.format(ticker))
-    smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, alpha=0.5)
-    smt.graphics.plot_pacf(y, lags=lags, ax=pacf_ax, alpha=0.5)
-    sm.qqplot(y, line='s', ax=qq_ax)
-    qq_ax.set_title('QQ Plot')
-    stats.probplot(y, sparams=(y.mean(), y.std()), plot=pp_ax)
+    ax1.plot(y)
+    smt.graphics.plot_acf(y, lags=lags, ax=ax2, alpha=0.5)
+    smt.graphics.plot_pacf(y, lags=lags, ax=ax3, alpha=0.5)
+    sm.qqplot(y, line='s', ax=ax4)
+    stats.probplot(y, sparams=(y.mean(), y.std()), plot=ax5)
 
-    plt.tight_layout()
+    ax1.set_title('{} Time Series Analysis Plots'.format(ticker))
+    ax4.set_title('QQ Plot')
+
+    fig.tight_layout()
+    fig.savefig('charts/{}-time-series.png'.format(ticker))
 
 
 def plot_svm(X, Y, ylabel, xlabel):

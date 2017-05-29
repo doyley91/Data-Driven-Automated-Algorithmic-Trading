@@ -1,8 +1,19 @@
+# large csv files
 data/
+
+# chart plots
 charts/
+
+# pycharm config
 .idea/
+
+# API keys
 keys.py
+
+# csv results
 results/
+
+# chart plots to be used in latex
 graduate-thesis/Figures/
 
 # Byte-compiled / optimized / DLL files

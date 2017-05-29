@@ -1,7 +1,15 @@
+"""
+Module Docstring
+"""
+
+__author__ = "Gabriel Gauci Maistre"
+__version__ = "0.1.0"
+__license__ = "MIT"
+
 import sys
 from collections import OrderedDict
-
 from time import gmtime, strftime
+
 import logbook as log
 import numpy as np
 import pandas as pd
@@ -224,7 +232,7 @@ if __name__ == '__main__':
     results['algorithm_returns'] = (1 + results.returns).cumprod()
 
     # save the results to a csv
-    results.to_csv('data/mlc-results-{}.csv'.format(strftime("%Y-%m-%d-%H:%M:%S", gmtime())))
+    results.to_csv('results/mlc-results-{}.csv'.format(strftime("%Y-%m-%d-%H:%M:%S", gmtime())))
 
     data[benchmark] = fc.get_time_series(ticker=benchmark,
                                          start_date=start,

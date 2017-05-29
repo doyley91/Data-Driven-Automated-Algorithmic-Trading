@@ -69,20 +69,20 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
         ax = fig.add_subplot(111)
         ax.plot(pred_data[ticker]['original'])
         ax.plot(pred_data[ticker]['prediction'])
-        ax.set(title='{} Stochastic Gradient Descent In-Sample Prediction'.format(ticker), xlabel='time', ylabel='$')
+        ax.set(title='{} SGD In-Sample Prediction'.format(ticker), xlabel='time', ylabel='$')
         ax.legend(['Original $', 'Prediction $'])
         fig.tight_layout()
-        fig.savefig('charts/{}-Day-{}-Stochastic-Gradient-Descent-In-Sample-Forecast.png'.format(n_steps, ticker))
+        fig.savefig('charts/{}-SGD-In-Sample-Prediction.png'.format(ticker))
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
         ax.plot(forecast_data[ticker]['adj_close'][-n_steps:])
-        ax.set(title='{} Day {} Stochastic Gradient Descent Out-of-Sample Forecast'.format(n_steps, ticker),
+        ax.set(title='{} Day {} SGD Out-of-Sample Forecast'.format(n_steps, ticker),
                xlabel='time',
                ylabel='$')
         ax.legend(['Forecast $'])
         fig.tight_layout()
-        fig.savefig('charts/{}-Day-{}-Stochastic-Gradient-Descent-Out-of-Sample-Forecast.png'.format(n_steps, ticker))
+        fig.savefig('charts/{}-Day-{}-SGD-Out-of-Sample-Forecast.png'.format(n_steps, ticker))
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
