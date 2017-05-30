@@ -128,6 +128,23 @@ def get_stocks_from_list(stocks, ticker):
     return tickers
 
 
+def get_correlated_stocks_list(df_corr):
+    """
+    returns a string list from the tickers in the list
+    :param df_corr:
+    :return:
+    """
+    stocks = get_neutrally_correlated_stocks(df_corr, correlation=0.1)
+
+    tickers = list(set(stocks))
+
+    tickers = np.reshape(tickers, (-1, 1)).tolist()
+
+    tickers = [item for sublist in tickers for item in sublist][:15]
+
+    return tickers
+
+
 def plot_end_of_day(df, stocks=None, title=None, xlabel=None, ylabel=None, legend=None, save=False):
     """
     plots the end-of-day close price for the specified ticker(s)

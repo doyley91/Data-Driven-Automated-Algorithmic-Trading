@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 import pyfolio as pf
 import talib as ta
+from matplotlib import pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from zipline.algorithm import TradingAlgorithm
 from zipline.api import record, order_target_percent, symbol
@@ -77,74 +78,75 @@ class MachineLearningClassifier(TradingAlgorithm):
             self.recent_close_price[security].append(data.current(symbol(security), 'close'))
 
             # If there's enough recent price data
-            if len(self.recent_close_price[security]) >= self.window_length + 2:
-                # Add independent variables, the prior changes
-                self.sma2 = get_sma(self.recent_close_price[security], 2, self.window_length)
-                self.sma3 = get_sma(self.recent_close_price[security], 3, self.window_length)
-                self.sma4 = get_sma(self.recent_close_price[security], 4, self.window_length)
-                self.sma5 = get_sma(self.recent_close_price[security], 5, self.window_length)
-                self.sma6 = get_sma(self.recent_close_price[security], 6, self.window_length)
+            if len(self.recent_close_price[security]) < self.window_length + 2:
+                return
 
-                # Make a list of 1's and 0's, 1 when the price increased from the prior bar
-                self.sma2_result[security] = np.append(self.sma2_result[security],
-                                                       self.recent_close_price[security][-1:] >
-                                                       self.sma2[-1:])
-                self.sma3_result[security] = np.append(self.sma3_result[security],
-                                                       self.recent_close_price[security][-1:] >
-                                                       self.sma3[-1:])
+            # Add independent variables, the prior changes
+            sma2 = get_sma(self.recent_close_price[security], 2, self.window_length)
+            sma3 = get_sma(self.recent_close_price[security], 3, self.window_length)
+            sma4 = get_sma(self.recent_close_price[security], 4, self.window_length)
+            sma5 = get_sma(self.recent_close_price[security], 5, self.window_length)
+            sma6 = get_sma(self.recent_close_price[security], 6, self.window_length)
 
-                self.sma4_result[security] = np.append(self.sma4_result[security],
-                                                       self.recent_close_price[security][-1:] >
-                                                       self.sma4[-1:])
+            # Make a list of 1's and 0's, 1 when the price increased from the prior bar
+            self.sma2_result[security] = np.append(self.sma2_result[security],
+                                                   self.recent_close_price[security][-1:] > sma2[-1:])
+            self.sma3_result[security] = np.append(self.sma3_result[security],
+                                                   self.recent_close_price[security][-1:] > sma3[-1:])
 
-                self.sma5_result[security] = np.append(self.sma5_result[security],
-                                                       self.recent_close_price[security][-1:] >
-                                                       self.sma5[-1:])
+            self.sma4_result[security] = np.append(self.sma4_result[security],
+                                                   self.recent_close_price[security][-1:] > sma4[-1:])
 
-                self.sma6_result[security] = np.append(self.sma6_result[security],
-                                                       self.recent_close_price[security][-1:] >
-                                                       self.sma6[-1:])
+            self.sma5_result[security] = np.append(self.sma5_result[security],
+                                                   self.recent_close_price[security][-1:] > sma5[-1:])
 
-                self.result[security] = np.append(self.result[security],
-                                                  self.recent_close_price[security][-1:] >
-                                                  self.recent_open_price[security][-1:])
+            self.sma6_result[security] = np.append(self.sma6_result[security],
+                                                   self.recent_close_price[security][-1:] > sma6[-1:])
 
-                # Add independent variables, the prior changes
-                X = np.array(list(zip(self.sma2_result[security],
-                                      self.sma3_result[security],
-                                      self.sma4_result[security],
-                                      self.sma5_result[security],
-                                      self.sma6_result[security])))
+            self.result[security] = np.append(self.result[security],
+                                              self.recent_close_price[security][-1:] >
+                                              self.recent_open_price[security][-1:])
 
-                # Add dependent variable, the final change
-                Y = self.result[security]
+            # Add independent variables, the prior changes
+            X = np.array(list(zip(self.sma2_result[security],
+                                  self.sma3_result[security],
+                                  self.sma4_result[security],
+                                  self.sma5_result[security],
+                                  self.sma6_result[security])))
 
-                # there needs to be enough data points to make a good model
-                if len(Y) >= self.data_points:
-                    # generate the model
-                    self.mdl.fit(X, Y)
+            # Add dependent variable, the final change
+            Y = self.result[security]
 
-                    # predict tomorrow's movement
-                    pred = self.mdl.predict(X[-1:])
+            # limit trading frequency
+            if len(self.recent_close_price[security]) % self.trading_freq != 0.0:
+                continue
 
-                    # the amount to allocate per security
-                    allocation = 1 / len(self.securities)
+            # there needs to be enough data points to make a good model
+            if len(Y) >= self.data_points:
+                # generate the model
+                self.mdl.fit(X, Y)
 
-                    # if prediction = 1
-                    if pred:
-                        # check if we don't currently hold a position
-                        if not self.invested[security]:
-                            order_target_percent(asset=symbol(security), target=allocation)
-                            self.invested[security] = True
-                    # if prediction = 0
-                    else:
-                        # check if we currently hold a position
-                        if self.invested[security]:
-                            order_target_percent(asset=symbol(security), target=-allocation)
-                            self.invested[security] = False
+                # predict tomorrow's movement
+                pred = self.mdl.predict(X[-1:])
 
-                    # plot variables at the end of each day
-                    record(prediction=int(pred))
+                # the amount to allocate per security
+                allocation = 1 / len(self.securities)
+
+                # if prediction = 1
+                if pred:
+                    # check if we don't currently hold a position
+                    if not self.invested[security]:
+                        order_target_percent(asset=symbol(security), target=allocation)
+                        self.invested[security] = True
+                # if prediction = 0
+                else:
+                    # check if we currently hold a position
+                    if self.invested[security]:
+                        order_target_percent(asset=symbol(security), target=-allocation)
+                        self.invested[security] = False
+
+                # plot variables at the end of each day
+                record(prediction=int(pred))
 
 
 def get_sma(close, days, window):
@@ -178,17 +180,7 @@ if __name__ == '__main__':
     start = '2010-1-1'
 
     end = '2017-1-1'
-    """
-    df_corr = pd.read_csv("data/WIKI_PRICES_corr.csv", index_col='ticker')
 
-    stocks = fc.get_neutrally_correlated_stocks(df_corr, correlation=0.1)
-
-    tickers = list(set(stocks))
-
-    tickers = np.reshape(tickers, (-1, 1)).tolist()
-
-    tickers = [item for sublist in tickers for item in sublist][:15]
-    """
     tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
 
     # index to benchmark the algorithm
@@ -249,3 +241,15 @@ if __name__ == '__main__':
 
     # get the returns, positions, and transactions from the zipline backtest object
     returns, positions, transactions = pf.utils.extract_rets_pos_txn_from_zipline(results)
+
+    fig = plt.figure()
+    ax1 = fig.add_subplot(211)
+    ax2 = fig.add_subplot(212)
+    ax1.plot(data[benchmark]['close'])
+    ax2.plot(results.portfolio_value)
+    ax1.set(title='Benchmark', xlabel='time', ylabel='$')
+    ax2.set(title='Portfolio', xlabel='time', ylabel='$')
+    ax1.legend(['$'])
+    ax2.legend(['$'])
+    fig.tight_layout()
+    fig.savefig('charts/Portfolio-Benchmark-{}.png'.format(strftime("%Y-%m-%d-%H:%M:%S", gmtime())))
