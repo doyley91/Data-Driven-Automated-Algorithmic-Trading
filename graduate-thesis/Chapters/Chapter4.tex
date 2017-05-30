@@ -18,31 +18,31 @@ For the purpose of bencharking the performance of the algorithms, a total of fiv
 \includegraphics[width=\textwidth]{HL-histogram}
 
 \subsection{Ordinary Least Squares (OLS)}
-MSFT scored a mean absolute error regression loss of 5.606, and a coefficient of determination of 0.458.
+MSFT scored a mean absolute error regression loss of 0.810, and a coefficient of determination of 0.991.
 
 \includegraphics[width=\textwidth]{MSFT-OLS-In-Sample-Prediction}
 
 \includegraphics[width=\textwidth]{100-Day-MSFT-OLS-Out-of-Sample-Forecast}
 
-CDE scored a mean absolute error regression loss of 2.906, and a coefficient of determination of 0.816.
+CDE scored a mean absolute error regression loss of 0.985, and a coefficient of determination of 0.973.
 
 \includegraphics[width=\textwidth]{CDE-OLS-In-Sample-Prediction}
 
 \includegraphics[width=\textwidth]{100-Day-CDE-OLS-Out-of-Sample-Forecast}
 
-NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of determination of 0.693.
+NAVB scored a mean absolute error regression loss of 0.124, and a coefficient of determination of 0.966.
 
 \includegraphics[width=\textwidth]{NAVB-OLS-In-Sample-Prediction}
 
-\includegraphics[width=\textwidth]{100-Day-CDE-OLS-Out-of-Sample-Forecast}
+\includegraphics[width=\textwidth]{100-Day-NAVB-OLS-Out-of-Sample-Forecast}
 
-HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
+HRG scored a mean absolute error regression loss of 0.291, and a coefficient of determination of 0.986.
 
 \includegraphics[width=\textwidth]{HRG-OLS-In-Sample-Prediction}
 
 \includegraphics[width=\textwidth]{100-Day-HRG-OLS-Out-of-Sample-Forecast}
 
-HL scored a mean absolute error regression loss of 0.506, and a coefficient of determination of 0.923.
+HL scored a mean absolute error regression loss of 0.336, and a coefficient of determination of 0.963.
 
 \includegraphics[width=\textwidth]{HL-OLS-In-Sample-Prediction}
 
@@ -309,7 +309,7 @@ NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of
 
 \includegraphics[width=\textwidth]{NAVB-Decision-Trees-In-Sample-Prediction}
 
-\includegraphics[width=\textwidth]{100-Day-CDE-Decision-Trees-Out-of-Sample-Forecast}
+\includegraphics[width=\textwidth]{100-Day-NAVB-Decision-Trees-Out-of-Sample-Forecast}
 
 HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
 
@@ -464,7 +464,7 @@ NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of
 
 \includegraphics[width=\textwidth]{NAVB-Neural-Network-In-Sample-Prediction}
 
-\includegraphics[width=\textwidth]{100-Day-CDE-Neural-Network-Out-of-Sample-Forecast}
+\includegraphics[width=\textwidth]{100-Day-NAVB-Neural-Network-Out-of-Sample-Forecast}
 
 HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
 
@@ -495,7 +495,7 @@ NAVB scored a mean absolute error regression loss of 0.142, and a coefficient of
 
 \includegraphics[width=\textwidth]{NAVB-SGD-In-Sample-Prediction}
 
-\includegraphics[width=\textwidth]{100-Day-CDE-SGD-Out-of-Sample-Forecast}
+\includegraphics[width=\textwidth]{100-Day-NAVB-SGD-Out-of-Sample-Forecast}
 
 HRG scored a mean absolute error regression loss of 0.292, and a coefficient of determination of 0.987.
 
@@ -510,10 +510,65 @@ HL scored a mean absolute error regression loss of 0.275, and a coefficient of d
 \includegraphics[width=\textwidth]{100-Day-HL-SGD-Out-of-Sample-Forecast}
 
 \section{Bayesian Statistics}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
 
 \subsection{No-U-Turn Sampler (NUTS)}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
+MSFT scored a mean absolute error regression loss of 5.606, and a coefficient of determination of 0.458.
+
+\includegraphics[width=\textwidth]{MSFT-NUTS-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-MSFT-NUTS-Out-of-Sample-Returns-Forecast}
+
+CDE scored a mean absolute error regression loss of 2.906, and a coefficient of determination of 0.816.
+
+\includegraphics[width=\textwidth]{CDE-NUTS-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-CDE-NUTS-Out-of-Sample-Returns-Forecast}
+
+NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of determination of 0.693.
+
+\includegraphics[width=\textwidth]{NAVB-NUTS-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-NAVB-NUTS-Out-of-Sample-Returns-Forecast}
+
+HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
+
+\includegraphics[width=\textwidth]{HRG-NUTS-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-HRG-NUTS-Out-of-Sample-Returns-Forecast}
+
+HL scored a mean absolute error regression loss of 0.506, and a coefficient of determination of 0.923.
+
+\includegraphics[width=\textwidth]{HL-NUTS-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-HL-NUTS-Out-of-Sample-Returns-Forecast}
 
 \subsection{Metropolis-Hastings}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor tortor. Nunc eget cursus dolor, id efficitur arcu. Maecenas posuere dictum nisi, non pulvinar nunc aliquam eu. Sed egestas, leo nec molestie hendrerit, nulla purus mattis lectus, eu rhoncus ipsum nulla vitae lectus. Integer mollis ligula ut risus maximus, ut ultrices tellus aliquet. Ut semper laoreet enim facilisis vulputate. Fusce ullamcorper a nisi iaculis pellentesque. Duis vel magna quis justo cursus fermentum vitae ac libero. Maecenas eget arcu et neque egestas scelerisque. Sed hendrerit at augue id interdum. Phasellus blandit tempus nunc ac feugiat. Vivamus egestas augue nec erat vestibulum elementum. Sed ac metus eu nunc consectetur mattis id ut lorem.
+MSFT scored a mean absolute error regression loss of 5.606, and a coefficient of determination of 0.458.
+
+\includegraphics[width=\textwidth]{MSFT-Metropolis-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-MSFT-Metropolis-Out-of-Sample-Returns-Forecast}
+
+CDE scored a mean absolute error regression loss of 2.906, and a coefficient of determination of 0.816.
+
+\includegraphics[width=\textwidth]{CDE-Metropolis-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-CDE-Metropolis-Out-of-Sample-Returns-Forecast}
+
+NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of determination of 0.693.
+
+\includegraphics[width=\textwidth]{NAVB-Metropolis-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-NAVB-Metropolis-Out-of-Sample-Returns-Forecast}
+
+HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
+
+\includegraphics[width=\textwidth]{HRG-Metropolis-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-HRG-Metropolis-Out-of-Sample-Returns-Forecast}
+
+HL scored a mean absolute error regression loss of 0.506, and a coefficient of determination of 0.923.
+
+\includegraphics[width=\textwidth]{HL-Metropolis-In-Sample-Returns-Prediction}
+
+\includegraphics[width=\textwidth]{100-Day-HL-Metropolis-Out-of-Sample-Returns-Forecast}

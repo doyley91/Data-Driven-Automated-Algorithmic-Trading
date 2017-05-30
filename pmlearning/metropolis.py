@@ -1,3 +1,13 @@
+"""
+Module Docstring
+"""
+
+__author__ = "Gabriel Gauci Maistre"
+__version__ = "0.1.0"
+__license__ = "MIT"
+
+from collections import OrderedDict
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pymc3 as pm
@@ -6,60 +16,134 @@ from pymc3.math import exp
 
 import functions as fc
 
-plt.style.use('ggplot')
 
-AAPL = fc.get_time_series('AAPL')[-500:]
+def main(tickers=['AAPL'], n_steps=21):
+    """
+    Main entry point of the app
+    """
+    data = OrderedDict()
+    pred_data = OrderedDict()
+    forecast_data = OrderedDict()
 
-fc.plot_end_of_day(AAPL['adj_close'], title='AAPL', xlabel='time', ylabel='$', legend='Adjusted Close $')
+    for ticker in tickers:
+        data[ticker] = fc.get_time_series(ticker)[-500:]
 
-AAPL['log_returns'] = np.log(AAPL['adj_close'] / AAPL['adj_close'].shift(1))
+        print("{} Series\n"
+              "-------------\n"
+              "mean: {:.3f}\n"
+              "median: {:.3f}\n"
+              "maximum: {:.3f}\n"
+              "minimum: {:.3f}\n"
+              "variance: {:.3f}\n"
+              "standard deviation: {:.3f}\n"
+              "skewness: {:.3f}\n"
+              "kurtosis: {:.3f}".format(ticker,
+                                        data[ticker]['adj_close'].mean(),
+                                        data[ticker]['adj_close'].median(),
+                                        data[ticker]['adj_close'].max(),
+                                        data[ticker]['adj_close'].min(),
+                                        data[ticker]['adj_close'].var(),
+                                        data[ticker]['adj_close'].std(),
+                                        data[ticker]['adj_close'].skew(),
+                                        data[ticker]['adj_close'].kurtosis()))
 
-AAPL['log_returns'].dropna(inplace=True)
+        data[ticker]['log_returns'] = np.log(data[ticker]['adj_close'] / data[ticker]['adj_close'].shift(1))
 
-fc.plot_end_of_day(AAPL['log_returns'], title='AAPL', xlabel='time', ylabel='%', legend='Returns %')
+        data[ticker]['log_returns'].dropna(inplace=True)
 
-train, test = np.arange(0, 450), np.arange(451, len(AAPL['log_returns']))
-n = len(train)
+        adfstat, pvalue, critvalues, resstore, dagostino_results, shapiro_results, ks_results, anderson_results, kpss_results = fc.get_stationarity_statistics(
+            data[ticker]['log_returns'].values)
 
-with pm.Model() as model:
-    sigma = pm.Exponential('sigma', 1. / .02, testval=.1)
-    mu = pm.Normal('mu', 0, sd=5, testval=.1)
+        print("{} Stationarity Statistics\n"
+              "-------------\n"
+              "Augmented Dickey-Fuller unit root test: {}\n"
+              "MacKinnon’s approximate p-value: {}\n"
+              "Critical values for the test statistic at the 1 %, 5 %, and 10 % levels: {}\n"
+              "D’Agostino and Pearson’s normality test: {}\n"
+              "Shapiro-Wilk normality test: {}\n"
+              "Kolmogorov-Smirnov goodness of fit test: {}\n"
+              "Anderson-Darling test: {}\n"
+              "Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) stationarity test: {}".format(ticker,
+                                                                                             adfstat,
+                                                                                             pvalue,
+                                                                                             critvalues,
+                                                                                             dagostino_results,
+                                                                                             shapiro_results,
+                                                                                             ks_results,
+                                                                                             anderson_results,
+                                                                                             kpss_results))
 
-    nu = pm.Exponential('nu', 1. / 10)
-    logs = pm.GaussianRandomWalk('logs', tau=sigma ** -2, shape=n)
+        train, test = np.arange(0, 450), np.arange(451, len(data[ticker]['log_returns']))
+        n = len(train)
 
-    # lam uses variance in pymc3, not sd like in scipy
-    r = pm.StudentT('r', nu, mu=mu, lam=1 / exp(-2 * logs), observed=AAPL['log_returns'].values[train])
+        with pm.Model() as model:
+            sigma = pm.Exponential('sigma', 1. / .02, testval=.1)
+            mu = pm.Normal('mu', 0, sd=5, testval=.1)
 
-with model:
-    start = pm.find_MAP(vars=[logs], fmin=sp.optimize.fmin_powell)
+            nu = pm.Exponential('nu', 1. / 10)
+            logs = pm.GaussianRandomWalk('logs', tau=sigma ** -2, shape=n)
 
-with model:
-    step = pm.Metropolis(vars=[logs, mu, nu, sigma], start=start)
-    start2 = pm.sample(100, step, start=start)[-1]
+            # lam uses variance in pymc3, not sd like in scipy
+            r = pm.StudentT('r', nu, mu=mu, lam=1 / exp(-2 * logs), observed=data[ticker]['log_returns'].values[train])
 
-    step = pm.Metropolis(vars=[logs, mu, nu, sigma], start=start2)
-    trace = pm.sample(2000, step, start=start2)
+        with model:
+            start = pm.find_MAP(vars=[logs], fmin=sp.optimize.fmin_powell)
 
-pm.traceplot(trace)
+        with model:
+            step = pm.Metropolis(vars=[logs, mu, nu, sigma], start=start)
+            start2 = pm.sample(100, step, start=start)[-1]
 
-sim_returns, vol = fc.generate_proj_returns(1000, trace, len(test))
+            step = pm.Metropolis(vars=[logs, mu, nu, sigma], start=start2)
+            trace = pm.sample(2000, step, start=start2)
 
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(AAPL['log_returns'].values, color='blue')
-ax.plot(1 + len(train) + np.arange(0, len(test)), sim_returns[1, :], color='red')
-ax.set(title='Returns Forecast', xlabel='time', ylabel='%')
-ax.legend(['Original', 'Forecast'])
-fig.tight_layout()
+        pred_data[ticker], vol = fc.generate_proj_returns(1000, trace, len(test))
 
-fig = plt.figure()
-ax = fig.add_subplot(111)
-[ax.plot(1 / np.exp(trace[k]['logs']), color='red', alpha=.2) for k in range(1000, len(trace))]
-ax.plot(AAPL['log_returns'].values, color='blue')
-[ax.plot(1 + len(train) + np.arange(0, len(test)), 1 / np.exp(vol[j, :]), alpha=.01, color='yellow') for j in
- range(0, 1000)]
-ax.set_ylim([-.05, .05])
-ax.set(title='Volatility Forecast', xlabel='time', ylabel='%')
-ax.legend(['Original Returns', 'Original Volatility', 'Forecast Volatility'])
-fig.tight_layout()
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(data[ticker]['log_returns'].values, color='blue')
+        ax.plot(1 + len(train) + np.arange(0, len(test)), pred_data[ticker][1, :], color='red')
+        ax.set(title='{} Metropolis In-Sample Returns Prediction'.format(ticker), xlabel='time', ylabel='%')
+        ax.legend(['Original', 'Prediction'])
+        fig.tight_layout()
+        fig.savefig('charts/{}-Metropolis-In-Sample-Returns-Prediction.png'.format(ticker))
+
+        # out-of-sample test
+        forecast_data[ticker], vol = fc.generate_proj_returns(1000, trace, len(test) + n_steps)
+
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(forecast_data[ticker][1, :][-n_steps:])
+        ax.set(title='{} Day {} Metropolis Out-of-Sample Returns Forecast'.format(n_steps, ticker), xlabel='time',
+               ylabel='%')
+        ax.legend(['Forecast'])
+        fig.tight_layout()
+        fig.savefig('charts/{}-Day-{}-Metropolis-Out-of-Sample-Returns-Forecast.png'.format(n_steps, ticker))
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    for ticker in tickers:
+        ax.plot(data[ticker]['adj_close'])
+    ax.set(title='Time series plot', xlabel='time', ylabel='$')
+    ax.legend(tickers)
+    fig.tight_layout()
+    fig.savefig('charts/stocks-close-price.png')
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    for ticker in tickers:
+        ax.plot(data[ticker]['log_returns'])
+    ax.set(title='Time series plot', xlabel='time', ylabel='%')
+    ax.legend(tickers)
+    fig.tight_layout()
+    fig.savefig('charts/stocks-close-returns.png')
+
+    return forecast_data
+
+
+if __name__ == '__main__':
+    """ 
+    This is executed when run from the command line 
+    """
+    tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
+
+    main(tickers=tickers, n_steps=100)

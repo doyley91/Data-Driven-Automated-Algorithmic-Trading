@@ -92,10 +92,10 @@
 \contentsline {subsubsection}{\numberline {4.2.2.7}Stochastic Gradient Descent}{112}{subsubsection.97}
 \contentsline {section}{\numberline {4.3}Bayesian Statistics}{118}{section.98}
 \contentsline {subsection}{\numberline {4.3.1}No-U-Turn Sampler (NUTS)}{118}{subsection.99}
-\contentsline {subsection}{\numberline {4.3.2}Metropolis-Hastings}{118}{subsection.100}
-\contentsline {chapter}{\numberline {5}Discussion and Suggestions for Future Research}{119}{chapter.101}
-\contentsline {chapter}{\numberline {6}Conclusion}{120}{chapter.102}
+\contentsline {subsection}{\numberline {4.3.2}Metropolis-Hastings}{123}{subsection.100}
+\contentsline {chapter}{\numberline {5}Discussion and Suggestions for Future Research}{129}{chapter.101}
+\contentsline {chapter}{\numberline {6}Conclusion}{130}{chapter.102}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}An Appendix}{121}{appendix.103}
+\contentsline {chapter}{\numberline {A}An Appendix}{131}{appendix.103}
 \vspace {2em}
-\contentsline {chapter}{Bibliography}{123}{dummy.104}
+\contentsline {chapter}{Bibliography}{133}{dummy.104}

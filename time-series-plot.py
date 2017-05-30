@@ -8,9 +8,10 @@ import pymc3 as pm
 import scipy as sp
 from collections import OrderedDict
 import functions as fc
+from pymc3.math import exp
 
 
-def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
+def main(tickers=['AAPL'], n_steps=21):
     """
     Main entry point of the app
     """
@@ -19,9 +20,7 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     forecast_data = OrderedDict()
 
     for ticker in tickers:
-        data[ticker] = fc.get_time_series(ticker, start, end)
-
-        data[ticker] = fc.get_sma_regression_features(data[ticker]).dropna()
+        data[ticker] = fc.get_time_series(ticker)[-500:]
 
         print("{} Series\n"
               "-------------\n"
@@ -79,17 +78,16 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
             logs = pm.GaussianRandomWalk('logs', tau=sigma ** -2, shape=n)
 
             # lam uses variance in pymc3, not sd like in scipy
-            r = pm.StudentT('r', nu, mu=mu, lam=1 / np.exp(-2 * logs), observed=data[ticker]['log_returns'].values[train])
+            r = pm.StudentT('r', nu, mu=mu, lam=1 / exp(-2 * logs), observed=data[ticker]['log_returns'].values[train])
 
         with model:
-            start = pm.find_MAP(vars=[logs], fmin=sp.optimize.fmin_l_bfgs_b)
+            start = pm.find_MAP(vars=[logs], fmin=sp.optimize.fmin_powell)
 
         with model:
-            step = pm.NUTS(vars=[logs, mu, nu, sigma], scaling=start, gamma=.25)
+            step = pm.Metropolis(vars=[logs, mu, nu, sigma], start=start)
             start2 = pm.sample(100, step, start=start)[-1]
 
-            # Start next run at the last sampled position.
-            step = pm.NUTS(vars=[logs, mu, nu, sigma], scaling=start2, gamma=.55)
+            step = pm.Metropolis(vars=[logs, mu, nu, sigma], start=start2)
             trace = pm.sample(2000, step, start=start2)
 
         pred_data[ticker], vol = fc.generate_proj_returns(1000, trace, len(test))
@@ -98,10 +96,10 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
         ax = fig.add_subplot(111)
         ax.plot(data[ticker]['log_returns'].values, color='blue')
         ax.plot(1 + len(train) + np.arange(0, len(test)), pred_data[ticker][1, :], color='red')
-        ax.set(title='{} NUTS In-Sample Returns Prediction'.format(ticker), xlabel='time', ylabel='%')
+        ax.set(title='{} Metropolis In-Sample Returns Prediction'.format(ticker), xlabel='time', ylabel='%')
         ax.legend(['Original', 'Prediction'])
         fig.tight_layout()
-        fig.savefig('charts/{}-NUTS-In-Sample-Returns-Prediction.png'.format(ticker))
+        fig.savefig('charts/{}-Metropolis-In-Sample-Returns-Prediction.png'.format(ticker))
 
         # out-of-sample test
         forecast_data[ticker], vol = fc.generate_proj_returns(1000, trace, len(test) + n_steps)
@@ -109,10 +107,10 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
         fig = plt.figure()
         ax = fig.add_subplot(111)
         ax.plot(forecast_data[ticker][1, :][-n_steps:])
-        ax.set(title='{} Day {} NUTS Out-of-Sample Returns Forecast'.format(n_steps, ticker), xlabel='time', ylabel='%')
+        ax.set(title='{} Day {} Metropolis Out-of-Sample Returns Forecast'.format(n_steps, ticker), xlabel='time', ylabel='%')
         ax.legend(['Forecast'])
         fig.tight_layout()
-        fig.savefig('charts/{}-Day-{}-NUTS-Out-of-Sample-Returns-Forecast.png'.format(n_steps, ticker))
+        fig.savefig('charts/{}-Day-{}-Metropolis-Out-of-Sample-Returns-Forecast.png'.format(n_steps, ticker))
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -126,7 +124,7 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     fig = plt.figure()
     ax = fig.add_subplot(111)
     for ticker in tickers:
-        ax.plot(data[ticker]['adj_close'])
+        ax.plot(data[ticker]['log_returns'])
     ax.set(title='Time series plot', xlabel='time', ylabel='%')
     ax.legend(tickers)
     fig.tight_layout()
@@ -140,4 +138,4 @@ if __name__ == '__main__':
     """
     tickers = ['MSFT', 'CDE', 'NAVB', 'HRG', 'HL']
 
-    main(tickers=tickers, start='2015-1-1', end='2017-1-1', n_steps=100)
+    main(tickers=tickers, n_steps=100)
