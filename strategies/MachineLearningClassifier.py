@@ -14,9 +14,9 @@ import logbook as log
 import numpy as np
 import pandas as pd
 import pyfolio as pf
-import talib as ta
 from matplotlib import pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import Imputer
 from zipline.algorithm import TradingAlgorithm
 from zipline.api import record, order_target_percent, symbol
 
@@ -66,6 +66,8 @@ class MachineLearningClassifier(TradingAlgorithm):
             self.result[security] = []
             self.invested[security] = False
 
+        self.imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
+
     def handle_data(self, data):
         """
         Called every minute.
@@ -77,18 +79,29 @@ class MachineLearningClassifier(TradingAlgorithm):
             # Update the recent prices
             self.recent_close_price[security].append(data.current(symbol(security), 'close'))
 
+            if np.isnan(self.recent_open_price[security]).any():
+                continue
+                # replace missing values
+                self.recent_close_price[security] = fc.flatten_list(
+                    self.imp.fit_transform(self.recent_close_price[security]).tolist())
+
+            if np.isnan(self.recent_open_price[security]).any():
+                # replace missing values
+                self.recent_open_price[security] = fc.flatten_list(
+                    self.imp.fit_transform(self.recent_open_price[security]).tolist())
+
             # If there's enough recent price data
             if len(self.recent_close_price[security]) < self.window_length + 2:
-                return
+                continue
 
             # Add independent variables, the prior changes
-            sma2 = get_sma(self.recent_close_price[security], 2, self.window_length)
-            sma3 = get_sma(self.recent_close_price[security], 3, self.window_length)
-            sma4 = get_sma(self.recent_close_price[security], 4, self.window_length)
-            sma5 = get_sma(self.recent_close_price[security], 5, self.window_length)
-            sma6 = get_sma(self.recent_close_price[security], 6, self.window_length)
+            sma2 = fc.get_sma(self.recent_close_price[security], 2, self.window_length)
+            sma3 = fc.get_sma(self.recent_close_price[security], 3, self.window_length)
+            sma4 = fc.get_sma(self.recent_close_price[security], 4, self.window_length)
+            sma5 = fc.get_sma(self.recent_close_price[security], 5, self.window_length)
+            sma6 = fc.get_sma(self.recent_close_price[security], 6, self.window_length)
 
-            # Make a list of 1's and 0's, 1 when the price increased from the prior bar
+            # make a list of 1's and 0's, 1 when the price increased from the prior bar
             self.sma2_result[security] = np.append(self.sma2_result[security],
                                                    self.recent_close_price[security][-1:] > sma2[-1:])
             self.sma3_result[security] = np.append(self.sma3_result[security],
@@ -122,47 +135,33 @@ class MachineLearningClassifier(TradingAlgorithm):
                 continue
 
             # there needs to be enough data points to make a good model
-            if len(Y) >= self.data_points:
-                # generate the model
-                self.mdl.fit(X, Y)
+            if len(Y) <= self.data_points:
+                continue
 
-                # predict tomorrow's movement
-                pred = self.mdl.predict(X[-1:])
+            # generate the model
+            self.mdl.fit(X, Y)
 
-                # the amount to allocate per security
-                allocation = 1 / len(self.securities)
+            # predict tomorrow's movement
+            pred = self.mdl.predict(X[-1:])
 
-                # if prediction = 1
-                if pred:
-                    # check if we don't currently hold a position
-                    if not self.invested[security]:
-                        order_target_percent(asset=symbol(security), target=allocation)
-                        self.invested[security] = True
-                # if prediction = 0
-                else:
-                    # check if we currently hold a position
-                    if self.invested[security]:
-                        order_target_percent(asset=symbol(security), target=-allocation)
-                        self.invested[security] = False
+            # the amount to allocate per security
+            allocation = 1 / len(self.securities)
 
-                # plot variables at the end of each day
-                record(prediction=int(pred))
+            # if prediction = 1
+            if pred:
+                # check if we don't currently hold a position
+                if not self.invested[security]:
+                    order_target_percent(asset=symbol(security), target=allocation)
+                    self.invested[security] = True
+            # if prediction = 0
+            else:
+                # check if we currently hold a position
+                if self.invested[security]:
+                    order_target_percent(asset=symbol(security), target=-allocation)
+                    self.invested[security] = False
 
-
-def get_sma(close, days, window):
-    """
-    calculates the simple moving average
-    :param close: 
-    :param days: 
-    :param window: 
-    :return: 
-    """
-    sma = ta.SMA(np.array(close), days)[window - 1:]
-
-    # drop nan values
-    sma = sma[~np.isnan(sma)]
-
-    return sma
+            # plot variables at the end of each day
+            record(prediction=int(pred))
 
 
 if __name__ == '__main__':
@@ -249,7 +248,7 @@ if __name__ == '__main__':
     ax2.plot(results.portfolio_value)
     ax1.set(title='Benchmark', xlabel='time', ylabel='$')
     ax2.set(title='Portfolio', xlabel='time', ylabel='$')
-    ax1.legend(['$'])
-    ax2.legend(['$'])
+    ax1.legend(['^GSPC'])
+    ax2.legend(['Portfolio'])
     fig.tight_layout()
-    fig.savefig('charts/Portfolio-Benchmark-{}.png'.format(strftime("%Y-%m-%d-%H:%M:%S", gmtime())))
+    fig.savefig('charts/MLC-Portfolio-Benchmark-{}.png'.format(strftime("%Y-%m-%d-%H:%M:%S", gmtime())))

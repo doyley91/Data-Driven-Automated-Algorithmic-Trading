@@ -9,9 +9,9 @@ htfcss: cmbx  font-weight: bold;
 htfcss: cmbxsl  font-weight: bold; font-style: oblique;
 htfcss: cmbx  font-weight: bold;
 htfcss: cmbxsl  font-weight: bold; font-style: oblique;
-File: thesis.html
-File: thesis.css
-File: thesis.tmp
+File: Thesis.html
+File: Thesis.css
+File: Thesis.tmp
 Css: p.noindent { text-indent: 0em }
 Css: td p.noindent { text-indent: 0em; margin-top:0em; }
 Css: p.nopar { text-indent: 0em; }
@@ -159,14 +159,205 @@ Css: .lstinputlisting .label{margin-right:0.5em;}
 Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
 Css: div.longtable{text-align:center;}
 Css: div.verbatiminput {font-family: monospace; white-space: nowrap; }
---- needs --- thesis.idv[2] ==> thesis0x.png ---
---- needs --- thesis.idv[4] ==> thesis1x.png ---
---- needs --- thesis.idv[6] ==> thesis2x.png ---
---- needs --- thesis.idv[7] ==> thesis3x.png ---
---- needs --- thesis.idv[8] ==> thesis4x.png ---
---- needs --- thesis.idv[9] ==> thesis5x.png ---
---- needs --- thesis.idv[11] ==> thesis6x.png ---
---- needs --- thesis.idv[12] ==> thesis7x.png ---
+--- needs --- Thesis.idv[2] ==> Thesis0x.png ---
+--- needs --- Thesis.idv[4] ==> Thesis1x.png ---
+--- needs --- Thesis.idv[6] ==> Thesis2x.png ---
+--- needs --- Thesis.idv[7] ==> Thesis3x.png ---
+--- needs --- Thesis.idv[8] ==> Thesis4x.png ---
+--- needs --- Thesis.idv[9] ==> Thesis5x.png ---
+--- needs --- Thesis.idv[11] ==> Thesis6x.png ---
+--- needs --- Thesis.idv[12] ==> Thesis7x.png ---
+File: Figures/stocks.png
+File: Figures/MSFT-time-series.png
+File: Figures/MSFT-histogram.png
+File: Figures/CDE-time-series.png
+File: Figures/CDE-histogram.png
+File: Figures/NAVB-time-series.png
+File: Figures/NAVB-histogram.png
+File: Figures/HRG-time-series.png
+File: Figures/HRG-histogram.png
+File: Figures/HL-time-series.png
+File: Figures/HL-histogram.png
+File: Figures/MSFT-OLS-In-Sample-Prediction.png
+File: Figures/100-Day-MSFT-OLS-Out-of-Sample-Forecast.png
+File: Figures/CDE-OLS-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-OLS-Out-of-Sample-Forecast.png
+File: Figures/NAVB-OLS-In-Sample-Prediction.png
+File: Figures/100-Day-NAVB-OLS-Out-of-Sample-Forecast.png
+File: Figures/HRG-OLS-In-Sample-Prediction.png
+File: Figures/100-Day-HRG-OLS-Out-of-Sample-Forecast.png
+File: Figures/HL-OLS-In-Sample-Prediction.png
+File: Figures/100-Day-HL-OLS-Out-of-Sample-Forecast.png
+File: Figures/MSFT-AR-time-series.png
+File: Figures/MSFT-AR-histogram.png
+File: Figures/MSFT-AR-In-Sample-Return-Prediction.png
+File: Figures/100-Day-MSFT-AR-Out-of-Sample-Return-Forecast.png
+File: Figures/CDE-AR-time-series.png
+File: Figures/CDE-AR-histogram.png
+File: Figures/CDE-AR-In-Sample-Return-Prediction.png
+File: Figures/100-Day-CDE-AR-Out-of-Sample-Return-Forecast.png
+File: Figures/NAVB-AR-time-series.png
+File: Figures/NAVB-AR-histogram.png
+File: Figures/NAVB-AR-In-Sample-Return-Prediction.png
+File: Figures/100-Day-NAVB-AR-Out-of-Sample-Return-Forecast.png
+File: Figures/HRG-AR-time-series.png
+File: Figures/HRG-AR-histogram.png
+File: Figures/HRG-AR-In-Sample-Return-Prediction.png
+File: Figures/100-Day-HRG-AR-Out-of-Sample-Return-Forecast.png
+File: Figures/HL-AR-time-series.png
+File: Figures/HL-AR-histogram.png
+File: Figures/HL-AR-In-Sample-Return-Prediction.png
+File: Figures/100-Day-HL-AR-Out-of-Sample-Return-Forecast.png
+File: Figures/MSFT-MA-time-series.png
+File: Figures/MSFT-MA-histogram.png
+File: Figures/MSFT-MA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-MSFT-MA-Out-of-Sample-Return-Forecast.png
+File: Figures/CDE-MA-time-series.png
+File: Figures/CDE-MA-histogram.png
+File: Figures/CDE-MA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-CDE-MA-Out-of-Sample-Return-Forecast.png
+File: Figures/NAVB-MA-time-series.png
+File: Figures/NAVB-MA-histogram.png
+File: Figures/NAVB-MA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-NAVB-MA-Out-of-Sample-Return-Forecast.png
+File: Figures/HRG-MA-time-series.png
+File: Figures/HRG-MA-histogram.png
+File: Figures/HRG-MA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-HRG-MA-Out-of-Sample-Return-Forecast.png
+File: Figures/HL-MA-time-series.png
+File: Figures/HL-MA-histogram.png
+File: Figures/HL-MA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-HL-MA-Out-of-Sample-Return-Forecast.png
+File: Figures/MSFT-ARMA-time-series.png
+File: Figures/MSFT-ARMA-histogram.png
+File: Figures/MSFT-ARMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-MSFT-ARMA-Out-of-Sample-Return-Forecast.png
+File: Figures/CDE-ARMA-time-series.png
+File: Figures/CDE-ARMA-histogram.png
+File: Figures/CDE-ARMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-CDE-ARMA-Out-of-Sample-Return-Forecast.png
+File: Figures/NAVB-ARMA-time-series.png
+File: Figures/NAVB-ARMA-histogram.png
+File: Figures/NAVB-ARMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-NAVB-ARMA-Out-of-Sample-Return-Forecast.png
+File: Figures/HRG-ARMA-time-series.png
+File: Figures/HRG-ARMA-histogram.png
+File: Figures/HRG-ARMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-HRG-ARMA-Out-of-Sample-Return-Forecast.png
+File: Figures/HL-ARMA-time-series.png
+File: Figures/HL-ARMA-histogram.png
+File: Figures/HL-ARMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-HL-ARMA-Out-of-Sample-Return-Forecast.png
+File: Figures/MSFT-ARIMA-time-series.png
+File: Figures/MSFT-ARIMA-histogram.png
+File: Figures/MSFT-ARIMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-MSFT-ARIMA-Out-of-Sample-Return-Forecast.png
+File: Figures/CDE-ARIMA-time-series.png
+File: Figures/CDE-ARIMA-histogram.png
+File: Figures/CDE-ARIMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-CDE-ARIMA-Out-of-Sample-Return-Forecast.png
+File: Figures/NAVB-ARIMA-time-series.png
+File: Figures/NAVB-ARIMA-histogram.png
+File: Figures/NAVB-ARIMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-NAVB-ARIMA-Out-of-Sample-Return-Forecast.png
+File: Figures/HRG-ARIMA-time-series.png
+File: Figures/HRG-ARIMA-histogram.png
+File: Figures/HRG-ARIMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-HRG-ARIMA-Out-of-Sample-Return-Forecast.png
+File: Figures/HL-ARIMA-time-series.png
+File: Figures/HL-ARIMA-histogram.png
+File: Figures/HL-ARIMA-In-Sample-Return-Prediction.png
+File: Figures/100-Day-HL-ARIMA-Out-of-Sample-Return-Forecast.png
+File: Figures/MSFT-Decision-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-MSFT-Decision-Trees-Out-of-Sample-Forecast.png
+File: Figures/CDE-Decision-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-Decision-Trees-Out-of-Sample-Forecast.png
+File: Figures/NAVB-Decision-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-NAVB-Decision-Trees-Out-of-Sample-Forecast.png
+File: Figures/HRG-Decision-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-HRG-Decision-Trees-Out-of-Sample-Forecast.png
+File: Figures/HL-Decision-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-HL-Decision-Trees-Out-of-Sample-Forecast.png
+File: Figures/MSFT-Boosted-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-MSFT-Boosted-Trees-Out-of-Sample-Forecast.png
+File: Figures/CDE-Boosted-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-Boosted-Trees-Out-of-Sample-Forecast.png
+File: Figures/NAVB-Boosted-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-NAVB-Boosted-Trees-Out-of-Sample-Forecast.png
+File: Figures/HRG-Boosted-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-HRG-Boosted-Trees-Out-of-Sample-Forecast.png
+File: Figures/HL-Boosted-Trees-In-Sample-Prediction.png
+File: Figures/100-Day-HL-Boosted-Trees-Out-of-Sample-Forecast.png
+File: Figures/MSFT-K-Nearest-Neighbour-In-Sample-Prediction.png
+File: Figures/100-Day-MSFT-K-Nearest-Neighbour-Out-of-Sample-Forecast.png
+File: Figures/CDE-K-Nearest-Neighbour-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-K-Nearest-Neighbour-Out-of-Sample-Forecast.png
+File: Figures/NAVB-K-Nearest-Neighbour-In-Sample-Prediction.png
+File: Figures/100-Day-NAVB-K-Nearest-Neighbour-Out-of-Sample-Forecast.png
+File: Figures/HRG-K-Nearest-Neighbour-In-Sample-Prediction.png
+File: Figures/100-Day-HRG-K-Nearest-Neighbour-Out-of-Sample-Forecast.png
+File: Figures/HL-K-Nearest-Neighbour-In-Sample-Prediction.png
+File: Figures/100-Day-HL-K-Nearest-Neighbour-Out-of-Sample-Forecast.png
+File: Figures/MSFT-Random-Forest-In-Sample-Prediction.png
+File: Figures/100-Day-MSFT-Random-Forest-Out-of-Sample-Forecast.png
+File: Figures/CDE-Random-Forest-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-Random-Forest-Out-of-Sample-Forecast.png
+File: Figures/NAVB-Random-Forest-In-Sample-Prediction.png
+File: Figures/100-Day-NAVB-Random-Forest-Out-of-Sample-Forecast.png
+File: Figures/HRG-Random-Forest-In-Sample-Prediction.png
+File: Figures/100-Day-HRG-Random-Forest-Out-of-Sample-Forecast.png
+File: Figures/HL-Random-Forest-In-Sample-Prediction.png
+File: Figures/100-Day-HL-Random-Forest-Out-of-Sample-Forecast.png
+File: Figures/MSFT-Linear-Regression-In-Sample-Prediction.png
+File: Figures/100-Day-MSFT-Linear-Regression-Out-of-Sample-Forecast.png
+File: Figures/CDE-Linear-Regression-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-Linear-Regression-Out-of-Sample-Forecast.png
+File: Figures/NAVB-Linear-Regression-In-Sample-Prediction.png
+File: Figures/100-Day-NAVB-Linear-Regression-Out-of-Sample-Forecast.png
+File: Figures/HRG-Linear-Regression-In-Sample-Prediction.png
+File: Figures/100-Day-HRG-Linear-Regression-Out-of-Sample-Forecast.png
+File: Figures/HL-Linear-Regression-In-Sample-Prediction.png
+File: Figures/100-Day-HL-Linear-Regression-Out-of-Sample-Forecast.png
+File: Figures/MSFT-Neural-Network-In-Sample-Prediction.png
+File: Figures/100-Day-MSFT-Neural-Network-Out-of-Sample-Forecast.png
+File: Figures/CDE-Neural-Network-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-Neural-Network-Out-of-Sample-Forecast.png
+File: Figures/NAVB-Neural-Network-In-Sample-Prediction.png
+File: Figures/100-Day-NAVB-Neural-Network-Out-of-Sample-Forecast.png
+File: Figures/HRG-Neural-Network-In-Sample-Prediction.png
+File: Figures/100-Day-HRG-Neural-Network-Out-of-Sample-Forecast.png
+File: Figures/HL-Neural-Network-In-Sample-Prediction.png
+File: Figures/100-Day-HL-Neural-Network-Out-of-Sample-Forecast.png
+File: Figures/MSFT-SGD-In-Sample-Prediction.png
+File: Figures/100-Day-MSFT-SGD-Out-of-Sample-Forecast.png
+File: Figures/CDE-SGD-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-SGD-Out-of-Sample-Forecast.png
+File: Figures/NAVB-SGD-In-Sample-Prediction.png
+File: Figures/100-Day-NAVB-SGD-Out-of-Sample-Forecast.png
+File: Figures/HRG-SGD-In-Sample-Prediction.png
+File: Figures/100-Day-HRG-SGD-Out-of-Sample-Forecast.png
+File: Figures/HL-SGD-In-Sample-Prediction.png
+File: Figures/100-Day-HL-SGD-Out-of-Sample-Forecast.png
+File: Figures/MSFT-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-MSFT-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/CDE-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-CDE-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/NAVB-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-NAVB-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/HRG-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-HRG-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/HL-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-HL-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/MSFT-Metropolis-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-MSFT-Metropolis-Out-of-Sample-Returns-Forecast.png
+File: Figures/CDE-Metropolis-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-CDE-Metropolis-Out-of-Sample-Returns-Forecast.png
+File: Figures/NAVB-Metropolis-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-NAVB-Metropolis-Out-of-Sample-Returns-Forecast.png
+File: Figures/HRG-Metropolis-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-HRG-Metropolis-Out-of-Sample-Returns-Forecast.png
+File: Figures/HL-Metropolis-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-HL-Metropolis-Out-of-Sample-Returns-Forecast.png
 --- characters ---
 Font("cmr","10","10","109")
 Font("cmr","12","12","100")

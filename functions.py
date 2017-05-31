@@ -145,6 +145,40 @@ def get_correlated_stocks_list(df_corr):
     return tickers
 
 
+def get_sma(close, days, window):
+    """
+    Calculates the simple moving average of the security
+    :param close:
+    :param days:
+    :param window:
+    :return:
+    """
+    sma = ta.SMA(np.array(close), days)[window - 1:]
+
+    # drop nan values
+    sma = sma[~np.isnan(sma)]
+
+    return sma
+
+
+def get_percentage_difference(first, last):
+    """
+    Calculates the percentage of the portfolio to allocate based on the percentage increase
+    :param first:
+    :param last:
+    :return:
+    """
+    percent = ((last - first) / first) * 10
+
+    percent = float(np.around(percent, 2))
+
+    return percent
+
+
+def flatten_list(l):
+    return [item for sublist in l for item in sublist]
+
+
 def plot_end_of_day(df, stocks=None, title=None, xlabel=None, ylabel=None, legend=None, save=False):
     """
     plots the end-of-day close price for the specified ticker(s)
