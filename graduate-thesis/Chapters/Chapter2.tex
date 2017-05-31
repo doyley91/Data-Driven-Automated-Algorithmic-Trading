@@ -8,7 +8,7 @@ A time series is a series of data points which may be indexed, listed, or graphe
 
 Significant "time series momentum" has also been documented in equity index, currency, commodity, and bond futures for each of the 58 liquid instruments they consider.\cite{Moskowitz:2011aa} They find persistence in returns for 1 to 12 months that partially reverses over longer horizons, consistent with sentiment theories of initial under-reaction and delayed over-reaction. A diversified portfolio of time series momentum strategies across all asset classes delivers substantial abnormal returns with little exposure to standard asset pricing factors and performs best during extreme markets. Examining the trading activities of speculators and hedgers, they find that speculators profit from time series momentum at the expense of hedgers.
 
-\subsection{ARMA}
+\subsection{Auto Regressive Moving Average (ARMA)}
 
 In the statistical analysis of time series, autoregressive–moving-average (ARMA) models provide a parsimonious description of a weakly stationary stochastic process in terms of two polynomials, one for the autoregression and the second for the moving average. The notation ARMA(p, q) refers to the model with p autoregressive terms and q moving-average terms. This model contains the AR(p) and MA(q) models,
 
@@ -16,7 +16,8 @@ In the statistical analysis of time series, autoregressive–moving-average (ARM
 
 Forecasting interest rates is of great concern for financial researchers, economists, and players in the fixed income markets. A study was carried out to develop an appropriate model for forecasting the short-term interest rates, implicit yield on 91 day treasury bill, overnight MIBOR rate, and call money rate.\cite{Radha:2015aa} The short-term interest rates are forecasted using univariate models such as the Random Walk, ARIMA, ARMA-GARCH, and ARMA-EGARCH. The appropriate model for forecasting is determined considering a six-year period from 1999. The results show that interest rates time series have volatility clustering effect and hence GARCH based models are more appropriate to forecast than the other models. Radha et al found that for commercial paper rate ARIMA-EGARCH model is the most appropriate model, while for implicit yield 91 day Treasury bill, overnight MIBOR rate, and call money rate, the ARIMA-GARCH model is the most appropriate model for forecasting.
 
-\subsection{ARIMA}
+\subsection{Auto Regressive Integrated Moving Average (ARIMA)}
+
 In time series analysis, an autoregressive integrated moving average (ARIMA) model is a generalization of an ARMA model. Given a time series of data $X_t$ where t is an integer index and the $X_t$ are real numbers, an ARMA(p, q) model is given by
 
 \(x_t - \alpha_1 X_{t-1} - \dots \alpha_{p'} X_{t-p'} = \varepsilon_t + \theta_1 \epsilon_{t-1} + \dots + \theta_q \epsilon_{t-q}\)

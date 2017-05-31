@@ -10,7 +10,7 @@ import sys
 from collections import OrderedDict
 from time import gmtime, strftime
 
-import logbook as log
+import logbook
 import numpy as np
 import pandas as pd
 import pyfolio as pf
@@ -18,7 +18,7 @@ from matplotlib import pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import Imputer
 from zipline.algorithm import TradingAlgorithm
-from zipline.api import record, order_target_percent, symbol
+from zipline.api import record, order_target_percent, symbol, get_datetime
 
 import functions as fc
 
@@ -66,6 +66,7 @@ class MachineLearningClassifier(TradingAlgorithm):
             self.result[security] = []
             self.invested[security] = False
 
+        # initialise the model
         self.imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
 
     def handle_data(self, data):
@@ -80,12 +81,15 @@ class MachineLearningClassifier(TradingAlgorithm):
             self.recent_close_price[security].append(data.current(symbol(security), 'close'))
 
             if np.isnan(self.recent_open_price[security]).any():
-                continue
+                print('Warning: NaN found in', security, 'open at {}. Replacing with the mean value.'.format(
+                    pd.Timestamp(get_datetime()).tz_convert('US/Eastern')))
                 # replace missing values
                 self.recent_close_price[security] = fc.flatten_list(
                     self.imp.fit_transform(self.recent_close_price[security]).tolist())
 
             if np.isnan(self.recent_open_price[security]).any():
+                print('Warning: NaN found in', security, 'close at {}. Replacing with the mean value.'.format(
+                    pd.Timestamp(get_datetime()).tz_convert('US/Eastern')))
                 # replace missing values
                 self.recent_open_price[security] = fc.flatten_list(
                     self.imp.fit_transform(self.recent_open_price[security]).tolist())
@@ -160,21 +164,25 @@ class MachineLearningClassifier(TradingAlgorithm):
                     order_target_percent(asset=symbol(security), target=-allocation)
                     self.invested[security] = False
 
-            # plot variables at the end of each day
-            record(prediction=int(pred))
-
 
 if __name__ == '__main__':
     """ 
     This is executed when run from the command line 
     """
     # enable zipline debug log
-    zipline_logging = log.NestedSetup([
-        log.NullHandler(level=log.DEBUG),
-        log.StreamHandler(sys.stdout, level=log.INFO),
-        log.StreamHandler(sys.stderr, level=log.ERROR),
+    log_format = "{record.extra[algo_dt]}  {record.message}"
+
+    zipline_logging = logbook.NestedSetup([
+        logbook.NullHandler(level=logbook.DEBUG),
+        logbook.StreamHandler(sys.stdout, level=logbook.INFO, format_string=log_format),
+        logbook.StreamHandler(sys.stdout, level=logbook.DEBUG, format_string=log_format),
+        logbook.StreamHandler(sys.stdout, level=logbook.WARNING, format_string=log_format),
+        logbook.StreamHandler(sys.stdout, level=logbook.NOTICE, format_string=log_format),
+        logbook.StreamHandler(sys.stderr, level=logbook.ERROR, format_string=log_format),
     ])
     zipline_logging.push_application()
+
+    log = logbook.Logger('Main Logger')
 
     start = '2010-1-1'
 
@@ -241,6 +249,7 @@ if __name__ == '__main__':
     # get the returns, positions, and transactions from the zipline backtest object
     returns, positions, transactions = pf.utils.extract_rets_pos_txn_from_zipline(results)
 
+    # plot the portfolio value against the benchmark
     fig = plt.figure()
     ax1 = fig.add_subplot(211)
     ax2 = fig.add_subplot(212)
