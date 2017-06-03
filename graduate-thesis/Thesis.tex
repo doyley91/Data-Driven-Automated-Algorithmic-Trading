@@ -7,7 +7,6 @@
 \graphicspath{{Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
 
 % Include any extra LaTeX packages required
-%\usepackage[maxfloats=125]{morefloats}
 \usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
 \usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
 \usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
@@ -93,7 +92,7 @@ Warren Buffett
 \abstract{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
 
-The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
+Various existing stock market prediction methods were analysed in this report. Three methods were applied towards the problem making use of Technical Analysis: Time Series Analysis, Machine Learning, and Bayesian Statistics. Evidence was found in support of the weak form of the Efficient Market Hypothesis, that the historic price does not contain useful information but out of sample data may be predictive. We show that Technical Analysis and Machine Learning could be used to guide an investor’s decision. A common flow in technical anylsis methodology was demonstrated and shown to produce limited useful information. Based on the findings, automated trading algorithms were developed and simulated using Quantopian Zipline.
 
 }
 
@@ -106,7 +105,15 @@ The Thesis Abstract is written here (and usually kept to just this page). The pa
 \acknowledgements{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
 
-Alan Gatt l-ahjar lecturer - Nicholas Gollcher
+I would to express my special thanks of gratitude to my supervisor, Alan Gatt, for the patient guidance, encouragement, and advice he has provided throughout my time as his student.
+
+I would also like to thank Luke Vella Critien, for guiding me towards the right parth in the early stages of my research and for recommending Alan Gatt as my tutor. 
+
+My gratitude is also extended to Emma Galea and Miguel attard for their valuable input while carrying out my research.
+
+Completing this work would have been all the more difficult were it not for the support and friendship provided by the other members of the Malta College of Arts, Sciences, and Technology, and the institute of Information and Technology. I am indebted to them for their help.
+
+Finally, I would like to thank my family who have supported me throughout the stressful final months of the degree course.
 
 }
 \clearpage  % End of the Acknowledgements
@@ -148,31 +155,11 @@ Alan Gatt l-ahjar lecturer - Nicholas Gollcher
 \textbf{SMA} & \textbf{S}imple \textbf{M}oving \textbf{A}verage \\
 \textbf{AIC} & \textbf{A}lkaline \textbf{I}nformation \textbf{C}riterion \\
 \textbf{IC} & \textbf{I}nformation \textbf{C}riterion \\
-\textbf{NUTS} & \textbf{N}o- \textbf{U}- \textbf{T}urn \textbf{S}ampler
-
+\textbf{NUTS} & \textbf{N}o-\textbf{U}-\textbf{T}urn \textbf{S}ampler \\
+\textbf{QQ} & \textbf{Q}uantile-\textbf{Q}uantile \\
+\textbf{ETF} & \textbf{E}xchange \textbf{T}raded \textbf{F}und
 }
 
-%% ----------------------------------------------------------------
-\clearpage  % Start a new page
-\lhead{\emph{Physical Constants}}  % Set the left side page header to "Physical Constants"
-\listofconstants{lrcl}  % Include a list of Physical Constants (a four column table)
-{
-% Constant Name & Symbol & = & Constant Value (with units) \\
-Speed of Light & $c$ & $=$ & $2.997\ 924\ 58\times10^{8}\ \mbox{ms}^{-\mbox{s}}$ (exact)\\
-
-}
-
-%% ----------------------------------------------------------------
-\clearpage  %Start a new page
-\lhead{\emph{Symbols}}  % Set the left side page header to "Symbols"
-\listofnomenclature{lll}  % Include a list of Symbols (a three column table)
-{
-% symbol & name & unit \\
-$a$ & distance & m \\
-$P$ & power & W (Js$^{-1}$) \\
-& & \\ % Gap to separate the Roman symbols from the Greek
-$\omega$ & angular frequency & rads$^{-1}$ \\
-}
 %% ----------------------------------------------------------------
 % End of the pre-able, contents and lists of things
 % Begin the Dedication page
@@ -202,14 +189,10 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 \lhead{\emph{Experimental Setup}}  % Set the left side page header to "Symbols"
 \input{Chapters/Chapter3} % Experimental Setup
 
-%\input{Chapters/Chapter4} % Experiment 1
-
-%\input{Chapters/Chapter5} % Experiment 2
-
-\lhead{\emph{Results and Discussions}}  % Set the left side page header to "Symbols"
+\lhead{\emph{Results}}  % Set the left side page header to "Symbols"
 \input{Chapters/Chapter4} % Results and Discussion
 
-\lhead{\emph{Results}}  % Set the left side page header to "Symbols"
+\lhead{\emph{Discussions}}  % Set the left side page header to "Symbols"
 \input{Chapters/Chapter5} % Results
 
 \lhead{\emph{Conclusion}}  % Set the left side page header to "Symbols"

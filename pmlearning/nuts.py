@@ -10,6 +10,7 @@ from collections import OrderedDict
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import pymc3 as pm
 import scipy as sp
 
@@ -98,6 +99,13 @@ def main(tickers=['AAPL'], n_steps=21):
             trace = pm.sample(2000, step, start=start2)
 
         pred_data[ticker], vol = fc.generate_proj_returns(1000, trace, len(test))
+
+        pred_results = pd.DataFrame(data=dict(original=data[ticker]['log_returns'][test],
+                                              prediction=pred_data[ticker][1, :]),
+                                    index=data[ticker]['log_returns'][test].index)
+
+        print('{} Original Sharpe Ratio:'.format(ticker), fc.get_sharpe_ratio(returns=pred_results['original']))
+        print('{} Prediction Sharpe Ratio:'.format(ticker), fc.get_sharpe_ratio(returns=pred_results['prediction']))
 
         fig = plt.figure()
         ax = fig.add_subplot(111)

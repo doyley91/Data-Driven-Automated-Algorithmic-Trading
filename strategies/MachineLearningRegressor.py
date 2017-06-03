@@ -46,12 +46,8 @@ class MachineLearningRegressor(TradingAlgorithm):
         # stores recent prices
         self.recent_prices = OrderedDict()
 
-        # whether we currently hold a position in the stock or not
-        self.invested = OrderedDict()
-
         for security in self.securities:
             self.recent_prices[security] = []
-            self.invested[security] = False
 
         # initialise the model
         self.imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
@@ -99,18 +95,16 @@ class MachineLearningRegressor(TradingAlgorithm):
             allocation = 1 / len(self.securities)
 
             # buy if predicted price goes up
-            if pred > self.recent_prices[security][-1:]:
-                # check if we don't currently hold a position
-                if not self.invested[security]:
-                    order_target_percent(asset=symbol(security), target=allocation)
-                    self.invested[security] = True
-            # short if if predicted price goes down
-            else:
-                # check if we currently hold a position
-                if self.invested[security]:
-                    order_target_percent(asset=symbol(security), target=-allocation)
-                    self.invested[security] = False
+            if pred < self.recent_prices[security][-1:]:
+                continue
 
+            # check if we don't currently hold a position
+            if self.portfolio.positions[symbol(security)].amount:
+                continue
+
+            order_target_percent(asset=symbol(security), target=allocation)
+            order_target_percent(asset=symbol(security), target=-allocation,
+                                 stop_price=self.recent_prices[security][-1] * 0.80)
 
 if __name__ == '__main__':
     """ 
@@ -196,6 +190,22 @@ if __name__ == '__main__':
 
     # get the returns, positions, and transactions from the zipline backtest object
     returns, positions, transactions = pf.utils.extract_rets_pos_txn_from_zipline(results)
+
+    print("Machine Learning Regressor strategy results\n"
+          "-------------\n"
+          "Total capital used: {:.2f}\n"
+          "Sharpe Ratio: {:.3f}\n"
+          "Portfolio Value: {:.3f}\n"
+          "Algorithm Period Return: {:.3f}\n"
+          "Benchmark Period Return: {:.3f}\n"
+          "Algorithm Volatility: {:.3f}\n"
+          "Benchmark Volatility: {:.3f}".format(-results.capital_used.sum(),
+                                                results.sharpe[-1],
+                                                results.portfolio_value[-1],
+                                                results.algorithm_period_return[-1],
+                                                results.benchmark_period_return[-1],
+                                                results.algo_volatility[-1],
+                                                results.benchmark_volatility[-1]))
 
     # plot the portfolio value against the benchmark
     fig = plt.figure()

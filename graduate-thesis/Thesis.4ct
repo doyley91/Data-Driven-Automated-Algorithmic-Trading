@@ -3,102 +3,342 @@
 \doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-2}{}{Abstract}}{v}\relax 
 \doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-3}{}{Acknowledgements}}{vi}\relax 
 \doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-10003}{QQ2-1-4}{Contents}}{8}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-5}{}{List of Figures}}{xii}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-20004}{QQ2-1-6}{List of Figures}}{13}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-7}{}{List of Tables}}{xiv}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-30005}{QQ2-1-8}{List of Tables}}{15}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-9}{}{Abbreviations}}{xvii}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-40006}{QQ2-1-10}{Abbreviations}}{18}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-11}{}{Physical Constants}}{xx}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-50007}{QQ2-1-12}{Physical Constants}}{21}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-13}{}{Symbols}}{xxiii}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-60008}{QQ2-1-14}{Symbols}}{24}\relax 
-\doTocEntry\tocchapter{1}{\csname a:TocLink\endcsname{1}{x1-70001}{QQ2-1-15}{Introduction}}{2}\relax 
-\doTocEntry\tocsection{1.1}{\csname a:TocLink\endcsname{1}{x1-80001.1}{QQ2-1-16}{Efficient Market Hypothesis - EMH}}{2}\relax 
-\doTocEntry\tocsubsection{1.1.1}{\csname a:TocLink\endcsname{1}{x1-90001.1.1}{QQ2-1-17}{Breaking down EMH}}{3}\relax 
-\doTocEntry\tocsubsection{1.1.2}{\csname a:TocLink\endcsname{1}{x1-100001.1.2}{QQ2-1-18}{What EMH means for investors}}{3}\relax 
-\doTocEntry\tocsection{1.2}{\csname a:TocLink\endcsname{1}{x1-110001.2}{QQ2-1-19}{Zero-Sum Game}}{4}\relax 
-\doTocEntry\tocsubsection{1.2.1}{\csname a:TocLink\endcsname{1}{x1-120001.2.1}{QQ2-1-20}{Zero-Sum Game \& Economics}}{4}\relax 
-\doTocEntry\tocchapter{2}{\csname a:TocLink\endcsname{1}{x1-130002}{QQ2-1-21}{Background Theory}}{6}\relax 
-\doTocEntry\tocsection{2.1}{\csname a:TocLink\endcsname{1}{x1-140002.1}{QQ2-1-22}{Time Series Analysis}}{6}\relax 
-\doTocEntry\tocsubsection{2.1.1}{\csname a:TocLink\endcsname{1}{x1-150002.1.1}{QQ2-1-23}{ARMA}}{7}\relax 
-\doTocEntry\tocsubsection{2.1.2}{\csname a:TocLink\endcsname{1}{x1-160002.1.2}{QQ2-1-24}{ARIMA}}{7}\relax 
-\doTocEntry\tocsection{2.2}{\csname a:TocLink\endcsname{1}{x1-170002.2}{QQ2-1-25}{Statistical Machine Learning}}{8}\relax 
-\doTocEntry\tocsubsection{2.2.1}{\csname a:TocLink\endcsname{1}{x1-180002.2.1}{QQ2-1-26}{Classification}}{9}\relax 
-\doTocEntry\tocsubsection{2.2.2}{\csname a:TocLink\endcsname{1}{x1-190002.2.2}{QQ2-1-27}{Support Vector Machines}}{10}\relax 
-\doTocEntry\tocsubsection{2.2.3}{\csname a:TocLink\endcsname{1}{x1-200002.2.3}{QQ2-1-28}{Regression}}{10}\relax 
-\doTocEntry\tocsubsection{2.2.4}{\csname a:TocLink\endcsname{1}{x1-210002.2.4}{QQ2-1-29}{Decision Trees}}{11}\relax 
-\doTocEntry\tocsection{2.3}{\csname a:TocLink\endcsname{1}{x1-220002.3}{QQ2-1-30}{Bayesian Statistics}}{12}\relax 
-\doTocEntry\tocsubsection{2.3.1}{\csname a:TocLink\endcsname{1}{x1-230002.3.1}{QQ2-1-31}{Markov Chain Monte Carlo}}{12}\relax 
-\doTocEntry\tocchapter{3}{\csname a:TocLink\endcsname{1}{x1-240003}{QQ2-1-32}{Experminetal Setup}}{15}\relax 
-\doTocEntry\tocsection{3.1}{\csname a:TocLink\endcsname{1}{x1-250003.1}{QQ2-1-33}{Data Tidying}}{15}\relax 
-\doTocEntry\tocsection{3.2}{\csname a:TocLink\endcsname{1}{x1-260003.2}{QQ2-1-34}{Stock Selection}}{15}\relax 
-\doTocEntry\tocsection{3.3}{\csname a:TocLink\endcsname{1}{x1-270003.3}{QQ2-1-35}{Time Series Analysis}}{15}\relax 
-\doTocEntry\tocsubsection{3.3.1}{\csname a:TocLink\endcsname{1}{x1-280003.3.1}{QQ2-1-36}{Random Walk}}{15}\relax 
-\doTocEntry\tocsubsection{3.3.2}{\csname a:TocLink\endcsname{1}{x1-290003.3.2}{QQ2-1-37}{Ordinary Least Squares (OLS)}}{16}\relax 
-\doTocEntry\tocsubsection{3.3.3}{\csname a:TocLink\endcsname{1}{x1-300003.3.3}{QQ2-1-38}{Auto Regressive (AR)}}{16}\relax 
-\doTocEntry\tocsubsection{3.3.4}{\csname a:TocLink\endcsname{1}{x1-310003.3.4}{QQ2-1-39}{Moving Average (MA)}}{16}\relax 
-\doTocEntry\tocsubsection{3.3.5}{\csname a:TocLink\endcsname{1}{x1-320003.3.5}{QQ2-1-40}{Auto Regressive Moving Average (ARMA)}}{17}\relax 
-\doTocEntry\tocsubsection{3.3.6}{\csname a:TocLink\endcsname{1}{x1-330003.3.6}{QQ2-1-41}{Auto Regressive Integrated Moving Average (ARIMA)}}{17}\relax 
-\doTocEntry\tocsection{3.4}{\csname a:TocLink\endcsname{1}{x1-340003.4}{QQ2-1-42}{Machine Learning}}{17}\relax 
-\doTocEntry\tocsubsection{3.4.1}{\csname a:TocLink\endcsname{1}{x1-350003.4.1}{QQ2-1-43}{Classification}}{18}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.1}{\csname a:TocLink\endcsname{1}{x1-360003.4.1.1}{QQ2-1-44}{Decision Tree}}{18}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.2}{\csname a:TocLink\endcsname{1}{x1-370003.4.1.2}{QQ2-1-45}{Boosted Decision Tree}}{18}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.3}{\csname a:TocLink\endcsname{1}{x1-380003.4.1.3}{QQ2-1-46}{Support Vector Machine (SVM)}}{19}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.4}{\csname a:TocLink\endcsname{1}{x1-390003.4.1.4}{QQ2-1-47}{Random Forest}}{19}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.5}{\csname a:TocLink\endcsname{1}{x1-400003.4.1.5}{QQ2-1-48}{K-Nearest Neighbour}}{20}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.6}{\csname a:TocLink\endcsname{1}{x1-410003.4.1.6}{QQ2-1-49}{Logistic Regression}}{20}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.7}{\csname a:TocLink\endcsname{1}{x1-420003.4.1.7}{QQ2-1-50}{Bernoulli Naive Bayes}}{21}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.8}{\csname a:TocLink\endcsname{1}{x1-430003.4.1.8}{QQ2-1-51}{Gaussian Naive Bayes}}{21}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.9}{\csname a:TocLink\endcsname{1}{x1-440003.4.1.9}{QQ2-1-52}{Neural Network}}{21}\relax 
-\doTocEntry\tocsubsubsection{3.4.1.10}{\csname a:TocLink\endcsname{1}{x1-450003.4.1.10}{QQ2-1-53}{Stochastic Gradient Descent}}{22}\relax 
-\doTocEntry\tocsubsection{3.4.2}{\csname a:TocLink\endcsname{1}{x1-460003.4.2}{QQ2-1-54}{Regression}}{22}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.1}{\csname a:TocLink\endcsname{1}{x1-470003.4.2.1}{QQ2-1-55}{Decision Tree}}{23}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.2}{\csname a:TocLink\endcsname{1}{x1-480003.4.2.2}{QQ2-1-56}{Boosted Decision Tree}}{23}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.3}{\csname a:TocLink\endcsname{1}{x1-490003.4.2.3}{QQ2-1-57}{Random Forest}}{23}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.4}{\csname a:TocLink\endcsname{1}{x1-500003.4.2.4}{QQ2-1-58}{Linear Regression}}{24}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.5}{\csname a:TocLink\endcsname{1}{x1-510003.4.2.5}{QQ2-1-59}{Neural Network}}{24}\relax 
-\doTocEntry\tocsubsubsection{3.4.2.6}{\csname a:TocLink\endcsname{1}{x1-520003.4.2.6}{QQ2-1-60}{Stochastic Gradient Descent}}{24}\relax 
-\doTocEntry\tocsection{3.5}{\csname a:TocLink\endcsname{1}{x1-530003.5}{QQ2-1-61}{Bayesian Statistics}}{25}\relax 
-\doTocEntry\tocsubsection{3.5.1}{\csname a:TocLink\endcsname{1}{x1-540003.5.1}{QQ2-1-62}{No-U-Turn Sampler (NUTS)}}{25}\relax 
-\doTocEntry\tocsubsection{3.5.2}{\csname a:TocLink\endcsname{1}{x1-550003.5.2}{QQ2-1-63}{Metropolis-Hastings}}{25}\relax 
-\doTocEntry\tocsection{3.6}{\csname a:TocLink\endcsname{1}{x1-560003.6}{QQ2-1-64}{Strategy}}{26}\relax 
-\doTocEntry\tocsubsection{3.6.1}{\csname a:TocLink\endcsname{1}{x1-570003.6.1}{QQ2-1-65}{Classification}}{26}\relax 
-\doTocEntry\tocsubsection{3.6.2}{\csname a:TocLink\endcsname{1}{x1-580003.6.2}{QQ2-1-66}{Regression}}{26}\relax 
-\doTocEntry\tocchapter{4}{\csname a:TocLink\endcsname{1}{x1-590004}{QQ2-1-67}{Research Findings}}{28}\relax 
-\doTocEntry\tocsection{4.1}{\csname a:TocLink\endcsname{1}{x1-600004.1}{QQ2-1-68}{Time Series Analysis}}{28}\relax 
-\doTocEntry\tocsubsection{4.1.1}{\csname a:TocLink\endcsname{1}{x1-610004.1.1}{QQ2-1-69}{Random Walk}}{28}\relax 
-\doTocEntry\tocsubsection{4.1.2}{\csname a:TocLink\endcsname{1}{x1-620004.1.2}{QQ2-1-70}{Ordinary Least Squares (OLS)}}{28}\relax 
-\doTocEntry\tocsubsection{4.1.3}{\csname a:TocLink\endcsname{1}{x1-630004.1.3}{QQ2-1-71}{Auto Regressive (AR)}}{29}\relax 
-\doTocEntry\tocsubsection{4.1.4}{\csname a:TocLink\endcsname{1}{x1-640004.1.4}{QQ2-1-72}{Moving Average (MA)}}{29}\relax 
-\doTocEntry\tocsubsection{4.1.5}{\csname a:TocLink\endcsname{1}{x1-650004.1.5}{QQ2-1-73}{Auto Regressive Moving Average (ARMA)}}{29}\relax 
-\doTocEntry\tocsubsection{4.1.6}{\csname a:TocLink\endcsname{1}{x1-660004.1.6}{QQ2-1-74}{Auto Regressive Integrated Moving Average (ARIMA)}}{30}\relax 
-\doTocEntry\tocsection{4.2}{\csname a:TocLink\endcsname{1}{x1-670004.2}{QQ2-1-75}{Machine Learning}}{30}\relax 
-\doTocEntry\tocsubsection{4.2.1}{\csname a:TocLink\endcsname{1}{x1-680004.2.1}{QQ2-1-76}{Classification}}{30}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.1}{\csname a:TocLink\endcsname{1}{x1-690004.2.1.1}{QQ2-1-77}{Decision Tree}}{30}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.2}{\csname a:TocLink\endcsname{1}{x1-700004.2.1.2}{QQ2-1-78}{Boosted Decision Tree}}{30}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.3}{\csname a:TocLink\endcsname{1}{x1-710004.2.1.3}{QQ2-1-79}{Support Vector Machine (SVM)}}{31}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.4}{\csname a:TocLink\endcsname{1}{x1-720004.2.1.4}{QQ2-1-80}{Random Forest}}{31}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.5}{\csname a:TocLink\endcsname{1}{x1-730004.2.1.5}{QQ2-1-81}{K-Nearest Neighbour}}{32}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.6}{\csname a:TocLink\endcsname{1}{x1-740004.2.1.6}{QQ2-1-82}{Gaussian Naive Bayes}}{32}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.7}{\csname a:TocLink\endcsname{1}{x1-750004.2.1.7}{QQ2-1-83}{Bernoulli Naive Bayes}}{32}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.8}{\csname a:TocLink\endcsname{1}{x1-760004.2.1.8}{QQ2-1-84}{Neural Network}}{33}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.9}{\csname a:TocLink\endcsname{1}{x1-770004.2.1.9}{QQ2-1-85}{Logistic Regression}}{33}\relax 
-\doTocEntry\tocsubsubsection{4.2.1.10}{\csname a:TocLink\endcsname{1}{x1-780004.2.1.10}{QQ2-1-86}{Stochastic Gradient Descent}}{34}\relax 
-\doTocEntry\tocsubsection{4.2.2}{\csname a:TocLink\endcsname{1}{x1-790004.2.2}{QQ2-1-87}{Regression}}{34}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.1}{\csname a:TocLink\endcsname{1}{x1-800004.2.2.1}{QQ2-1-88}{Decision Tree}}{34}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.2}{\csname a:TocLink\endcsname{1}{x1-810004.2.2.2}{QQ2-1-89}{Boosted Decision Tree}}{35}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.3}{\csname a:TocLink\endcsname{1}{x1-820004.2.2.3}{QQ2-1-90}{K-Nearest Neighbour}}{36}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.4}{\csname a:TocLink\endcsname{1}{x1-830004.2.2.4}{QQ2-1-91}{Random Forest}}{37}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.5}{\csname a:TocLink\endcsname{1}{x1-840004.2.2.5}{QQ2-1-92}{Linear Regression}}{38}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.6}{\csname a:TocLink\endcsname{1}{x1-850004.2.2.6}{QQ2-1-93}{Neural Network}}{38}\relax 
-\doTocEntry\tocsubsubsection{4.2.2.7}{\csname a:TocLink\endcsname{1}{x1-860004.2.2.7}{QQ2-1-94}{Stochastic Gradient Descent}}{39}\relax 
-\doTocEntry\tocsection{4.3}{\csname a:TocLink\endcsname{1}{x1-870004.3}{QQ2-1-95}{Bayesian Statistics}}{40}\relax 
-\doTocEntry\tocsubsection{4.3.1}{\csname a:TocLink\endcsname{1}{x1-880004.3.1}{QQ2-1-96}{No-U-Turn Sampler (NUTS)}}{40}\relax 
-\doTocEntry\tocsubsection{4.3.2}{\csname a:TocLink\endcsname{1}{x1-890004.3.2}{QQ2-1-97}{Metropolis-Hastings}}{41}\relax 
-\doTocEntry\tocchapter{5}{\csname a:TocLink\endcsname{1}{x1-900005}{QQ2-1-98}{Discussion and Suggestions for Future Research}}{43}\relax 
-\doTocEntry\tocchapter{6}{\csname a:TocLink\endcsname{1}{x1-910006}{QQ2-1-99}{Conclusion}}{44}\relax 
-\doTocEntry\tocappendix{A}{\csname a:TocLink\endcsname{1}{x1-92000A}{QQ2-1-100}{An Appendix}}{45}\relax 
-\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-101}{}{Bibliography}}{47}\relax 
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-930009}{QQ2-1-102}{Bibliography}}{48}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-5}{}{List of Figures}}{xiii}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-20004}{QQ2-1-6}{List of Figures}}{14}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-7}{}{List of Tables}}{xvii}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-30005}{QQ2-1-8}{List of Tables}}{18}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-9}{}{Abbreviations}}{xx}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-40006}{QQ2-1-10}{Abbreviations}}{21}\relax 
+\doTocEntry\tocchapter{1}{\csname a:TocLink\endcsname{1}{x1-50001}{QQ2-1-11}{Introduction}}{2}\relax 
+\doTocEntry\tocsection{1.1}{\csname a:TocLink\endcsname{1}{x1-60001.1}{QQ2-1-12}{Efficient Market Hypothesis - EMH}}{2}\relax 
+\doTocEntry\tocsubsection{1.1.1}{\csname a:TocLink\endcsname{1}{x1-70001.1.1}{QQ2-1-13}{Breaking down EMH}}{3}\relax 
+\doTocEntry\tocsection{1.2}{\csname a:TocLink\endcsname{1}{x1-80001.2}{QQ2-1-14}{Zero-Sum Game}}{4}\relax 
+\doTocEntry\tocsection{1.3}{\csname a:TocLink\endcsname{1}{x1-90001.3}{QQ2-1-15}{Random Walk Hypothesis}}{4}\relax 
+\doTocEntry\tocchapter{2}{\csname a:TocLink\endcsname{1}{x1-100002}{QQ2-1-16}{Background Theory}}{6}\relax 
+\doTocEntry\tocsection{2.1}{\csname a:TocLink\endcsname{1}{x1-110002.1}{QQ2-1-17}{Time Series Analysis}}{6}\relax 
+\doTocEntry\tocsubsection{2.1.1}{\csname a:TocLink\endcsname{1}{x1-120002.1.1}{QQ2-1-18}{Auto Regressive Moving Average (ARMA)}}{7}\relax 
+\doTocEntry\tocsubsection{2.1.2}{\csname a:TocLink\endcsname{1}{x1-130002.1.2}{QQ2-1-19}{Auto Regressive Integrated Moving Average (ARIMA)}}{7}\relax 
+\doTocEntry\tocsection{2.2}{\csname a:TocLink\endcsname{1}{x1-140002.2}{QQ2-1-20}{Statistical Machine Learning}}{8}\relax 
+\doTocEntry\tocsubsection{2.2.1}{\csname a:TocLink\endcsname{1}{x1-150002.2.1}{QQ2-1-21}{Classification}}{9}\relax 
+\doTocEntry\tocsubsection{2.2.2}{\csname a:TocLink\endcsname{1}{x1-160002.2.2}{QQ2-1-22}{Support Vector Machines}}{10}\relax 
+\doTocEntry\tocsubsection{2.2.3}{\csname a:TocLink\endcsname{1}{x1-170002.2.3}{QQ2-1-23}{Regression}}{10}\relax 
+\doTocEntry\tocsubsection{2.2.4}{\csname a:TocLink\endcsname{1}{x1-180002.2.4}{QQ2-1-24}{Decision Trees}}{11}\relax 
+\doTocEntry\tocsection{2.3}{\csname a:TocLink\endcsname{1}{x1-190002.3}{QQ2-1-25}{Bayesian Statistics}}{12}\relax 
+\doTocEntry\tocsubsection{2.3.1}{\csname a:TocLink\endcsname{1}{x1-200002.3.1}{QQ2-1-26}{Markov Chain Monte Carlo (MCMC)}}{12}\relax 
+\doTocEntry\tocchapter{3}{\csname a:TocLink\endcsname{1}{x1-210003}{QQ2-1-27}{Experminetal Setup}}{15}\relax 
+\doTocEntry\tocsection{3.1}{\csname a:TocLink\endcsname{1}{x1-220003.1}{QQ2-1-28}{Data Tidying}}{15}\relax 
+\doTocEntry\tocsection{3.2}{\csname a:TocLink\endcsname{1}{x1-230003.2}{QQ2-1-29}{Stock Selection}}{15}\relax 
+\doTocEntry\tocsection{3.3}{\csname a:TocLink\endcsname{1}{x1-240003.3}{QQ2-1-30}{Time Series Analysis}}{15}\relax 
+\doTocEntry\tocsubsection{3.3.1}{\csname a:TocLink\endcsname{1}{x1-250003.3.1}{QQ2-1-31}{Random Walk}}{15}\relax 
+\doTocEntry\tocsubsection{3.3.2}{\csname a:TocLink\endcsname{1}{x1-260003.3.2}{QQ2-1-32}{Ordinary Least Squares (OLS)}}{16}\relax 
+\doTocEntry\tocsubsection{3.3.3}{\csname a:TocLink\endcsname{1}{x1-270003.3.3}{QQ2-1-33}{Auto Regressive (AR)}}{16}\relax 
+\doTocEntry\tocsubsection{3.3.4}{\csname a:TocLink\endcsname{1}{x1-280003.3.4}{QQ2-1-34}{Moving Average (MA)}}{16}\relax 
+\doTocEntry\tocsubsection{3.3.5}{\csname a:TocLink\endcsname{1}{x1-290003.3.5}{QQ2-1-35}{Auto Regressive Moving Average (ARMA)}}{16}\relax 
+\doTocEntry\tocsubsection{3.3.6}{\csname a:TocLink\endcsname{1}{x1-300003.3.6}{QQ2-1-36}{Auto Regressive Integrated Moving Average (ARIMA)}}{17}\relax 
+\doTocEntry\tocsection{3.4}{\csname a:TocLink\endcsname{1}{x1-310003.4}{QQ2-1-37}{Machine Learning}}{17}\relax 
+\doTocEntry\tocsubsection{3.4.1}{\csname a:TocLink\endcsname{1}{x1-320003.4.1}{QQ2-1-38}{Classification}}{17}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.1}{\csname a:TocLink\endcsname{1}{x1-330003.4.1.1}{QQ2-1-39}{Decision Tree}}{18}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.2}{\csname a:TocLink\endcsname{1}{x1-340003.4.1.2}{QQ2-1-40}{Boosted Decision Tree}}{18}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.3}{\csname a:TocLink\endcsname{1}{x1-350003.4.1.3}{QQ2-1-41}{Support Vector Machine (SVM)}}{18}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.4}{\csname a:TocLink\endcsname{1}{x1-360003.4.1.4}{QQ2-1-42}{Random Forest}}{19}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.5}{\csname a:TocLink\endcsname{1}{x1-370003.4.1.5}{QQ2-1-43}{K-Nearest Neighbour}}{19}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.6}{\csname a:TocLink\endcsname{1}{x1-380003.4.1.6}{QQ2-1-44}{Logistic Regression}}{20}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.7}{\csname a:TocLink\endcsname{1}{x1-390003.4.1.7}{QQ2-1-45}{Bernoulli Naive Bayes}}{20}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.8}{\csname a:TocLink\endcsname{1}{x1-400003.4.1.8}{QQ2-1-46}{Gaussian Naive Bayes}}{20}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.9}{\csname a:TocLink\endcsname{1}{x1-410003.4.1.9}{QQ2-1-47}{Neural Network}}{21}\relax 
+\doTocEntry\tocsubsubsection{3.4.1.10}{\csname a:TocLink\endcsname{1}{x1-420003.4.1.10}{QQ2-1-48}{Stochastic Gradient Descent}}{21}\relax 
+\doTocEntry\tocsubsection{3.4.2}{\csname a:TocLink\endcsname{1}{x1-430003.4.2}{QQ2-1-49}{Regression}}{22}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.1}{\csname a:TocLink\endcsname{1}{x1-440003.4.2.1}{QQ2-1-50}{Decision Tree}}{22}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.2}{\csname a:TocLink\endcsname{1}{x1-450003.4.2.2}{QQ2-1-51}{Boosted Decision Tree}}{23}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.3}{\csname a:TocLink\endcsname{1}{x1-460003.4.2.3}{QQ2-1-52}{Random Forest}}{23}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.4}{\csname a:TocLink\endcsname{1}{x1-470003.4.2.4}{QQ2-1-53}{Linear Regression}}{24}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.5}{\csname a:TocLink\endcsname{1}{x1-480003.4.2.5}{QQ2-1-54}{Neural Network}}{24}\relax 
+\doTocEntry\tocsubsubsection{3.4.2.6}{\csname a:TocLink\endcsname{1}{x1-490003.4.2.6}{QQ2-1-55}{Stochastic Gradient Descent}}{24}\relax 
+\doTocEntry\tocsection{3.5}{\csname a:TocLink\endcsname{1}{x1-500003.5}{QQ2-1-56}{Bayesian Statistics}}{24}\relax 
+\doTocEntry\tocsubsection{3.5.1}{\csname a:TocLink\endcsname{1}{x1-510003.5.1}{QQ2-1-57}{No-U-Turn Sampler (NUTS)}}{25}\relax 
+\doTocEntry\tocsubsection{3.5.2}{\csname a:TocLink\endcsname{1}{x1-520003.5.2}{QQ2-1-58}{Metropolis-Hastings}}{25}\relax 
+\doTocEntry\tocsection{3.6}{\csname a:TocLink\endcsname{1}{x1-530003.6}{QQ2-1-59}{Strategy}}{25}\relax 
+\doTocEntry\tocsubsection{3.6.1}{\csname a:TocLink\endcsname{1}{x1-540003.6.1}{QQ2-1-60}{Classification}}{25}\relax 
+\doTocEntry\tocsubsection{3.6.2}{\csname a:TocLink\endcsname{1}{x1-550003.6.2}{QQ2-1-61}{Regression}}{26}\relax 
+\doTocEntry\tocchapter{4}{\csname a:TocLink\endcsname{1}{x1-560004}{QQ2-1-62}{Research Findings}}{27}\relax 
+\doTocEntry\toclof{4.1}{\csname a:TocLink\endcsname{1}{x1-560011}{}{\ignorespaces Basket of stocks}}{figure}\relax 
+\doTocEntry\tocsection{4.1}{\csname a:TocLink\endcsname{1}{x1-570004.1}{QQ2-1-64}{Time Series Analysis}}{27}\relax 
+\doTocEntry\tocsubsection{4.1.1}{\csname a:TocLink\endcsname{1}{x1-580004.1.1}{QQ2-1-65}{Random Walk}}{27}\relax 
+\doTocEntry\toclof{4.2}{\csname a:TocLink\endcsname{1}{x1-580012}{}{\ignorespaces MSFT time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.3}{\csname a:TocLink\endcsname{1}{x1-580023}{}{\ignorespaces MSFT histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.4}{\csname a:TocLink\endcsname{1}{x1-580034}{}{\ignorespaces CDE time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.5}{\csname a:TocLink\endcsname{1}{x1-580045}{}{\ignorespaces CDE histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.6}{\csname a:TocLink\endcsname{1}{x1-580056}{}{\ignorespaces NAVB time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.7}{\csname a:TocLink\endcsname{1}{x1-580067}{}{\ignorespaces NAVB histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.8}{\csname a:TocLink\endcsname{1}{x1-580078}{}{\ignorespaces HRG time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.9}{\csname a:TocLink\endcsname{1}{x1-580089}{}{\ignorespaces HRG histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.10}{\csname a:TocLink\endcsname{1}{x1-5800910}{}{\ignorespaces HL time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.11}{\csname a:TocLink\endcsname{1}{x1-5801011}{}{\ignorespaces HL histogram of returns}}{figure}\relax 
+\doTocEntry\tocsubsection{4.1.2}{\csname a:TocLink\endcsname{1}{x1-590004.1.2}{QQ2-1-76}{Ordinary Least Squares (OLS)}}{30}\relax 
+\doTocEntry\toclof{4.12}{\csname a:TocLink\endcsname{1}{x1-5900112}{}{\ignorespaces MSFT OLS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.13}{\csname a:TocLink\endcsname{1}{x1-5900213}{}{\ignorespaces 100 day MSFT OLS in-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.14}{\csname a:TocLink\endcsname{1}{x1-5900314}{}{\ignorespaces CDE OLS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.15}{\csname a:TocLink\endcsname{1}{x1-5900415}{}{\ignorespaces 100 Day CDE OLS out of sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.16}{\csname a:TocLink\endcsname{1}{x1-5900516}{}{\ignorespaces NAVB OLS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.17}{\csname a:TocLink\endcsname{1}{x1-5900617}{}{\ignorespaces 100 day NAVB OLS in-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.18}{\csname a:TocLink\endcsname{1}{x1-5900718}{}{\ignorespaces HRG OLS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.19}{\csname a:TocLink\endcsname{1}{x1-5900819}{}{\ignorespaces 100 day HRG OLS in-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.20}{\csname a:TocLink\endcsname{1}{x1-5900920}{}{\ignorespaces HL OLS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.21}{\csname a:TocLink\endcsname{1}{x1-5901021}{}{\ignorespaces 100 day HL OLS in-sample forecast}}{figure}\relax 
+\doTocEntry\tocsubsection{4.1.3}{\csname a:TocLink\endcsname{1}{x1-600004.1.3}{QQ2-1-87}{Auto Regressive (AR)}}{33}\relax 
+\doTocEntry\toclof{4.22}{\csname a:TocLink\endcsname{1}{x1-6000122}{}{\ignorespaces MSFT AR time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.23}{\csname a:TocLink\endcsname{1}{x1-6000223}{}{\ignorespaces MSFT AR histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.24}{\csname a:TocLink\endcsname{1}{x1-6000324}{}{\ignorespaces MSFT AR in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.25}{\csname a:TocLink\endcsname{1}{x1-6000425}{}{\ignorespaces 100 day MSFT AR in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.26}{\csname a:TocLink\endcsname{1}{x1-6000526}{}{\ignorespaces CDE AR time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.27}{\csname a:TocLink\endcsname{1}{x1-6000627}{}{\ignorespaces CDE AR histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.28}{\csname a:TocLink\endcsname{1}{x1-6000728}{}{\ignorespaces CDE AR in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.29}{\csname a:TocLink\endcsname{1}{x1-6000829}{}{\ignorespaces 100 day CDE AR in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.30}{\csname a:TocLink\endcsname{1}{x1-6000930}{}{\ignorespaces NAVB AR time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.31}{\csname a:TocLink\endcsname{1}{x1-6001031}{}{\ignorespaces NAVB AR histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.32}{\csname a:TocLink\endcsname{1}{x1-6001132}{}{\ignorespaces NAVB AR in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.33}{\csname a:TocLink\endcsname{1}{x1-6001233}{}{\ignorespaces 100 day NAVB AR in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.34}{\csname a:TocLink\endcsname{1}{x1-6001334}{}{\ignorespaces HRG AR time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.35}{\csname a:TocLink\endcsname{1}{x1-6001435}{}{\ignorespaces HRG AR histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.36}{\csname a:TocLink\endcsname{1}{x1-6001536}{}{\ignorespaces HL AR in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.37}{\csname a:TocLink\endcsname{1}{x1-6001637}{}{\ignorespaces 100 day HRG AR in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.38}{\csname a:TocLink\endcsname{1}{x1-6001738}{}{\ignorespaces HL AR time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.39}{\csname a:TocLink\endcsname{1}{x1-6001839}{}{\ignorespaces HL AR histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.40}{\csname a:TocLink\endcsname{1}{x1-6001940}{}{\ignorespaces HL AR in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.41}{\csname a:TocLink\endcsname{1}{x1-6002041}{}{\ignorespaces 100 day HL AR in-sample returns forecast}}{figure}\relax 
+\doTocEntry\tocsubsection{4.1.4}{\csname a:TocLink\endcsname{1}{x1-610004.1.4}{QQ2-1-108}{Moving Average (MA)}}{38}\relax 
+\doTocEntry\toclof{4.42}{\csname a:TocLink\endcsname{1}{x1-6100142}{}{\ignorespaces MSFT MA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.43}{\csname a:TocLink\endcsname{1}{x1-6100243}{}{\ignorespaces MSFT MA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.44}{\csname a:TocLink\endcsname{1}{x1-6100344}{}{\ignorespaces MSFT MA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.45}{\csname a:TocLink\endcsname{1}{x1-6100445}{}{\ignorespaces 100 day MSFT MA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.46}{\csname a:TocLink\endcsname{1}{x1-6100546}{}{\ignorespaces CDE MA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.47}{\csname a:TocLink\endcsname{1}{x1-6100647}{}{\ignorespaces CDE MA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.48}{\csname a:TocLink\endcsname{1}{x1-6100748}{}{\ignorespaces CDE MA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.49}{\csname a:TocLink\endcsname{1}{x1-6100849}{}{\ignorespaces 100 day CDE MA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.50}{\csname a:TocLink\endcsname{1}{x1-6100950}{}{\ignorespaces NAVB MA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.51}{\csname a:TocLink\endcsname{1}{x1-6101051}{}{\ignorespaces NAVB MA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.52}{\csname a:TocLink\endcsname{1}{x1-6101152}{}{\ignorespaces NAVB MA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.53}{\csname a:TocLink\endcsname{1}{x1-6101253}{}{\ignorespaces 100 day NAVB MA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.54}{\csname a:TocLink\endcsname{1}{x1-6101354}{}{\ignorespaces HRG MA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.55}{\csname a:TocLink\endcsname{1}{x1-6101455}{}{\ignorespaces HRG MA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.56}{\csname a:TocLink\endcsname{1}{x1-6101556}{}{\ignorespaces HRG MA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.57}{\csname a:TocLink\endcsname{1}{x1-6101657}{}{\ignorespaces 100 day HRG MA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.58}{\csname a:TocLink\endcsname{1}{x1-6101758}{}{\ignorespaces HL MA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.59}{\csname a:TocLink\endcsname{1}{x1-6101859}{}{\ignorespaces HL MA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.60}{\csname a:TocLink\endcsname{1}{x1-6101960}{}{\ignorespaces HL MA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.61}{\csname a:TocLink\endcsname{1}{x1-6102061}{}{\ignorespaces 100 day HL MA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\tocsubsection{4.1.5}{\csname a:TocLink\endcsname{1}{x1-620004.1.5}{QQ2-1-129}{Auto Regressive Moving Average (ARMA)}}{44}\relax 
+\doTocEntry\toclof{4.62}{\csname a:TocLink\endcsname{1}{x1-6200162}{}{\ignorespaces MSFT ARMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.63}{\csname a:TocLink\endcsname{1}{x1-6200263}{}{\ignorespaces MSFT ARMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.64}{\csname a:TocLink\endcsname{1}{x1-6200364}{}{\ignorespaces MSFT ARMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.65}{\csname a:TocLink\endcsname{1}{x1-6200465}{}{\ignorespaces 100 day MSFT ARMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.66}{\csname a:TocLink\endcsname{1}{x1-6200566}{}{\ignorespaces CDE ARMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.67}{\csname a:TocLink\endcsname{1}{x1-6200667}{}{\ignorespaces CDE ARMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.68}{\csname a:TocLink\endcsname{1}{x1-6200768}{}{\ignorespaces CDE ARMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.69}{\csname a:TocLink\endcsname{1}{x1-6200869}{}{\ignorespaces 100 day CDE ARMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.70}{\csname a:TocLink\endcsname{1}{x1-6200970}{}{\ignorespaces NAVB ARMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.71}{\csname a:TocLink\endcsname{1}{x1-6201071}{}{\ignorespaces NAVB ARMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.72}{\csname a:TocLink\endcsname{1}{x1-6201172}{}{\ignorespaces NAVB ARMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.73}{\csname a:TocLink\endcsname{1}{x1-6201273}{}{\ignorespaces 100 day NAVB ARMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.74}{\csname a:TocLink\endcsname{1}{x1-6201374}{}{\ignorespaces HRG ARMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.75}{\csname a:TocLink\endcsname{1}{x1-6201475}{}{\ignorespaces HRG ARMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.76}{\csname a:TocLink\endcsname{1}{x1-6201576}{}{\ignorespaces HRG ARMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.77}{\csname a:TocLink\endcsname{1}{x1-6201677}{}{\ignorespaces 100 day HRG ARMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.78}{\csname a:TocLink\endcsname{1}{x1-6201778}{}{\ignorespaces HL ARMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.79}{\csname a:TocLink\endcsname{1}{x1-6201879}{}{\ignorespaces HL ARMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.80}{\csname a:TocLink\endcsname{1}{x1-6201980}{}{\ignorespaces HL ARMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.81}{\csname a:TocLink\endcsname{1}{x1-6202081}{}{\ignorespaces 100 day HL ARMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\tocsubsection{4.1.6}{\csname a:TocLink\endcsname{1}{x1-630004.1.6}{QQ2-1-150}{Auto Regressive Integrated Moving Average (ARIMA)}}{49}\relax 
+\doTocEntry\toclof{4.82}{\csname a:TocLink\endcsname{1}{x1-6300182}{}{\ignorespaces MSFT ARIMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.83}{\csname a:TocLink\endcsname{1}{x1-6300283}{}{\ignorespaces MSFT ARIMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.84}{\csname a:TocLink\endcsname{1}{x1-6300384}{}{\ignorespaces MSFT ARIMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.85}{\csname a:TocLink\endcsname{1}{x1-6300485}{}{\ignorespaces 100 day MSFT ARIMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.86}{\csname a:TocLink\endcsname{1}{x1-6300586}{}{\ignorespaces CDE ARIMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.87}{\csname a:TocLink\endcsname{1}{x1-6300687}{}{\ignorespaces CDE ARIMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.88}{\csname a:TocLink\endcsname{1}{x1-6300788}{}{\ignorespaces CDE ARIMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.89}{\csname a:TocLink\endcsname{1}{x1-6300889}{}{\ignorespaces 100 day CDE ARIMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.90}{\csname a:TocLink\endcsname{1}{x1-6300990}{}{\ignorespaces NAVB ARIMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.91}{\csname a:TocLink\endcsname{1}{x1-6301091}{}{\ignorespaces NAVB ARIMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.92}{\csname a:TocLink\endcsname{1}{x1-6301192}{}{\ignorespaces NAVB ARIMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.93}{\csname a:TocLink\endcsname{1}{x1-6301293}{}{\ignorespaces 100 day NAVB ARIMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.94}{\csname a:TocLink\endcsname{1}{x1-6301394}{}{\ignorespaces HRG ARIMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.95}{\csname a:TocLink\endcsname{1}{x1-6301495}{}{\ignorespaces HRG ARIMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.96}{\csname a:TocLink\endcsname{1}{x1-6301596}{}{\ignorespaces HRG ARIMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.97}{\csname a:TocLink\endcsname{1}{x1-6301697}{}{\ignorespaces 100 day HRG ARIMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\toclof{4.98}{\csname a:TocLink\endcsname{1}{x1-6301798}{}{\ignorespaces HL ARIMA time series analysis}}{figure}\relax 
+\doTocEntry\toclof{4.99}{\csname a:TocLink\endcsname{1}{x1-6301899}{}{\ignorespaces HL ARIMA histogram of returns}}{figure}\relax 
+\doTocEntry\toclof{4.100}{\csname a:TocLink\endcsname{1}{x1-63019100}{}{\ignorespaces HL ARIMA in-sample returns prediction}}{figure}\relax 
+\doTocEntry\toclof{4.101}{\csname a:TocLink\endcsname{1}{x1-63020101}{}{\ignorespaces 100 day HL ARIMA in-sample returns forecast}}{figure}\relax 
+\doTocEntry\tocsection{4.2}{\csname a:TocLink\endcsname{1}{x1-640004.2}{QQ2-1-171}{Machine Learning}}{55}\relax 
+\doTocEntry\tocsubsection{4.2.1}{\csname a:TocLink\endcsname{1}{x1-650004.2.1}{QQ2-1-172}{Classification}}{55}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.1}{\csname a:TocLink\endcsname{1}{x1-660004.2.1.1}{QQ2-1-173}{Decision Tree}}{55}\relax 
+\doTocEntry\toclot{4.1}{\csname a:TocLink\endcsname{1}{x1-660011}{}{\ignorespaces Decision Tree results}}{table}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.2}{\csname a:TocLink\endcsname{1}{x1-670004.2.1.2}{QQ2-1-175}{Boosted Decision Tree}}{56}\relax 
+\doTocEntry\toclot{4.2}{\csname a:TocLink\endcsname{1}{x1-670012}{}{\ignorespaces Boosted Decision Tree results}}{table}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.3}{\csname a:TocLink\endcsname{1}{x1-680004.2.1.3}{QQ2-1-177}{Support Vector Machine (SVM)}}{56}\relax 
+\doTocEntry\toclot{4.3}{\csname a:TocLink\endcsname{1}{x1-680013}{}{\ignorespaces Support Vector Machine results}}{table}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.4}{\csname a:TocLink\endcsname{1}{x1-690004.2.1.4}{QQ2-1-179}{Random Forest}}{57}\relax 
+\doTocEntry\toclot{4.4}{\csname a:TocLink\endcsname{1}{x1-690014}{}{\ignorespaces Random Forest results}}{table}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.5}{\csname a:TocLink\endcsname{1}{x1-700004.2.1.5}{QQ2-1-181}{K-Nearest Neighbour}}{57}\relax 
+\doTocEntry\toclot{4.5}{\csname a:TocLink\endcsname{1}{x1-700015}{}{\ignorespaces K-Nearest Neighbour results}}{table}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.6}{\csname a:TocLink\endcsname{1}{x1-710004.2.1.6}{QQ2-1-183}{Logistic Regression}}{58}\relax 
+\doTocEntry\toclot{4.6}{\csname a:TocLink\endcsname{1}{x1-710016}{}{\ignorespaces Logistic Regression results}}{table}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.7}{\csname a:TocLink\endcsname{1}{x1-720004.2.1.7}{QQ2-1-185}{Gaussian Naive Bayes}}{58}\relax 
+\doTocEntry\toclot{4.7}{\csname a:TocLink\endcsname{1}{x1-720017}{}{\ignorespaces Gaussian Naive Bayes results}}{table}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.8}{\csname a:TocLink\endcsname{1}{x1-730004.2.1.8}{QQ2-1-187}{Bernoulli Naive Bayes}}{59}\relax 
+\doTocEntry\toclot{4.8}{\csname a:TocLink\endcsname{1}{x1-730018}{}{\ignorespaces Bernoulli Naive Bayes results}}{table}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.9}{\csname a:TocLink\endcsname{1}{x1-740004.2.1.9}{QQ2-1-189}{Neural Network}}{59}\relax 
+\doTocEntry\toclot{4.9}{\csname a:TocLink\endcsname{1}{x1-740019}{}{\ignorespaces Neural Network results}}{table}\relax 
+\doTocEntry\tocsubsubsection{4.2.1.10}{\csname a:TocLink\endcsname{1}{x1-750004.2.1.10}{QQ2-1-191}{Stochastic Gradient Descent}}{60}\relax 
+\doTocEntry\toclot{4.10}{\csname a:TocLink\endcsname{1}{x1-7500110}{}{\ignorespaces Stochastic Gradient Descent results}}{table}\relax 
+\doTocEntry\tocsubsection{4.2.2}{\csname a:TocLink\endcsname{1}{x1-760004.2.2}{QQ2-1-193}{Regression}}{60}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.1}{\csname a:TocLink\endcsname{1}{x1-770004.2.2.1}{QQ2-1-194}{Decision Tree}}{60}\relax 
+\doTocEntry\toclof{4.102}{\csname a:TocLink\endcsname{1}{x1-77001102}{}{\ignorespaces MSFT Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.103}{\csname a:TocLink\endcsname{1}{x1-77002103}{}{\ignorespaces 100 day MSFT Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.104}{\csname a:TocLink\endcsname{1}{x1-77003104}{}{\ignorespaces CDE Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.105}{\csname a:TocLink\endcsname{1}{x1-77004105}{}{\ignorespaces 100 day CDE Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.106}{\csname a:TocLink\endcsname{1}{x1-77005106}{}{\ignorespaces NAVB Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.107}{\csname a:TocLink\endcsname{1}{x1-77006107}{}{\ignorespaces 100 day NAVB Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.108}{\csname a:TocLink\endcsname{1}{x1-77007108}{}{\ignorespaces HRG Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.109}{\csname a:TocLink\endcsname{1}{x1-77008109}{}{\ignorespaces 100 day HRG Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.110}{\csname a:TocLink\endcsname{1}{x1-77009110}{}{\ignorespaces HL Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.111}{\csname a:TocLink\endcsname{1}{x1-77010111}{}{\ignorespaces 100 day HL Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.2}{\csname a:TocLink\endcsname{1}{x1-780004.2.2.2}{QQ2-1-205}{Boosted Decision Tree}}{63}\relax 
+\doTocEntry\toclof{4.112}{\csname a:TocLink\endcsname{1}{x1-78001112}{}{\ignorespaces MSFT Boosted Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.113}{\csname a:TocLink\endcsname{1}{x1-78002113}{}{\ignorespaces 100 day MSFT Boosted Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.114}{\csname a:TocLink\endcsname{1}{x1-78003114}{}{\ignorespaces CDE Boosted Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.115}{\csname a:TocLink\endcsname{1}{x1-78004115}{}{\ignorespaces 100 day CDE Boosted Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.116}{\csname a:TocLink\endcsname{1}{x1-78005116}{}{\ignorespaces NAVB Boosted Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.117}{\csname a:TocLink\endcsname{1}{x1-78006117}{}{\ignorespaces 100 day NAVB Boosted Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.118}{\csname a:TocLink\endcsname{1}{x1-78007118}{}{\ignorespaces HRG Boosted Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.119}{\csname a:TocLink\endcsname{1}{x1-78008119}{}{\ignorespaces 100 day HRG Boosted Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.120}{\csname a:TocLink\endcsname{1}{x1-78009120}{}{\ignorespaces HL Boosted Decision Trees in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.121}{\csname a:TocLink\endcsname{1}{x1-78010121}{}{\ignorespaces 100 day HL Boosted Decision Trees out-of-sample forecast}}{figure}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.3}{\csname a:TocLink\endcsname{1}{x1-790004.2.2.3}{QQ2-1-216}{K-Nearest Neighbour}}{66}\relax 
+\doTocEntry\toclof{4.122}{\csname a:TocLink\endcsname{1}{x1-79001122}{}{\ignorespaces MSFT K-Nearest Neighbour in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.123}{\csname a:TocLink\endcsname{1}{x1-79002123}{}{\ignorespaces 100 day MSFT K-Nearest Neighbour out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.124}{\csname a:TocLink\endcsname{1}{x1-79003124}{}{\ignorespaces CDE K-Nearest Neighbour in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.125}{\csname a:TocLink\endcsname{1}{x1-79004125}{}{\ignorespaces 100 day CDE K-Nearest Neighbour out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.126}{\csname a:TocLink\endcsname{1}{x1-79005126}{}{\ignorespaces NAVB K-Nearest Neighbour in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.127}{\csname a:TocLink\endcsname{1}{x1-79006127}{}{\ignorespaces 100 day NAVB K-Nearest Neighbour out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.128}{\csname a:TocLink\endcsname{1}{x1-79007128}{}{\ignorespaces HRG K-Nearest Neighbour in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.129}{\csname a:TocLink\endcsname{1}{x1-79008129}{}{\ignorespaces 100 day HRG K-Nearest Neighbour out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.130}{\csname a:TocLink\endcsname{1}{x1-79009130}{}{\ignorespaces HL K-Nearest Neighbour in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.131}{\csname a:TocLink\endcsname{1}{x1-79010131}{}{\ignorespaces 100 day HL K-Nearest Neighbour out-of-sample forecast}}{figure}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.4}{\csname a:TocLink\endcsname{1}{x1-800004.2.2.4}{QQ2-1-227}{Random Forest}}{69}\relax 
+\doTocEntry\toclof{4.132}{\csname a:TocLink\endcsname{1}{x1-80001132}{}{\ignorespaces MSFT Random Forest in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.133}{\csname a:TocLink\endcsname{1}{x1-80002133}{}{\ignorespaces 100 day MSFT Random Forest out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.134}{\csname a:TocLink\endcsname{1}{x1-80003134}{}{\ignorespaces CDE Random Forest in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.135}{\csname a:TocLink\endcsname{1}{x1-80004135}{}{\ignorespaces 100 day CDE Random Forest out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.136}{\csname a:TocLink\endcsname{1}{x1-80005136}{}{\ignorespaces NAVB Random Forest in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.137}{\csname a:TocLink\endcsname{1}{x1-80006137}{}{\ignorespaces 100 day NAVB Random Forest out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.138}{\csname a:TocLink\endcsname{1}{x1-80007138}{}{\ignorespaces HRG Random Forest in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.139}{\csname a:TocLink\endcsname{1}{x1-80008139}{}{\ignorespaces 100 day HRG Random Forest out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.140}{\csname a:TocLink\endcsname{1}{x1-80009140}{}{\ignorespaces HL Random Forest in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.141}{\csname a:TocLink\endcsname{1}{x1-80010141}{}{\ignorespaces 100 day HL Random Forest out-of-sample forecast}}{figure}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.5}{\csname a:TocLink\endcsname{1}{x1-810004.2.2.5}{QQ2-1-238}{Linear Regression}}{72}\relax 
+\doTocEntry\toclof{4.142}{\csname a:TocLink\endcsname{1}{x1-81001142}{}{\ignorespaces MSFT Linear Regression in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.143}{\csname a:TocLink\endcsname{1}{x1-81002143}{}{\ignorespaces 100 day MSFT Linear Regression out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.144}{\csname a:TocLink\endcsname{1}{x1-81003144}{}{\ignorespaces CDE Linear Regression in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.145}{\csname a:TocLink\endcsname{1}{x1-81004145}{}{\ignorespaces 100 day CDE Linear Regression out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.146}{\csname a:TocLink\endcsname{1}{x1-81005146}{}{\ignorespaces CDE Linear Regression in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.147}{\csname a:TocLink\endcsname{1}{x1-81006147}{}{\ignorespaces 100 day CDE Linear Regression out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.148}{\csname a:TocLink\endcsname{1}{x1-81007148}{}{\ignorespaces HRG Linear Regression in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.149}{\csname a:TocLink\endcsname{1}{x1-81008149}{}{\ignorespaces 100 day HRG Linear Regression out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.150}{\csname a:TocLink\endcsname{1}{x1-81009150}{}{\ignorespaces HL Linear Regression in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.151}{\csname a:TocLink\endcsname{1}{x1-81010151}{}{\ignorespaces 100 day HL Linear Regression out-of-sample forecast}}{figure}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.6}{\csname a:TocLink\endcsname{1}{x1-820004.2.2.6}{QQ2-1-249}{Neural Network}}{75}\relax 
+\doTocEntry\toclof{4.152}{\csname a:TocLink\endcsname{1}{x1-82001152}{}{\ignorespaces MSFT Neural Network in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.153}{\csname a:TocLink\endcsname{1}{x1-82002153}{}{\ignorespaces 100 day MSFT Neural Network out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.154}{\csname a:TocLink\endcsname{1}{x1-82003154}{}{\ignorespaces CDE Neural Network in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.155}{\csname a:TocLink\endcsname{1}{x1-82004155}{}{\ignorespaces 100 day CDE Neural Network out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.156}{\csname a:TocLink\endcsname{1}{x1-82005156}{}{\ignorespaces NAVB Neural Network in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.157}{\csname a:TocLink\endcsname{1}{x1-82006157}{}{\ignorespaces 100 day NAVB Neural Network out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.158}{\csname a:TocLink\endcsname{1}{x1-82007158}{}{\ignorespaces HRG Neural Network in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.159}{\csname a:TocLink\endcsname{1}{x1-82008159}{}{\ignorespaces 100 day HRG Neural Network out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.160}{\csname a:TocLink\endcsname{1}{x1-82009160}{}{\ignorespaces HL Neural Network in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.161}{\csname a:TocLink\endcsname{1}{x1-82010161}{}{\ignorespaces 100 day HL Neural Network out-of-sample forecast}}{figure}\relax 
+\doTocEntry\tocsubsubsection{4.2.2.7}{\csname a:TocLink\endcsname{1}{x1-830004.2.2.7}{QQ2-1-260}{Stochastic Gradient Descent}}{78}\relax 
+\doTocEntry\toclof{4.162}{\csname a:TocLink\endcsname{1}{x1-83001162}{}{\ignorespaces MSFT SGD in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.163}{\csname a:TocLink\endcsname{1}{x1-83002163}{}{\ignorespaces 100 day MSFT SGD out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.164}{\csname a:TocLink\endcsname{1}{x1-83003164}{}{\ignorespaces CDE SGD in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.165}{\csname a:TocLink\endcsname{1}{x1-83004165}{}{\ignorespaces 100 day CDE SGD out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.166}{\csname a:TocLink\endcsname{1}{x1-83005166}{}{\ignorespaces NAVB SGD in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.167}{\csname a:TocLink\endcsname{1}{x1-83006167}{}{\ignorespaces 100 day NAVB SGD out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.168}{\csname a:TocLink\endcsname{1}{x1-83007168}{}{\ignorespaces HRG SGD in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.169}{\csname a:TocLink\endcsname{1}{x1-83008169}{}{\ignorespaces 100 day HRG SGD out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.170}{\csname a:TocLink\endcsname{1}{x1-83009170}{}{\ignorespaces HL SGD in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.171}{\csname a:TocLink\endcsname{1}{x1-83010171}{}{\ignorespaces 100 day HL SGD out-of-sample forecast}}{figure}\relax 
+\doTocEntry\tocsection{4.3}{\csname a:TocLink\endcsname{1}{x1-840004.3}{QQ2-1-271}{Bayesian Statistics}}{81}\relax 
+\doTocEntry\tocsubsection{4.3.1}{\csname a:TocLink\endcsname{1}{x1-850004.3.1}{QQ2-1-272}{Metropolis-Hastings}}{81}\relax 
+\doTocEntry\toclof{4.172}{\csname a:TocLink\endcsname{1}{x1-85001172}{}{\ignorespaces MSFT Metropolis-Hastimgs in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.173}{\csname a:TocLink\endcsname{1}{x1-85002173}{}{\ignorespaces 100 day MSFT Metropolis-Hastings out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.174}{\csname a:TocLink\endcsname{1}{x1-85003174}{}{\ignorespaces CDE Metropolis-Hastimgs in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.175}{\csname a:TocLink\endcsname{1}{x1-85004175}{}{\ignorespaces 100 day CDE Metropolis-Hastings out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.176}{\csname a:TocLink\endcsname{1}{x1-85005176}{}{\ignorespaces NAVB Metropolis-Hastimgs in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.177}{\csname a:TocLink\endcsname{1}{x1-85006177}{}{\ignorespaces 100 day NAVB Metropolis-Hastings out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.178}{\csname a:TocLink\endcsname{1}{x1-85007178}{}{\ignorespaces HRG Metropolis-Hastimgs in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.179}{\csname a:TocLink\endcsname{1}{x1-85008179}{}{\ignorespaces 100 day HRG Metropolis-Hastings out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.180}{\csname a:TocLink\endcsname{1}{x1-85009180}{}{\ignorespaces HL Metropolis-Hastimgs in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.181}{\csname a:TocLink\endcsname{1}{x1-85010181}{}{\ignorespaces 100 day HL Metropolis-Hastings out-of-sample forecast}}{figure}\relax 
+\doTocEntry\tocsubsection{4.3.2}{\csname a:TocLink\endcsname{1}{x1-860004.3.2}{QQ2-1-283}{No-U-Turn Sampler (NUTS)}}{84}\relax 
+\doTocEntry\toclof{4.182}{\csname a:TocLink\endcsname{1}{x1-86001182}{}{\ignorespaces MSFT NUTS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.183}{\csname a:TocLink\endcsname{1}{x1-86002183}{}{\ignorespaces 100 day MSFT NUTS out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.184}{\csname a:TocLink\endcsname{1}{x1-86003184}{}{\ignorespaces CDE NUTS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.185}{\csname a:TocLink\endcsname{1}{x1-86004185}{}{\ignorespaces 100 day CDE NUTS out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.186}{\csname a:TocLink\endcsname{1}{x1-86005186}{}{\ignorespaces NAVB NUTS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.187}{\csname a:TocLink\endcsname{1}{x1-86006187}{}{\ignorespaces 100 day NAVB NUTS out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.188}{\csname a:TocLink\endcsname{1}{x1-86007188}{}{\ignorespaces HRG NUTS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.189}{\csname a:TocLink\endcsname{1}{x1-86008189}{}{\ignorespaces 100 day HRG NUTS out-of-sample forecast}}{figure}\relax 
+\doTocEntry\toclof{4.190}{\csname a:TocLink\endcsname{1}{x1-86009190}{}{\ignorespaces HL NUTS in-sample prediction}}{figure}\relax 
+\doTocEntry\toclof{4.191}{\csname a:TocLink\endcsname{1}{x1-86010191}{}{\ignorespaces 100 day HL NUTS out-of-sample forecast}}{figure}\relax 
+\doTocEntry\tocsection{4.4}{\csname a:TocLink\endcsname{1}{x1-870004.4}{QQ2-1-294}{Strategy}}{87}\relax 
+\doTocEntry\tocsubsection{4.4.1}{\csname a:TocLink\endcsname{1}{x1-880004.4.1}{QQ2-1-295}{Classification}}{88}\relax 
+\doTocEntry\toclot{4.11}{\csname a:TocLink\endcsname{1}{x1-8800111}{}{\ignorespaces Machine Learning Classifier strategy with only upwards forecasts}}{table}\relax 
+\doTocEntry\toclof{4.192}{\csname a:TocLink\endcsname{1}{x1-88002192}{}{\ignorespaces Machine Learning Classifier strategy with only upwards forecasts}}{figure}\relax 
+\doTocEntry\toclot{4.12}{\csname a:TocLink\endcsname{1}{x1-8800312}{}{\ignorespaces Machine Learning Classifier strategy with upwarda and downwards forecasts}}{table}\relax 
+\doTocEntry\toclof{4.193}{\csname a:TocLink\endcsname{1}{x1-88004193}{}{\ignorespaces Machine Learning Classifier strategy with upwards and downwards forecasts}}{figure}\relax 
+\doTocEntry\tocsubsection{4.4.2}{\csname a:TocLink\endcsname{1}{x1-890004.4.2}{QQ2-1-300}{Regression}}{89}\relax 
+\doTocEntry\toclot{4.13}{\csname a:TocLink\endcsname{1}{x1-8900113}{}{\ignorespaces Machine Learning Regression strategy with only upwards forecasts}}{table}\relax 
+\doTocEntry\toclof{4.194}{\csname a:TocLink\endcsname{1}{x1-89002194}{}{\ignorespaces Machine Learning Regression strategy with only upwards forecasts}}{figure}\relax 
+\doTocEntry\toclot{4.14}{\csname a:TocLink\endcsname{1}{x1-8900314}{}{\ignorespaces Machine Learning Regression strategy with upwards and downwards forecasts}}{table}\relax 
+\doTocEntry\toclof{4.195}{\csname a:TocLink\endcsname{1}{x1-89004195}{}{\ignorespaces Machine Learning Regression strategy with upwards and downwards forecasts}}{figure}\relax 
+\doTocEntry\tocchapter{5}{\csname a:TocLink\endcsname{1}{x1-900005}{QQ2-1-305}{Discussion and Suggestions for Future Research}}{91}\relax 
+\doTocEntry\tocsection{5.1}{\csname a:TocLink\endcsname{1}{x1-910005.1}{QQ2-1-306}{Time Series Analysis}}{91}\relax 
+\doTocEntry\tocsubsection{5.1.1}{\csname a:TocLink\endcsname{1}{x1-920005.1.1}{QQ2-1-307}{Random Walk}}{91}\relax 
+\doTocEntry\tocsubsection{5.1.2}{\csname a:TocLink\endcsname{1}{x1-930005.1.2}{QQ2-1-308}{Ordinary Least Squares (OLS)}}{91}\relax 
+\doTocEntry\tocsubsection{5.1.3}{\csname a:TocLink\endcsname{1}{x1-940005.1.3}{QQ2-1-309}{Auto Regressive (AR)}}{91}\relax 
+\doTocEntry\tocsubsection{5.1.4}{\csname a:TocLink\endcsname{1}{x1-950005.1.4}{QQ2-1-310}{Moving Average (MA)}}{92}\relax 
+\doTocEntry\tocsubsection{5.1.5}{\csname a:TocLink\endcsname{1}{x1-960005.1.5}{QQ2-1-311}{Auto Regressive Moving Average (ARMA)}}{92}\relax 
+\doTocEntry\tocsubsection{5.1.6}{\csname a:TocLink\endcsname{1}{x1-970005.1.6}{QQ2-1-312}{Auto Regressive Integrated Moving Average (ARIMA)}}{92}\relax 
+\doTocEntry\tocsection{5.2}{\csname a:TocLink\endcsname{1}{x1-980005.2}{QQ2-1-313}{Machine Learning}}{93}\relax 
+\doTocEntry\tocsubsection{5.2.1}{\csname a:TocLink\endcsname{1}{x1-990005.2.1}{QQ2-1-314}{Classification}}{93}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.1}{\csname a:TocLink\endcsname{1}{x1-1000005.2.1.1}{QQ2-1-315}{Decision Tree}}{93}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.2}{\csname a:TocLink\endcsname{1}{x1-1010005.2.1.2}{QQ2-1-316}{Boosted Decision Tree}}{93}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.3}{\csname a:TocLink\endcsname{1}{x1-1020005.2.1.3}{QQ2-1-317}{Support Vector Machine (SVM)}}{93}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.4}{\csname a:TocLink\endcsname{1}{x1-1030005.2.1.4}{QQ2-1-318}{Random Forest}}{94}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.5}{\csname a:TocLink\endcsname{1}{x1-1040005.2.1.5}{QQ2-1-319}{K-Nearest Neighbour}}{94}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.6}{\csname a:TocLink\endcsname{1}{x1-1050005.2.1.6}{QQ2-1-320}{Logistic Regression}}{94}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.7}{\csname a:TocLink\endcsname{1}{x1-1060005.2.1.7}{QQ2-1-321}{Bernoulli Naive Bayes}}{94}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.8}{\csname a:TocLink\endcsname{1}{x1-1070005.2.1.8}{QQ2-1-322}{Gaussian Naive Bayes}}{94}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.9}{\csname a:TocLink\endcsname{1}{x1-1080005.2.1.9}{QQ2-1-323}{Neural Network}}{95}\relax 
+\doTocEntry\tocsubsubsection{5.2.1.10}{\csname a:TocLink\endcsname{1}{x1-1090005.2.1.10}{QQ2-1-324}{Stochastic Gradient Descent}}{95}\relax 
+\doTocEntry\tocsubsection{5.2.2}{\csname a:TocLink\endcsname{1}{x1-1100005.2.2}{QQ2-1-325}{Regression}}{95}\relax 
+\doTocEntry\tocsubsubsection{5.2.2.1}{\csname a:TocLink\endcsname{1}{x1-1110005.2.2.1}{QQ2-1-326}{Decision Tree}}{95}\relax 
+\doTocEntry\tocsubsubsection{5.2.2.2}{\csname a:TocLink\endcsname{1}{x1-1120005.2.2.2}{QQ2-1-327}{Boosted Decision Tree}}{95}\relax 
+\doTocEntry\tocsubsubsection{5.2.2.3}{\csname a:TocLink\endcsname{1}{x1-1130005.2.2.3}{QQ2-1-328}{K-Nearest Neighbour}}{96}\relax 
+\doTocEntry\tocsubsubsection{5.2.2.4}{\csname a:TocLink\endcsname{1}{x1-1140005.2.2.4}{QQ2-1-329}{Random Forest}}{96}\relax 
+\doTocEntry\tocsubsubsection{5.2.2.5}{\csname a:TocLink\endcsname{1}{x1-1150005.2.2.5}{QQ2-1-330}{Linear Regression}}{96}\relax 
+\doTocEntry\tocsubsubsection{5.2.2.6}{\csname a:TocLink\endcsname{1}{x1-1160005.2.2.6}{QQ2-1-331}{Neural Network}}{96}\relax 
+\doTocEntry\tocsubsubsection{5.2.2.7}{\csname a:TocLink\endcsname{1}{x1-1170005.2.2.7}{QQ2-1-332}{Stochastic Gradient Descent}}{97}\relax 
+\doTocEntry\tocsection{5.3}{\csname a:TocLink\endcsname{1}{x1-1180005.3}{QQ2-1-333}{Bayesian Statistics}}{97}\relax 
+\doTocEntry\tocsubsubsection{5.3.0.1}{\csname a:TocLink\endcsname{1}{x1-1190005.3.0.1}{QQ2-1-334}{Metropolis-Hastings}}{97}\relax 
+\doTocEntry\tocsubsubsection{5.3.0.2}{\csname a:TocLink\endcsname{1}{x1-1200005.3.0.2}{QQ2-1-335}{No-U-Turn-Sampler (NUTS)}}{97}\relax 
+\doTocEntry\tocsection{5.4}{\csname a:TocLink\endcsname{1}{x1-1210005.4}{QQ2-1-336}{Strategy}}{98}\relax 
+\doTocEntry\tocsubsection{5.4.1}{\csname a:TocLink\endcsname{1}{x1-1220005.4.1}{QQ2-1-337}{Classification}}{98}\relax 
+\doTocEntry\tocsubsection{5.4.2}{\csname a:TocLink\endcsname{1}{x1-1230005.4.2}{QQ2-1-338}{Regression}}{98}\relax 
+\doTocEntry\tocchapter{6}{\csname a:TocLink\endcsname{1}{x1-1240006}{QQ2-1-339}{Conclusion}}{99}\relax 
+\doTocEntry\tocappendix{A}{\csname a:TocLink\endcsname{1}{x1-125000A}{QQ2-1-340}{An Appendix}}{100}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-341}{}{Bibliography}}{102}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-1260007}{QQ2-1-342}{Bibliography}}{103}\relax 
 \par 

@@ -4,56 +4,56 @@ The top-level auxiliary file: Thesis.aux
 The style file: unsrtnat.bst
 Database file #1: Bibliography.bib
 Warning--entry type for "Gamba:2003aa" isn't style-file defined
---line 19 of file Bibliography.bib
-Warning--entry type for "Blanchett:2013aa" isn't style-file defined
 --line 28 of file Bibliography.bib
-Warning--entry type for "Andersen:2007aa" isn't style-file defined
+Warning--entry type for "Blanchett:2013aa" isn't style-file defined
 --line 37 of file Bibliography.bib
-Warning--entry type for "Darrat:2001aa" isn't style-file defined
+Warning--entry type for "Andersen:2007aa" isn't style-file defined
 --line 46 of file Bibliography.bib
+Warning--entry type for "Darrat:2001aa" isn't style-file defined
+--line 55 of file Bibliography.bib
 Warning--entry type for "Murugesan:2012aa" isn't style-file defined
---line 131 of file Bibliography.bib
-Warning--entry type for "Kumar:2016aa" isn't style-file defined
 --line 140 of file Bibliography.bib
-You've used 17 entries,
+Warning--entry type for "Kumar:2016aa" isn't style-file defined
+--line 149 of file Bibliography.bib
+You've used 18 entries,
             2481 wiz_defined-function locations,
-            653 strings with 6831 characters,
-and the built_in function-call counts, 5184 in all, are:
-= -- 401
-> -- 249
-< -- 13
-+ -- 104
-- -- 70
-* -- 325
-:= -- 826
-add.period$ -- 45
-call.type$ -- 17
-change.case$ -- 30
-chr.to.int$ -- 17
-cite$ -- 17
-duplicate$ -- 292
-empty$ -- 530
-format.name$ -- 101
-if$ -- 1109
+            659 strings with 7036 characters,
+and the built_in function-call counts, 5487 in all, are:
+= -- 427
+> -- 264
+< -- 14
++ -- 110
+- -- 74
+* -- 343
+:= -- 876
+add.period$ -- 48
+call.type$ -- 18
+change.case$ -- 32
+chr.to.int$ -- 18
+cite$ -- 18
+duplicate$ -- 310
+empty$ -- 558
+format.name$ -- 108
+if$ -- 1174
 int.to.chr$ -- 1
-int.to.str$ -- 18
-missing$ -- 15
-newline$ -- 87
-num.names$ -- 51
-pop$ -- 187
+int.to.str$ -- 19
+missing$ -- 16
+newline$ -- 92
+num.names$ -- 54
+pop$ -- 194
 preamble$ -- 1
-purify$ -- 17
+purify$ -- 18
 quote$ -- 0
-skip$ -- 188
+skip$ -- 201
 stack$ -- 0
-substring$ -- 86
-swap$ -- 41
+substring$ -- 88
+swap$ -- 43
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 107
+type$ -- 114
 warning$ -- 0
-while$ -- 37
+while$ -- 39
 width$ -- 0
-write$ -- 202
+write$ -- 215
 (There were 6 warnings)

@@ -18,7 +18,7 @@ from matplotlib import pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import Imputer
 from zipline.algorithm import TradingAlgorithm
-from zipline.api import record, order_target_percent, symbol, get_datetime
+from zipline.api import order_target_percent, symbol
 
 import functions as fc
 
@@ -47,7 +47,6 @@ class MachineLearningClassifier(TradingAlgorithm):
         # Stores recent close prices
         self.recent_close_price = OrderedDict()
 
-        self.invested = OrderedDict()
         self.sma2_result = OrderedDict()
         self.sma3_result = OrderedDict()
         self.sma4_result = OrderedDict()
@@ -64,7 +63,6 @@ class MachineLearningClassifier(TradingAlgorithm):
             self.sma5_result[security] = []
             self.sma6_result[security] = []
             self.result[security] = []
-            self.invested[security] = False
 
         # initialise the model
         self.imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
@@ -81,15 +79,13 @@ class MachineLearningClassifier(TradingAlgorithm):
             self.recent_close_price[security].append(data.current(symbol(security), 'close'))
 
             if np.isnan(self.recent_open_price[security]).any():
-                print('Warning: NaN found in', security, 'open at {}. Replacing with the mean value.'.format(
-                    pd.Timestamp(get_datetime()).tz_convert('US/Eastern')))
+                log.info('Warning: NaN found in {} open. Replacing with the mean value.'.format(security))
                 # replace missing values
                 self.recent_close_price[security] = fc.flatten_list(
                     self.imp.fit_transform(self.recent_close_price[security]).tolist())
 
             if np.isnan(self.recent_open_price[security]).any():
-                print('Warning: NaN found in', security, 'close at {}. Replacing with the mean value.'.format(
-                    pd.Timestamp(get_datetime()).tz_convert('US/Eastern')))
+                log.info('Warning: NaN found in {} close. Replacing with the mean value.'.format(security))
                 # replace missing values
                 self.recent_open_price[security] = fc.flatten_list(
                     self.imp.fit_transform(self.recent_open_price[security]).tolist())
@@ -135,8 +131,8 @@ class MachineLearningClassifier(TradingAlgorithm):
             Y = self.result[security]
 
             # limit trading frequency
-            if len(self.recent_close_price[security]) % self.trading_freq != 0.0:
-                continue
+            #if len(self.recent_close_price[security]) % self.trading_freq != 0.0:
+                #continue
 
             # there needs to be enough data points to make a good model
             if len(Y) <= self.data_points:
@@ -152,18 +148,16 @@ class MachineLearningClassifier(TradingAlgorithm):
             allocation = 1 / len(self.securities)
 
             # if prediction = 1
-            if pred:
-                # check if we don't currently hold a position
-                if not self.invested[security]:
-                    order_target_percent(asset=symbol(security), target=allocation)
-                    self.invested[security] = True
-            # if prediction = 0
-            else:
-                # check if we currently hold a position
-                if self.invested[security]:
-                    order_target_percent(asset=symbol(security), target=-allocation)
-                    self.invested[security] = False
+            if not pred:
+                continue
 
+            # check if we don't currently hold a position
+            if self.portfolio.positions[symbol(security)].amount:
+                continue
+
+            order_target_percent(asset=symbol(security), target=allocation)
+            order_target_percent(asset=symbol(security), target=-allocation,
+                                 stop_price=self.recent_close_price[security][-1] * 0.80)
 
 if __name__ == '__main__':
     """ 
@@ -249,6 +243,22 @@ if __name__ == '__main__':
     # get the returns, positions, and transactions from the zipline backtest object
     returns, positions, transactions = pf.utils.extract_rets_pos_txn_from_zipline(results)
 
+    print("Machine Learning Classifier strategy results\n"
+          "-------------\n"
+          "Total capital used: {:.2f}\n"
+          "Sharpe Ratio: {:.3f}\n"
+          "Portfolio Value: {:.3f}\n"
+          "Algorithm Period Return: {:.3f}\n"
+          "Benchmark Period Return: {:.3f}\n"
+          "Algorithm Volatility: {:.3f}\n"
+          "Benchmark Volatility: {:.3f}".format(-results.capital_used.sum(),
+                                                results.sharpe[-1],
+                                                results.portfolio_value[-1],
+                                                results.algorithm_period_return[-1],
+                                                results.benchmark_period_return[-1],
+                                                results.algo_volatility[-1],
+                                                results.benchmark_volatility[-1]))
+
     # plot the portfolio value against the benchmark
     fig = plt.figure()
     ax1 = fig.add_subplot(211)
@@ -260,4 +270,5 @@ if __name__ == '__main__':
     ax1.legend(['^GSPC'])
     ax2.legend(['Portfolio'])
     fig.tight_layout()
+    fig.show()
     fig.savefig('charts/MLC-Portfolio-Benchmark-{}.png'.format(strftime("%Y-%m-%d-%H:%M:%S", gmtime())))

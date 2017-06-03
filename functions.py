@@ -1,3 +1,11 @@
+"""
+Module Docstring
+"""
+
+__author__ = "Gabriel Gauci Maistre"
+__version__ = "0.1.0"
+__license__ = "MIT"
+
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
@@ -176,7 +184,28 @@ def get_percentage_difference(first, last):
 
 
 def flatten_list(l):
+    """
+    flattens a list of lists
+    :param l:
+    :return:
+    """
     return [item for sublist in l for item in sublist]
+
+
+def get_sharpe_ratio(returns, N=252):
+    """
+    Calculate the annualised Sharpe ratio of a returns stream
+    based on a number of trading periods, N. N defaults to 252,
+    which then assumes a stream of daily returns.
+
+    The function assumes that the returns are the excess of
+    those compared to a benchmark.
+    """
+
+    # Assume an average annual risk-free rate over the period of 5%
+    excess_daily_ret = returns - 0.05 / 252
+
+    return np.sqrt(N) * np.mean(excess_daily_ret) / np.std(excess_daily_ret)
 
 
 def plot_end_of_day(df, stocks=None, title=None, xlabel=None, ylabel=None, legend=None, save=False):

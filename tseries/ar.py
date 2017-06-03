@@ -17,13 +17,13 @@ from statsmodels.tsa.ar_model import AR
 import functions as fc
 
 
-def main(tickers=['AAPL'], n_steps=21):
+def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
     data = OrderedDict()
     pred_data = OrderedDict()
     forecast_data = OrderedDict()
 
     for ticker in tickers:
-        data[ticker] = fc.get_time_series(ticker)[-500:]
+        data[ticker] = fc.get_time_series(ticker, start, end)
 
         # log_returns
         data[ticker]['log_returns'] = np.log(data[ticker]['adj_close'] / data[ticker]['adj_close'].shift(1))
@@ -121,6 +121,9 @@ def main(tickers=['AAPL'], n_steps=21):
         pred_results = pd.DataFrame(data=dict(original=test['log_returns'],
                                               prediction=pred_data[ticker].values),
                                     index=test.index)
+
+        print('{} Original Sharpe Ratio:'.format(ticker), fc.get_sharpe_ratio(returns=pred_results['original']))
+        print('{} Prediction Sharpe Ratio:'.format(ticker), fc.get_sharpe_ratio(returns=pred_results['prediction']))
 
         # prediction plot
         fig = plt.figure()

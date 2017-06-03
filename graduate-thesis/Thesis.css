@@ -17,13 +17,13 @@
 .cmbx-10x-x-109{ font-weight: bold;}
 .cmbx-10x-x-109{ font-weight: bold;}
 .cmtt-10x-x-109{font-family: monospace;}
+.cmsl-12x-x-120{font-size:130%;font-style: oblique;}
 .cmr-8{font-size:72%;}
 .cmmi-10x-x-109{font-style: italic;}
 .cmmi-8{font-size:72%;font-style: italic;}
 .cmsy-10x-x-109{}
 .cmsy-8{font-size:72%;}
 .cmex-10x-x-109{}
-.cmsl-12x-x-120{font-size:130%;font-style: oblique;}
 p.noindent { text-indent: 0em }
 td p.noindent { text-indent: 0em; margin-top:0em; }
 p.nopar { text-indent: 0em; }

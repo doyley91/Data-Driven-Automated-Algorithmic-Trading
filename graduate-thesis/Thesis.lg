@@ -1,6 +1,6 @@
-htfcss: cmsl font-style: oblique;
 htfcss: cmmi font-style: italic;
 htfcss: cmmib font-style: italic; font-weight: bold;
+htfcss: cmsl font-style: oblique;
 htfcss: cmtt font-family: monospace;
 htfcss: cmbx  font-weight: bold;
 htfcss: cmbxsl  font-weight: bold; font-style: oblique;
@@ -161,12 +161,6 @@ Css: div.longtable{text-align:center;}
 Css: div.verbatiminput {font-family: monospace; white-space: nowrap; }
 --- needs --- Thesis.idv[2] ==> Thesis0x.png ---
 --- needs --- Thesis.idv[4] ==> Thesis1x.png ---
---- needs --- Thesis.idv[6] ==> Thesis2x.png ---
---- needs --- Thesis.idv[7] ==> Thesis3x.png ---
---- needs --- Thesis.idv[8] ==> Thesis4x.png ---
---- needs --- Thesis.idv[9] ==> Thesis5x.png ---
---- needs --- Thesis.idv[11] ==> Thesis6x.png ---
---- needs --- Thesis.idv[12] ==> Thesis7x.png ---
 File: Figures/stocks.png
 File: Figures/MSFT-time-series.png
 File: Figures/MSFT-histogram.png
@@ -314,12 +308,16 @@ File: Figures/CDE-Linear-Regression-In-Sample-Prediction.png
 File: Figures/100-Day-CDE-Linear-Regression-Out-of-Sample-Forecast.png
 File: Figures/NAVB-Linear-Regression-In-Sample-Prediction.png
 File: Figures/100-Day-NAVB-Linear-Regression-Out-of-Sample-Forecast.png
+File: Figures/CDE-Linear-Regression-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-Linear-Regression-Out-of-Sample-Forecast.png
 File: Figures/HRG-Linear-Regression-In-Sample-Prediction.png
 File: Figures/100-Day-HRG-Linear-Regression-Out-of-Sample-Forecast.png
 File: Figures/HL-Linear-Regression-In-Sample-Prediction.png
 File: Figures/100-Day-HL-Linear-Regression-Out-of-Sample-Forecast.png
 File: Figures/MSFT-Neural-Network-In-Sample-Prediction.png
 File: Figures/100-Day-MSFT-Neural-Network-Out-of-Sample-Forecast.png
+File: Figures/CDE-Neural-Network-In-Sample-Prediction.png
+File: Figures/100-Day-CDE-Neural-Network-Out-of-Sample-Forecast.png
 File: Figures/CDE-Neural-Network-In-Sample-Prediction.png
 File: Figures/100-Day-CDE-Neural-Network-Out-of-Sample-Forecast.png
 File: Figures/NAVB-Neural-Network-In-Sample-Prediction.png
@@ -338,16 +336,6 @@ File: Figures/HRG-SGD-In-Sample-Prediction.png
 File: Figures/100-Day-HRG-SGD-Out-of-Sample-Forecast.png
 File: Figures/HL-SGD-In-Sample-Prediction.png
 File: Figures/100-Day-HL-SGD-Out-of-Sample-Forecast.png
-File: Figures/MSFT-NUTS-In-Sample-Returns-Prediction.png
-File: Figures/100-Day-MSFT-NUTS-Out-of-Sample-Returns-Forecast.png
-File: Figures/CDE-NUTS-In-Sample-Returns-Prediction.png
-File: Figures/100-Day-CDE-NUTS-Out-of-Sample-Returns-Forecast.png
-File: Figures/NAVB-NUTS-In-Sample-Returns-Prediction.png
-File: Figures/100-Day-NAVB-NUTS-Out-of-Sample-Returns-Forecast.png
-File: Figures/HRG-NUTS-In-Sample-Returns-Prediction.png
-File: Figures/100-Day-HRG-NUTS-Out-of-Sample-Returns-Forecast.png
-File: Figures/HL-NUTS-In-Sample-Returns-Prediction.png
-File: Figures/100-Day-HL-NUTS-Out-of-Sample-Returns-Forecast.png
 File: Figures/MSFT-Metropolis-In-Sample-Returns-Prediction.png
 File: Figures/100-Day-MSFT-Metropolis-Out-of-Sample-Returns-Forecast.png
 File: Figures/CDE-Metropolis-In-Sample-Returns-Prediction.png
@@ -358,6 +346,20 @@ File: Figures/HRG-Metropolis-In-Sample-Returns-Prediction.png
 File: Figures/100-Day-HRG-Metropolis-Out-of-Sample-Returns-Forecast.png
 File: Figures/HL-Metropolis-In-Sample-Returns-Prediction.png
 File: Figures/100-Day-HL-Metropolis-Out-of-Sample-Returns-Forecast.png
+File: Figures/MSFT-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-MSFT-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/CDE-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-CDE-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/NAVB-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-NAVB-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/HRG-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-HRG-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/HL-NUTS-In-Sample-Returns-Prediction.png
+File: Figures/100-Day-HL-NUTS-Out-of-Sample-Returns-Forecast.png
+File: Figures/MLC-Portfolio-Benchmark-Up.png
+File: Figures/MLC-Portfolio-Benchmark-Up-and-Down.png
+File: Figures/MLR-Portfolio-Benchmark-Up.png
+File: Figures/MLR-Portfolio-Benchmark-Up-and-Down.png
 --- characters ---
 Font("cmr","10","10","109")
 Font("cmr","12","12","100")
@@ -370,10 +372,10 @@ Font("cmti","10","10","109")
 Font("cmti","12","12","172")
 Font("cmbx","10","10","109")
 Font("cmtt","10","10","109")
+Font("cmsl","12","12","120")
 Font("cmr","8","8","100")
 Font("cmmi","10","10","109")
 Font("cmmi","8","8","100")
 Font("cmsy","10","10","109")
 Font("cmsy","8","8","100")
 Font("cmex","10","10","109")
-Font("cmsl","12","12","120")

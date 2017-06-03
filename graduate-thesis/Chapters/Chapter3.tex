@@ -16,21 +16,9 @@ The first difference of the stocks were calculated abd stored in a new column in
 The series was fitted to an OLS model. The 15 day SMA was used as a nobs x k array where nobs is the number of observations and k is the number of regressors, to train the model, while the adjusted close price of the stock was used as the dependent variable for the model to predict. The mean absolute error, mean squared error, median absolute error, and r2 score were used as metrics in order to rank the performance of the model's prediction capabilities in in-sample testing.
 
 \subsection{Auto Regressive (AR)}
-The notation AR(p) indicates an autoregressive model of order p. The AR(p) model is defined as
-
-\(x_t = c+ \sum^{p}_{i=1} \varphi_iX_{t-i} + \varepsilon_t\)
-
-\(\varphi_1, \ldots, \varphi_p\) are the parameters of the model, c is a constant, and \(\varepsilon_t\) is white noise.
-
 The series was fitted to an AR(p) model with a maximum lag value of 30. The IC was used to fit the AR model in order to select the optimal lag length. No constants were passed when fitting the AR model to the series. The optimal lag for the fit of the AR model was then calculated using the same paramaeters passed when fitting the AR model.
 
 \subsection{Moving Average (MA)}
-The notation MA(p, q) indicates a moving average model of order (p, q). The MA(p, q) model is defined as
-
-\(x_t = \mu+\varepsilon_t+\sum^{q}_{i=1} \theta_i\varepsilon_{t-i}\)
-
-where the \(\theta_1, \dots, \theta_q\) are the parameters of the model, $\mu$ is the expectation of $X_t$ (often assumed to equal 0), and the \(\varepsilon_t, \varepsilon_{t-1},\dots\) are again, white noise error terms.
-
 The series was fitted to an MA(p, q) model with an order selected based on the lowest AIC. A maximum lag of 30 was once again passed to the MA model with no constant. The exact loglikelihood for the fit of the MA model was maximized via the Kalman Filter.
 
 \subsection{Auto Regressive Moving Average (ARMA)}
@@ -97,7 +85,7 @@ The model was fit to the data with the same paramaters as the Neural Network cla
 The model was fit to the data with the same paramaters as the SGD classifier.
 
 \section{Bayesian Statistics}
-The last 500 rows of the selected stocks were extracted from the data set and stored into a DataFrame. The log returns were calculated by dividing each day's adjusted close with the adjusted close of the following day, in logarithmic form. The resulting values from the said calculation were then stored in a new column in the DataFrame and all infinite values were dropped from the series.
+The last 500 rows of the selected stocks were extracted from the data set and stored into a DataFrame. The log returns were calculated by dividing each day's adjusted close with the adjusted close of the following day, in logarithmic form. The resulting values from the said calculation were then stored in a new column in the DataFrame and all infinite values were dropped from the series. The sharpe ratio of the original and predicted price returns was calculated to serve as an accuracy score in the in-sample tests.
 
 \subsection{No-U-Turn Sampler (NUTS)}
 The model returns were modeled with a Student-t distribution with an unknown degrees of freedom paramater, and a scale paramater determined by a latent process. 

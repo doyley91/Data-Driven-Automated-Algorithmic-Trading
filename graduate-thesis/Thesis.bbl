@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{18}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -96,5 +96,11 @@ David Blanchett, Michael~S. Finke, and Wade~D. Pfau.
 \bibitem[Gamba(2003)]{Gamba:2003aa}
 Andrea Gamba.
 \newblock Real options valuation: A monte carlo approach, 2003.
+
+\bibitem[Hoffman and Gelman(2014)]{Matthew-D.-Hoffman:2014aa}
+Matthew~D. Hoffman and Andrew Gelman.
+\newblock The no-u-turn sampler: Adaptively setting path lengths in hamiltonian
+  monte carlo.
+\newblock \emph{Journal of Machine Learning Research}, 15, 2014.
 
 \end{thebibliography}

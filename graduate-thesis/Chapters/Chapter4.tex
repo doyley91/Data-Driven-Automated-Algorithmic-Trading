@@ -7,6 +7,24 @@ For the purpose of bencharking the performance of the algorithms, a total of fiv
     \label{fig:nonfloat}
 \end{center}
 
+\begin{center}
+    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
+    \hline
+     & MSFT & CDE & NAVB & HRG & HL \\ \hline
+    Mean & 16.983 & 57.716 & 3.000 & 13.328 & 7.154 \\ \hline
+    Median & 18.656 & 36.700 & 1.250 & 7.190 & 6.196 \\ \hline
+    Maximum & 63.620 & 213.178 & 22.000 & 89.340 & 23.830 \\ \hline
+    Minimum & 0.061 & 1.730 & 0.080 & 1.725 & 0.486 \\ \hline
+    Variance & 204.707 & 2807.852 & 18.445 & 249.105 & 18.445 \\ \hline
+    Standard Deviation & 14.308 & 52.989 & 4.29 & 15.783 & 4.295 \\ \hline
+    Skewness & 0.716 & 0.918 & 2.213 & 2.708 & 0.651 \\ \hline
+    Kurtosis & 0.250 & -0.550 & 4.193 & 6.865 & -0.081 \\ \hline
+    \hline
+    \end{tabular}
+    \captionof{table}{Equities Descriptive Statistics}
+    \label{table:nonfloat}
+\end{center}
+
 \section{Time Series Analysis}
 
 \subsection{Random Walk}
@@ -147,6 +165,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
 
 \subsection{Auto Regressive (AR)}
 
+MSFT scored sharpe ratios of 1.152 for the original returns, and -34.641 for the predicted returns in the in-sample test.
+
 \begin{center}  
     \includegraphics[width=\textwidth]{MSFT-AR-time-series.png}
     \captionof{figure}{MSFT AR time series analysis}
@@ -170,6 +190,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{figure}{100 day MSFT AR in-sample returns forecast}
     \label{fig:nonfloat}
 \end{center}
+
+CDE scored sharpe ratios of -1.050 for the original returns, and -0.239 for the predicted returns in the in-sample test.
 
 \begin{center}
     \includegraphics[width=\textwidth]{CDE-AR-time-series.png}
@@ -195,6 +217,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \label{fig:nonfloat}
 \end{center}
 
+NAVB scored sharpe ratios of -0.410 for the original returns, and 0.124 for the predicted returns in the in-sample test.
+
 \begin{center}
     \includegraphics[width=\textwidth]{NAVB-AR-time-series.png}
     \captionof{figure}{NAVB AR time series analysis}
@@ -218,6 +242,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{figure}{100 day NAVB AR in-sample returns forecast}
     \label{fig:nonfloat}
 \end{center}
+
+HRG scored sharpe ratios of 0.627 for the original returns, and -2.603 for the predicted returns in the in-sample test.
 
 \begin{center}  
     \includegraphics[width=\textwidth]{HRG-AR-time-series.png}
@@ -243,6 +269,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{figure}{100 day HRG AR in-sample returns forecast}
     \label{fig:nonfloat}
 \end{center}
+
+HL scored sharpe ratios of 0.695 for the original returns, and -1.880 for the predicted returns in the in-sample test.
 
 \begin{center}  
     \includegraphics[width=\textwidth]{HL-AR-time-series.png}
@@ -272,6 +300,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
 
 \subsection{Moving Average (MA)}
 
+MSFT scored sharpe ratios of 0.358 for the original returns, and -5.610 for the predicted returns in the in-sample test.
+
 \begin{center}
     \includegraphics[width=\textwidth]{MSFT-MA-time-series.png}
   \captionof{figure}{MSFT MA time series analysis}
@@ -295,6 +325,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{figure}{100 day MSFT MA in-sample returns forecast}
     \label{fig:nonfloat}
 \end{center}
+
+CDE scored sharpe ratios of -0.199 for the original returns, and -0.760 for the predicted returns in the in-sample test.
 
 \begin{center}
     \includegraphics[width=\textwidth]{CDE-MA-time-series.png}
@@ -320,6 +352,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \label{fig:nonfloat}
 \end{center}
 
+NAVB scored sharpe ratios of -0.067 for the original returns, and 0.590 for the predicted returns in the in-sample test.
+
 \begin{center}  
     \includegraphics[width=\textwidth]{NAVB-MA-time-series.png}
     \captionof{figure}{NAVB MA time series analysis}
@@ -344,6 +378,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \label{fig:nonfloat}
 \end{center}
 
+HRG scored sharpe ratios of 0.084 for the original returns, and -1.020 for the predicted returns in the in-sample test.
+
 \begin{center}  
     \includegraphics[width=\textwidth]{HRG-MA-time-series.png}
     \captionof{figure}{HRG MA time series analysis}
@@ -367,6 +403,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{figure}{100 day HRG MA in-sample returns forecast}
     \label{fig:nonfloat}
 \end{center}
+
+HL scored sharpe ratios of -0.128 for the original returns, and -0.977 for the predicted returns in the in-sample test.
 
 \begin{center}
     \includegraphics[width=\textwidth]{HL-MA-time-series.png}
@@ -394,6 +432,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
 
 \subsection{Auto Regressive Moving Average (ARMA)}
 
+HL scored sharpe ratios of 0.537 for the original returns, and -6.485 for the predicted returns in the in-sample test.
+
 \begin{center}  
     \includegraphics[width=\textwidth]{MSFT-ARMA-time-series.png}
     \captionof{figure}{MSFT ARMA time series analysis}
@@ -417,6 +457,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{figure}{100 day MSFT ARMA in-sample returns forecast}
     \label{fig:nonfloat}
 \end{center}
+
+MSFT scored sharpe ratios of -0.128 for the original returns, and -0.977 for the predicted returns in the in-sample test.
 
 \begin{center}
     \includegraphics[width=\textwidth]{CDE-ARMA-time-series.png}
@@ -442,6 +484,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \label{fig:nonfloat}
 \end{center}
 
+CDE scored sharpe ratios of -0.245 for the original returns, and -0.614 for the predicted returns in the in-sample test.
+
 \begin{center}  
     \includegraphics[width=\textwidth]{NAVB-ARMA-time-series.png}
     \captionof{figure}{NAVB ARMA time series analysis}
@@ -466,6 +510,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \label{fig:nonfloat}
 \end{center}
 
+NAVB scored sharpe ratios of -0.032 for the original returns, and -0.641 for the predicted returns in the in-sample test.
+
 \begin{center}
     \includegraphics[width=\textwidth]{HRG-ARMA-time-series.png}
     \captionof{figure}{HRG ARMA time series analysis}
@@ -489,6 +535,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{figure}{100 day HRG ARMA in-sample returns forecast}
     \label{fig:nonfloat}
 \end{center}
+
+HL scored sharpe ratios of 0.111 for the original returns, and -1.023 for the predicted returns in the in-sample test.
 
 \begin{center}
   
@@ -517,6 +565,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
 
 \subsection{Auto Regressive Integrated Moving Average (ARIMA)}
 
+MSFT scored sharpe ratios of 0.123 for the original returns, and -4.904 for the predicted returns in the in-sample test.
+
 \begin{center}  
     \includegraphics[width=\textwidth]{MSFT-ARIMA-time-series.png}
     \captionof{figure}{MSFT ARIMA time series analysis}
@@ -540,6 +590,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{figure}{100 day MSFT ARIMA in-sample returns forecast}
     \label{fig:nonfloat}
 \end{center}
+
+CDE scored sharpe ratios of -0.133 for the original returns, and -0.698 for the predicted returns in the in-sample test.
 
 \begin{center}
     \includegraphics[width=\textwidth]{CDE-ARIMA-time-series.png}
@@ -565,6 +617,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \label{fig:nonfloat}
 \end{center}
 
+NAVB scored sharpe ratios of 0.015 for the original returns, and -0.708 for the predicted returns in the in-sample test.
+
 \begin{center}  
     \includegraphics[width=\textwidth]{NAVB-ARIMA-time-series.png}
     \captionof{figure}{NAVB ARIMA time series analysis}
@@ -589,6 +643,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \label{fig:nonfloat}
 \end{center}
 
+HRG scored sharpe ratios of 0.401 for the original returns, and -1.354 for the predicted returns in the in-sample test.
+
 \begin{center}
     \includegraphics[width=\textwidth]{HRG-ARIMA-time-series.png}
     \captionof{figure}{HRG ARIMA time series analysis}
@@ -612,6 +668,8 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{figure}{100 day HRG ARIMA in-sample returns forecast}
     \label{fig:nonfloat}
 \end{center}
+
+HL scored sharpe ratios of -0.127 for the original returns, and -0.974 for the predicted returns in the in-sample test.
 
 \begin{center}
     \includegraphics[width=\textwidth]{HL-ARIMA-time-series.png}
@@ -726,6 +784,23 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \label{table:nonfloat}
 \end{center}
 
+\subsubsection{Logistic Regression}
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
+    \hline
+    Ticker & Precision & True Negatives & False Negatives & True Positives & False Positives \\ \hline
+    MSFT & 0.77 & 493 & 130 & 548 & 190 \\ \hline
+    CDE & 0.79 & 564 & 143 & 505 & 134 \\ \hline
+    NAVB & 0.76 & 588 & 164 & 332 & 130 \\ \hline
+    HRG & 0.75 & 542 & 191 & 481 & 146 \\ \hline
+    HL & 0.79 & 601 & 132 & 478 & 149 \\
+    \hline
+    \end{tabular}
+    \captionof{table}{Logistic Regression results}
+    \label{table:nonfloat}
+\end{center}
+
 \subsubsection{Gaussian Naive Bayes}
 
 \begin{center}
@@ -776,25 +851,6 @@ HL scored a mean absolute error regression loss of 0.336, and a coefficient of d
     \captionof{table}{Neural Network results}
     \label{table:nonfloat}
 \end{center}
-
-\subsubsection{Logistic Regression}
-
-\begin{center}
-    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
-    \hline
-    Ticker & Precision & True Negatives & False Negatives & True Positives & False Positives \\ \hline
-    MSFT & 0.77 & 493 & 130 & 548 & 190 \\ \hline
-    CDE & 0.79 & 564 & 143 & 505 & 134 \\ \hline
-    NAVB & 0.76 & 588 & 164 & 332 & 130 \\ \hline
-    HRG & 0.75 & 542 & 191 & 481 & 146 \\ \hline
-    HL & 0.79 & 601 & 132 & 478 & 149 \\
-    \hline
-    \end{tabular}
-    \captionof{table}{Logistic Regression results}
-    \label{table:nonfloat}
-\end{center}
-
-
 
 \subsubsection{Stochastic Gradient Descent}
 
@@ -881,7 +937,7 @@ HL scored a mean absolute error regression loss of 0.506, and a coefficient of d
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-MSFT-Decision-Trees-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-HL-Decision-Trees-Out-of-Sample-Forecast.png}
     \captionof{figure}{100 day HL Decision Trees out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
@@ -890,13 +946,13 @@ HL scored a mean absolute error regression loss of 0.506, and a coefficient of d
 MSFT scored a mean absolute error regression loss of 4.426, and a coefficient of determination of 0.580.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{MSFT-Boosted-Decision-Trees-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{MSFT-Boosted-Trees-In-Sample-Prediction.png}
     \captionof{figure}{MSFT Boosted Decision Trees in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-MSFT-Boosted-Decision-Trees-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-MSFT-Boosted-Trees-Out-of-Sample-Forecast.png}
     \captionof{figure}{100 day MSFT Boosted Decision Trees out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
@@ -904,13 +960,13 @@ MSFT scored a mean absolute error regression loss of 4.426, and a coefficient of
 CDE scored a mean absolute error regression loss of 5.452, and a coefficient of determination of 0.581.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{CDE-Boosted-Decision-Trees-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{CDE-Boosted-Trees-In-Sample-Prediction.png}
     \captionof{figure}{CDE Boosted Decision Trees in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-CDE-Boosted-Decision-Trees-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-CDE-Boosted-Trees-Out-of-Sample-Forecast.png}
     \captionof{figure}{100 day CDE Boosted Decision Trees out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
@@ -918,13 +974,13 @@ CDE scored a mean absolute error regression loss of 5.452, and a coefficient of 
 NAVB scored a mean absolute error regression loss of 0.579, and a coefficient of determination of 0.509.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{NAVB-Boosted-Decision-Trees-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{NAVB-Boosted-Trees-In-Sample-Prediction.png}
     \captionof{figure}{NAVB Boosted Decision Trees in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-NAVB-Boosted-Decision-Trees-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-NAVB-Boosted-Trees-Out-of-Sample-Forecast.png}
     \captionof{figure}{100 day NAVB Boosted Decision Trees out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
@@ -932,13 +988,13 @@ NAVB scored a mean absolute error regression loss of 0.579, and a coefficient of
 HRG scored a mean absolute error regression loss of 0.980, and a coefficient of determination of 0.855.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{HRG-Boosted-Decision-Trees-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{HRG-Boosted-Trees-In-Sample-Prediction.png}
     \captionof{figure}{HRG Boosted Decision Trees in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-HRG-Boosted-Decision-Trees-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-HRG-Boosted-Trees-Out-of-Sample-Forecast.png}
     \captionof{figure}{100 day HRG Boosted Decision Trees out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
@@ -946,13 +1002,13 @@ HRG scored a mean absolute error regression loss of 0.980, and a coefficient of 
 HL scored a mean absolute error regression loss of 0.410, and a coefficient of determination of 0.952.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{HL-Boosted-Decision-Trees-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{HL-Boosted-Trees-In-Sample-Prediction.png}
     \captionof{figure}{HL Boosted Decision Trees in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-HL-Boosted-Decision-Trees-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-HL-Boosted-Trees-Out-of-Sample-Forecast.png}
     \captionof{figure}{100 day HL Boosted Decision Trees out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
@@ -1322,157 +1378,145 @@ HL scored a mean absolute error regression loss of 0.275, and a coefficient of d
 
 \section{Bayesian Statistics}
 
-\subsection{No-U-Turn Sampler (NUTS)}
-MSFT scored a mean absolute error regression loss of 5.606, and a coefficient of determination of 0.458.
-
-\begin{center}
-    \includegraphics[width=\textwidth]{MSFT-NUTS-In-Sample-Prediction.png}
-    \captionof{figure}{MSFT NUTS in-sample prediction}
-    \label{fig:nonfloat}
-\end{center}
-
-\begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-MSFT-NUTS-Out-of-Sample-Forecast.png}
-    \captionof{figure}{100 day MSFT NUTS out-of-sample forecast}
-    \label{fig:nonfloat}
-\end{center}
-
-CDE scored a mean absolute error regression loss of 2.906, and a coefficient of determination of 0.816.
-
-\includegraphics[width=\textwidth]{CDE-NUTS-In-Sample-Returns-Prediction.png}
-
-\includegraphics[width=\textwidth]{100-Day-CDE-NUTS-Out-of-Sample-Returns-Forecast.png}
-
-\begin{center}
-    \includegraphics[width=\textwidth]{MSFT-NUTS-In-Sample-Prediction.png}
-    \captionof{figure}{MSFT NUTS in-sample prediction}
-    \label{fig:nonfloat}
-\end{center}
-
-\begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-MSFT-NUTS-Out-of-Sample-Forecast.png}
-    \captionof{figure}{100 day MSFT NUTS out-of-sample forecast}
-    \label{fig:nonfloat}
-\end{center}
-
-NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of determination of 0.693.
-
-\includegraphics[width=\textwidth]{NAVB-NUTS-In-Sample-Returns-Prediction.png}
-
-\includegraphics[width=\textwidth]{100-Day-NAVB-NUTS-Out-of-Sample-Returns-Forecast.png}
-
-\begin{center}
-    \includegraphics[width=\textwidth]{NAVB-NUTS-In-Sample-Prediction.png}
-    \captionof{figure}{NAVB NUTS in-sample prediction}
-    \label{fig:nonfloat}
-\end{center}
-
-\begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-NAVB-NUTS-Out-of-Sample-Forecast.png}
-    \captionof{figure}{100 day NAVB NUTS out-of-sample forecast}
-    \label{fig:nonfloat}
-\end{center}
-
-HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
-
-\includegraphics[width=\textwidth]{HRG-NUTS-In-Sample-Returns-Prediction.png}
-
-\includegraphics[width=\textwidth]{100-Day-HRG-NUTS-Out-of-Sample-Returns-Forecast.png}
-
-\begin{center}
-    \includegraphics[width=\textwidth]{HRG-NUTS-In-Sample-Prediction.png}
-    \captionof{figure}{HRG NUTS in-sample prediction}
-    \label{fig:nonfloat}
-\end{center}
-
-\begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-HRG-NUTS-Out-of-Sample-Forecast.png}
-    \captionof{figure}{100 day HRG NUTS out-of-sample forecast}
-    \label{fig:nonfloat}
-\end{center}
-
-HL scored a mean absolute error regression loss of 0.506, and a coefficient of determination of 0.923.
-
-\begin{center}
-    \includegraphics[width=\textwidth]{HL-NUTS-In-Sample-Prediction.png}
-    \captionof{figure}{HL NUTS in-sample prediction}
-    \label{fig:nonfloat}
-\end{center}
-
-\begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-HL-NUTS-Out-of-Sample-Forecast.png}
-    \captionof{figure}{100 day HL NUTS out-of-sample forecast}
-    \label{fig:nonfloat}
-\end{center}
-
 \subsection{Metropolis-Hastings}
-MSFT scored a mean absolute error regression loss of 5.606, and a coefficient of determination of 0.458.
+MSFT scored sharpe ratios of 0.439 for the original returns, and -4.796 for the predicted returns in the in-sample test.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{MSFT-Metropolis-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{MSFT-Metropolis-In-Sample-Returns-Prediction.png}
     \captionof{figure}{MSFT Metropolis-Hastimgs in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-MSFT-Metropolis-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-MSFT-Metropolis-Out-of-Sample-Returns-Forecast.png}
     \captionof{figure}{100 day MSFT Metropolis-Hastings out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
 
-CDE scored a mean absolute error regression loss of 2.906, and a coefficient of determination of 0.816.
+CDE scored sharpe ratios of 2.028 for the original returns, and 4.075 for the predicted returns in the in-sample test.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{CDE-Metropolis-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{CDE-Metropolis-In-Sample-Returns-Prediction.png}
     \captionof{figure}{CDE Metropolis-Hastimgs in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-CDE-Metropolis-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-CDE-Metropolis-Out-of-Sample-Returns-Forecast.png}
     \captionof{figure}{100 day CDE Metropolis-Hastings out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
 
-NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of determination of 0.693.
+NAVB scored sharpe ratios of -2.800 for the original returns, and 2.998 for the predicted returns in the in-sample test.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{NAVB-Metropolis-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{NAVB-Metropolis-In-Sample-Returns-Prediction.png}
     \captionof{figure}{NAVB Metropolis-Hastimgs in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-NAVB-Metropolis-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-NAVB-Metropolis-Out-of-Sample-Returns-Forecast.png}
     \captionof{figure}{100 day NAVB Metropolis-Hastings out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
 
-HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
+HRG scored sharpe ratios of 1.362 for the original returns, and -2.173 for the predicted returns in the in-sample test.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{HRG-Metropolis-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{HRG-Metropolis-In-Sample-Returns-Prediction.png}
     \captionof{figure}{HRG Metropolis-Hastimgs in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-HRG-Metropolis-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-HRG-Metropolis-Out-of-Sample-Returns-Forecast.png}
     \captionof{figure}{100 day HRG Metropolis-Hastings out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
 
-HL scored a mean absolute error regression loss of 0.506, and a coefficient of determination of 0.923.
+HL scored sharpe ratios of 0.439 for the original returns, and -2.283 for the predicted returns in the in-sample test.
 
 \begin{center}
-    \includegraphics[width=\textwidth]{HL-Metropolis-In-Sample-Prediction.png}
+    \includegraphics[width=\textwidth]{HL-Metropolis-In-Sample-Returns-Prediction.png}
     \captionof{figure}{HL Metropolis-Hastimgs in-sample prediction}
     \label{fig:nonfloat}
 \end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{100-Day-HL-Metropolis-Out-of-Sample-Forecast.png}
+    \includegraphics[width=\textwidth]{100-Day-HL-Metropolis-Out-of-Sample-Returns-Forecast.png}
     \captionof{figure}{100 day HL Metropolis-Hastings out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsection{No-U-Turn Sampler (NUTS)}
+MSFT scored sharpe ratios of 2.499 for the original returns, and -1.355 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{MSFT-NUTS-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{MSFT NUTS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-MSFT-NUTS-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day MSFT NUTS out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+CDE scored sharpe ratios of 2.028 for the original returns, and 3.066 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-NUTS-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{CDE NUTS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-CDE-NUTS-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day CDE NUTS out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored sharpe ratios of -2.800 for the original returns, and -2.914 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-NUTS-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{NAVB NUTS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-NUTS-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day NAVB NUTS out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored sharpe ratios of 1.362 for the original returns, and -1.812 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-NUTS-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{HRG NUTS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-NUTS-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day HRG NUTS out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored sharpe ratios of 0.506 for the original returns, and 0.923 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-NUTS-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{HL NUTS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-NUTS-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day HL NUTS out-of-sample forecast}
     \label{fig:nonfloat}
 \end{center}
 
@@ -1480,18 +1524,97 @@ HL scored a mean absolute error regression loss of 0.506, and a coefficient of d
 
 \subsection{Classification}
 
-\includegraphics[width=\textwidth]{MLC-Portfolio-Benchmark.png}
+\begin{center}
+    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
+    \hline
+    
+    Starting Capital & \$100,000 \\ \hline
+    Total Capital Used & \$103,110.65 \\ \hline
+    Sharpe Ratio & 0.346 \\ \hline
+    Portfolio Value & \$149,126.306 \\ \hline
+    Algorithm Period Return & 0.491 \\ \hline
+    Benchmark Period Return & 1.008 \\ \hline
+    Algorithm Volatility & 0.272 \\ \hline
+    Benchmark Volatility & 0.156 \\
+    \hline
+    \end{tabular}
+    \captionof{table}{Machine Learning Classifier strategy with only upwards forecasts}
+    \label{table:nonfloat}
+\end{center}
 
 \begin{center}  
-    \includegraphics[width=\textwidth]{MLC-Portfolio-Benchmark.png}
-    \captionof{figure}{Machine Learning Classifier Strategy}
+    \includegraphics[width=\textwidth]{MLC-Portfolio-Benchmark-Up.png}
+    \captionof{figure}{Machine Learning Classifier strategy with only upwards forecasts}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
+    \hline
+    Starting Capital & \$100,000 \\ \hline
+    Total Capital Used & \$76,853.53 \\ \hline
+    Sharpe Ratio & -0.548 \\ \hline
+    Portfolio Value & \$20,134.519 \\ \hline
+    Algorithm Period Return & -0.799 \\ \hline
+    Benchmark Period Return & 1.008 \\ \hline
+    Algorithm Volatility & 0.323 \\ \hline
+    Benchmark Volatility & 0.156 \\
+    \hline
+    \end{tabular}
+    \captionof{table}{Machine Learning Classifier strategy with upwarda and downwards forecasts}
+    \label{table:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{MLC-Portfolio-Benchmark-Up-and-Down.png}
+    \captionof{figure}{Machine Learning Classifier strategy with upwards and downwards forecasts}
     \label{fig:nonfloat}
 \end{center}
 
 \subsection{Regression}
 
+\begin{center}
+    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
+    \hline
+    Starting Capital & \$100,000 \\ \hline
+    Total Capital Used & \$104,329.92 \\ \hline
+    Sharpe Ratio & 0.323 \\ \hline
+    Portfolio Value & \$142,962.49 \\ \hline
+    Algorithm Period Return & 0.430 \\ \hline
+    Benchmark Period Return & 1.008 \\ \hline
+    Algorithm Volatility & 0.280 \\ \hline
+    Benchmark Volatility & 0.156 \\
+    \hline
+    \end{tabular}
+    \captionof{table}{Machine Learning Regression strategy with only upwards forecasts}
+    \label{table:nonfloat}
+\end{center}
+
 \begin{center}  
-    \includegraphics[width=\textwidth]{MLR-Portfolio-Benchmark.png}
-    \captionof{figure}{Machine Learning Regression Strategy}
+    \includegraphics[width=\textwidth]{MLR-Portfolio-Benchmark-Up.png}
+    \captionof{figure}{Machine Learning Regression strategy with only upwards forecasts}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
+    \hline
+    Starting Capital & \$100,000 \\ \hline
+    Total Capital Used & \$80,121.51 \\ \hline
+    Sharpe Ratio & -0.258 \\ \hline
+    Portfolio Value & \$19,628.34 \\ \hline
+    Algorithm Period Return & -0.804 \\ \hline
+    Benchmark Period Return & 1.008 \\ \hline
+    Algorithm Volatility & 0.493 \\ \hline
+    Benchmark Volatility & 0.156 \\
+    \hline
+    \end{tabular}
+    \captionof{table}{Machine Learning Regression strategy with upwards and downwards forecasts}
+    \label{table:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{MLR-Portfolio-Benchmark-Up-and-Down.png}
+    \captionof{figure}{Machine Learning Regression strategy with upwards and downwards forecasts}
     \label{fig:nonfloat}
 \end{center}

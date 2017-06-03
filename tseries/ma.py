@@ -121,6 +121,9 @@ def main(tickers=['AAPL'], start=None, end=None, n_steps=21):
                                               prediction=pred_data[ticker].values),
                                     index=test.index)
 
+        print('{} Original Sharpe Ratio:'.format(ticker), fc.get_sharpe_ratio(returns=pred_results['original']))
+        print('{} Prediction Sharpe Ratio:'.format(ticker), fc.get_sharpe_ratio(returns=pred_results['prediction']))
+
         # prediction plot
         fig = plt.figure()
         ax = fig.add_subplot(111)
