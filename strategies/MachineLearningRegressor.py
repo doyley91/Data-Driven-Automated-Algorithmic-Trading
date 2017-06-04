@@ -18,7 +18,8 @@ from matplotlib import pyplot as plt
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import Imputer
 from zipline.algorithm import TradingAlgorithm
-from zipline.api import symbol, order_target_percent, record, get_datetime
+from zipline.api import order_target_percent
+from zipline.finance import commission
 
 import functions as fc
 
@@ -31,14 +32,13 @@ class MachineLearningRegressor(TradingAlgorithm):
         """
         self.securities = tickers
 
+        self.sids = [self.symbol(security) for security in self.securities]
+
         # there needs to be enough data points to make a good model
         self.data_points = 100
 
         # amount of prior bars to study
         self.window_length = 50
-
-        # trading frequency, days
-        self.trading_freq = 20
 
         # Use a random forest regressor
         self.mdl = RandomForestRegressor()
@@ -52,27 +52,24 @@ class MachineLearningRegressor(TradingAlgorithm):
         # initialise the model
         self.imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
 
+        self.set_commission(commission.PerShare(cost=0.013, min_trade_cost=1.3))
+
     def handle_data(self, data):
         """
         Called every minute.
         """
-        for security in self.securities:
+        for sid, security in zip(self.sids, self.securities):
             # update the recent prices
-            self.recent_prices[security].append(data.current(symbol(security), 'close'))
+            self.recent_prices[security].append(data.current(sid, 'close'))
 
             if np.isnan(self.recent_prices[security]).any():
-                print('Warning: NaN found in', security, 'close at {}. Replacing with the mean value.'.format(
-                    pd.Timestamp(get_datetime()).tz_convert('US/Eastern')))
+                log.info('Warning: NaN found in {} close. Replacing with the mean value.'.format(security))
                 # replace missing values
                 self.recent_prices[security] = fc.flatten_list(
                     self.imp.fit_transform(self.recent_prices[security]).tolist())
 
             # there needs to be enough data points to make a good model
             if len(self.recent_prices[security]) <= self.data_points:
-                continue
-
-            # limit trading frequency
-            if len(self.recent_prices[security]) % self.trading_freq != 0.0:
                 continue
 
             # stores the 15 and 50 day simple moving average
@@ -99,12 +96,13 @@ class MachineLearningRegressor(TradingAlgorithm):
                 continue
 
             # check if we don't currently hold a position
-            if self.portfolio.positions[symbol(security)].amount:
+            if self.portfolio.positions[sid].amount:
                 continue
 
-            order_target_percent(asset=symbol(security), target=allocation)
-            order_target_percent(asset=symbol(security), target=-allocation,
+            order_target_percent(asset=sid, target=allocation)
+            order_target_percent(asset=sid, target=-allocation,
                                  stop_price=self.recent_prices[security][-1] * 0.80)
+
 
 if __name__ == '__main__':
     """ 
@@ -218,4 +216,5 @@ if __name__ == '__main__':
     ax1.legend(['^GSPC'])
     ax2.legend(['Portfolio'])
     fig.tight_layout()
+    fig.show()
     fig.savefig('charts/MLR-Portfolio-Benchmark-{}.png'.format(strftime("%Y-%m-%d-%H:%M:%S", gmtime())))

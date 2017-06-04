@@ -358,8 +358,10 @@ File: Figures/HL-NUTS-In-Sample-Returns-Prediction.png
 File: Figures/100-Day-HL-NUTS-Out-of-Sample-Returns-Forecast.png
 File: Figures/MLC-Portfolio-Benchmark-Up.png
 File: Figures/MLC-Portfolio-Benchmark-Up-and-Down.png
+File: Figures/MLC-Portfolio-Benchmark-Stop-Loss.png
 File: Figures/MLR-Portfolio-Benchmark-Up.png
 File: Figures/MLR-Portfolio-Benchmark-Up-and-Down.png
+File: Figures/MLR-Portfolio-Benchmark-Stop-Loss.png
 --- characters ---
 Font("cmr","10","10","109")
 Font("cmr","12","12","100")

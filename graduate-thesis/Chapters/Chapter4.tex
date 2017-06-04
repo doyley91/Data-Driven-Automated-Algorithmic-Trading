@@ -1,5 +1,5 @@
 \chapter{Research Findings}
-For the purpose of bencharking the performance of the algorithms, a total of five stocks from the basket of uncorrelated stocks were selected. These were MSFT, CDE, NAVB, HRG, and HL. 
+For the purpose of benchmarking the performance of the algorithms, a total of five stocks from the basket of uncorrelated stocks were selected. These were MSFT, CDE, NAVB, HRG, and HL. 
 
 \begin{center}
     \includegraphics[width=\textwidth]{stocks.png}
@@ -1571,18 +1571,41 @@ HL scored sharpe ratios of 0.506 for the original returns, and 0.923 for the pre
     \label{fig:nonfloat}
 \end{center}
 
+\begin{center}
+    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
+    \hline
+    Starting Capital & \$100,000 \\ \hline
+    Total Capital Used & \$295,844.66 \\ \hline
+    Sharpe Ratio & 0.385 \\ \hline
+    Portfolio Value & \$167,474.009 \\ \hline
+    Algorithm Period Return & 0.675 \\ \hline
+    Benchmark Period Return & 1.008 \\ \hline
+    Algorithm Volatility & 0.393 \\ \hline
+    Benchmark Volatility & 0.156 \\
+    \hline
+    \end{tabular}
+    \captionof{table}{Machine Learning Classifier strategy with stop loss}
+    \label{table:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{MLC-Portfolio-Benchmark-Stop-Loss.png}
+    \captionof{figure}{Machine Learning Classifier strategy with stop loss}
+    \label{fig:nonfloat}
+\end{center}
+
 \subsection{Regression}
 
 \begin{center}
     \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
     \hline
     Starting Capital & \$100,000 \\ \hline
-    Total Capital Used & \$104,329.92 \\ \hline
-    Sharpe Ratio & 0.323 \\ \hline
-    Portfolio Value & \$142,962.49 \\ \hline
-    Algorithm Period Return & 0.430 \\ \hline
+    Total Capital Used & \$229,547.84 \\ \hline
+    Sharpe Ratio & 0.420 \\ \hline
+    Portfolio Value & \$183,714.616 \\ \hline
+    Algorithm Period Return & 0.837 \\ \hline
     Benchmark Period Return & 1.008 \\ \hline
-    Algorithm Volatility & 0.280 \\ \hline
+    Algorithm Volatility & 0.373 \\ \hline
     Benchmark Volatility & 0.156 \\
     \hline
     \end{tabular}
@@ -1616,5 +1639,28 @@ HL scored sharpe ratios of 0.506 for the original returns, and 0.923 for the pre
 \begin{center}  
     \includegraphics[width=\textwidth]{MLR-Portfolio-Benchmark-Up-and-Down.png}
     \captionof{figure}{Machine Learning Regression strategy with upwards and downwards forecasts}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | | l | l | l | p{5cm} |}
+    \hline
+    Starting Capital & \$100,000 \\ \hline
+    Total Capital Used & \$229,547.84 \\ \hline
+    Sharpe Ratio & 0.420 \\ \hline
+    Portfolio Value & \$183,714.616 \\ \hline
+    Algorithm Period Return & 0.837 \\ \hline
+    Benchmark Period Return & 1.008 \\ \hline
+    Algorithm Volatility & 0.373 \\ \hline
+    Benchmark Volatility & 0.156 \\
+    \hline
+    \end{tabular}
+    \captionof{table}{Machine Learning Regression strategy with stop loss}
+    \label{table:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{MLR-Portfolio-Benchmark-Stop-Loss.png}
+    \captionof{figure}{Machine Learning Regression strategy with stop loss}
     \label{fig:nonfloat}
 \end{center}

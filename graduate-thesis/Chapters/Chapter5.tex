@@ -100,7 +100,7 @@ The algorithm achieved a good fit in the in-sample tests, having very similar sh
 \section{Strategy}
 
 \subsection{Classification}
-When tasked with predicting rises in stock prices, the algorithm did fairly well, marking a total return of 49.1\%, this however did not beat the benchmark's return of 100.8\%. The agorithm underperformed immensely when tasked at also predicting stock price falls, marking a negative total return of -80\%.
+When tasked with predicting rises in stock prices, the algorithm did fairly well, marking a total return of 49.1\%, this however did not beat the benchmark's return of 100.8\%. The agorithm underperformed immensely when tasked at also predicting stock price falls, marking a negative total return of -80\%. To compensate for this, a stop loss was added to sell all positions if the stock in question falls below -20\%, this resulted in a profit of 67.5\%.
 
 \subsection{Regression}
-The performance of this algorithm was extremely similar to that of the previous one, this goes to show that both classifiers and regressors can be used for stock price prediction. When tasked with predicting rises in stock prices, the algorithm did fairly well, marking a slightly lower total return of 43\%. The agorithm also underperformed immensely when tasked at also predicting stock price falls, marking a negative total return of -80.4\%.
+The performance of this algorithm was extremely similar to that of the previous one, this goes to show that both classifiers and regressors can be used for stock price prediction. When tasked with predicting rises in stock prices, the algorithm did fairly well, marking a slightly lower total return of 43\%. The agorithm also underperformed immensely when tasked at also predicting stock price falls, marking a negative total return of -80.4\%. To compensate for this, a stop loss was added to sell all positions if the stock in question falls below -20\%, this resulted in a profit of 83.7\%.

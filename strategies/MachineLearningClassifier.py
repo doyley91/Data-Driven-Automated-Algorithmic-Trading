@@ -19,6 +19,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import Imputer
 from zipline.algorithm import TradingAlgorithm
 from zipline.api import order_target_percent, symbol
+from zipline.finance import commission
 
 import functions as fc
 
@@ -29,6 +30,8 @@ class MachineLearningClassifier(TradingAlgorithm):
         Called once at the start of the algorithm.
         """
         self.securities = tickers
+
+        self.sids = [self.symbol(security) for security in self.securities]
 
         # Amount of prior bars to study
         self.window_length = 6
@@ -67,16 +70,18 @@ class MachineLearningClassifier(TradingAlgorithm):
         # initialise the model
         self.imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
 
+        self.set_commission(commission.PerShare(cost=0.013, min_trade_cost=1.3))
+
     def handle_data(self, data):
         """
         Called every minute.
         """
-        for security in self.securities:
+        for sid, security in zip(self.sids, self.securities):
             # Update the recent open prices
-            self.recent_open_price[security].append(data.current(symbol(security), 'open'))
+            self.recent_open_price[security].append(data.current(sid, 'open'))
 
             # Update the recent prices
-            self.recent_close_price[security].append(data.current(symbol(security), 'close'))
+            self.recent_close_price[security].append(data.current(sid, 'close'))
 
             if np.isnan(self.recent_open_price[security]).any():
                 log.info('Warning: NaN found in {} open. Replacing with the mean value.'.format(security))
@@ -152,11 +157,11 @@ class MachineLearningClassifier(TradingAlgorithm):
                 continue
 
             # check if we don't currently hold a position
-            if self.portfolio.positions[symbol(security)].amount:
+            if self.portfolio.positions[sid].amount:
                 continue
 
-            order_target_percent(asset=symbol(security), target=allocation)
-            order_target_percent(asset=symbol(security), target=-allocation,
+            order_target_percent(asset=sid, target=allocation)
+            order_target_percent(asset=sid, target=-allocation,
                                  stop_price=self.recent_close_price[security][-1] * 0.80)
 
 if __name__ == '__main__':

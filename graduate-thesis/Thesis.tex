@@ -45,7 +45,7 @@
 
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
 
-I, Gabriel Gauci Maistre, declare that this thesis titled, `Data Driven Investing: Advanced Risk and Portfolio Management in Quantitative Finance' and the work presented in it are my own. I confirm that:
+I, Gabriel Gauci Maistre, declare that this thesis titled, `Data Driven Automated Algorithmic Trading' and the work presented in it are my own. I confirm that:
 
 \begin{itemize} 
 \item[\tiny{$\blacksquare$}] This work was done wholly or mainly while in candidature for a research degree at this University.
@@ -92,7 +92,7 @@ Warren Buffett
 \abstract{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
 
-Various existing stock market prediction methods were analysed in this report. Three methods were applied towards the problem making use of Technical Analysis: Time Series Analysis, Machine Learning, and Bayesian Statistics. Evidence was found in support of the weak form of the Efficient Market Hypothesis, that the historic price does not contain useful information but out of sample data may be predictive. We show that Technical Analysis and Machine Learning could be used to guide an investor’s decision. A common flow in technical anylsis methodology was demonstrated and shown to produce limited useful information. Based on the findings, automated trading algorithms were developed and simulated using Quantopian Zipline.
+Various existing stock market price forecasting methods were analysed in this report. Three methods were applied towards the problem making use of Technical Analysis, these were Time Series Analysis, Machine Learning, and Bayesian Statistics. Through the results of this report, it was found that the Efficient Market Hypothesis remains true, that past data does not contain enough useful information to forecast future prices and gain an advantage over the market. However, the results proved that Technical Analysis and Machine Learning could still be used to guide an investor’s decision. It was also found that the Random Walk Hypothesis was not necessarily true, as some stocks showed signs of auto and partial correlation. A common application of technical analysis was demonstrated and shown to produce limited useful information in beating the market. Based on the findings, a number of automated trading algorithms were developed using machine learning and backtested to determine their effectiveness.
 
 }
 
@@ -105,7 +105,7 @@ Various existing stock market prediction methods were analysed in this report. T
 \acknowledgements{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
 
-I would to express my special thanks of gratitude to my supervisor, Alan Gatt, for the patient guidance, encouragement, and advice he has provided throughout my time as his student.
+I would like to express my special thanks of gratitude to my supervisor, Alan Gatt, for the patient guidance, encouragement, and advice he has provided throughout my time as his student.
 
 I would also like to thank Luke Vella Critien, for guiding me towards the right parth in the early stages of my research and for recommending Alan Gatt as my tutor. 
 
@@ -113,7 +113,7 @@ My gratitude is also extended to Emma Galea and Miguel attard for their valuable
 
 Completing this work would have been all the more difficult were it not for the support and friendship provided by the other members of the Malta College of Arts, Sciences, and Technology, and the institute of Information and Technology. I am indebted to them for their help.
 
-Finally, I would like to thank my family who have supported me throughout the stressful final months of the degree course.
+Finally, I would like to thank my family who have supported me all throughout the final year of my bachelor's.
 
 }
 \clearpage  % End of the Acknowledgements
@@ -148,16 +148,18 @@ Finally, I would like to thank my family who have supported me throughout the st
 \textbf{MA} & \textbf{M}oving \textbf{A}verage \\
 \textbf{ARMA} & \textbf{A}uto \textbf{R}egressive \textbf{M}oving \textbf{A}verage \\
 \textbf{ARIMA} & \textbf{A}uto \textbf{R}egressive \textbf{I}ntegrated \textbf{M}oving \textbf{A}verage \\
+\textbf{GARCH} & \textbf{G}eneralised \textbf{A}uto \textbf{R}egressive \textbf{C}onditional \textbf{H}eteroskedasticity \\
+\textbf{EGARCH} & \textbf{E}xponential \textbf{G}eneralised \textbf{A}uto \textbf{R}egressive \textbf{C}onditional \textbf{H}eteroskedasticity \\
 \textbf{ADF} & \textbf{A}ugmented \textbf{D}ickey \textbf{F}uller \\
 \textbf{SVM} & \textbf{S}upport \textbf{V}ector \textbf{M}achine \\
 \textbf{SGD} & \textbf{S}tochastic \textbf{G}radient \textbf{D}escent \\
-\textbf{ADF} & \textbf{A}ugmented \textbf{D}ickey \textbf{F}uller \\
 \textbf{SMA} & \textbf{S}imple \textbf{M}oving \textbf{A}verage \\
 \textbf{AIC} & \textbf{A}lkaline \textbf{I}nformation \textbf{C}riterion \\
 \textbf{IC} & \textbf{I}nformation \textbf{C}riterion \\
 \textbf{NUTS} & \textbf{N}o-\textbf{U}-\textbf{T}urn \textbf{S}ampler \\
 \textbf{QQ} & \textbf{Q}uantile-\textbf{Q}uantile \\
-\textbf{ETF} & \textbf{E}xchange \textbf{T}raded \textbf{F}und
+\textbf{ETF} & \textbf{E}xchange \textbf{T}raded \textbf{F}und \\
+\textbf{ANN} & \textbf{A}rtificial \textbf{N}eural \textbf{N}etwork
 }
 
 %% ----------------------------------------------------------------
