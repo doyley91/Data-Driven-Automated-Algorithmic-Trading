@@ -3,57 +3,55 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Thesis.aux
 The style file: unsrtnat.bst
 Database file #1: Bibliography.bib
-Warning--entry type for "Gamba:2003aa" isn't style-file defined
---line 28 of file Bibliography.bib
+Warning--entry type for "Quandl:2017aa" isn't style-file defined
+--line 11 of file Bibliography.bib
 Warning--entry type for "Blanchett:2013aa" isn't style-file defined
---line 37 of file Bibliography.bib
-Warning--entry type for "Andersen:2007aa" isn't style-file defined
 --line 46 of file Bibliography.bib
 Warning--entry type for "Darrat:2001aa" isn't style-file defined
---line 55 of file Bibliography.bib
+--line 64 of file Bibliography.bib
 Warning--entry type for "Murugesan:2012aa" isn't style-file defined
---line 140 of file Bibliography.bib
-Warning--entry type for "Kumar:2016aa" isn't style-file defined
 --line 149 of file Bibliography.bib
-You've used 18 entries,
+Warning--entry type for "Kumar:2016aa" isn't style-file defined
+--line 158 of file Bibliography.bib
+You've used 16 entries,
             2481 wiz_defined-function locations,
-            659 strings with 7036 characters,
-and the built_in function-call counts, 5487 in all, are:
-= -- 427
-> -- 264
-< -- 14
-+ -- 110
-- -- 74
-* -- 343
-:= -- 876
-add.period$ -- 48
-call.type$ -- 18
-change.case$ -- 32
-chr.to.int$ -- 18
-cite$ -- 18
-duplicate$ -- 310
-empty$ -- 558
-format.name$ -- 108
-if$ -- 1174
+            646 strings with 6688 characters,
+and the built_in function-call counts, 4975 in all, are:
+= -- 385
+> -- 250
+< -- 12
++ -- 102
+- -- 70
+* -- 317
+:= -- 796
+add.period$ -- 43
+call.type$ -- 16
+change.case$ -- 28
+chr.to.int$ -- 16
+cite$ -- 16
+duplicate$ -- 278
+empty$ -- 499
+format.name$ -- 102
+if$ -- 1063
 int.to.chr$ -- 1
-int.to.str$ -- 19
-missing$ -- 16
-newline$ -- 92
-num.names$ -- 54
-pop$ -- 194
+int.to.str$ -- 17
+missing$ -- 15
+newline$ -- 83
+num.names$ -- 48
+pop$ -- 174
 preamble$ -- 1
-purify$ -- 18
+purify$ -- 16
 quote$ -- 0
-skip$ -- 201
+skip$ -- 178
 stack$ -- 0
-substring$ -- 88
-swap$ -- 43
+substring$ -- 84
+swap$ -- 38
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 114
+type$ -- 100
 warning$ -- 0
-while$ -- 39
+while$ -- 35
 width$ -- 0
-write$ -- 215
-(There were 6 warnings)
+write$ -- 192
+(There were 5 warnings)

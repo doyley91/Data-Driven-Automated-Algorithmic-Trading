@@ -1,4 +1,4 @@
-\begin{thebibliography}{18}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -78,29 +78,18 @@ Andrew Gelman, John~B. Carlin, Hal~S. Stern, David~B. Dunson, Aki Vehtari, and
 \newblock \emph{Bayesian Data Analysis}.
 \newblock CRC Press, 2014.
 
-\bibitem[Savvides(1994)]{Savvides:1994aa}
-Savvakis~C. Savvides.
-\newblock Risk analysis in investment appraisal risk analysis in investment
-  appraisal risk analysis in investment appraisal.
-\newblock \emph{Project Appraisal Journal}, Vol. 9\penalty0 (No. 1), March
-  1994.
-
-\bibitem[Andersen(2007)]{Andersen:2007aa}
-Leif B.~G. Andersen.
-\newblock Efficient simulation of the heston stochastic volatility model, 2007.
-
 \bibitem[Blanchett et~al.(2013)Blanchett, Finke, and Pfau]{Blanchett:2013aa}
 David Blanchett, Michael~S. Finke, and Wade~D. Pfau.
 \newblock Asset valuations and safe portfolio withdrawal rates, 2013.
-
-\bibitem[Gamba(2003)]{Gamba:2003aa}
-Andrea Gamba.
-\newblock Real options valuation: A monte carlo approach, 2003.
 
 \bibitem[Hoffman and Gelman(2014)]{Matthew-D.-Hoffman:2014aa}
 Matthew~D. Hoffman and Andrew Gelman.
 \newblock The no-u-turn sampler: Adaptively setting path lengths in hamiltonian
   monte carlo.
 \newblock \emph{Journal of Machine Learning Research}, 15, 2014.
+
+\bibitem[Quandl(2017)]{Quandl:2017aa}
+Quandl.
+\newblock Wiki eod stock prices, 2017.
 
 \end{thebibliography}

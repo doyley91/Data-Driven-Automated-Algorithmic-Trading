@@ -10,15 +10,15 @@ As can be seen in figures 4.4, 4.6, 4.8, and 4.10, the correlation plots show th
 The histogram of returns show that the stocks follow a normal distribution, where some stocks showed higher returns than others as can be seen from a wider x-axis.
 
 \subsection{Ordinary Least Squares (OLS)}
-This algorithm achieved a good fit in the in-sample tests, having a prediction rate above 96\% for all the stocks tested.
+This algorithm achieved a good fit in the in-sample tests, having a prediction rate above 96\% for all the stocks tested. It is evident that OLS may be used for stock market forecasting.
 
 \subsection{Auto Regressive (AR)}
-This algorithm failed to achieve a good fit in the in-sample tests, having a huge difference in sharpe ratios based on the original price returns and in-sample predicted price returns. The algorithm failed completely in forecasting price returns in out-of-sample testing. 
+This algorithm failed to achieve a good fit in the in-sample tests, having a huge difference in sharpe ratios based on the original price returns and in-sample predicted price returns. This is also evident in the QQ and probability plots, both of which show heavy tails indicating a bad fit to the data. The algorithm failed completely in forecasting price returns in out-of-sample testing. 
 
 The histogram of returns further showed that the algorithm did not achieve a good fit, as the histogram itself was not completely symmetrical.
 
 \subsection{Moving Average (MA)}
-This algorithm faired better than AR having a lower difference in sharpe ratios based on the original price returns and in-sample predicted price returns, however still failed to achieve a good fit in the in-sample tests.
+This algorithm faired better than AR having a lower difference in sharpe ratios based on the original price returns and in-sample predicted price returns, however still failed to achieve a good fit in the in-sample tests. The QQ and probability plots, although containing lighter tails than the previous algorithm, still show that the algorithm in question failed to achieve a good fit.
 
 Although achieving a better fit, the histogram of returns still showed flaws as they were not perfectly symmetrical.
 
@@ -28,7 +28,7 @@ This algorithm once again faired better than the previous algorithm, MA, having 
 As can be seen from the histogram of returns, a better fit was achieved as the histogram was more symmetrical than those of the previous algorithms.
 
 \subsection{Auto Regressive Integrated Moving Average (ARIMA)}
-This algorithm faired worse than the previous algorithm, ARMA, having a higher difference in sharpe ratios based on the original price returns and in-sample predicted price returns.
+ARIMA faired worse than the previous algorithm, ARMA, having a higher difference in sharpe ratios based on the original price returns and in-sample predicted price returns. This was also evident in the QQ and probability plots, both of which showed to have heavy tails.
 
 This can also be seen from the histogram of returns, in which its distribution was less normal than that of the previous algorithm.
 
@@ -104,3 +104,12 @@ When tasked with predicting rises in stock prices, the algorithm did fairly well
 
 \subsection{Regression}
 The performance of this algorithm was extremely similar to that of the previous one, this goes to show that both classifiers and regressors can be used for stock price prediction. When tasked with predicting rises in stock prices, the algorithm did fairly well, marking a slightly lower total return of 43\%. The agorithm also underperformed immensely when tasked at also predicting stock price falls, marking a negative total return of -80.4\%. To compensate for this, a stop loss was added to sell all positions if the stock in question falls below -20\%, this resulted in a profit of 83.7\%.
+
+\section{Future Research}
+Although this study provides important insights into the relationship between machine learning models and stock market forecasting, the models still failed to achieve a higher return than the market, thus discrediting them as a viable option for investors to incorporate in their strategy. It is however the firm belief of the author that machine learning models can indeed be used to exploit the market, using methods which were not applied to this study due to a lack of data and resources. 
+
+Since only technical analysis was applied due to restrictions in data, a link may indeed be found between fundamental analysis and machine learning models, a relationship that may be well worth looking into. Many claim fundamental analysis to be extremely critical to financial analysis, providing a vast amount of strategies to implement. Since this type of analysis involves financial statements, such an increase in data could easily boost the predictive power of machine learning models.
+
+Deep learning is also currently a growing field, making strides in many forms of applications. Being a subset of machine learning, it works similarly to other models except that its inner workings are designed to mimic the decision making of the human brain. However due to its requirements of a vast amount of data and powerful hardware, it was not possible to include it in this study. Just as deep learning has proven to perform extremely well in other applications, it may very well prove to do so in this field too.
+
+Sentiment analysis is also another field which is currently proving to be a powerful tool in predicting outcomes. This form of analysis involves computationally identifying and categorising opinions expressed in a piece of text, especially in order to determine whether the writer's attitude towards a particular topic, is positive, negative, or neutral. This could be easily used to identify consumer sentiment which is a powerful economic indicator of the overall health of the economy as determined by consumer opinion. This could make is very easy to determine which stocks are being overvalued or undervalued, and quickly act on that information.

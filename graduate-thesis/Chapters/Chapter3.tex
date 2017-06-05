@@ -1,16 +1,15 @@
 \chapter{Experimental Setup}
 
-\section{Data Tidying}
-A data set containing end of day stock prices, dividends, and splits for 3,000 US companies, curated by the Quandl community, and released into the public domain, was used. The date column in the CSV file was loaded into memory, and said column was converted to a date data type. The DataFrame was then sorted using the date column, starting from the oldest date, ending with the latest. The date column was also set to the index. The DataFrame was split into two, the training data set consisting of 80\%, and the test data set consisting of 20\% of the original DataFrame.
+A data set containing end of day stock prices, dividends, and splits for 3,000 US companies, curated by the Quandl community\cite{Quandl:2017aa}, and released into the public domain, was used. The date column in the CSV file was loaded into memory, and said column was converted to a date data type. The data frame was then sorted using the date column, starting from the oldest date, ending with the latest. The date column was also set to the index. The data frame was split into two, the training data set consisting of 80\%, and the test data set consisting of 20\% of the original data frame.
 
 \section{Stock Selection}
-The pairwise correlation of all the columns in the DataFrame was computing and stored in a new DataFrame. A list of stock pairs with low correlation were extracted.
+The pairwise Peason correlation coefficient of all the columns in the data frame was computed and stored in a new data frame. A list of stock pairs with low correlation were extracted.
 
 \section{Time Series Analysis}
-The selected stocks was extracted from the data set and stored in a DataFrame. The log returns of the stocks were calculated by calculating the logarithm of the stock's adjusted close price divided by the following day's adjusred close price. The resulting values from the calculation were then stored in a new column in the DataFrame and all infinite values were dropped from the series.
+The selected stocks was extracted from the data set and stored in a data frame. The log returns of the stocks were calculated by calculating the logarithm of the stock's adjusted close price divided by the following day's adjusted close price. The resulting values from the calculation were then stored in a new column in the data frame and all infinite values were dropped from the series.
 
 \subsection{Random Walk}
-The first difference of the stocks were calculated abd stored in a new column in the Dataframe and all infinite valued were dropped.
+The first difference of the stocks were calculated and stored in a new column in the data frame and all infinite valued were dropped.
 
 \subsection{Ordinary Least Squares (OLS)}
 The series was fitted to an OLS model. The 15 day SMA was used as a nobs x k array where nobs is the number of observations and k is the number of regressors, to train the model, while the adjusted close price of the stock was used as the dependent variable for the model to predict. The mean absolute error, mean squared error, median absolute error, and r2 score were used as metrics in order to rank the performance of the model's prediction capabilities in in-sample testing.
@@ -85,7 +84,7 @@ The model was fit to the data with the same paramaters as the Neural Network cla
 The model was fit to the data with the same paramaters as the SGD classifier.
 
 \section{Bayesian Statistics}
-The last 500 rows of the selected stocks were extracted from the data set and stored into a DataFrame. The log returns were calculated by dividing each day's adjusted close with the adjusted close of the following day, in logarithmic form. The resulting values from the said calculation were then stored in a new column in the DataFrame and all infinite values were dropped from the series. The sharpe ratio of the original and predicted price returns was calculated to serve as an accuracy score in the in-sample tests.
+The last 500 rows of the selected stocks were extracted from the data set and stored into a data frame. The log returns were calculated by dividing each day's adjusted close with the adjusted close of the following day, in logarithmic form. The resulting values from the said calculation were then stored in a new column in the data frame and all infinite values were dropped from the series. The sharpe ratio of the original and predicted price returns was calculated to serve as an accuracy score in the in-sample tests.
 
 \subsection{No-U-Turn Sampler (NUTS)}
 The model returns were modeled with a Student-t distribution with an unknown degrees of freedom paramater, and a scale paramater determined by a latent process. 
