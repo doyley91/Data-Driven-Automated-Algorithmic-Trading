@@ -5,7 +5,7 @@
 \subsection{Random Walk}
 The random walk theory suggests that stock price changes have the same distribution and are independent of each other, so the past movement or trend of a stock price or market cannot be used to predict its future movement. In short, this is the idea that stocks take a random and unpredictable path.
 
-As can be seen in figures 4.4, 4.6, 4.8, and 4.10, the correlation plots show this theory to be false and that past movement is related to future movement.
+As can be seen in figure 4.2, the correlation plots show this theory to be false and that past movement is related to future movement.
 
 The histogram of returns show that the stocks follow a normal distribution, where some stocks showed higher returns than others as can be seen from a wider x-axis.
 
@@ -23,7 +23,7 @@ This algorithm faired better than AR having a lower difference in sharpe ratios 
 Although achieving a better fit, the histogram of returns still showed flaws as they were not perfectly symmetrical.
 
 \subsection{Auto Regressive Moving Average (ARMA)}
-This algorithm once again faired better than the previous algorithm, MA, having an even lower difference in sharpe ratios based on the original price returns and in-sample predicted price returns, however still failed to achieve a good fit in the in-sample tests. As can be seen in the time series analysis plots, ARMA showed to have very heavy tails in the QQ and probability plots. The algorithm also failed to forecast future price returns for certain stocks, as is evident in figure 4.81.
+This algorithm once again faired better than the previous algorithm, MA, having an even lower difference in sharpe ratios based on the original price returns and in-sample predicted price returns, however still failed to achieve a good fit in the in-sample tests. As can be seen in the time series analysis plots, ARMA showed to have very heavy tails in the QQ and probability plots. The algorithm predicted an abnormal sharp decline at the start of the forecast and showed diminishing returns over time, as was evident in figure 4.17.
 
 As can be seen from the histogram of returns, a better fit was achieved as the histogram was more symmetrical than those of the previous algorithms.
 
@@ -69,16 +69,16 @@ This algorithm faired the worst from the lot, varying heavily in accuracy scores
 \subsection{Regression}
 
 \subsubsection{Decision Tree}
-As can be seen in figure 4.102, the algorithm not only failed to achieve a good fit in the in-sample test, but also failed completely in predicting any values at all. Figure 4.103 also shoes that the algorithm predicted a sharp fall at the end of the out-of-sample test, which could be related to the incorrect fit achieved in the in-sample test. This was reflected in the metric score, having a high number of data losses, and low accuracy scores.
+As can be seen in figure 4.22, the algorithm not only failed to achieve a good fit in the in-sample test, but also failed completely in predicting any values at all. Figure 4.23 also shoes that the algorithm predicted a sharp fall at the end of the out-of-sample test, which could be related to the incorrect fit achieved in the in-sample test. This was reflected in the metric score, having a high number of data losses, and low accuracy scores.
 
 \subsubsection{Boosted Decision Tree}
-This algorithm also did not do very well, as can be seen in figures 4.112, 4.114, 4.116, and 4.118, the algorithm not only failed to achieve a good fit in the in-sample test, but also failed completely in predicting any values at all. The algorithm also predicted some sharp inclines at the end of the test, as can be seen in figure 4.115. The bad fit achieved is also reflected in the metric scores, in which there was a high number of data losses, and low accuracy scores.
+This algorithm also did not do very well, as can be seen in figure 4.24, the algorithm not only failed to achieve a good fit in the in-sample test, but also failed completely in predicting any values at all. The algorithm also predicted some sharp declines at the end of the test, as can be seen in figure 4.25. The bad fit achieved is also reflected in the metric scores, in which there was a high number of data losses, and low accuracy scores.
 
 \subsubsection{K-Nearest Neighbour}
-This algorithm also didn't fair too well, showing bad fits in figures 4.122, 4.124, 4.126, 4.128, and 4.130. Similarly to the previous algorithm, the alforithm failed completely in predicting any values at all in some parts of the in-sample test.
+This algorithm also didn't fair too well, showing a bad fit in figure 4.26. Similarly to the previous algorithm, the alforithm failed completely in predicting any values at all in some parts of the in-sample test.
 
 \subsubsection{Random Forest}
-Similarly to previous algorithms, this algorithm failed to achieve a good fit as can be seen in figures 4.132, 4.134, 4.136, 4,138, and 4.140. The algorithm also failed to predict any values at all in the of the in-sample tests, and also predicted sharp inclines and declines at the end some of the out-of-sample tests.
+Similarly to previous algorithms, this algorithm failed to achieve a good fit as can be seen in figure 4.28. The algorithm also failed to predict any values at all in the of the in-sample tests, and also predicted sharp inclines and declines at the end some of the out-of-sample tests.
 
 \subsubsection{Linear Regression} 
 This algorithm performed very well in the in-sample tests, achieving a good fit with high accuracy scores above 95\% with a low number of data losses.
@@ -87,15 +87,15 @@ This algorithm performed very well in the in-sample tests, achieving a good fit 
 This algorithm, although scored very well in some of the in-sample tests, was not very reliable as accuracy scores varied between each test, performing extremely well in some, however not too well in others. 
 
 \subsubsection{Stochastic Gradient Descent}
-This algorithm performed fairly well in most in-sample tests, having high accuracy scores and low data losses escept for CDE as can be seen in figure 4.164.
+This algorithm performed fairly well in most in-sample tests, having high accuracy scores and low data losses escept for CDE as can be seen in figure 4.34.
 
 \section{Bayesian Statistics}
 
 \subsubsection{Metropolis-Hastings}
-This algorithm failed to achieve a good fit in the in-sample tests, having a huge difference in sharpe ratios based on the original price returns and in-sample predicted price returns. 
+This algorithm failed to achieve a good fit in the in-sample tests, having a large difference in sharpe ratios based on the original price returns and in-sample predicted price returns. 
 
 \subsubsection{No-U-Turn-Sampler (NUTS)}
-The algorithm achieved a good fit in the in-sample tests, having very similar sharpe ratios  based on the original price returns and in-sample predicted price returns.
+The algorithm achieved a good fit in the in-sample tests, having very similar sharpe ratios based on the original price returns and in-sample predicted price returns.
 
 \section{Strategy}
 

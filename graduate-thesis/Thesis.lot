@@ -3,22 +3,22 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {4.1}{\ignorespaces Equities Descriptive Statistics\relax }}{22}{table.63}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Decision Tree results\relax }}{85}{table.174}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Boosted Decision Tree results\relax }}{85}{table.176}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Support Vector Machine results\relax }}{85}{table.178}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Random Forest results\relax }}{86}{table.180}
-\contentsline {table}{\numberline {4.6}{\ignorespaces K-Nearest Neighbour results\relax }}{86}{table.182}
-\contentsline {table}{\numberline {4.7}{\ignorespaces Logistic Regression results\relax }}{86}{table.184}
-\contentsline {table}{\numberline {4.8}{\ignorespaces Gaussian Naive Bayes results\relax }}{87}{table.186}
-\contentsline {table}{\numberline {4.9}{\ignorespaces Bernoulli Naive Bayes results\relax }}{87}{table.188}
-\contentsline {table}{\numberline {4.10}{\ignorespaces Neural Network results\relax }}{87}{table.190}
-\contentsline {table}{\numberline {4.11}{\ignorespaces Stochastic Gradient Descent results\relax }}{88}{table.192}
-\contentsline {table}{\numberline {4.12}{\ignorespaces Machine Learning Classifier strategy with only upwards forecasts\relax }}{157}{table.296}
-\contentsline {table}{\numberline {4.13}{\ignorespaces Machine Learning Classifier strategy with upwarda and downwards forecasts\relax }}{158}{table.298}
-\contentsline {table}{\numberline {4.14}{\ignorespaces Machine Learning Classifier strategy with stop loss\relax }}{158}{table.300}
-\contentsline {table}{\numberline {4.15}{\ignorespaces Machine Learning Regression strategy with only upwards forecasts\relax }}{159}{table.303}
-\contentsline {table}{\numberline {4.16}{\ignorespaces Machine Learning Regression strategy with upwards and downwards forecasts\relax }}{160}{table.305}
-\contentsline {table}{\numberline {4.17}{\ignorespaces Machine Learning Regression strategy with stop loss\relax }}{161}{table.307}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Decision Tree results\relax }}{35}{table.94}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Boosted Decision Tree results\relax }}{35}{table.96}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Support Vector Machine results\relax }}{35}{table.98}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Random Forest results\relax }}{36}{table.100}
+\contentsline {table}{\numberline {4.6}{\ignorespaces K-Nearest Neighbour results\relax }}{36}{table.102}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Logistic Regression results\relax }}{36}{table.104}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Gaussian Naive Bayes results\relax }}{37}{table.106}
+\contentsline {table}{\numberline {4.9}{\ignorespaces Bernoulli Naive Bayes results\relax }}{37}{table.108}
+\contentsline {table}{\numberline {4.10}{\ignorespaces Neural Network results\relax }}{37}{table.110}
+\contentsline {table}{\numberline {4.11}{\ignorespaces Stochastic Gradient Descent results\relax }}{38}{table.112}
+\contentsline {table}{\numberline {4.12}{\ignorespaces Machine Learning Classifier strategy with only upwards forecasts\relax }}{51}{table.144}
+\contentsline {table}{\numberline {4.13}{\ignorespaces Machine Learning Classifier strategy with upwarda and downwards forecasts\relax }}{52}{table.146}
+\contentsline {table}{\numberline {4.14}{\ignorespaces Machine Learning Classifier strategy with stop loss\relax }}{53}{table.148}
+\contentsline {table}{\numberline {4.15}{\ignorespaces Machine Learning Regression strategy with only upwards forecasts\relax }}{54}{table.151}
+\contentsline {table}{\numberline {4.16}{\ignorespaces Machine Learning Regression strategy with upwards and downwards forecasts\relax }}{55}{table.153}
+\contentsline {table}{\numberline {4.17}{\ignorespaces Machine Learning Regression strategy with stop loss\relax }}{56}{table.155}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

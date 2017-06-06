@@ -1,11 +1,1118 @@
 \chapter{An Appendix}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at pulvinar nisi. Phasellus hendrerit, diam placerat interdum iaculis, mauris justo cursus risus, in viverra purus eros at ligula. Ut metus justo, consequat a tristique posuere, laoreet nec nibh. Etiam et scelerisque mauris. Phasellus vel massa magna. Ut non neque id tortor pharetra bibendum vitae sit amet nisi. Duis nec quam quam, sed euismod justo. Pellentesque eu tellus vitae ante tempus malesuada. Nunc accumsan, quam in congue consequat, lectus lectus dapibus erat, id aliquet urna neque at massa. Nulla facilisi. Morbi ullamcorper eleifend posuere. Donec libero leo, faucibus nec bibendum at, mattis et urna. Proin consectetur, nunc ut imperdiet lobortis, magna neque tincidunt lectus, id iaculis nisi justo id nibh. Pellentesque vel sem in erat vulputate faucibus molestie ut lorem.
+\section{Time Series Analysis}
 
-Quisque tristique urna in lorem laoreet at laoreet quam congue. Donec dolor turpis, blandit non imperdiet aliquet, blandit et felis. In lorem nisi, pretium sit amet vestibulum sed, tempus et sem. Proin non ante turpis. Nulla imperdiet fringilla convallis. Vivamus vel bibendum nisl. Pellentesque justo lectus, molestie vel luctus sed, lobortis in libero. Nulla facilisi. Aliquam erat volutpat. Suspendisse vitae nunc nunc. Sed aliquet est suscipit sapien rhoncus non adipiscing nibh consequat. Aliquam metus urna, faucibus eu vulputate non, luctus eu justo.
+\subsection{Random Walk}
 
-Donec urna leo, vulputate vitae porta eu, vehicula blandit libero. Phasellus eget massa et leo condimentum mollis. Nullam molestie, justo at pellentesque vulputate, sapien velit ornare diam, nec gravida lacus augue non diam. Integer mattis lacus id libero ultrices sit amet mollis neque molestie. Integer ut leo eget mi volutpat congue. Vivamus sodales, turpis id venenatis placerat, tellus purus adipiscing magna, eu aliquam nibh dolor id nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed cursus convallis quam nec vehicula. Sed vulputate neque eget odio fringilla ac sodales urna feugiat.
+\begin{center}
+    \includegraphics[width=\textwidth]{MSFT-time-series.png}
+    \captionof{figure}{MSFT time series analysis}
+    \label{fig:nonfloat}
+\end{center}
 
-Phasellus nisi quam, volutpat non ullamcorper eget, congue fringilla leo. Cras et erat et nibh placerat commodo id ornare est. Nulla facilisi. Aenean pulvinar scelerisque eros eget interdum. Nunc pulvinar magna ut felis varius in hendrerit dolor accumsan. Nunc pellentesque magna quis magna bibendum non laoreet erat tincidunt. Nulla facilisi.
+\begin{center}
+    \includegraphics[width=\textwidth]{MSFT-histogram.png}
+    \captionof{figure}{MSFT histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
 
-Duis eget massa sem, gravida interdum ipsum. Nulla nunc nisl, hendrerit sit amet commodo vel, varius id tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac dolor est. Suspendisse ultrices tincidunt metus eget accumsan. Nullam facilisis, justo vitae convallis sollicitudin, eros augue malesuada metus, nec sagittis diam nibh ut sapien. Duis blandit lectus vitae lorem aliquam nec euismod nisi volutpat. Vestibulum ornare dictum tortor, at faucibus justo tempor non. Nulla facilisi. Cras non massa nunc, eget euismod purus. Nunc metus ipsum, euismod a consectetur vel, hendrerit nec nunc.
+\begin{center}  
+    \includegraphics[width=\textwidth]{CDE-time-series.png}
+    \captionof{figure}{CDE time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{CDE-histogram.png}
+    \captionof{figure}{CDE histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-time-series.png}
+    \captionof{figure}{NAVB time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-histogram.png}
+    \captionof{figure}{NAVB histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-time-series.png}
+    \captionof{figure}{HL time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HL-histogram.png}
+    \captionof{figure}{HL histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsection{Ordinary Least Squares (OLS)}
+
+CDE scored a mean absolute error regression loss of 0.985, and a coefficient of determination of 0.973.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-OLS-In-Sample-Prediction.png}
+    \captionof{figure}{CDE OLS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-CDE-OLS-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 Day CDE OLS out of sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored a mean absolute error regression loss of 0.124, and a coefficient of determination of 0.966.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{NAVB-OLS-In-Sample-Prediction.png}
+    \captionof{figure}{NAVB OLS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-OLS-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day NAVB OLS in-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored a mean absolute error regression loss of 0.291, and a coefficient of determination of 0.986.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HRG-OLS-In-Sample-Prediction.png}
+    \captionof{figure}{HRG OLS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HRG-OLS-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HRG OLS in-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored a mean absolute error regression loss of 0.336, and a coefficient of determination of 0.963.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HL-OLS-In-Sample-Prediction.png}
+    \captionof{figure}{HL OLS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HL-OLS-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HL OLS in-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsection{Ordinary Least Squares (OLS)}
+CDE scored a mean absolute error regression loss of 0.985, and a coefficient of determination of 0.973.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-OLS-In-Sample-Prediction.png}
+    \captionof{figure}{CDE OLS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-CDE-OLS-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 Day CDE OLS out of sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored a mean absolute error regression loss of 0.124, and a coefficient of determination of 0.966.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{NAVB-OLS-In-Sample-Prediction.png}
+    \captionof{figure}{NAVB OLS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-OLS-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day NAVB OLS in-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored a mean absolute error regression loss of 0.291, and a coefficient of determination of 0.986.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HRG-OLS-In-Sample-Prediction.png}
+    \captionof{figure}{HRG OLS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HRG-OLS-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HRG OLS in-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored a mean absolute error regression loss of 0.336, and a coefficient of determination of 0.963.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HL-OLS-In-Sample-Prediction.png}
+    \captionof{figure}{HL OLS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HL-OLS-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HL OLS in-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsection{Auto Regressive (AR)}
+
+CDE scored sharpe ratios of -1.050 for the original returns, and -0.239 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-AR-time-series.png}
+    \captionof{figure}{CDE AR time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-AR-histogram.png}
+    \captionof{figure}{CDE AR histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-AR-In-Sample-Return-Prediction.png}
+    \captionof{figure}{CDE AR in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-CDE-AR-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day CDE AR in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored sharpe ratios of -0.410 for the original returns, and 0.124 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-AR-time-series.png}
+    \captionof{figure}{NAVB AR time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-AR-histogram.png}
+    \captionof{figure}{NAVB AR histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-AR-In-Sample-Return-Prediction.png}
+    \captionof{figure}{NAVB AR in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-NAVB-AR-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day NAVB AR in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored sharpe ratios of 0.627 for the original returns, and -2.603 for the predicted returns in the in-sample test.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HRG-AR-time-series.png}
+    \captionof{figure}{HRG AR time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+  
+    \includegraphics[width=\textwidth]{HRG-AR-histogram.png}
+    \captionof{figure}{HRG AR histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-AR-In-Sample-Return-Prediction.png}
+    \captionof{figure}{HL AR in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HRG-AR-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day HRG AR in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored sharpe ratios of 0.695 for the original returns, and -1.880 for the predicted returns in the in-sample test.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HL-AR-time-series.png}
+    \captionof{figure}{HL AR time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-AR-histogram.png}
+    \captionof{figure}{HL AR histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-AR-In-Sample-Return-Prediction.png}
+    \captionof{figure}{HL AR in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HL-AR-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day HL AR in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsection{Moving Average (MA)}
+
+CDE scored sharpe ratios of -0.199 for the original returns, and -0.760 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-MA-time-series.png}
+    \captionof{figure}{CDE MA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{CDE-MA-histogram.png}
+    \captionof{figure}{CDE MA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{CDE-MA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{CDE MA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-CDE-MA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day CDE MA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored sharpe ratios of -0.067 for the original returns, and 0.590 for the predicted returns in the in-sample test.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{NAVB-MA-time-series.png}
+    \captionof{figure}{NAVB MA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{NAVB-MA-histogram.png}
+    \captionof{figure}{NAVB MA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-MA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{NAVB MA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-NAVB-MA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day NAVB MA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored sharpe ratios of 0.084 for the original returns, and -1.020 for the predicted returns in the in-sample test.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HRG-MA-time-series.png}
+    \captionof{figure}{HRG MA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HRG-MA-histogram.png}
+    \captionof{figure}{HRG MA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-MA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{HRG MA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HRG-MA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day HRG MA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored sharpe ratios of -0.128 for the original returns, and -0.977 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-MA-time-series.png}
+    \captionof{figure}{HL MA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-MA-histogram.png}
+    \captionof{figure}{HL MA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-MA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{HL MA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HL-MA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day HL MA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsection{Auto Regressive Moving Average (ARMA)}
+
+MSFT scored sharpe ratios of 0.537 for the original returns, and -6.485 for the predicted returns in the in-sample test.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{MSFT-ARMA-time-series.png}
+    \captionof{figure}{MSFT ARMA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{MSFT-ARMA-histogram.png}
+    \captionof{figure}{MSFT ARMA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{MSFT-ARMA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{MSFT ARMA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-MSFT-ARMA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day MSFT ARMA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored sharpe ratios of -0.245 for the original returns, and -0.614 for the predicted returns in the in-sample test.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{NAVB-ARMA-time-series.png}
+    \captionof{figure}{NAVB ARMA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-ARMA-histogram.png}
+    \captionof{figure}{NAVB ARMA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{NAVB-ARMA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{NAVB ARMA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-ARMA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day NAVB ARMA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored sharpe ratios of -0.032 for the original returns, and -0.641 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-ARMA-time-series.png}
+    \captionof{figure}{HRG ARMA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-ARMA-histogram.png}
+    \captionof{figure}{HRG ARMA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-ARMA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{HRG ARMA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HRG-ARMA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day HRG ARMA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored sharpe ratios of 0.111 for the original returns, and -1.023 for the predicted returns in the in-sample test.
+
+\begin{center}
+  
+    \includegraphics[width=\textwidth]{HL-ARMA-time-series.png}
+    \captionof{figure}{HL ARMA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{HL-ARMA-histogram.png}
+    \captionof{figure}{HL ARMA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-ARMA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{HL ARMA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HL-ARMA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day HL ARMA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsection{Auto Regressive Integrated Moving Average (ARIMA)}
+
+CDE scored sharpe ratios of -0.133 for the original returns, and -0.698 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-ARIMA-time-series.png}
+    \captionof{figure}{CDE ARIMA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-ARIMA-histogram.png}
+    \captionof{figure}{CDE ARIMA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{CDE-ARIMA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{CDE ARIMA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-CDE-ARIMA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day CDE ARIMA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored sharpe ratios of 0.015 for the original returns, and -0.708 for the predicted returns in the in-sample test.
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{NAVB-ARIMA-time-series.png}
+    \captionof{figure}{NAVB ARIMA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-ARIMA-histogram.png}
+    \captionof{figure}{NAVB ARIMA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{NAVB-ARIMA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{NAVB ARIMA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-NAVB-ARIMA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day NAVB ARIMA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored sharpe ratios of 0.401 for the original returns, and -1.354 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-ARIMA-time-series.png}
+    \captionof{figure}{HRG ARIMA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-ARIMA-histogram.png}
+    \captionof{figure}{HRG ARIMA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-ARIMA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{HRG ARIMA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{100-Day-HRG-ARIMA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day HRG ARIMA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored sharpe ratios of -0.127 for the original returns, and -0.974 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-ARIMA-time-series.png}
+    \captionof{figure}{HL ARIMA time series analysis}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-ARIMA-histogram.png}
+    \captionof{figure}{HL ARIMA histogram of returns}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-ARIMA-In-Sample-Return-Prediction.png}
+    \captionof{figure}{HL ARIMA in-sample returns prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-ARIMA-Out-of-Sample-Return-Forecast.png}
+    \captionof{figure}{100 day HL ARIMA in-sample returns forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\section{Machine Learning}
+
+\subsubsection{Decision Tree}
+
+CDE scored a mean absolute error regression loss of 2.906, and a coefficient of determination of 0.816.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-Decision-Trees-In-Sample-Prediction.png}
+    \captionof{figure}{CDE Decision Trees in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-CDE-Decision-Trees-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day CDE Decision Trees out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of determination of 0.693.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-Decision-Trees-In-Sample-Prediction.png}
+    \captionof{figure}{NAVB Decision Trees in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-Decision-Trees-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day NAVB Decision Trees out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-Decision-Trees-In-Sample-Prediction.png}
+    \captionof{figure}{HRG Decision Trees in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-Decision-Trees-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HRG Decision Trees out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored a mean absolute error regression loss of 0.506, and a coefficient of determination of 0.923.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-Decision-Trees-In-Sample-Prediction.png}
+    \captionof{figure}{HL Decision Trees in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-Decision-Trees-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HL Decision Trees out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsubsection{Boosted Decision Tree}
+
+CDE scored a mean absolute error regression loss of 5.452, and a coefficient of determination of 0.581.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-Boosted-Trees-In-Sample-Prediction.png}
+    \captionof{figure}{CDE Boosted Decision Trees in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-CDE-Boosted-Trees-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day CDE Boosted Decision Trees out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored a mean absolute error regression loss of 0.579, and a coefficient of determination of 0.509.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-Boosted-Trees-In-Sample-Prediction.png}
+    \captionof{figure}{NAVB Boosted Decision Trees in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-Boosted-Trees-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day NAVB Boosted Decision Trees out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored a mean absolute error regression loss of 0.980, and a coefficient of determination of 0.855.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-Boosted-Trees-In-Sample-Prediction.png}
+    \captionof{figure}{HRG Boosted Decision Trees in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-Boosted-Trees-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HRG Boosted Decision Trees out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored a mean absolute error regression loss of 0.410, and a coefficient of determination of 0.952.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-Boosted-Trees-In-Sample-Prediction.png}
+    \captionof{figure}{HL Boosted Decision Trees in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-Boosted-Trees-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HL Boosted Decision Trees out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsubsection{K-Nearest Neighbour}
+
+CDE scored a mean absolute error regression loss of 5.452, and a coefficient of determination of 0.581.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-K-Nearest-Neighbour-In-Sample-Prediction.png}
+    \captionof{figure}{CDE K-Nearest Neighbour in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-CDE-K-Nearest-Neighbour-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day CDE K-Nearest Neighbour out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored a mean absolute error regression loss of 0.579, and a coefficient of determination of 0.509.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-K-Nearest-Neighbour-In-Sample-Prediction.png}
+    \captionof{figure}{NAVB K-Nearest Neighbour in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-K-Nearest-Neighbour-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day NAVB K-Nearest Neighbour out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored a mean absolute error regression loss of 0.980, and a coefficient of determination of 0.855.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-K-Nearest-Neighbour-In-Sample-Prediction.png}
+    \captionof{figure}{HRG K-Nearest Neighbour in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-K-Nearest-Neighbour-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HRG K-Nearest Neighbour out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored a mean absolute error regression loss of 0.410, and a coefficient of determination of 0.952.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-K-Nearest-Neighbour-In-Sample-Prediction.png}
+    \captionof{figure}{HL K-Nearest Neighbour in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-K-Nearest-Neighbour-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HL K-Nearest Neighbour out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsubsection{Random Forest}
+
+CDE scored a mean absolute error regression loss of 2.505, and a coefficient of determination of 0.861.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-Random-Forest-In-Sample-Prediction.png}
+    \captionof{figure}{CDE Random Forest in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-CDE-Random-Forest-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day CDE Random Forest out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored a mean absolute error regression loss of 0.293, and a coefficient of determination of 0.856.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-Random-Forest-In-Sample-Prediction.png}
+    \captionof{figure}{NAVB Random Forest in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-Random-Forest-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day NAVB Random Forest out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored a mean absolute error regression loss of 0.675, and a coefficient of determination of 0.907.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-Random-Forest-In-Sample-Prediction.png}
+    \captionof{figure}{HRG Random Forest in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-Random-Forest-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HRG Random Forest out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored a mean absolute error regression loss of 0.434, and a coefficient of determination of 0.922.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-Random-Forest-In-Sample-Prediction.png}
+    \captionof{figure}{HL Random Forest in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-Random-Forest-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HL Random Forest out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsubsection{Linear Regression}
+MSFT scored a mean absolute error regression loss of 0.844, and a coefficient of determination of 0.990.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{MSFT-Linear-Regression-In-Sample-Prediction.png}
+    \captionof{figure}{MSFT Linear Regression in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-MSFT-Linear-Regression-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day MSFT Linear Regression out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+CDE scored a mean absolute error regression loss of 0.990, and a coefficient of determination of 0.972.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-Linear-Regression-In-Sample-Prediction.png}
+    \captionof{figure}{CDE Linear Regression in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-CDE-Linear-Regression-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day CDE Linear Regression out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored a mean absolute error regression loss of 0.324, and a coefficient of determination of 0.984.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-Linear-Regression-In-Sample-Prediction.png}
+    \captionof{figure}{HRG Linear Regression in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-Linear-Regression-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HRG Linear Regression out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored a mean absolute error regression loss of 0.243, and a coefficient of determination of 0.964.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-Linear-Regression-In-Sample-Prediction.png}
+    \captionof{figure}{HL Linear Regression in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-Linear-Regression-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HL Linear Regression out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsubsection{Neural Network}
+MSFT scored a mean absolute error regression loss of 1.073, and a coefficient of determination of 0.992.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{MSFT-Neural-Network-In-Sample-Prediction.png}
+    \captionof{figure}{MSFT Neural Network in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-MSFT-Neural-Network-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day MSFT Neural Network out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored a mean absolute error regression loss of 0.422, and a coefficient of determination of 0.693.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-Neural-Network-In-Sample-Prediction.png}
+    \captionof{figure}{NAVB Neural Network in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-Neural-Network-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day NAVB Neural Network out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored a mean absolute error regression loss of 1.415, and a coefficient of determination of 0.464.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-Neural-Network-In-Sample-Prediction.png}
+    \captionof{figure}{HRG Neural Network in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-Neural-Network-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HRG Neural Network out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored a mean absolute error regression loss of 0.506, and a coefficient of determination of 0.923.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-Neural-Network-In-Sample-Prediction.png}
+    \captionof{figure}{HL Neural Network in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-Neural-Network-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HL Neural Network out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsubsection{Stochastic Gradient Descent}
+MSFT scored a mean absolute error regression loss of 0.829, and a coefficient of determination of 0.990.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{MSFT-SGD-In-Sample-Prediction.png}
+    \captionof{figure}{MSFT SGD in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-MSFT-SGD-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day MSFT SGD out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored a mean absolute error regression loss of 0.142, and a coefficient of determination of 0.955.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-SGD-In-Sample-Prediction.png}
+    \captionof{figure}{NAVB SGD in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-SGD-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day NAVB SGD out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored a mean absolute error regression loss of 0.292, and a coefficient of determination of 0.987.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-SGD-In-Sample-Prediction.png}
+    \captionof{figure}{HRG SGD in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-SGD-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HRG SGD out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored a mean absolute error regression loss of 0.275, and a coefficient of determination of 0.962.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-SGD-In-Sample-Prediction.png}
+    \captionof{figure}{HL SGD in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-SGD-Out-of-Sample-Forecast.png}
+    \captionof{figure}{100 day HL SGD out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\section{Bayesian Statistics}
+
+\subsection{Metropolis-Hastings}
+
+CDE scored sharpe ratios of 2.028 for the original returns, and 4.075 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-Metropolis-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{CDE Metropolis-Hastimgs in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-CDE-Metropolis-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day CDE Metropolis-Hastings out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored sharpe ratios of -2.800 for the original returns, and 2.998 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-Metropolis-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{NAVB Metropolis-Hastimgs in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-Metropolis-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day NAVB Metropolis-Hastings out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored sharpe ratios of 1.362 for the original returns, and -2.173 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-Metropolis-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{HRG Metropolis-Hastimgs in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-Metropolis-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day HRG Metropolis-Hastings out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HL scored sharpe ratios of 0.439 for the original returns, and -2.283 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HL-Metropolis-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{HL Metropolis-Hastimgs in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HL-Metropolis-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day HL Metropolis-Hastings out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+\subsection{No-U-Turn Sampler (NUTS)}
+MSFT scored sharpe ratios of 2.499 for the original returns, and -1.355 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{MSFT-NUTS-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{MSFT NUTS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-MSFT-NUTS-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day MSFT NUTS out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+CDE scored sharpe ratios of 2.028 for the original returns, and 3.066 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{CDE-NUTS-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{CDE NUTS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-CDE-NUTS-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day CDE NUTS out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+NAVB scored sharpe ratios of -2.800 for the original returns, and -2.914 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{NAVB-NUTS-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{NAVB NUTS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-NAVB-NUTS-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day NAVB NUTS out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
+
+HRG scored sharpe ratios of 1.362 for the original returns, and -1.812 for the predicted returns in the in-sample test.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{HRG-NUTS-In-Sample-Returns-Prediction.png}
+    \captionof{figure}{HRG NUTS in-sample prediction}
+    \label{fig:nonfloat}
+\end{center}
+
+\begin{center}  
+    \includegraphics[width=\textwidth]{100-Day-HRG-NUTS-Out-of-Sample-Returns-Forecast.png}
+    \captionof{figure}{100 day HRG NUTS out-of-sample forecast}
+    \label{fig:nonfloat}
+\end{center}
