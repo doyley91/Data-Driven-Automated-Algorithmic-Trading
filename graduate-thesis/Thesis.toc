@@ -128,7 +128,7 @@
 \contentsline {section}{\numberline {5.5}Future Research}{63}{section.191}
 \contentsline {chapter}{\numberline {6}Conclusion}{65}{chapter.192}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}An Appendix}{66}{appendix.193}
+\contentsline {chapter}{\numberline {A}Details of Forecasting Experiments}{66}{appendix.193}
 \contentsline {section}{\numberline {A.1}Time Series Analysis}{66}{section.194}
 \contentsline {subsection}{\numberline {A.1.1}Random Walk}{66}{subsection.195}
 \contentsline {subsection}{\numberline {A.1.2}Ordinary Least Squares (OLS)}{70}{subsection.204}
