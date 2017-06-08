@@ -2,211 +2,211 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Basket of stocks\relax }}{21}{figure.62}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces HRG time series analysis\relax }}{22}{figure.66}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces HRG histogram of returns\relax }}{23}{figure.67}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces MSFT OLS in-sample prediction\relax }}{24}{figure.69}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 100 day MSFT OLS in-sample forecast\relax }}{24}{figure.70}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces MSFT AR time series analysis\relax }}{25}{figure.72}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces MSFT AR histogram of returns\relax }}{26}{figure.73}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces MSFT AR in-sample returns prediction\relax }}{26}{figure.74}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces 100 day MSFT AR in-sample returns forecast\relax }}{27}{figure.75}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces HRG MA time series analysis\relax }}{28}{figure.77}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces HRG MA histogram of returns\relax }}{28}{figure.78}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces HRG MA in-sample returns prediction\relax }}{29}{figure.79}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces 100 day HRG MA in-sample returns forecast\relax }}{29}{figure.80}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces CDE ARMA time series analysis\relax }}{30}{figure.82}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces CDE ARMA histogram of returns\relax }}{31}{figure.83}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces CDE ARMA in-sample returns prediction\relax }}{31}{figure.84}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces 100 day CDE ARMA in-sample returns forecast\relax }}{32}{figure.85}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces MSFT ARIMA time series analysis\relax }}{33}{figure.87}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces MSFT ARIMA histogram of returns\relax }}{33}{figure.88}
-\contentsline {figure}{\numberline {4.20}{\ignorespaces MSFT ARIMA in-sample returns prediction\relax }}{34}{figure.89}
-\contentsline {figure}{\numberline {4.21}{\ignorespaces 100 day MSFT ARIMA in-sample returns forecast\relax }}{34}{figure.90}
-\contentsline {figure}{\numberline {4.22}{\ignorespaces MSFT Decision Trees in-sample prediction\relax }}{38}{figure.115}
-\contentsline {figure}{\numberline {4.23}{\ignorespaces 100 day MSFT Decision Trees out-of-sample forecast\relax }}{39}{figure.116}
-\contentsline {figure}{\numberline {4.24}{\ignorespaces MSFT Boosted Decision Trees in-sample prediction\relax }}{40}{figure.118}
-\contentsline {figure}{\numberline {4.25}{\ignorespaces 100 day MSFT Boosted Decision Trees out-of-sample forecast\relax }}{40}{figure.119}
-\contentsline {figure}{\numberline {4.26}{\ignorespaces MSFT K-Nearest Neighbour in-sample prediction\relax }}{41}{figure.121}
-\contentsline {figure}{\numberline {4.27}{\ignorespaces 100 day MSFT K-Nearest Neighbour out-of-sample forecast\relax }}{42}{figure.122}
-\contentsline {figure}{\numberline {4.28}{\ignorespaces MSFT Random Forest in-sample prediction\relax }}{43}{figure.124}
-\contentsline {figure}{\numberline {4.29}{\ignorespaces 100 day MSFT Random Forest out-of-sample forecast\relax }}{43}{figure.125}
-\contentsline {figure}{\numberline {4.30}{\ignorespaces NAVB Linear Regression in-sample prediction\relax }}{44}{figure.127}
-\contentsline {figure}{\numberline {4.31}{\ignorespaces 100 day NAVB Linear Regression out-of-sample forecast\relax }}{45}{figure.128}
-\contentsline {figure}{\numberline {4.32}{\ignorespaces CDE Neural Network in-sample prediction\relax }}{46}{figure.130}
-\contentsline {figure}{\numberline {4.33}{\ignorespaces 100 day CDE Neural Network out-of-sample forecast\relax }}{46}{figure.131}
-\contentsline {figure}{\numberline {4.34}{\ignorespaces CDE SGD in-sample prediction\relax }}{47}{figure.133}
-\contentsline {figure}{\numberline {4.35}{\ignorespaces 100 day CDE SGD out-of-sample forecast\relax }}{48}{figure.134}
-\contentsline {figure}{\numberline {4.36}{\ignorespaces MSFT Metropolis-Hastimgs in-sample prediction\relax }}{49}{figure.137}
-\contentsline {figure}{\numberline {4.37}{\ignorespaces 100 day MSFT Metropolis-Hastings out-of-sample forecast\relax }}{49}{figure.138}
-\contentsline {figure}{\numberline {4.38}{\ignorespaces HL NUTS in-sample prediction\relax }}{50}{figure.140}
-\contentsline {figure}{\numberline {4.39}{\ignorespaces 100 day HL NUTS out-of-sample forecast\relax }}{51}{figure.141}
-\contentsline {figure}{\numberline {4.40}{\ignorespaces Machine Learning Classifier strategy with only upwards forecasts\relax }}{52}{figure.145}
-\contentsline {figure}{\numberline {4.41}{\ignorespaces Machine Learning Classifier strategy with upwards and downwards forecasts\relax }}{53}{figure.147}
-\contentsline {figure}{\numberline {4.42}{\ignorespaces Machine Learning Classifier strategy with stop loss\relax }}{54}{figure.149}
-\contentsline {figure}{\numberline {4.43}{\ignorespaces Machine Learning Regression strategy with only upwards forecasts\relax }}{55}{figure.152}
-\contentsline {figure}{\numberline {4.44}{\ignorespaces Machine Learning Regression strategy with upwards and downwards forecasts\relax }}{56}{figure.154}
-\contentsline {figure}{\numberline {4.45}{\ignorespaces Machine Learning Regression strategy with stop loss\relax }}{57}{figure.156}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Basket of Stocks\relax }}{21}{figure.62}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces HRG Time Series Analysis\relax }}{22}{figure.66}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces HRG Histogram of Returns\relax }}{23}{figure.67}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces MSFT OLS In-Sample Prediction\relax }}{24}{figure.69}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 100 day MSFT OLS In-Sample Forecast\relax }}{24}{figure.70}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces MSFT AR Time Series Analysis\relax }}{25}{figure.72}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces MSFT AR Histogram of Returns\relax }}{26}{figure.73}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces MSFT AR In-Sample Returns Prediction\relax }}{26}{figure.74}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces 100 day MSFT AR In-Sample Returns Forecast\relax }}{27}{figure.75}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces HRG MA Time Series Analysis\relax }}{28}{figure.77}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces HRG MA Histogram of Returns\relax }}{28}{figure.78}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces HRG MA In-Sample Returns Prediction\relax }}{29}{figure.79}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces 100 day HRG MA In-Sample Returns Forecast\relax }}{29}{figure.80}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces CDE ARMA Time Series Analysis\relax }}{30}{figure.82}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces CDE ARMA Histogram of Returns\relax }}{31}{figure.83}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces CDE ARMA In-Sample Returns Prediction\relax }}{31}{figure.84}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces 100 day CDE ARMA In-Sample Returns Forecast\relax }}{32}{figure.85}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces MSFT ARIMA Time Series Analysis\relax }}{33}{figure.87}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces MSFT ARIMA Histogram of Returns\relax }}{33}{figure.88}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces MSFT ARIMA In-Sample Returns Prediction\relax }}{34}{figure.89}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces 100 day MSFT ARIMA In-Sample Returns Forecast\relax }}{34}{figure.90}
+\contentsline {figure}{\numberline {4.22}{\ignorespaces MSFT Decision Trees In-Sample Prediction\relax }}{38}{figure.115}
+\contentsline {figure}{\numberline {4.23}{\ignorespaces 100 day MSFT Decision Trees Out-of-Sample Forecast\relax }}{39}{figure.116}
+\contentsline {figure}{\numberline {4.24}{\ignorespaces MSFT Boosted Decision Trees In-Sample Prediction\relax }}{40}{figure.118}
+\contentsline {figure}{\numberline {4.25}{\ignorespaces 100 day MSFT Boosted Decision Trees Out-of-Sample Forecast\relax }}{40}{figure.119}
+\contentsline {figure}{\numberline {4.26}{\ignorespaces MSFT K-Nearest Neighbour In-Sample Prediction\relax }}{41}{figure.121}
+\contentsline {figure}{\numberline {4.27}{\ignorespaces 100 day MSFT K-Nearest Neighbour Out-of-Sample Forecast\relax }}{42}{figure.122}
+\contentsline {figure}{\numberline {4.28}{\ignorespaces MSFT Random Forest In-Sample Prediction\relax }}{43}{figure.124}
+\contentsline {figure}{\numberline {4.29}{\ignorespaces 100 day MSFT Random Forest Out-of-Sample Forecast\relax }}{43}{figure.125}
+\contentsline {figure}{\numberline {4.30}{\ignorespaces NAVB Linear Regression In-Sample Prediction\relax }}{44}{figure.127}
+\contentsline {figure}{\numberline {4.31}{\ignorespaces 100 day NAVB Linear Regression Out-of-Sample Forecast\relax }}{45}{figure.128}
+\contentsline {figure}{\numberline {4.32}{\ignorespaces CDE Neural Network In-Sample Prediction\relax }}{46}{figure.130}
+\contentsline {figure}{\numberline {4.33}{\ignorespaces 100 day CDE Neural Network Out-of-Sample Forecast\relax }}{46}{figure.131}
+\contentsline {figure}{\numberline {4.34}{\ignorespaces CDE SGD In-Sample Prediction\relax }}{47}{figure.133}
+\contentsline {figure}{\numberline {4.35}{\ignorespaces 100 day CDE SGD Out-of-Sample Forecast\relax }}{48}{figure.134}
+\contentsline {figure}{\numberline {4.36}{\ignorespaces MSFT Metropolis-Hastimgs In-Sample Prediction\relax }}{49}{figure.137}
+\contentsline {figure}{\numberline {4.37}{\ignorespaces 100 day MSFT Metropolis-Hastings Out-of-Sample Forecast\relax }}{49}{figure.138}
+\contentsline {figure}{\numberline {4.38}{\ignorespaces HL NUTS In-Sample Prediction\relax }}{50}{figure.140}
+\contentsline {figure}{\numberline {4.39}{\ignorespaces 100 day HL NUTS Out-of-Sample Forecast\relax }}{51}{figure.141}
+\contentsline {figure}{\numberline {4.40}{\ignorespaces Machine Learning Classifier Strategy With Only Upwards Forecasts\relax }}{52}{figure.145}
+\contentsline {figure}{\numberline {4.41}{\ignorespaces Machine Learning Classifier Strategy With Upwards and Downwards Forecasts\relax }}{53}{figure.147}
+\contentsline {figure}{\numberline {4.42}{\ignorespaces Machine Learning Classifier Strategy With Stop Loss\relax }}{54}{figure.149}
+\contentsline {figure}{\numberline {4.43}{\ignorespaces Machine Learning Regression Strategy With Only Upwards Forecasts\relax }}{55}{figure.152}
+\contentsline {figure}{\numberline {4.44}{\ignorespaces Machine Learning Regression Strategy With Upwards and Downwards Forecasts\relax }}{56}{figure.154}
+\contentsline {figure}{\numberline {4.45}{\ignorespaces Machine Learning Regression Strategy With Stop Loss\relax }}{57}{figure.156}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces MSFT time series analysis\relax }}{66}{figure.196}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces MSFT histogram of returns\relax }}{67}{figure.197}
-\contentsline {figure}{\numberline {A.3}{\ignorespaces CDE time series analysis\relax }}{67}{figure.198}
-\contentsline {figure}{\numberline {A.4}{\ignorespaces CDE histogram of returns\relax }}{68}{figure.199}
-\contentsline {figure}{\numberline {A.5}{\ignorespaces NAVB time series analysis\relax }}{68}{figure.200}
-\contentsline {figure}{\numberline {A.6}{\ignorespaces NAVB histogram of returns\relax }}{69}{figure.201}
-\contentsline {figure}{\numberline {A.7}{\ignorespaces HL time series analysis\relax }}{69}{figure.202}
-\contentsline {figure}{\numberline {A.8}{\ignorespaces HL histogram of returns\relax }}{70}{figure.203}
-\contentsline {figure}{\numberline {A.9}{\ignorespaces CDE OLS in-sample prediction\relax }}{71}{figure.205}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces MSFT Time Series Analysis\relax }}{66}{figure.196}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces MSFT Histogram of Returns\relax }}{67}{figure.197}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces CDE Time Series Analysis\relax }}{67}{figure.198}
+\contentsline {figure}{\numberline {A.4}{\ignorespaces CDE Histogram of Returns\relax }}{68}{figure.199}
+\contentsline {figure}{\numberline {A.5}{\ignorespaces NAVB Time Series Analysis\relax }}{68}{figure.200}
+\contentsline {figure}{\numberline {A.6}{\ignorespaces NAVB Histogram of Returns\relax }}{69}{figure.201}
+\contentsline {figure}{\numberline {A.7}{\ignorespaces HL Time Series Analysis\relax }}{69}{figure.202}
+\contentsline {figure}{\numberline {A.8}{\ignorespaces HL Histogram of Returns\relax }}{70}{figure.203}
+\contentsline {figure}{\numberline {A.9}{\ignorespaces CDE OLS In-Sample Prediction\relax }}{71}{figure.205}
 \contentsline {figure}{\numberline {A.10}{\ignorespaces 100 Day CDE OLS out of sample forecast\relax }}{71}{figure.206}
-\contentsline {figure}{\numberline {A.11}{\ignorespaces NAVB OLS in-sample prediction\relax }}{72}{figure.207}
+\contentsline {figure}{\numberline {A.11}{\ignorespaces NAVB OLS In-Sample Prediction\relax }}{72}{figure.207}
 \contentsline {figure}{\numberline {A.12}{\ignorespaces 100 day NAVB OLS in-sample forecast\relax }}{73}{figure.208}
-\contentsline {figure}{\numberline {A.13}{\ignorespaces HRG OLS in-sample prediction\relax }}{74}{figure.209}
+\contentsline {figure}{\numberline {A.13}{\ignorespaces HRG OLS In-Sample Prediction\relax }}{74}{figure.209}
 \contentsline {figure}{\numberline {A.14}{\ignorespaces 100 day HRG OLS in-sample forecast\relax }}{74}{figure.210}
-\contentsline {figure}{\numberline {A.15}{\ignorespaces HL OLS in-sample prediction\relax }}{75}{figure.211}
+\contentsline {figure}{\numberline {A.15}{\ignorespaces HL OLS In-Sample Prediction\relax }}{75}{figure.211}
 \contentsline {figure}{\numberline {A.16}{\ignorespaces 100 day HL OLS in-sample forecast\relax }}{76}{figure.212}
-\contentsline {figure}{\numberline {A.17}{\ignorespaces CDE OLS in-sample prediction\relax }}{77}{figure.214}
+\contentsline {figure}{\numberline {A.17}{\ignorespaces CDE OLS In-Sample Prediction\relax }}{77}{figure.214}
 \contentsline {figure}{\numberline {A.18}{\ignorespaces 100 Day CDE OLS out of sample forecast\relax }}{77}{figure.215}
-\contentsline {figure}{\numberline {A.19}{\ignorespaces NAVB OLS in-sample prediction\relax }}{78}{figure.216}
+\contentsline {figure}{\numberline {A.19}{\ignorespaces NAVB OLS In-Sample Prediction\relax }}{78}{figure.216}
 \contentsline {figure}{\numberline {A.20}{\ignorespaces 100 day NAVB OLS in-sample forecast\relax }}{79}{figure.217}
-\contentsline {figure}{\numberline {A.21}{\ignorespaces HRG OLS in-sample prediction\relax }}{80}{figure.218}
+\contentsline {figure}{\numberline {A.21}{\ignorespaces HRG OLS In-Sample Prediction\relax }}{80}{figure.218}
 \contentsline {figure}{\numberline {A.22}{\ignorespaces 100 day HRG OLS in-sample forecast\relax }}{80}{figure.219}
-\contentsline {figure}{\numberline {A.23}{\ignorespaces HL OLS in-sample prediction\relax }}{81}{figure.220}
+\contentsline {figure}{\numberline {A.23}{\ignorespaces HL OLS In-Sample Prediction\relax }}{81}{figure.220}
 \contentsline {figure}{\numberline {A.24}{\ignorespaces 100 day HL OLS in-sample forecast\relax }}{82}{figure.221}
-\contentsline {figure}{\numberline {A.25}{\ignorespaces CDE AR time series analysis\relax }}{83}{figure.223}
-\contentsline {figure}{\numberline {A.26}{\ignorespaces CDE AR histogram of returns\relax }}{83}{figure.224}
+\contentsline {figure}{\numberline {A.25}{\ignorespaces CDE AR Time Series Analysis\relax }}{83}{figure.223}
+\contentsline {figure}{\numberline {A.26}{\ignorespaces CDE AR Histogram of Returns\relax }}{83}{figure.224}
 \contentsline {figure}{\numberline {A.27}{\ignorespaces CDE AR in-sample returns prediction\relax }}{84}{figure.225}
 \contentsline {figure}{\numberline {A.28}{\ignorespaces 100 day CDE AR in-sample returns forecast\relax }}{84}{figure.226}
-\contentsline {figure}{\numberline {A.29}{\ignorespaces NAVB AR time series analysis\relax }}{85}{figure.227}
-\contentsline {figure}{\numberline {A.30}{\ignorespaces NAVB AR histogram of returns\relax }}{86}{figure.228}
+\contentsline {figure}{\numberline {A.29}{\ignorespaces NAVB AR Time Series Analysis\relax }}{85}{figure.227}
+\contentsline {figure}{\numberline {A.30}{\ignorespaces NAVB AR Histogram of Returns\relax }}{86}{figure.228}
 \contentsline {figure}{\numberline {A.31}{\ignorespaces NAVB AR in-sample returns prediction\relax }}{86}{figure.229}
 \contentsline {figure}{\numberline {A.32}{\ignorespaces 100 day NAVB AR in-sample returns forecast\relax }}{87}{figure.230}
-\contentsline {figure}{\numberline {A.33}{\ignorespaces HRG AR time series analysis\relax }}{88}{figure.231}
-\contentsline {figure}{\numberline {A.34}{\ignorespaces HRG AR histogram of returns\relax }}{88}{figure.232}
+\contentsline {figure}{\numberline {A.33}{\ignorespaces HRG AR Time Series Analysis\relax }}{88}{figure.231}
+\contentsline {figure}{\numberline {A.34}{\ignorespaces HRG AR Histogram of Returns\relax }}{88}{figure.232}
 \contentsline {figure}{\numberline {A.35}{\ignorespaces HL AR in-sample returns prediction\relax }}{89}{figure.233}
 \contentsline {figure}{\numberline {A.36}{\ignorespaces 100 day HRG AR in-sample returns forecast\relax }}{89}{figure.234}
-\contentsline {figure}{\numberline {A.37}{\ignorespaces HL AR time series analysis\relax }}{90}{figure.235}
-\contentsline {figure}{\numberline {A.38}{\ignorespaces HL AR histogram of returns\relax }}{91}{figure.236}
+\contentsline {figure}{\numberline {A.37}{\ignorespaces HL AR Time Series Analysis\relax }}{90}{figure.235}
+\contentsline {figure}{\numberline {A.38}{\ignorespaces HL AR Histogram of Returns\relax }}{91}{figure.236}
 \contentsline {figure}{\numberline {A.39}{\ignorespaces HL AR in-sample returns prediction\relax }}{91}{figure.237}
 \contentsline {figure}{\numberline {A.40}{\ignorespaces 100 day HL AR in-sample returns forecast\relax }}{92}{figure.238}
-\contentsline {figure}{\numberline {A.41}{\ignorespaces CDE MA time series analysis\relax }}{93}{figure.240}
-\contentsline {figure}{\numberline {A.42}{\ignorespaces CDE MA histogram of returns\relax }}{93}{figure.241}
+\contentsline {figure}{\numberline {A.41}{\ignorespaces CDE MA Time Series Analysis\relax }}{93}{figure.240}
+\contentsline {figure}{\numberline {A.42}{\ignorespaces CDE MA Histogram of Returns\relax }}{93}{figure.241}
 \contentsline {figure}{\numberline {A.43}{\ignorespaces CDE MA in-sample returns prediction\relax }}{94}{figure.242}
 \contentsline {figure}{\numberline {A.44}{\ignorespaces 100 day CDE MA in-sample returns forecast\relax }}{94}{figure.243}
-\contentsline {figure}{\numberline {A.45}{\ignorespaces NAVB MA time series analysis\relax }}{95}{figure.244}
-\contentsline {figure}{\numberline {A.46}{\ignorespaces NAVB MA histogram of returns\relax }}{96}{figure.245}
+\contentsline {figure}{\numberline {A.45}{\ignorespaces NAVB MA Time Series Analysis\relax }}{95}{figure.244}
+\contentsline {figure}{\numberline {A.46}{\ignorespaces NAVB MA Histogram of Returns\relax }}{96}{figure.245}
 \contentsline {figure}{\numberline {A.47}{\ignorespaces NAVB MA in-sample returns prediction\relax }}{96}{figure.246}
 \contentsline {figure}{\numberline {A.48}{\ignorespaces 100 day NAVB MA in-sample returns forecast\relax }}{97}{figure.247}
-\contentsline {figure}{\numberline {A.49}{\ignorespaces HRG MA time series analysis\relax }}{98}{figure.248}
-\contentsline {figure}{\numberline {A.50}{\ignorespaces HRG MA histogram of returns\relax }}{98}{figure.249}
+\contentsline {figure}{\numberline {A.49}{\ignorespaces HRG MA Time Series Analysis\relax }}{98}{figure.248}
+\contentsline {figure}{\numberline {A.50}{\ignorespaces HRG MA Histogram of Returns\relax }}{98}{figure.249}
 \contentsline {figure}{\numberline {A.51}{\ignorespaces HRG MA in-sample returns prediction\relax }}{99}{figure.250}
 \contentsline {figure}{\numberline {A.52}{\ignorespaces 100 day HRG MA in-sample returns forecast\relax }}{99}{figure.251}
-\contentsline {figure}{\numberline {A.53}{\ignorespaces HL MA time series analysis\relax }}{100}{figure.252}
-\contentsline {figure}{\numberline {A.54}{\ignorespaces HL MA histogram of returns\relax }}{101}{figure.253}
+\contentsline {figure}{\numberline {A.53}{\ignorespaces HL MA Time Series Analysis\relax }}{100}{figure.252}
+\contentsline {figure}{\numberline {A.54}{\ignorespaces HL MA Histogram of Returns\relax }}{101}{figure.253}
 \contentsline {figure}{\numberline {A.55}{\ignorespaces HL MA in-sample returns prediction\relax }}{101}{figure.254}
 \contentsline {figure}{\numberline {A.56}{\ignorespaces 100 day HL MA in-sample returns forecast\relax }}{102}{figure.255}
-\contentsline {figure}{\numberline {A.57}{\ignorespaces MSFT ARMA time series analysis\relax }}{103}{figure.257}
-\contentsline {figure}{\numberline {A.58}{\ignorespaces MSFT ARMA histogram of returns\relax }}{103}{figure.258}
+\contentsline {figure}{\numberline {A.57}{\ignorespaces MSFT ARMA Time Series Analysis\relax }}{103}{figure.257}
+\contentsline {figure}{\numberline {A.58}{\ignorespaces MSFT ARMA Histogram of Returns\relax }}{103}{figure.258}
 \contentsline {figure}{\numberline {A.59}{\ignorespaces MSFT ARMA in-sample returns prediction\relax }}{104}{figure.259}
 \contentsline {figure}{\numberline {A.60}{\ignorespaces 100 day MSFT ARMA in-sample returns forecast\relax }}{104}{figure.260}
-\contentsline {figure}{\numberline {A.61}{\ignorespaces NAVB ARMA time series analysis\relax }}{105}{figure.261}
-\contentsline {figure}{\numberline {A.62}{\ignorespaces NAVB ARMA histogram of returns\relax }}{106}{figure.262}
+\contentsline {figure}{\numberline {A.61}{\ignorespaces NAVB ARMA Time Series Analysis\relax }}{105}{figure.261}
+\contentsline {figure}{\numberline {A.62}{\ignorespaces NAVB ARMA Histogram of Returns\relax }}{106}{figure.262}
 \contentsline {figure}{\numberline {A.63}{\ignorespaces NAVB ARMA in-sample returns prediction\relax }}{106}{figure.263}
 \contentsline {figure}{\numberline {A.64}{\ignorespaces 100 day NAVB ARMA in-sample returns forecast\relax }}{107}{figure.264}
-\contentsline {figure}{\numberline {A.65}{\ignorespaces HRG ARMA time series analysis\relax }}{108}{figure.265}
-\contentsline {figure}{\numberline {A.66}{\ignorespaces HRG ARMA histogram of returns\relax }}{108}{figure.266}
+\contentsline {figure}{\numberline {A.65}{\ignorespaces HRG ARMA Time Series Analysis\relax }}{108}{figure.265}
+\contentsline {figure}{\numberline {A.66}{\ignorespaces HRG ARMA Histogram of Returns\relax }}{108}{figure.266}
 \contentsline {figure}{\numberline {A.67}{\ignorespaces HRG ARMA in-sample returns prediction\relax }}{109}{figure.267}
 \contentsline {figure}{\numberline {A.68}{\ignorespaces 100 day HRG ARMA in-sample returns forecast\relax }}{109}{figure.268}
-\contentsline {figure}{\numberline {A.69}{\ignorespaces HL ARMA time series analysis\relax }}{110}{figure.269}
-\contentsline {figure}{\numberline {A.70}{\ignorespaces HL ARMA histogram of returns\relax }}{111}{figure.270}
+\contentsline {figure}{\numberline {A.69}{\ignorespaces HL ARMA Time Series Analysis\relax }}{110}{figure.269}
+\contentsline {figure}{\numberline {A.70}{\ignorespaces HL ARMA Histogram of Returns\relax }}{111}{figure.270}
 \contentsline {figure}{\numberline {A.71}{\ignorespaces HL ARMA in-sample returns prediction\relax }}{111}{figure.271}
 \contentsline {figure}{\numberline {A.72}{\ignorespaces 100 day HL ARMA in-sample returns forecast\relax }}{112}{figure.272}
-\contentsline {figure}{\numberline {A.73}{\ignorespaces CDE ARIMA time series analysis\relax }}{113}{figure.274}
-\contentsline {figure}{\numberline {A.74}{\ignorespaces CDE ARIMA histogram of returns\relax }}{113}{figure.275}
+\contentsline {figure}{\numberline {A.73}{\ignorespaces CDE ARIMA Time Series Analysis\relax }}{113}{figure.274}
+\contentsline {figure}{\numberline {A.74}{\ignorespaces CDE ARIMA Histogram of Returns\relax }}{113}{figure.275}
 \contentsline {figure}{\numberline {A.75}{\ignorespaces CDE ARIMA in-sample returns prediction\relax }}{114}{figure.276}
 \contentsline {figure}{\numberline {A.76}{\ignorespaces 100 day CDE ARIMA in-sample returns forecast\relax }}{114}{figure.277}
-\contentsline {figure}{\numberline {A.77}{\ignorespaces NAVB ARIMA time series analysis\relax }}{115}{figure.278}
-\contentsline {figure}{\numberline {A.78}{\ignorespaces NAVB ARIMA histogram of returns\relax }}{116}{figure.279}
+\contentsline {figure}{\numberline {A.77}{\ignorespaces NAVB ARIMA Time Series Analysis\relax }}{115}{figure.278}
+\contentsline {figure}{\numberline {A.78}{\ignorespaces NAVB ARIMA Histogram of Returns\relax }}{116}{figure.279}
 \contentsline {figure}{\numberline {A.79}{\ignorespaces NAVB ARIMA in-sample returns prediction\relax }}{116}{figure.280}
 \contentsline {figure}{\numberline {A.80}{\ignorespaces 100 day NAVB ARIMA in-sample returns forecast\relax }}{117}{figure.281}
-\contentsline {figure}{\numberline {A.81}{\ignorespaces HRG ARIMA time series analysis\relax }}{118}{figure.282}
-\contentsline {figure}{\numberline {A.82}{\ignorespaces HRG ARIMA histogram of returns\relax }}{118}{figure.283}
+\contentsline {figure}{\numberline {A.81}{\ignorespaces HRG ARIMA Time Series Analysis\relax }}{118}{figure.282}
+\contentsline {figure}{\numberline {A.82}{\ignorespaces HRG ARIMA Histogram of Returns\relax }}{118}{figure.283}
 \contentsline {figure}{\numberline {A.83}{\ignorespaces HRG ARIMA in-sample returns prediction\relax }}{119}{figure.284}
 \contentsline {figure}{\numberline {A.84}{\ignorespaces 100 day HRG ARIMA in-sample returns forecast\relax }}{119}{figure.285}
-\contentsline {figure}{\numberline {A.85}{\ignorespaces HL ARIMA time series analysis\relax }}{120}{figure.286}
-\contentsline {figure}{\numberline {A.86}{\ignorespaces HL ARIMA histogram of returns\relax }}{121}{figure.287}
+\contentsline {figure}{\numberline {A.85}{\ignorespaces HL ARIMA Time Series Analysis\relax }}{120}{figure.286}
+\contentsline {figure}{\numberline {A.86}{\ignorespaces HL ARIMA Histogram of Returns\relax }}{121}{figure.287}
 \contentsline {figure}{\numberline {A.87}{\ignorespaces HL ARIMA in-sample returns prediction\relax }}{121}{figure.288}
 \contentsline {figure}{\numberline {A.88}{\ignorespaces 100 day HL ARIMA in-sample returns forecast\relax }}{122}{figure.289}
-\contentsline {figure}{\numberline {A.89}{\ignorespaces CDE Decision Trees in-sample prediction\relax }}{123}{figure.292}
-\contentsline {figure}{\numberline {A.90}{\ignorespaces 100 day CDE Decision Trees out-of-sample forecast\relax }}{123}{figure.293}
-\contentsline {figure}{\numberline {A.91}{\ignorespaces NAVB Decision Trees in-sample prediction\relax }}{124}{figure.294}
-\contentsline {figure}{\numberline {A.92}{\ignorespaces 100 day NAVB Decision Trees out-of-sample forecast\relax }}{125}{figure.295}
-\contentsline {figure}{\numberline {A.93}{\ignorespaces HRG Decision Trees in-sample prediction\relax }}{126}{figure.296}
-\contentsline {figure}{\numberline {A.94}{\ignorespaces 100 day HRG Decision Trees out-of-sample forecast\relax }}{126}{figure.297}
-\contentsline {figure}{\numberline {A.95}{\ignorespaces HL Decision Trees in-sample prediction\relax }}{127}{figure.298}
-\contentsline {figure}{\numberline {A.96}{\ignorespaces 100 day HL Decision Trees out-of-sample forecast\relax }}{128}{figure.299}
-\contentsline {figure}{\numberline {A.97}{\ignorespaces CDE Boosted Decision Trees in-sample prediction\relax }}{129}{figure.301}
-\contentsline {figure}{\numberline {A.98}{\ignorespaces 100 day CDE Boosted Decision Trees out-of-sample forecast\relax }}{129}{figure.302}
-\contentsline {figure}{\numberline {A.99}{\ignorespaces NAVB Boosted Decision Trees in-sample prediction\relax }}{130}{figure.303}
-\contentsline {figure}{\numberline {A.100}{\ignorespaces 100 day NAVB Boosted Decision Trees out-of-sample forecast\relax }}{131}{figure.304}
-\contentsline {figure}{\numberline {A.101}{\ignorespaces HRG Boosted Decision Trees in-sample prediction\relax }}{132}{figure.305}
-\contentsline {figure}{\numberline {A.102}{\ignorespaces 100 day HRG Boosted Decision Trees out-of-sample forecast\relax }}{132}{figure.306}
-\contentsline {figure}{\numberline {A.103}{\ignorespaces HL Boosted Decision Trees in-sample prediction\relax }}{133}{figure.307}
-\contentsline {figure}{\numberline {A.104}{\ignorespaces 100 day HL Boosted Decision Trees out-of-sample forecast\relax }}{134}{figure.308}
-\contentsline {figure}{\numberline {A.105}{\ignorespaces CDE K-Nearest Neighbour in-sample prediction\relax }}{135}{figure.310}
-\contentsline {figure}{\numberline {A.106}{\ignorespaces 100 day CDE K-Nearest Neighbour out-of-sample forecast\relax }}{135}{figure.311}
-\contentsline {figure}{\numberline {A.107}{\ignorespaces NAVB K-Nearest Neighbour in-sample prediction\relax }}{136}{figure.312}
-\contentsline {figure}{\numberline {A.108}{\ignorespaces 100 day NAVB K-Nearest Neighbour out-of-sample forecast\relax }}{137}{figure.313}
-\contentsline {figure}{\numberline {A.109}{\ignorespaces HRG K-Nearest Neighbour in-sample prediction\relax }}{138}{figure.314}
-\contentsline {figure}{\numberline {A.110}{\ignorespaces 100 day HRG K-Nearest Neighbour out-of-sample forecast\relax }}{138}{figure.315}
-\contentsline {figure}{\numberline {A.111}{\ignorespaces HL K-Nearest Neighbour in-sample prediction\relax }}{139}{figure.316}
-\contentsline {figure}{\numberline {A.112}{\ignorespaces 100 day HL K-Nearest Neighbour out-of-sample forecast\relax }}{140}{figure.317}
-\contentsline {figure}{\numberline {A.113}{\ignorespaces CDE Random Forest in-sample prediction\relax }}{141}{figure.319}
-\contentsline {figure}{\numberline {A.114}{\ignorespaces 100 day CDE Random Forest out-of-sample forecast\relax }}{141}{figure.320}
-\contentsline {figure}{\numberline {A.115}{\ignorespaces NAVB Random Forest in-sample prediction\relax }}{142}{figure.321}
-\contentsline {figure}{\numberline {A.116}{\ignorespaces 100 day NAVB Random Forest out-of-sample forecast\relax }}{143}{figure.322}
-\contentsline {figure}{\numberline {A.117}{\ignorespaces HRG Random Forest in-sample prediction\relax }}{144}{figure.323}
-\contentsline {figure}{\numberline {A.118}{\ignorespaces 100 day HRG Random Forest out-of-sample forecast\relax }}{144}{figure.324}
-\contentsline {figure}{\numberline {A.119}{\ignorespaces HL Random Forest in-sample prediction\relax }}{145}{figure.325}
-\contentsline {figure}{\numberline {A.120}{\ignorespaces 100 day HL Random Forest out-of-sample forecast\relax }}{146}{figure.326}
-\contentsline {figure}{\numberline {A.121}{\ignorespaces MSFT Linear Regression in-sample prediction\relax }}{147}{figure.328}
-\contentsline {figure}{\numberline {A.122}{\ignorespaces 100 day MSFT Linear Regression out-of-sample forecast\relax }}{147}{figure.329}
-\contentsline {figure}{\numberline {A.123}{\ignorespaces CDE Linear Regression in-sample prediction\relax }}{148}{figure.330}
-\contentsline {figure}{\numberline {A.124}{\ignorespaces 100 day CDE Linear Regression out-of-sample forecast\relax }}{149}{figure.331}
-\contentsline {figure}{\numberline {A.125}{\ignorespaces HRG Linear Regression in-sample prediction\relax }}{150}{figure.332}
-\contentsline {figure}{\numberline {A.126}{\ignorespaces 100 day HRG Linear Regression out-of-sample forecast\relax }}{150}{figure.333}
-\contentsline {figure}{\numberline {A.127}{\ignorespaces HL Linear Regression in-sample prediction\relax }}{151}{figure.334}
-\contentsline {figure}{\numberline {A.128}{\ignorespaces 100 day HL Linear Regression out-of-sample forecast\relax }}{152}{figure.335}
-\contentsline {figure}{\numberline {A.129}{\ignorespaces MSFT Neural Network in-sample prediction\relax }}{153}{figure.337}
-\contentsline {figure}{\numberline {A.130}{\ignorespaces 100 day MSFT Neural Network out-of-sample forecast\relax }}{153}{figure.338}
-\contentsline {figure}{\numberline {A.131}{\ignorespaces NAVB Neural Network in-sample prediction\relax }}{154}{figure.339}
-\contentsline {figure}{\numberline {A.132}{\ignorespaces 100 day NAVB Neural Network out-of-sample forecast\relax }}{155}{figure.340}
-\contentsline {figure}{\numberline {A.133}{\ignorespaces HRG Neural Network in-sample prediction\relax }}{156}{figure.341}
-\contentsline {figure}{\numberline {A.134}{\ignorespaces 100 day HRG Neural Network out-of-sample forecast\relax }}{156}{figure.342}
-\contentsline {figure}{\numberline {A.135}{\ignorespaces HL Neural Network in-sample prediction\relax }}{157}{figure.343}
-\contentsline {figure}{\numberline {A.136}{\ignorespaces 100 day HL Neural Network out-of-sample forecast\relax }}{158}{figure.344}
-\contentsline {figure}{\numberline {A.137}{\ignorespaces MSFT SGD in-sample prediction\relax }}{159}{figure.346}
-\contentsline {figure}{\numberline {A.138}{\ignorespaces 100 day MSFT SGD out-of-sample forecast\relax }}{159}{figure.347}
-\contentsline {figure}{\numberline {A.139}{\ignorespaces NAVB SGD in-sample prediction\relax }}{160}{figure.348}
-\contentsline {figure}{\numberline {A.140}{\ignorespaces 100 day NAVB SGD out-of-sample forecast\relax }}{161}{figure.349}
-\contentsline {figure}{\numberline {A.141}{\ignorespaces HRG SGD in-sample prediction\relax }}{162}{figure.350}
-\contentsline {figure}{\numberline {A.142}{\ignorespaces 100 day HRG SGD out-of-sample forecast\relax }}{162}{figure.351}
-\contentsline {figure}{\numberline {A.143}{\ignorespaces HL SGD in-sample prediction\relax }}{163}{figure.352}
-\contentsline {figure}{\numberline {A.144}{\ignorespaces 100 day HL SGD out-of-sample forecast\relax }}{164}{figure.353}
-\contentsline {figure}{\numberline {A.145}{\ignorespaces CDE Metropolis-Hastimgs in-sample prediction\relax }}{165}{figure.356}
-\contentsline {figure}{\numberline {A.146}{\ignorespaces 100 day CDE Metropolis-Hastings out-of-sample forecast\relax }}{165}{figure.357}
-\contentsline {figure}{\numberline {A.147}{\ignorespaces NAVB Metropolis-Hastimgs in-sample prediction\relax }}{166}{figure.358}
-\contentsline {figure}{\numberline {A.148}{\ignorespaces 100 day NAVB Metropolis-Hastings out-of-sample forecast\relax }}{167}{figure.359}
-\contentsline {figure}{\numberline {A.149}{\ignorespaces HRG Metropolis-Hastimgs in-sample prediction\relax }}{168}{figure.360}
-\contentsline {figure}{\numberline {A.150}{\ignorespaces 100 day HRG Metropolis-Hastings out-of-sample forecast\relax }}{168}{figure.361}
-\contentsline {figure}{\numberline {A.151}{\ignorespaces HL Metropolis-Hastimgs in-sample prediction\relax }}{169}{figure.362}
-\contentsline {figure}{\numberline {A.152}{\ignorespaces 100 day HL Metropolis-Hastings out-of-sample forecast\relax }}{170}{figure.363}
-\contentsline {figure}{\numberline {A.153}{\ignorespaces MSFT NUTS in-sample prediction\relax }}{171}{figure.365}
-\contentsline {figure}{\numberline {A.154}{\ignorespaces 100 day MSFT NUTS out-of-sample forecast\relax }}{171}{figure.366}
-\contentsline {figure}{\numberline {A.155}{\ignorespaces CDE NUTS in-sample prediction\relax }}{172}{figure.367}
-\contentsline {figure}{\numberline {A.156}{\ignorespaces 100 day CDE NUTS out-of-sample forecast\relax }}{173}{figure.368}
-\contentsline {figure}{\numberline {A.157}{\ignorespaces NAVB NUTS in-sample prediction\relax }}{174}{figure.369}
-\contentsline {figure}{\numberline {A.158}{\ignorespaces 100 day NAVB NUTS out-of-sample forecast\relax }}{174}{figure.370}
-\contentsline {figure}{\numberline {A.159}{\ignorespaces HRG NUTS in-sample prediction\relax }}{175}{figure.371}
-\contentsline {figure}{\numberline {A.160}{\ignorespaces 100 day HRG NUTS out-of-sample forecast\relax }}{176}{figure.372}
+\contentsline {figure}{\numberline {A.89}{\ignorespaces CDE Decision Trees In-Sample Prediction\relax }}{123}{figure.292}
+\contentsline {figure}{\numberline {A.90}{\ignorespaces 100 day CDE Decision Trees Out-of-Sample Forecast\relax }}{123}{figure.293}
+\contentsline {figure}{\numberline {A.91}{\ignorespaces NAVB Decision Trees In-Sample Prediction\relax }}{124}{figure.294}
+\contentsline {figure}{\numberline {A.92}{\ignorespaces 100 day NAVB Decision Trees Out-of-Sample Forecast\relax }}{125}{figure.295}
+\contentsline {figure}{\numberline {A.93}{\ignorespaces HRG Decision Trees In-Sample Prediction\relax }}{126}{figure.296}
+\contentsline {figure}{\numberline {A.94}{\ignorespaces 100 day HRG Decision Trees Out-of-Sample Forecast\relax }}{126}{figure.297}
+\contentsline {figure}{\numberline {A.95}{\ignorespaces HL Decision Trees In-Sample Prediction\relax }}{127}{figure.298}
+\contentsline {figure}{\numberline {A.96}{\ignorespaces 100 day HL Decision Trees Out-of-Sample Forecast\relax }}{128}{figure.299}
+\contentsline {figure}{\numberline {A.97}{\ignorespaces CDE Boosted Decision Trees In-Sample Prediction\relax }}{129}{figure.301}
+\contentsline {figure}{\numberline {A.98}{\ignorespaces 100 day CDE Boosted Decision Trees Out-of-Sample Forecast\relax }}{129}{figure.302}
+\contentsline {figure}{\numberline {A.99}{\ignorespaces NAVB Boosted Decision Trees In-Sample Prediction\relax }}{130}{figure.303}
+\contentsline {figure}{\numberline {A.100}{\ignorespaces 100 day NAVB Boosted Decision Trees Out-of-Sample Forecast\relax }}{131}{figure.304}
+\contentsline {figure}{\numberline {A.101}{\ignorespaces HRG Boosted Decision Trees In-Sample Prediction\relax }}{132}{figure.305}
+\contentsline {figure}{\numberline {A.102}{\ignorespaces 100 day HRG Boosted Decision Trees Out-of-Sample Forecast\relax }}{132}{figure.306}
+\contentsline {figure}{\numberline {A.103}{\ignorespaces HL Boosted Decision Trees In-Sample Prediction\relax }}{133}{figure.307}
+\contentsline {figure}{\numberline {A.104}{\ignorespaces 100 day HL Boosted Decision Trees Out-of-Sample Forecast\relax }}{134}{figure.308}
+\contentsline {figure}{\numberline {A.105}{\ignorespaces CDE K-Nearest Neighbour In-Sample Prediction\relax }}{135}{figure.310}
+\contentsline {figure}{\numberline {A.106}{\ignorespaces 100 day CDE K-Nearest Neighbour Out-of-Sample Forecast\relax }}{135}{figure.311}
+\contentsline {figure}{\numberline {A.107}{\ignorespaces NAVB K-Nearest Neighbour In-Sample Prediction\relax }}{136}{figure.312}
+\contentsline {figure}{\numberline {A.108}{\ignorespaces 100 day NAVB K-Nearest Neighbour Out-of-Sample Forecast\relax }}{137}{figure.313}
+\contentsline {figure}{\numberline {A.109}{\ignorespaces HRG K-Nearest Neighbour In-Sample Prediction\relax }}{138}{figure.314}
+\contentsline {figure}{\numberline {A.110}{\ignorespaces 100 day HRG K-Nearest Neighbour Out-of-Sample Forecast\relax }}{138}{figure.315}
+\contentsline {figure}{\numberline {A.111}{\ignorespaces HL K-Nearest Neighbour In-Sample Prediction\relax }}{139}{figure.316}
+\contentsline {figure}{\numberline {A.112}{\ignorespaces 100 day HL K-Nearest Neighbour Out-of-Sample Forecast\relax }}{140}{figure.317}
+\contentsline {figure}{\numberline {A.113}{\ignorespaces CDE Random Forest In-Sample Prediction\relax }}{141}{figure.319}
+\contentsline {figure}{\numberline {A.114}{\ignorespaces 100 day CDE Random Forest Out-of-Sample Forecast\relax }}{141}{figure.320}
+\contentsline {figure}{\numberline {A.115}{\ignorespaces NAVB Random Forest In-Sample Prediction\relax }}{142}{figure.321}
+\contentsline {figure}{\numberline {A.116}{\ignorespaces 100 day NAVB Random Forest Out-of-Sample Forecast\relax }}{143}{figure.322}
+\contentsline {figure}{\numberline {A.117}{\ignorespaces HRG Random Forest In-Sample Prediction\relax }}{144}{figure.323}
+\contentsline {figure}{\numberline {A.118}{\ignorespaces 100 day HRG Random Forest Out-of-Sample Forecast\relax }}{144}{figure.324}
+\contentsline {figure}{\numberline {A.119}{\ignorespaces HL Random Forest In-Sample Prediction\relax }}{145}{figure.325}
+\contentsline {figure}{\numberline {A.120}{\ignorespaces 100 day HL Random Forest Out-of-Sample Forecast\relax }}{146}{figure.326}
+\contentsline {figure}{\numberline {A.121}{\ignorespaces MSFT Linear Regression In-Sample Prediction\relax }}{147}{figure.328}
+\contentsline {figure}{\numberline {A.122}{\ignorespaces 100 day MSFT Linear Regression Out-of-Sample Forecast\relax }}{147}{figure.329}
+\contentsline {figure}{\numberline {A.123}{\ignorespaces CDE Linear Regression In-Sample Prediction\relax }}{148}{figure.330}
+\contentsline {figure}{\numberline {A.124}{\ignorespaces 100 day CDE Linear Regression Out-of-Sample Forecast\relax }}{149}{figure.331}
+\contentsline {figure}{\numberline {A.125}{\ignorespaces HRG Linear Regression In-Sample Prediction\relax }}{150}{figure.332}
+\contentsline {figure}{\numberline {A.126}{\ignorespaces 100 day HRG Linear Regression Out-of-Sample Forecast\relax }}{150}{figure.333}
+\contentsline {figure}{\numberline {A.127}{\ignorespaces HL Linear Regression In-Sample Prediction\relax }}{151}{figure.334}
+\contentsline {figure}{\numberline {A.128}{\ignorespaces 100 day HL Linear Regression Out-of-Sample Forecast\relax }}{152}{figure.335}
+\contentsline {figure}{\numberline {A.129}{\ignorespaces MSFT Neural Network In-Sample Prediction\relax }}{153}{figure.337}
+\contentsline {figure}{\numberline {A.130}{\ignorespaces 100 day MSFT Neural Network Out-of-Sample Forecast\relax }}{153}{figure.338}
+\contentsline {figure}{\numberline {A.131}{\ignorespaces NAVB Neural Network In-Sample Prediction\relax }}{154}{figure.339}
+\contentsline {figure}{\numberline {A.132}{\ignorespaces 100 day NAVB Neural Network Out-of-Sample Forecast\relax }}{155}{figure.340}
+\contentsline {figure}{\numberline {A.133}{\ignorespaces HRG Neural Network In-Sample Prediction\relax }}{156}{figure.341}
+\contentsline {figure}{\numberline {A.134}{\ignorespaces 100 day HRG Neural Network Out-of-Sample Forecast\relax }}{156}{figure.342}
+\contentsline {figure}{\numberline {A.135}{\ignorespaces HL Neural Network In-Sample Prediction\relax }}{157}{figure.343}
+\contentsline {figure}{\numberline {A.136}{\ignorespaces 100 day HL Neural Network Out-of-Sample Forecast\relax }}{158}{figure.344}
+\contentsline {figure}{\numberline {A.137}{\ignorespaces MSFT SGD In-Sample Prediction\relax }}{159}{figure.346}
+\contentsline {figure}{\numberline {A.138}{\ignorespaces 100 day MSFT SGD Out-of-Sample Forecast\relax }}{159}{figure.347}
+\contentsline {figure}{\numberline {A.139}{\ignorespaces NAVB SGD In-Sample Prediction\relax }}{160}{figure.348}
+\contentsline {figure}{\numberline {A.140}{\ignorespaces 100 day NAVB SGD Out-of-Sample Forecast\relax }}{161}{figure.349}
+\contentsline {figure}{\numberline {A.141}{\ignorespaces HRG SGD In-Sample Prediction\relax }}{162}{figure.350}
+\contentsline {figure}{\numberline {A.142}{\ignorespaces 100 day HRG SGD Out-of-Sample Forecast\relax }}{162}{figure.351}
+\contentsline {figure}{\numberline {A.143}{\ignorespaces HL SGD In-Sample Prediction\relax }}{163}{figure.352}
+\contentsline {figure}{\numberline {A.144}{\ignorespaces 100 day HL SGD Out-of-Sample Forecast\relax }}{164}{figure.353}
+\contentsline {figure}{\numberline {A.145}{\ignorespaces CDE Metropolis-Hastimgs In-Sample Prediction\relax }}{165}{figure.356}
+\contentsline {figure}{\numberline {A.146}{\ignorespaces 100 day CDE Metropolis-Hastings Out-of-Sample Forecast\relax }}{165}{figure.357}
+\contentsline {figure}{\numberline {A.147}{\ignorespaces NAVB Metropolis-Hastimgs In-Sample Prediction\relax }}{166}{figure.358}
+\contentsline {figure}{\numberline {A.148}{\ignorespaces 100 day NAVB Metropolis-Hastings Out-of-Sample Forecast\relax }}{167}{figure.359}
+\contentsline {figure}{\numberline {A.149}{\ignorespaces HRG Metropolis-Hastimgs In-Sample Prediction\relax }}{168}{figure.360}
+\contentsline {figure}{\numberline {A.150}{\ignorespaces 100 day HRG Metropolis-Hastings Out-of-Sample Forecast\relax }}{168}{figure.361}
+\contentsline {figure}{\numberline {A.151}{\ignorespaces HL Metropolis-Hastimgs In-Sample Prediction\relax }}{169}{figure.362}
+\contentsline {figure}{\numberline {A.152}{\ignorespaces 100 day HL Metropolis-Hastings Out-of-Sample Forecast\relax }}{170}{figure.363}
+\contentsline {figure}{\numberline {A.153}{\ignorespaces MSFT NUTS In-Sample Prediction\relax }}{171}{figure.365}
+\contentsline {figure}{\numberline {A.154}{\ignorespaces 100 day MSFT NUTS Out-of-Sample Forecast\relax }}{171}{figure.366}
+\contentsline {figure}{\numberline {A.155}{\ignorespaces CDE NUTS In-Sample Prediction\relax }}{172}{figure.367}
+\contentsline {figure}{\numberline {A.156}{\ignorespaces 100 day CDE NUTS Out-of-Sample Forecast\relax }}{173}{figure.368}
+\contentsline {figure}{\numberline {A.157}{\ignorespaces NAVB NUTS In-Sample Prediction\relax }}{174}{figure.369}
+\contentsline {figure}{\numberline {A.158}{\ignorespaces 100 day NAVB NUTS Out-of-Sample Forecast\relax }}{174}{figure.370}
+\contentsline {figure}{\numberline {A.159}{\ignorespaces HRG NUTS In-Sample Prediction\relax }}{175}{figure.371}
+\contentsline {figure}{\numberline {A.160}{\ignorespaces 100 day HRG NUTS Out-of-Sample Forecast\relax }}{176}{figure.372}

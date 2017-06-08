@@ -39,6 +39,7 @@ In this paper, we investigate the Efficient Market Hypotheses (EMH), and the Ran
 \end{enumerate}
 
 \section{Experiments}
+A data set containing end of day stock prices, dividends, and splits for 3,000 US com- panies, curated by the Quandl community[1], and released into the public domain, was used. The date column in the CSV file was loaded into memory, and said column was converted to a date data type. The data frame was then sorted using the date column, starting from the oldest date, ending with the latest. The date column was also set to the index. The data frame was split into two, the training data set consisting of 80\%, and the test data set consisting of 20\% of the original data frame.
 
 \subsection{Time Series Analysis}
 The selected stocks was extracted from the data set and stored in a data frame. The log returns of the stocks were calculated by calculating the logarithm of the stock's adjusted close price divided by the following day's adjusted close price. The resulting values from the calculation were then stored in a new column in the data frame and all infinite values were dropped from the series.
@@ -47,14 +48,14 @@ The random walk theory suggests that stock price changes have the same distribut
 
 \begin{figure}[!hbp]
 \includegraphics[width=0.5\textwidth]{HRG-time-series.png}
-\caption{HRG time series analysis}
+\caption{HRG Time Series Analysis}
 \end{figure}
 
 ARMA faired the best than the rest of the algorithms in predicting stock price returns, having the lowest difference in sharpe ratios based on the original price returns and in-sample predicted price returns, however still failed to achieve a good fit in the in-sample tests. The series was fitted to an ARMA(p, q, r) model with an order selected based on the lowest AIC. No constants were passed to the ARMA model. The exact loglikelihood for the fit of the ARMA model was maximized via the Kalman Filter. As can be seen in the time series analysis plots, ARMA showed to have very heavy tails in the QQ and probability plots. The algorithm predicted an abnormal sharp decline at the start of the forecast and showed diminishing returns over time, as was evident in figure 2.
 
 \begin{figure}[!hbp]
 \includegraphics[width=0.5\textwidth]{CDE-ARMA-time-series.png}
-\caption{CDE ARMA time series analysis}
+\caption{CDE ARMA Time Series Analysis}
 \end{figure}
 
 \subsection{Machine Learning}
@@ -73,7 +74,7 @@ The random forest was fit with bootstrap samples when building the trees, while 
         HL & 0.81 & 581 & 101 & 509 & 169 \\
         \hline
         \end{tabular}
-    \caption{Random Forest classification results}
+    \caption{Random Forest Classification Results}
 \end{table}
 
 \subsection{Bayesian Statistics}
@@ -82,7 +83,7 @@ The last 500 rows of the selected stocks were extracted from the data set and st
 
 \begin{figure}[!hbp]
 \includegraphics[width=0.5\textwidth]{HL-NUTS-In-Sample-Returns-Prediction.png}
-\caption{HL NUTS in-sample returns prediction}
+\caption{HL NUTS In-Sample Returns Prediction}
 \end{figure}
 
 \subsection{Strategy}
@@ -105,26 +106,25 @@ When tasked with predicting rises in stock prices, the algorithm did fairly well
         Benchmark Volatility & 0.156 \\
         \hline
         \end{tabular}
-    \caption{Machine Learning Regression strategy with stop loss}
+    \caption{Machine Learning Regression Strategy With Stop Loss}
 \end{table}
 
 \begin{figure}[!hbp]
 \includegraphics[width=0.5\textwidth]{MLR-Portfolio-Benchmark-Stop-Loss.png}
-\caption{Machine Learning Regression strategy with stop loss}
+\caption{Machine Learning Regression Strategy With Stop Loss}
 \end{figure}
 
 \section{Related work}
 
-There is a growing demand for forecasting interest rates, as financial researchers, economists, and players in the fixed income markets seek to find the best method to get ahead of the market. A study was carried out to develop an appropriate model for forecasting the short-term interest rates, implicit yield on 91 day treasury bill, overnight MIBOR rate, and call money rate. The short-term interest rates are forecasted using univariate models such as the Random Walk, ARIMA, ARMA-GARCH, and ARMA-EGARCH. The appropriate model for forecasting is determined considering a six-year period from 1999. Radha et al. showed evidence that GARCH models are best suited for fore- castint when applied towards time series having volatility clustering effects. It was their firm belief that ARIMA-EGARCH is the most appropriate forecasting model for these circumstances.
+There is a growing demand for forecasting interest rates, as financial researchers, economists, and players in the fixed income markets seek to find the best method to get ahead of the market. A financial model was developed to forecast short-term interest rates, implicit yield on 91 day treasury bill, overnight MIBOR rate, and call money rate.[2] Radha et al. made use of univariate models to forecast the short-term interest rates. These models include Random Walk, ARIMA, ARMA-GARCH, and ARMA-EGARCH. They selected the best peforming model by considering a six year period starting from 1999. Radha et al. showed evidence that GARCH models are best suited for forecastint when applied towards time series having volatility clustering effects. It was their firm belief that ARIMA-EGARCH is the most appropriate forecasting model for these circumstances.
 
-Darrat et al. set out to investigate with the use of new daily data, whether prices in the two Chinese stock exchanges (Shanghai and Shenzhen) follow a random walk process as required by market efficiency. Two different approaches were applied, the standard variance-ratio test, and a model-comparison test that compares the ex post forecasts from a naive model with those obtained from several alternative models such as ARIMA, GARCH, and ANNs. To evaluate ex post forecasts, Darrat et al. made use of several procedures including root-mean-square error (RMSE), mean absolute error (MAE), uncertainty coefficient, and encompassing tests. It was concluded that the model-comparison approach yielded results which were quite strongly rejected the RWH in both Chinese stock markets when compared with the variance-ratio test. Darret et al. recommended the use of ANNs, as their results showed strong support for the model
-as a potentially useful factor for forecasting stock prices in emerging markets.
+Darrat et al. set out to investigate with the use of new daily data, whether prices in the two Chinese stock exchanges (Shanghai and Shenzhen) follow a random walk process as required by market efficiency.[3] Two different approaches were applied, the standard variance-ratio test, and a model-comparison test that compares the ex post forecasts from a naive model with those obtained from several alternative models such as ARIMA, GARCH, and ANNs. To evaluate ex post forecasts, Darrat et al. made use of several procedures including root-mean-square error (RMSE), mean absolute error (MAE), uncertainty coefficient, and encompassing tests. It was concluded that the model-comparison approach yielded results which were quite strongly rejected the RWH in both Chinese stock markets when compared with the variance-ratio test. Darret et al. recommended the use of ANNs, as their results showed strong support for the model as a potentially useful factor for forecasting stock prices in emerging markets.
 
-A vast majority of academics tend to predict the price of stocks in financial markets, however most models used are flawed and only focus on the accurate forecasting of the levels of the underlying stock index. There is a lack of studies examining the predictabil- ity of the direction of stock index movement. Given the notion that a prediction with little forecast error does not necessarily translate into capital gain, the authors of this research attempt to predict the direction of the S\&P CNX NIFTY Market Index of the National Stock Exchange, one of the fastest growing financial exchanges in developing Asian countries. Machine learning models such as random forest and SVMs, differ widely from other models, and are making strides in predicting the financial markets. Kumar et al. tested classification models to predict the direction of the markets, by applying models such as linear discriminant analysis, logistic regression, ANNs, random forest, and SVM. Their evidence shows that SVMs outperform the other classification methods in terms of predicting the direction of the stock market movement, and that the random forest model outperforms other models such as ANNs, discriminant analysis, and logistic regression.
+A vast majority of academics tend to predict the price of stocks in financial markets, however most models used are flawed and only focus on the accurate forecasting of the levels of the underlying stock index. There is a lack of studies examining the predictability of the direction of stock index movement. Given the notion that a prediction with little forecast error does not necessarily translate into capital gain, the authors of this research attempt to predict the direction of the S\&P CNX NIFTY Market Index of the National Stock Exchange, one of the fastest growing financial exchanges in developing Asian countries.[4] Machine learning models such as random forest and SVMs, differ widely from other models, and are making strides in predicting the financial markets. Kumar et al. tested classification models to predict the direction of the markets, by applying models such as linear discriminant analysis, logistic regression, ANNs, random forest, and SVM. Their evidence shows that SVMs outperform the other classification methods in terms of predicting the direction of the stock market movement, and that the random forest model outperforms other models such as ANNs, discriminant analysis, and logistic regression.
 
-Creamer et al. developed an automated trading algorithm making use of multiple stocks relying on a layered structure consisting of a ma- chine learning algorithm, an online learning utility, and a risk management overlay. The machine learning algorithm which they made use of was an Alternating Decision Tree (ADT) implemented with Logitboost. Their algorithm was able to select the best combination of rules derived from well known technical analysis indicators, and the best peramaters of the indicators in question. Additionally, their online learning layer was also able to combine the output of several ADTs, suggesting a short or long position. Finally, the risk management layer in which they implemented, was able to validate the trading signal once it exceeds a specified non-zero threshold and limit the application of their trading strategy when it is not profitable. They tested the expert weighting algorithm with data of 100 randomly selected companies of the S\&P 500 index dur- ing the period 20032005. They found that their algorithm generated abnormal returns during the test period. Their experiments show that the boosting approach was able to improve the predictive capacity when indicators were combined and aggregated as a single predictor. Furthermode, their results indicated that the combination of indicators of different stocks were adequate in order to reduce the use of computational resources, while still maintaining an adequate predictive capacity.
+Creamer et al. developed an automated trading algorithm making use of multiple stocks relying on a layered structure consisting of a machine learning algorithm, an online learning utility, and a risk management overlay.[5] The machine learning algorithm which they made use of was an Alternating Decision Tree (ADT) implemented with Logitboost. Their algorithm was able to select the best combination of rules derived from well known technical analysis indicators, and the best peramaters of the indicators in question. Additionally, their online learning layer was also able to combine the output of several ADTs, suggesting a short or long position. Finally, the risk management layer in which they implemented, was able to validate the trading signal once it exceeds a specified non-zero threshold and limit the application of their trading strategy when it is not profitable. They tested the expert weighting algorithm with data of 100 randomly selected companies of the S\&P 500 index during the period 2003–2005. They found that their algorithm generated abnormal returns during the test period. Their experiments show that the boosting approach was able to improve the predictive capacity when indicators were combined and aggregated as a single predictor. Furthermode, their results indicated that the combination of indicators of different stocks were adequate in order to reduce the use of computational resources, while still maintaining an adequate predictive capacity.
 
-Hoffman et al. introduce the ’No-U-Turn-Sampler’, an extension to the Hamiltonian Monte Carlo (HMC), which is an MCMC algorithm that avoids the random walk be- havioir and sensitivity to correlated paramaters that plague many MCMC methods by taking a series of steps informed by first-order gradient information. In their paper, they claim HMCs performance to be highly sensitive to two user-specified parameters: a step size, and a desired number of steps. NUTS is an improvement from HMC as it eliminates the need to set a number of steps, and works by build a set of likely candidate points that spans a wide swath of the target distribution, stopping automatically when it starts to double back and retrace its steps. They achieved all of this by making use of a recursive algorithm.
+In their paper, Hoffman et al. introduced the NUTS model, an improvement to the HMC model. The NUTS model is a model of MCMC family of algorithms, in which its main focus is to avoid the random walk behavioir and sensitivity to correlated paramaters affecting many other MCMC models. Hoffman et al. achieved this by taking a series of steps informed by first-order gradient information.[6] In their study, they claim HMC to be flawed as its performance is highly sensitive to two user-specified parameters, the step size, and the desired number of steps. NUTS is an improvement from HMC as it eliminates the need for the researcher to set the number of steps, and works by building a set of likely candidate points which span a wide swath of the target distribution, stopping automatically when it starts to double back and retrace its steps. They achieved all of this by making use of a recursive algorithm.
 
 \section{Conclusion}
 Three financial forecasting methods were presented in this report, two of which showed little to no potential of ever producing any statistically significant result when the correct methodology was applied. The third method, machine learning, showed some potential in the tests carried out, which is why this method was built into an automated algo- rithmic strategy to trade with. The algorithm proved to be successful in forecasting future prices, using both classification and regression methods. However, the backtest- ing proved this method to fail in forecasting price falls. Once this factor was removed from the equation, the algorithms were very successful and reported a profit by the end of the test. This is however not always ideal as stocks which could fall in price could be catastrophic to the strategy. A stop loss would be ideal in insuring that no positions are held in downward falling stocks. It was also evident that regression methods were more successful in forecasting future price movements when compared to classification methods.
@@ -133,98 +133,16 @@ If there is anything that this report shows, is that profitable stock market pre
 
 \section*{Acknowledgements}
 
-The author would like to express his special thanks of gratitude to my supervisor, Alan Gatt, for the patient guidance, encouragement, and advice he has provided throughout my time as his student. He would also like to thank Luke Vella Critien, for guiding him towards the right parth in the early stages of my research and for recommending Alan Gatt as my tutor. The author's gratitude is also extended to Emma Galea and Miguel Attard for their valuable input while carrying out his research. Completing this work would have been all the more difficult were it not for the support and friendship provided by the other members of the Malta College of Arts, Sciences, and Technology, and the institute of Information and Technology. The author is indebted to them for their help. Finally, the author wishes to thank his family who have supported me all throughout the final year of his bachelor’s.
+The author would like to express his special thanks of gratitude to my supervisor, Alan Gatt, for the patient guidance, encouragement, and advice he has provided throughout my time as his student. He would also like to thank Luke Vella Critien, for guiding him towards the right parth in the early stages of my research and for recommending Alan Gatt as my tutor. The author's gratitude is also extended to Emma Galea and Miguel Attard for their valuable input while carrying out his research. Completing this work would have been all the more difficult were it not for the support and friendship provided by the other members of the Malta College of Arts, Sciences, and Technology, and the institute of Information and Technology. The author is indebted to them for their help. Finally, the author wishes to express his very profound gratitude to his family for providing him with unfailing support and continuous encouragement throughout his years of study and through the process of researching and writing this thesis. This accomplishment would not have been possible without them. 
 
 \begin{thebibliography}{99}
-\bibitem{1}K. R. Wilson and V. V. Yakovlev, ,,Ultrafast rainbow: tunable ultrashort
- pulses from a solid-state kilohertz system'', {\it J. Opt. Soc. Am. B}, vol. 14, pp. 444--448, 1997.
-\bibitem{2}J. Comly and E. Garmire, ,,Second harmonic generation from short
-pulses'', {\it Appl. Phys. Lett.}, vol. 12, no. 7-9, 1968.
-\bibitem{3}O. E. Martinez, ,,Achromatic phase matching for second harmonic ge\-neration
-of femtosecond pulses'', {\it IEEE J. Quant. Electron.}, vol.
-QE-25, pp. 2464--2468, 1989.
-\bibitem{4}G. Szabo and Z. Bor, ,,Broadband frequency doubler for
-femtosecond pulses'', {\it Appl. Phys. B}, vol. 50, pp. 51--54,
-1990.
-\bibitem{5}J.-Y. Zhang, J. Y. Huang, H. Wang, K. S. Wong, and G.K. Wong, ,,Second-harmonic
-generation from regeneratively amplified femtosecond laser pulses
-in BBO and LBO crystals", {\it J. Opt. Soc. Am. B}, vol. 15,
-pp.~200--209, 1998.
-\bibitem{6}K. Hayata and M. Koshiba,
-,,Group-velocity-matched second-harmonic generation: an efficient
-scheme for femtosecond ultraviolet pulse gene\-ration in
-periodically domain-inverted $\beta$-BaB2O4", {\it Appl. Phys.
-Lett.}, vol.~62, pp.~2188--2190, 1993.
-\bibitem{7}G. Y. Wang and E. M. Garmire, ,,High-efficiency generation of ultrashort
-second-harmonic pulses based on the Cherenkov geometry", {\it Opt.
-Lett.}, vol. 19, pp. 254--256, 1994.
-\bibitem{8}C. Radzewicz, Y. B. Band, G. W. Pearson, and J. S. Krasinski, ,,Short pulse
-nonlinear frequency conversion without group-velocity-mismatch
-broadening", {\it Opt. Commun.}, vol. 117, pp. 295--303, 1995.
-\bibitem{9}P. Di Trapani, A. Andreoni, G. P. Banfi, C. Solcia, R. Danielius, A.~Piskarskas,
-P. Foggi, M. Monguzzi, and C. Sozzi, ,,Group-velocity
-self-matching of femtosecond pulses in noncollinear parametric
-generation", {\it Phys. Rev. A}, vol. 51, pp. 3164--3168, 1995.
-\bibitem{10}V. Krylov, A. Kalintsev, A. Rebane, D. Erni, and U. P.
-Wild, ,,Noncollinear parametric generation in LiIO3 and
-$\beta$-barium borate by frequency-doubled femtosecond Ti:sapphire
-laser pulses", {\it Opt. Lett.}, vol.~20, pp.~151--153, 1995.
-\bibitem{11}P. Di Trapani, A. Andreoni, C. Solcia, P. Foggi, R.
-Danielius, A. Dubietis, and A. Piskarskas, ,,Matching of group
-velocities in three-wave parametric interaction with fs pulses and
-application to travelling-wave generators", {\it J. Opt. Soc. Am.
-B}, vol. 12, pp. 2237--2244, 1995.
-\bibitem{12}P. Di Trapani, A. Andreoni, P. Foggi, C. Solcia, R.
-Danielius, and A.~Piskarskas, ,,Efficient conversion of
-femtosecond blue pulses by travelling-wave parametric generation
-in non-collinear phase matching", {\it Opt. Commun.}, vol. 119,
-pp. 327--332, 1995.
-\bibitem{13}T. R. Zhang, H. R. Choo, and M. C. Downer, ,,Phase and group
-velocity matching for second harmonic generation of femtosecond
-pulses", {\it Appl. Opt.}, vol. 29, pp. 3927--3933, 1990.
-\bibitem{14}A. Andreoni and M. Bondani, ,,Group-velocity control in the
-\mbox{mixing} of three non-collinear phase-matched waves", {\it
-Appl. Opt.}, vol.~37, \mbox{pp.~2414--2423,} 1998.
-\bibitem{15}P. Di Trapani, A. Andreoni, C. Solcia, G. P. Banfi, R.
-Danielius, A.~Piskarskas, and P. Foggi, ,,Powerful sub-100-fs
-pulses broadly tunable in the visible from a blue-pumped
-parametric ganerator and amplifier", {\it J. Opt. Soc. Am. B},
-vol. 14, pp. 1245--1248, 1997.
-\bibitem{16}R. Danielius, A. Piskarskas, P. Di Trapani, A. Andreoni,
-C. Solcia, and P. Foggi, ,,Matching of group velocities by spatial
-walk-off in collinear three-wave interaction with tilted pulses",
-{\it Opt. Lett.}, vol. 21, \mbox{pp.~973--975,} 1996.
-\bibitem{17}R. Danielius, A. Piskarskas, A. Stabinis, G. P. Banfi, P.
-Di Trapani, and R. Righini, ,,Travelling-wave parametric
-generation of widely tunable, highly coherent femtosecond light
-pulses", {\it J. Opt. Soc. Am. B}, vol. 10, pp. 2222--2232, 1993.
-\bibitem{18}S. A. Akhmanov, A. S. Chirkin, K. N. Drabovich, A. I.
-Kovrigin, R.~V.~Khokhlov, and A. P. Sukhorukov, ,,Nonstationary
-nonlinear optical effects and ultrashort light pulse formation",
-{\it IEEE J. Quant. Ele\-ctron.}, vol. QE-4, pp. 598--605, 1968.
-\bibitem{19}R. Danielius, A. Piskarskas, P. Di Trapani, A. Andreoni,
-C. Solcia, and P. Foggi, ,,A collinearly phase-matched parametric
-generator/amplifier of visible femtosecond pulses", {\it IEEE J.
-Quant. Electron.}, vol. 34, \mbox{pp.~459--464,} 1998.
-\bibitem{20}S. Sartania, Z. Cheng, M. Lenzner, G. Tempea, Ch.
-Spielmann, F.~Krausz, and K. Ferencz, ,,Generation of 0.1-TW 5-fs
-optical pulses at a~1-kHz repetition rate", {\it Opt. Lett.}, vol.
-22, pp. 1562--1564, 1997.
-\bibitem{21}M. Nisoli, S. De Silvestri, O. Svelto, R. Szipoecs, K.
-Ferencz, Ch. Spielmann, S. Sartania, and F. Krausz, ,,Compression
-of high-energy laser pulses below 5 fs", {\it Opt. Lett.}, vol.
-22, pp. 522--524, 1997.
-\bibitem{22}S. A. Akhmanov, V. A. Vysloukh, and A. S. Chirkin, {\it Optics of femtose\-cond laser
-pulses}. New York: American Institute of Physics, 1992.
-\bibitem{23}A. Andreoni, M. Bondani, and M. A. C. Potenza,
-,,Ultra-broadband and chirp-free frequency doubling in
-$\beta$-barium borate", {\it Opt. Commun.}, vol.~154, pp.
-376--382, 1998.
-\bibitem{24}H. Wang, K. S. Wong, D. Deng, Z. Xu, G. K. L. Wong, and
-J.~Zhang, ,,Kilohertz femtosecond UV-pumped visible $\beta$-barium
-borate and lithium triborate optical parametric generator and
-amplifier", {\it Appl. Opt.}, vol.~36, pp. 1889--1893, 1997.
-\end{thebibliography}
 
+\bibitem{1}Quandl. Wiki eod stock prices, 2017.
+\bibitem{2}S. Radha and M. Thenmozhi. Forecasting short term interest rates using arma, arma-garch and arma-egarch models. {\it Indian Institute of Capital Markets 9th Capital Markets Conference Paper}, January 2006.
+\bibitem{3}Ali F. Darrat and Maosen Zhong. On testing the random walk hypothesis: A model-comparison approach, 2001.
+\bibitem{4}Manish Kumar and M. Thenmozhi. Forecasting stock index movement: A comparison of support vector machines and random forest, June 2016.
+\bibitem{5}Germ ́an G. Creamer and Yoav Freund. Automated trading with boosting and expert weighting. {\it Quantitative Finance}, Vol. 4(No. 10):pp. 401–420, April 2010.
+\bibitem{6}Matthew D. Hoffman and Andrew Gelman. The no-u-turn sampler: Adaptively setting path lengths in hamiltonian monte carlo. {\it Journal of Machine Learning Research}, 15, 2014.
+\end{thebibliography}
 
 \end{document}

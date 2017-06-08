@@ -253,8 +253,8 @@
 \pagestyle{fancy}
 
 \def\aJTIT{{\footnotesize\begin{tabular}{l}
-    \sffamily JOURNAL OF TELECOMMUNICATIONS \\
-    \sffamily AND\hfill INFORMATION\hfill TECHNOLOGY\\
+    \sffamily MCAST JOURNAL OF INFORMATION \\
+    \sffamily AND \hfill COMMUNICATIONS \hfill TECHNOLOGY\\
   \end{tabular}}}
 \lfoot[\thepage]{\aJTIT}
 \rfoot[\aJTIT]{\thepage}
